@@ -1,9 +1,35 @@
-<meta
-  http-equiv="Content-Security-Policy"
-  content="script-src 'nonce-aem' 'strict-dynamic' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none'; frame-src 'self' https:; require-trusted-types-for 'script';"
-  move-to-http-header="true"
-/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<script nonce="aem" src="/scripts/aem.js" type="module"></script>
-<script nonce="aem" src="/scripts/scripts.js" type="module"></script>
 <link rel="stylesheet" href="/styles/styles.css"/>
+<script src="/scripts/scripts.js" type="module"></script>
+<script src="/scripts/ak.js" type="module"></script>
+<link rel="icon" href="/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://baremetrics.com/#organization",
+      "name": "Baremetrics",
+      "description": "Metrics, dunning, and engagement tools for SaaS & subscription businesses.",
+      "url": "https://baremetrics.com/",
+      "logo": "https://baremetrics.com/hubfs/raw_assets/public/Baremetrics_July2023/images/baremetrics-logo.svg",
+      "contactPoint": { "@type": "ContactPoint", "telephone": "+1-725-217-4827", "contactType": "sales", "email": "hello@baremetrics.com" },
+      "sameAs": [
+        "https://www.twitter.com/baremetrics",
+        "https://www.facebook.com/baremetrics",
+        "https://www.instagram.com/baremetricsapp",
+        "https://www.dribbble.com/baremetrics"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://baremetrics.com/#website",
+      "name": "Baremetrics",
+      "url": "https://baremetrics.com/",
+      "publisher": { "@id": "https://baremetrics.com/#organization" },
+      "inLanguage": ["en", "ja"]
+    }
+  ]
+}
+</script>
