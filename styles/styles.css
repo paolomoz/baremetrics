@@ -85,6 +85,10 @@
   --color-ruling: oklch(85% 0.02 285 / 60%);
   --hairline-dotted: 1px dotted var(--color-ruling);
   --figure-tracking: -0.02em;
+
+  /* form-field border — the prototypes' .ds-input literal (full-alpha ruling),
+     tokenised for the block library (added by Wave A, foundation extension) */
+  --color-input-border: oklch(85% 0.02 285);
 }
 
 /* === reset === */

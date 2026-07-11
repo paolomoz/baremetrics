@@ -1,0 +1,86 @@
+/* accordion — hairline-ruled FAQ (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.accordion`
+   (blockWrapperClass NONE). Sources: features-recover (faq),
+   compare-profitwell-alternative (faq).
+   .accordion-wrap carries the max-width container (#13/#74). */
+
+.accordion { padding-block: var(--section-padding); }
+
+.accordion .accordion-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.accordion .section-lede {
+  color: var(--color-slate);
+  max-width: 62ch;
+  margin-top: var(--spacing-md);
+}
+
+.accordion .faq-list {
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-hairline);
+  max-width: 880px;
+}
+
+.accordion .faq-item { border-bottom: 1px solid var(--color-hairline); }
+
+.accordion .faq-item h3 { font-size: 0; } /* the button carries the visible text style */
+
+.accordion .faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  min-height: 44px;
+  padding: 18px 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font: 700 19px / 1.4 var(--body-font-family);
+  color: var(--color-fg);
+}
+
+.accordion .faq-q:hover { color: var(--color-action); }
+
+.accordion .faq-q .glyph {
+  flex-shrink: 0;
+  color: var(--color-action);
+  font: 400 26px / 1 var(--body-font-family);
+}
+
+.accordion .faq-q .glyph::before { content: "+"; }
+
+.accordion .faq-q[aria-expanded="true"] .glyph::before { content: "−"; }
+
+.accordion .faq-panel { padding: 0 0 var(--spacing-lg); }
+
+.accordion .faq-panel p,
+.accordion .faq-panel li {
+  max-width: 72ch;
+  color: var(--color-slate);
+}
+
+.accordion .faq-panel p + p,
+.accordion .faq-panel ul { margin-top: var(--spacing-sm); }
+
+.accordion .faq-panel ul { padding-left: 20px; }
+
+.accordion .faq-more { margin-top: var(--spacing-lg); }
+
+.accordion .faq-more a,
+.accordion .ds-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-action);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.accordion .faq-more a:hover { color: var(--color-action-hover); }

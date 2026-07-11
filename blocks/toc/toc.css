@@ -1,0 +1,122 @@
+/* toc — article sticky rail + mobile disclosure (The Ledger).
+   CSS lifted verbatim from blog-customer-retention-metrics-proposed.html
+   (rail + toc-disclosure), scoped `.toc` (blockWrapperClass NONE).
+   The article template grid (templates/article, B4) positions the block;
+   the rail is sticky within whatever column it is given. */
+
+.toc { display: block; }
+
+.toc .toc-rail {
+  position: sticky;
+  top: var(--spacing-lg);
+  max-height: calc(100dvh - 48px);
+  overflow: auto;
+  padding-bottom: var(--spacing-sm);
+}
+
+.toc .toc-rail .meta-label {
+  display: block;
+  padding-bottom: var(--spacing-sm);
+}
+
+.toc .toc-rail nav + nav .meta-label { margin-top: var(--spacing-xl); }
+
+.toc .toc-rail ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc .toc-rail li { border-top: 1px solid var(--color-hairline); }
+
+.toc .toc-rail li:last-child { border-bottom: 1px solid var(--color-hairline); }
+
+.toc .toc-rail a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 2px;
+  font: 600 var(--body-sm) / 1.45 var(--body-font-family);
+  color: var(--color-fg);
+  text-decoration: none;
+}
+
+.toc .toc-rail a:where(:hover) { color: var(--color-action); }
+
+.toc .more-articles a {
+  font-weight: 400;
+  color: var(--color-slate);
+}
+
+.toc .more-articles a:hover { color: var(--color-action); }
+
+.toc .more-articles a[aria-current="page"] {
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+/* mobile-only native disclosure */
+.toc .toc-disclosure { display: none; }
+
+@media (width <= 900px) {
+  .toc .toc-rail .toc-nav { display: none; }
+
+  .toc .toc-rail {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin-top: var(--spacing-xl);
+  }
+
+  .toc .toc-disclosure {
+    display: block;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .toc .toc-disclosure summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  .toc .toc-disclosure summary::-webkit-details-marker { display: none; }
+
+  .toc .toc-disclosure summary::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--color-slate);
+    border-bottom: 2px solid var(--color-slate);
+    transform: rotate(45deg) translateY(-2px);
+    flex-shrink: 0;
+    transition: transform 0.15s var(--ease-state);
+  }
+
+  .toc .toc-disclosure[open] summary::after { transform: rotate(225deg) translateY(-2px); }
+
+  .toc .toc-disclosure ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 16px 12px;
+  }
+
+  .toc .toc-disclosure li { border-top: 1px solid var(--color-hairline); }
+
+  .toc .toc-disclosure a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 2px;
+    font: 600 var(--body-sm) / 1.45 var(--body-font-family);
+    color: var(--color-fg);
+    text-decoration: none;
+  }
+
+  .toc .toc-disclosure a:hover { color: var(--color-action); }
+}

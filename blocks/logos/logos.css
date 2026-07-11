@@ -1,0 +1,211 @@
+/* logos — customer/integration mark registers (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.logos`
+   (blockWrapperClass NONE). Sources: customers (logo-table), home-B
+   (payment-providers table, +900 periwinkle counter), stripe (+900 mist
+   counter), features-recover (dunning-lede tint band).
+   .logos-wrap carries the max-width container (#13/#74). */
+
+.logos { padding-block: var(--section-padding); }
+
+.logos .logos-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.logos h2 {
+  font-size: clamp(22px, 2.4vw, 28px);
+  max-width: 44ch;
+}
+
+.logos.banded h2 {
+  font-size: clamp(30px, 3.6vw, var(--heading-xl));
+  max-width: 26ch;
+}
+
+.logos .section-lede {
+  color: var(--color-slate);
+  max-width: 62ch;
+  margin-top: var(--spacing-md);
+}
+
+/* grounds */
+.logos.banded { background: var(--color-tint); }
+
+.logos.mist {
+  background: var(--color-mist);
+  border-block: 1px solid var(--color-hairline);
+  padding-block: calc(var(--section-padding) - 8px);
+}
+
+.logos.accent {
+  background: var(--color-accent);
+  padding-block: calc(var(--section-padding) - 8px);
+}
+
+/* === table — 1px hairline grid cells === */
+.logos .logo-table {
+  list-style: none;
+  margin: var(--spacing-lg) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px; /* the hairline grid itself */
+  background: var(--color-hairline);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.logos.table:not(:has(h2)) .logo-table { margin-top: 0; }
+
+.logos .logo-table li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  padding: 16px 20px;
+  background: var(--color-bg);
+}
+
+.logos .logo-table a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 72px;
+  padding: 0;
+}
+
+.logos .logo-table li:where(:has(a)) { padding: var(--spacing-md) var(--spacing-lg); }
+
+.logos .logo-table a:hover { background: var(--color-tint); }
+
+.logos .logo-table img {
+  width: auto;
+  opacity: 0.85;
+}
+
+.logos .logo-table-label {
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+/* === strip / banded — ruled flex cells === */
+.logos .logo-strip-label {
+  display: block;
+  margin-top: var(--spacing-xl);
+}
+
+.logos .logo-cells {
+  list-style: none;
+  margin: var(--spacing-md) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.logos .logo-cells li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: 4px 12px;
+  border-left: 1px solid var(--color-hairline);
+}
+
+.logos .logo-cells li:where(:first-child) { border-left: 0; }
+
+.logos .logo-cells img {
+  width: auto;
+  height: 64px;
+  opacity: 0.85;
+}
+
+.logos.strip :where(.logo-cells) img { height: 28px; }
+
+/* === counter — pull-figure row beside ruled marks === */
+.logos .counter-row {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.logos .counter-figure {
+  display: block;
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  line-height: 1;
+  color: var(--color-fg);
+  font-size: clamp(64px, 7vw, 96px);
+}
+
+.logos .counter-rest {
+  display: block;
+  font-size: var(--heading-md);
+  font-weight: 600;
+  color: var(--color-slate);
+  margin-top: var(--spacing-sm);
+  line-height: 1.35;
+}
+
+.logos .counter-logos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.logos .counter-logos li {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 8px 12px;
+  border-left: 1px solid var(--color-hairline);
+}
+
+.logos .counter-logos li:where(:first-child) { border-left: 0; }
+
+.logos .counter-logos img {
+  width: auto;
+  height: 18px;
+  opacity: 0.85;
+}
+
+/* accent (periwinkle) inversion — white display strings ≥24px / 19px 700 only */
+.logos.accent .counter-figure { color: oklch(100% 0 0deg); }
+
+.logos.accent .counter-rest {
+  color: oklch(100% 0 0deg);
+  font-weight: 700;
+}
+
+.logos.accent .counter-logos li { border-left-color: oklch(100% 0 0deg / 35%); }
+
+.logos.accent .counter-logos img {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+main .logos.accent :focus-visible { outline-color: oklch(100% 0 0deg); }
+
+/* === responsive === */
+@media (width <= 900px) {
+  .logos .logo-table { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .logos .counter-row { grid-template-columns: minmax(0, 1fr); }
+
+  .logos .logo-cells img { height: 48px; }
+}
+
+@media (width <= 640px) {
+  .logos .logo-table { grid-template-columns: minmax(0, 1fr); }
+}

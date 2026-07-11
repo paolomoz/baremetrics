@@ -1,0 +1,65 @@
+/* checklist — red-✗ comparison columns (The Ledger).
+   CSS lifted verbatim from features-recover-proposed.html (problem section),
+   scoped `.checklist` (blockWrapperClass NONE).
+   .checklist-wrap carries the max-width container (#13/#74). */
+
+.checklist {
+  padding-block: var(--section-padding);
+  background: var(--color-mist);
+}
+
+.checklist .checklist-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.checklist h2 { max-width: 24ch; }
+
+.checklist .section-lede {
+  color: var(--color-slate);
+  max-width: 62ch;
+  margin-top: var(--spacing-md);
+}
+
+.checklist .compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 64px);
+  margin-top: var(--spacing-xl);
+}
+
+.checklist .compare-col > .win {
+  display: block;
+  margin-bottom: var(--spacing-lg);
+}
+
+.checklist .compare-claim {
+  font-weight: 600;
+  max-width: 58ch;
+}
+
+.checklist .x-list {
+  list-style: none;
+  margin: var(--spacing-md) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.checklist .x-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--color-fg);
+}
+
+.checklist .x-list .x {
+  color: var(--color-x); /* deepened captured pink — 5.25:1 on mist */
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+@media (width <= 900px) {
+  .checklist .compare { grid-template-columns: minmax(0, 1fr); }
+}

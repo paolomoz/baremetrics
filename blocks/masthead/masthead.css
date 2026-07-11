@@ -1,0 +1,281 @@
+/* masthead — page-opening statement (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.masthead`
+   (blockWrapperClass NONE — never `.masthead.block`).
+   Sources: blog/glossary/experts/open-startups/help *-proposed.html.
+   The block itself is full-bleed (grounds/rules); .mast-inner and the
+   band/rail wraps carry the max-width container (#13/#74). */
+
+.masthead {
+  position: relative;
+  padding-block: var(--section-padding) 0;
+}
+
+.masthead .mast-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.masthead h1 { max-width: 22ch; }
+
+.masthead.form h1 { max-width: 20ch; }
+
+.masthead .section-lede {
+  color: var(--color-slate);
+  max-width: 58ch;
+  margin-top: var(--spacing-md);
+}
+
+.masthead .kicker {
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+/* === form variant — subscribe row as a ledger row (blog) === */
+.masthead .mast-band { margin-top: clamp(28px, 4vw, 44px); }
+
+.masthead .mast-band-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.masthead .mast-form-row {
+  padding-block: var(--spacing-lg);
+  border-top: 1px solid var(--color-hairline);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+  gap: var(--spacing-lg) var(--spacing-xl);
+  align-items: center;
+}
+
+.masthead .subscribe-line {
+  font-weight: 600;
+  color: var(--color-fg);
+  max-width: 46ch;
+}
+
+.masthead .subscribe-form {
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) auto;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.masthead .subscribe-form .meta-label { grid-column: 1 / -1; }
+
+.masthead .ds-input {
+  min-height: 48px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--color-input-border);
+  font: 400 var(--body) / 1.4 var(--body-font-family);
+  color: var(--color-fg);
+  background: var(--color-bg);
+}
+
+.masthead .ds-input::placeholder {
+  color: var(--color-slate);
+  opacity: 1;
+}
+
+.masthead .ds-input:focus-visible {
+  outline: 3px solid var(--color-action);
+  outline-offset: 1px;
+  border-color: var(--color-action);
+}
+
+.masthead .mast-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 24px;
+  border-radius: var(--radius);
+  font: 600 var(--body) / 1 var(--body-font-family);
+  background: var(--color-action);
+  color: oklch(100% 0 0deg);
+  border: 0;
+  cursor: pointer;
+  transition: background 0.15s var(--ease-state);
+}
+
+.masthead .mast-btn:hover { background: var(--color-action-hover); }
+
+/* === mist modifier — the form row on the ONE full-bleed mist band (glossary) === */
+.masthead.mist .mast-band {
+  background: var(--color-mist);
+  border-block: 1px solid var(--color-hairline);
+}
+
+.masthead.mist .mast-form-row { border-top: 0; }
+
+/* === folded-in tag/category rail (glossary, experts) === */
+.masthead .mast-rail {
+  margin-top: clamp(28px, 4vw, 44px);
+  border-block: 1px solid var(--color-hairline);
+}
+
+.masthead .mast-band + .mast-rail {
+  margin-top: 0;
+  border-top: 0;
+}
+
+.masthead .mast-rail-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--spacing-sm);
+}
+
+.masthead .mast-rail a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  font: 600 var(--eyebrow) / 1.4 var(--body-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-slate);
+  border-radius: var(--radius);
+}
+
+.masthead .mast-rail a:hover {
+  color: var(--color-action);
+  background: var(--color-tint);
+}
+
+.masthead .mast-rail a[aria-current="true"] {
+  color: var(--color-fg);
+  border-radius: 0;
+  box-shadow: inset 0 -2px 0 var(--color-fg); /* the ruled index mark */
+}
+
+.masthead .rail-count {
+  margin-left: auto;
+  white-space: nowrap;
+  padding-block: 10px;
+}
+
+/* === search variant — kb masthead (help) === */
+.masthead.search {
+  padding-block: var(--section-padding) calc(var(--section-padding) - 24px);
+
+  /* the prototype's .kb-narrow: an 840px column LEFT-aligned inside the container */
+  padding-inline: max(var(--spacing-lg), calc((100% - var(--max-width)) / 2 + var(--spacing-lg)));
+}
+
+.masthead.search .mast-inner {
+  max-width: 840px;
+  margin: 0;
+  padding: 0;
+}
+
+.masthead .kb-search { margin-top: var(--spacing-xl); }
+
+.masthead .kb-search-label {
+  display: block;
+  font: 800 var(--heading-md) / 1.3 var(--heading-font-family);
+  color: var(--color-fg);
+  letter-spacing: -0.005em;
+}
+
+.masthead .kb-search-row {
+  margin-top: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.masthead .kb-search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 52px;
+  padding: 12px 16px;
+  font: 400 var(--body) / 1.4 var(--body-font-family);
+  color: var(--color-fg);
+  background: var(--color-mist);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+}
+
+.masthead .kb-search-input::placeholder {
+  color: var(--color-slate);
+  opacity: 1;
+}
+
+.masthead .kb-search-input[readonly] { cursor: not-allowed; }
+
+.masthead .kb-search-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  min-height: 52px;
+  padding: 0;
+  color: var(--color-slate);
+  background: var(--color-mist);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+}
+
+.masthead .kb-search-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* === art variant — flanking illustrations (open-startups) === */
+.masthead.art {
+  overflow: clip;
+  text-align: center;
+  padding-block: calc(var(--section-padding) + 20px);
+}
+
+.masthead.art .mast-inner { max-width: 760px; }
+
+.masthead.art .section-lede {
+  margin-inline: auto;
+  max-width: 52ch;
+}
+
+.masthead.art h1 { max-width: none; }
+
+.masthead .mast-art {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: clamp(200px, 19vw, 280px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.masthead .mast-art-left { left: -36px; }
+
+.masthead .mast-art-right { right: -36px; }
+
+/* === responsive === */
+@media (width <= 1100px) {
+  .masthead .mast-art { display: none; } /* exhibits yield before crowding the h1 */
+}
+
+@media (width <= 900px) {
+  .masthead .mast-form-row { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (width <= 640px) {
+  .masthead .subscribe-form .mast-btn { width: 100%; }
+
+  .masthead .subscribe-form { grid-template-columns: minmax(0, 1fr); }
+
+  .masthead .mast-rail a { padding: 10px; }
+
+  .masthead .rail-count { margin-left: 0; }
+
+  .masthead .kb-search { margin-top: var(--spacing-lg); }
+}

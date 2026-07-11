@@ -1,0 +1,134 @@
+/* quote — customer-record testimony (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.quote`
+   (blockWrapperClass NONE). Sources: features-recover (testimonial, roi
+   quote-trio), stripe (testimonial on mist), customers (fp-sheet on ink).
+   .quote-wrap carries the max-width container (#13/#74). */
+
+.quote { padding-block: var(--section-padding); }
+
+.quote .quote-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* grounds */
+.quote.mist { background: var(--color-mist); }
+
+.quote.band { background: var(--color-fg); }
+
+/* === sheet — customer-record sheet === */
+.quote .record-sheet {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.quote .record-sheet > .meta-label {
+  display: block;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-hairline);
+  margin-bottom: var(--spacing-lg);
+}
+
+.quote .record-sheet blockquote {
+  margin: 0;
+  font: 600 clamp(20px, 2.4vw, 26px) / 1.45 var(--body-font-family);
+  color: var(--color-fg);
+  text-wrap: balance;
+}
+
+.quote .testimonial-attrib {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.quote .testimonial-attrib img { border-radius: 50%; }
+
+.quote .testimonial-attrib cite {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-fg);
+  display: block;
+}
+
+.quote .testimonial-attrib cite span {
+  display: block;
+  font-weight: 400;
+  font-size: var(--body-sm);
+  color: var(--color-slate);
+}
+
+.quote .testimonial-g2 {
+  display: inline-flex;
+  margin-top: var(--spacing-lg);
+  border-radius: var(--radius);
+}
+
+.quote .testimonial-g2 img {
+  width: 200px;
+  height: 100px;
+}
+
+/* === band — record sheet on the ink band (customers) === */
+.quote.band .fp-sheet {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+.quote .fp-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.quote.band .fp-sheet blockquote {
+  margin: 0;
+  font: 600 clamp(19px, 2.2vw, 24px) / 1.5 var(--body-font-family);
+  color: var(--color-fg);
+  text-wrap: balance;
+}
+
+.quote .fp-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--spacing-lg);
+  padding: 10px 18px;
+  background: var(--color-fg); /* ink — the captured wordmark is white */
+  border-radius: var(--radius);
+}
+
+.quote .fp-logo {
+  width: 200px;
+  height: 39px;
+}
+
+main .quote.band :focus-visible { outline-color: oklch(100% 0 0deg); }
+
+/* === trio — window-chromed testimony shots (recover roi) === */
+.quote.trio { padding-block: 0; }
+
+.quote .quote-trio {
+  list-style: none;
+  margin: var(--spacing-xl) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.quote .quote-trio .win { display: block; }
+
+/* === responsive === */
+@media (width <= 900px) {
+  .quote .quote-trio { grid-template-columns: minmax(0, 1fr); }
+
+  .quote.band .fp-sheet { grid-template-columns: minmax(0, 1fr); }
+}

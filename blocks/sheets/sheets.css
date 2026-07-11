@@ -1,0 +1,265 @@
+/* sheets — document-sheet groupings (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.sheets`
+   (blockWrapperClass NONE). Sources: compare-profitwell-alternative
+   (being-honest, support), pricing (add-ons), ltv-calc (method-note).
+   .sheets-wrap carries the max-width container (#13/#74). */
+
+.sheets { padding-block: var(--section-padding); }
+
+.sheets .sheets-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* kicker + title head (compare: captured casing IS uppercase — no transform) */
+.sheets .sheets-kicker {
+  font: 700 14px / 1.4 var(--heading-font-family);
+  letter-spacing: 0.1em;
+  text-transform: none;
+  color: var(--color-action);
+}
+
+.sheets .sheets-title {
+  font-size: clamp(28px, 3.6vw, var(--heading-xl));
+  line-height: var(--line-height-heading);
+  letter-spacing: -0.01em;
+  margin-top: var(--spacing-md);
+}
+
+.sheets .section-lede {
+  color: var(--color-slate);
+  max-width: 62ch;
+  margin-top: var(--spacing-md);
+}
+
+.sheets .go {
+  color: var(--color-action);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.sheets .surface-link {
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.15s var(--ease-state);
+}
+
+.sheets .surface-link:hover { background: var(--color-mist); }
+
+.sheets .surface-link:focus-visible {
+  outline: 3px solid var(--color-action);
+  outline-offset: 3px;
+}
+
+/* === honest — concession sheets, 2-col === */
+.sheets .honest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.sheets .honest-sheet { padding: clamp(24px, 3vw, 32px); }
+
+.sheets .honest-sheet img {
+  width: 48px;
+  height: 48px;
+}
+
+.sheets .honest-sheet h4 {
+  font-size: 19px;
+  line-height: 1.35;
+  margin-top: var(--spacing-md);
+}
+
+.sheets .honest-sheet p {
+  color: var(--color-slate);
+  font-size: 15px;
+  line-height: 1.55;
+  margin-top: var(--spacing-sm);
+}
+
+/* === addons — sheet pair split by a dotted ruling === */
+.sheets.addons .sheets-title {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  margin-top: 0;
+}
+
+.sheets .addons-pair {
+  margin-top: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.sheets .addon {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.sheets .addon + .addon { border-left: var(--hairline-dotted); }
+
+.sheets .addon h3 { font-size: 24px; }
+
+.sheets .addon-price { margin-top: var(--spacing-sm); }
+
+.sheets .addon-price .figure {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  color: var(--color-fg);
+  font-size: var(--heading-lg);
+}
+
+.sheets .addon-price .price-per { font-size: var(--body); }
+
+.sheets .addon-bullets {
+  list-style: none;
+  margin: var(--spacing-lg) 0 0;
+  padding: var(--spacing-lg) 0 0;
+  border-top: 1px solid var(--color-hairline);
+  display: grid;
+  gap: 10px;
+}
+
+.sheets .addon-bullets li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  color: var(--color-fg);
+}
+
+.sheets .addon-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-slate);
+}
+
+.sheets .addon .go {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: var(--spacing-lg);
+  font-size: 15px;
+}
+
+/* === support — stat trio in ruled cells === */
+.sheets .support-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.sheets .support-cell { padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) 0; }
+
+.sheets .support-cell + .support-cell {
+  border-left: 1px solid var(--color-hairline);
+  padding-left: var(--spacing-lg);
+}
+
+.sheets .support-cell img {
+  width: 56px;
+  height: 56px;
+}
+
+.sheets .stat-figure {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  color: var(--color-fg);
+  font-size: clamp(22px, 2.4vw, 28px);
+  margin-top: var(--spacing-md);
+}
+
+.sheets .stat-note {
+  color: var(--color-slate);
+  font-size: 15px;
+  margin-top: var(--spacing-xs);
+}
+
+/* === note — method rail + two prose columns (ltv-calc) === */
+.sheets.note { padding-block: 0 var(--section-padding); }
+
+.sheets .method {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: var(--spacing-lg);
+  padding-block: var(--spacing-lg);
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.sheets .method-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--spacing-lg) var(--spacing-xl);
+}
+
+.sheets .method h2 {
+  font-size: var(--heading-lg);
+  letter-spacing: -0.005em;
+}
+
+.sheets .method h3 {
+  font-size: var(--body);
+  line-height: var(--line-height-body);
+}
+
+.sheets .method p {
+  color: var(--color-slate);
+  margin-top: var(--spacing-md);
+}
+
+.sheets .method p strong { color: var(--color-fg); }
+
+.sheets .method ul {
+  margin: var(--spacing-md) 0 0;
+  padding-left: 20px;
+  color: var(--color-slate);
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.sheets .method li::marker { color: var(--color-slate); }
+
+/* === responsive === */
+@media (width <= 900px) {
+  .sheets .honest-grid,
+  .sheets .addons-pair { grid-template-columns: minmax(0, 1fr); }
+
+  .sheets .addon + .addon {
+    border-left: 0;
+    border-top: var(--hairline-dotted);
+  }
+
+  .sheets .support-trio { grid-template-columns: minmax(0, 1fr); }
+
+  .sheets .support-cell { padding: var(--spacing-lg) 0; }
+
+  .sheets .support-cell + .support-cell {
+    border-left: 0;
+    border-top: 1px solid var(--color-hairline);
+    padding-left: 0;
+  }
+
+  .sheets .method { grid-template-columns: minmax(0, 1fr); }
+
+  .sheets .method-body { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,0 +1,450 @@
+/* cards — record cards and partitioned canvases (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.cards`
+   (blockWrapperClass NONE). Sources: customers (lead-story, case-ledger),
+   stripe (growth-triptych, insight-mosaic), home-B (dashboard-proof,
+   growth-drivers mosaic, open-startups filmstrip), about (team-roster).
+   .cards-wrap carries the max-width container (#13/#74). */
+
+.cards { padding-block: 0 var(--section-padding); }
+
+.cards .cards-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.cards .cards-head { max-width: 62ch; }
+
+.cards .cards-head .meta-label {
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.cards .cards-head .section-lede {
+  color: var(--color-slate);
+  max-width: 62ch;
+  margin-top: var(--spacing-md);
+}
+
+.cards .go {
+  color: var(--color-action);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.cards .surface-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.15s var(--ease-state);
+}
+
+.cards .surface-link:hover { background: var(--color-mist); }
+
+.cards .surface-link:focus-visible {
+  outline: 3px solid var(--color-action);
+  outline-offset: 3px;
+}
+
+/* === cases (customers) — newsroom lead + 2-col ruled grid === */
+.cards.cases .lead-link {
+  border-block: 1px solid var(--color-hairline);
+  padding: clamp(24px, 3.5vw, 40px) clamp(8px, 1.5vw, 24px);
+}
+
+.cards.cases .lead-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.cards.cases .lead-copy h2 {
+  margin-top: var(--spacing-md);
+  max-width: 24ch;
+}
+
+.cards.cases .lead-teaser {
+  margin-top: var(--spacing-md);
+  color: var(--color-slate);
+  max-width: 52ch;
+}
+
+.cards.cases .lead-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.cards.cases .lead-foot img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cards.cases .case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cards.cases .entry {
+  border-bottom: 1px solid var(--color-hairline);
+  display: flex;
+}
+
+.cards.cases .entry:nth-child(odd) { border-right: 1px solid var(--color-hairline); }
+
+.cards.cases .entry:last-child:nth-child(odd) { border-right: 0; }
+
+.cards.cases .entry-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.cards.cases .entry .win { margin-bottom: var(--spacing-lg); }
+
+.cards.cases .entry .meta-label { display: block; }
+
+.cards.cases .entry :where(.meta-label) + .meta-label { margin-top: 2px; }
+
+.cards.cases .entry h3 {
+  font-size: clamp(21px, 2vw, 24px);
+  margin-top: var(--spacing-sm);
+  max-width: 26ch;
+}
+
+.cards.cases .entry-teaser {
+  margin-top: var(--spacing-sm);
+  color: var(--color-slate);
+  font-size: 15px;
+  line-height: var(--line-height-body);
+  max-width: 56ch;
+}
+
+.cards.cases .entry-arrow {
+  margin-top: auto;
+  padding-top: var(--spacing-lg);
+  color: var(--color-action);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.cards.cases .entry-link:hover .entry-arrow { color: var(--color-action-hover); }
+
+/* === triptych — hairline columns, no boxes === */
+.cards.triptych .triptych {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+  margin-top: var(--spacing-xl);
+}
+
+.cards.triptych .cards-head + .triptych { margin-top: var(--spacing-xl); }
+
+.cards.triptych .tript-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.cards.triptych .tript-col + .tript-col { border-left: 1px solid var(--color-hairline); }
+
+.cards.triptych .tript-col p {
+  color: var(--color-slate);
+  font-size: var(--body-sm);
+  max-width: 46ch;
+}
+
+.cards.triptych .tript-col .go { font-size: 15px; }
+
+.cards.triptych .tript-col .win {
+  margin-top: auto;
+  display: block;
+}
+
+.cards.triptych .tript-col :where(.win) img {
+  aspect-ratio: 760 / 560;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
+/* === mosaic — one hairline canvas, dotted partitions === */
+.cards.mosaic .mosaic {
+  margin-top: calc(var(--spacing-lg) + 8px);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-areas: "a b" "a c";
+  overflow: hidden;
+}
+
+.cards.mosaic .panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards.mosaic .panel-a {
+  grid-area: a;
+  border-right: var(--hairline-dotted);
+}
+
+.cards.mosaic .panel-b {
+  grid-area: b;
+  border-bottom: var(--hairline-dotted);
+}
+
+.cards.mosaic .panel-c { grid-area: c; }
+
+.cards.mosaic .panel h3 { font-size: 19px; }
+
+.cards.mosaic .panel p {
+  color: var(--color-slate);
+  font-size: var(--body-sm);
+  max-width: 46ch;
+}
+
+.cards.mosaic .panel .go { font-size: var(--body-sm); }
+
+.cards.mosaic .chart-frag {
+  display: block;
+  margin-top: auto;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.cards.mosaic .chart-frag img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cards.mosaic .panel-a .chart-frag {
+  max-width: 460px;
+  margin-inline: auto;
+  margin-block: auto;
+  width: 100%;
+}
+
+.cards.mosaic .panel-b .chart-frag,
+.cards.mosaic .panel-c .chart-frag {
+  max-width: 280px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.cards.mosaic a.panel:hover { background: var(--color-mist); }
+
+.cards.mosaic a.panel:hover .go {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* === roster (about team) === */
+.cards.roster .cards-head .meta-label {
+  display: block;
+  margin-bottom: 0;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.cards.roster .cards-head { max-width: none; }
+
+.cards.roster .team-roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cards.roster .person {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding-block: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.cards.roster .person-photo,
+.cards.roster .person-monogram {
+  width: 112px;
+  height: 112px;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.cards.roster .person-photo { object-fit: cover; }
+
+.cards.roster .person-monogram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-mist);
+  border: 1px solid var(--color-hairline);
+  font: 800 28px/1 var(--heading-font-family);
+  letter-spacing: 0.02em;
+  color: var(--color-slate);
+}
+
+.cards.roster .person-id {
+  min-width: 0;
+  display: grid;
+  justify-items: start;
+}
+
+.cards.roster .person-id h3 { font-size: var(--heading-md); }
+
+.cards.roster .person-id .meta-label { margin-top: var(--spacing-xs); }
+
+.cards.roster .person-mail {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 2px;
+  color: var(--color-action);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.cards.roster .person-mail:hover { color: var(--color-action-hover); }
+
+/* === filmstrip (home open-startups) — scroll-snap rail, no JS === */
+.cards.filmstrip .film-rail {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin-top: calc(var(--spacing-lg) + 8px);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  scrollbar-color: var(--color-slate) var(--color-mist);
+}
+
+.cards.filmstrip .film-rail:focus-visible {
+  outline: 3px solid var(--color-action);
+  outline-offset: 3px;
+}
+
+.cards.filmstrip .rail-tile {
+  flex: 0 0 clamp(220px, 24vw, 320px);
+  scroll-snap-align: start;
+  margin: 0;
+  position: relative;
+  aspect-ratio: 360 / 330;
+  overflow: hidden;
+}
+
+.cards.filmstrip .rail-tile + .rail-tile { border-left: 1px solid var(--color-hairline); }
+
+.cards.filmstrip .rail-tile img {
+  position: absolute;
+  transform: scale(1.05);
+  transform-origin: center;
+  width: 366.667%; /* 1320 / 360 — each tile crops one cell of the captured 3×3 grid */
+  height: auto;
+  max-width: none;
+}
+
+.cards.filmstrip .rail-tile[data-tile="1"] img {
+  left: -22.222%;
+  top: -19.697%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="2"] img {
+  left: -133.333%;
+  top: -18.182%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="3"] img {
+  left: -244.444%;
+  top: -19.697%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="4"] img {
+  left: -22.222%;
+  top: -133.333%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="5"] img {
+  left: -133.333%;
+  top: -133.333%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="6"] img {
+  left: -244.444%;
+  top: -133.333%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="7"] img {
+  left: -22.222%;
+  top: -240.909%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="8"] img {
+  left: -133.333%;
+  top: -240.909%;
+}
+
+.cards.filmstrip .rail-tile[data-tile="9"] img {
+  left: -244.444%;
+  top: -240.909%;
+}
+
+/* === responsive === */
+@media (width <= 900px) {
+  .cards.cases .lead-wrap { grid-template-columns: minmax(0, 1fr); }
+
+  .cards.cases .case-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .cards.cases .entry:nth-child(odd) { border-right: 0; }
+
+  .cards.triptych .triptych { grid-template-columns: minmax(0, 1fr); }
+
+  .cards.triptych .tript-col + .tript-col {
+    border-left: 0;
+    border-top: 1px solid var(--color-hairline);
+  }
+
+  .cards.mosaic .mosaic {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "a" "b" "c";
+  }
+
+  .cards.mosaic .panel-a {
+    border-right: 0;
+    border-bottom: var(--hairline-dotted);
+  }
+}
+
+@media (width <= 640px) {
+  .cards.roster .person {
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .cards.roster .person-photo,
+  .cards.roster .person-monogram {
+    width: 84px;
+    height: 84px;
+  }
+}

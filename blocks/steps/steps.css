@@ -1,0 +1,197 @@
+/* steps — single-spine walkthrough / spine ledger rows (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.steps`
+   (blockWrapperClass NONE). Sources: features-recover (solution-steps),
+   stripe (data-driven). .steps-wrap carries the container (#13/#74). */
+
+.steps { padding-block: var(--section-padding); }
+
+.steps .steps-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.steps .section-lede {
+  color: var(--color-slate);
+  max-width: 62ch;
+  margin-top: var(--spacing-md);
+}
+
+.steps .go {
+  color: var(--color-action);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.steps .surface-link {
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.15s var(--ease-state);
+}
+
+.steps .surface-link:hover { background: var(--color-mist); }
+
+.steps .surface-link:where(:hover) .go { color: var(--color-action-hover); }
+
+.steps .surface-link:focus-visible {
+  outline: 3px solid var(--color-action);
+  outline-offset: 3px;
+}
+
+/* === default — 4-step walkthrough on one vertical hairline spine === */
+.steps .step-list {
+  list-style: none;
+  position: relative;
+  margin: var(--spacing-2xl) 0 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(48px, 8vw, 96px);
+}
+
+.steps .step { position: relative; }
+
+.steps .step .meta-label { display: block; }
+
+.steps .step h3 {
+  font-size: var(--heading-lg);
+  margin-top: var(--spacing-sm);
+  max-width: 20ch;
+}
+
+.steps .step-body {
+  color: var(--color-slate);
+  max-width: 52ch;
+  margin-top: var(--spacing-md);
+}
+
+.steps .step-media {
+  display: block;
+  margin-top: var(--spacing-lg);
+}
+
+@media (width >= 1000px) {
+  .steps .step-list::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 50%;
+    border-left: 1px solid var(--color-hairline);
+  }
+
+  .steps .step {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(56px, 7vw, 112px);
+    align-items: center;
+  }
+
+  .steps .step::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-bg);
+    border: 1.5px solid var(--color-slate);
+  }
+
+  .steps .step-media { margin-top: 0; }
+
+  /* captured rhythm: step 1 media left */
+  .steps .step:nth-child(odd) .step-copy { order: 2; }
+
+  .steps .step:nth-child(odd) .step-media { order: 1; }
+}
+
+/* === entries — spine ledger rows (stripe data-driven) === */
+.steps .spine-rows {
+  margin-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.steps .spine-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.steps .spine-row::after {
+  /* the single spine — one dotted ruling shared by every row */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: var(--hairline-dotted);
+}
+
+.steps .spine-copy,
+.steps .spine-media { padding: clamp(24px, 3vw, 44px); }
+
+.steps .spine-row > :first-child { padding-left: 0; }
+
+.steps .spine-row > :last-child { padding-right: 0; }
+
+.steps .spine-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.steps .spine-copy .meta-label { font-variant-numeric: tabular-nums; }
+
+.steps .spine-copy p {
+  color: var(--color-slate);
+  max-width: 46ch;
+}
+
+.steps .spine-copy .go {
+  font-size: 15px;
+  align-self: flex-start;
+}
+
+.steps .spine-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps .spine-media .win {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+}
+
+.steps .spine-media .win img {
+  aspect-ratio: 760 / 520;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
+/* captured alternating dock (stripe row 2 media-first) */
+.steps .spine-row:nth-child(even) .spine-copy { order: 2; }
+
+.steps .spine-row:nth-child(even) .spine-media { order: 1; }
+
+/* === responsive === */
+@media (width <= 900px) {
+  .steps .spine-row { grid-template-columns: minmax(0, 1fr); }
+
+  .steps .spine-row::after { display: none; }
+
+  .steps .spine-copy,
+  .steps .spine-media { padding-inline: 0; }
+
+  .steps .spine-row:nth-child(even) .spine-copy { order: 1; }
+
+  .steps .spine-row:nth-child(even) .spine-media { order: 2; }
+}
