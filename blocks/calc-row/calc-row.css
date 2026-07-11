@@ -1,0 +1,124 @@
+/* calc-row — recover's inert pricing-calculator ledger row (The Ledger).
+   CSS lifted verbatim from features-recover-proposed.html (calculator
+   section), scoped `.calc-row` (blockWrapperClass NONE). The prototype's
+   inner .calc-row grid is renamed .calc-grid (the block class owns the
+   outer name). .calc-wrap carries the max-width container (#13/#74). */
+
+.calc-row {
+  padding-block: var(--section-padding);
+  background: var(--color-mist);
+}
+
+.calc-row .calc-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.calc-row .calc-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1fr);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  margin-top: var(--spacing-lg);
+}
+
+.calc-row .calc-cell { padding: clamp(24px, 3vw, 40px); }
+
+.calc-row .calc-cell + .calc-cell { border-left: var(--hairline-dotted); }
+
+.calc-row .calc-cell .meta-label { display: block; }
+
+.calc-row .calc-cell data.figure {
+  display: inline-block;
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  color: var(--color-fg);
+  line-height: 1;
+  font-size: clamp(34px, 3.4vw, 44px);
+  margin-top: var(--spacing-md);
+}
+
+.calc-row .calc-cell > data.figure { display: block; }
+
+.calc-row .calc-per {
+  color: var(--color-slate);
+  font-weight: 600;
+  font-size: var(--body);
+}
+
+.calc-row .calc-cell a.btn { margin-top: var(--spacing-lg); }
+
+/* inert slider chrome — captured control, interactivity at launch */
+.calc-row .calc-slider {
+  position: relative;
+  height: 6px;
+  max-width: 240px;
+  margin-top: var(--spacing-lg);
+  border-radius: var(--radius-chip);
+  background: var(--color-tint);
+  pointer-events: none;
+}
+
+.calc-row .calc-slider i {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 6px solid var(--color-accent);
+}
+
+.calc-row .calc-quote {
+  max-width: 720px;
+  margin-top: var(--spacing-xl);
+}
+
+.calc-row .calc-quote blockquote {
+  margin: 0;
+  font: 400 italic 19px / 1.55 var(--body-font-family);
+  color: var(--color-fg);
+}
+
+.calc-row .testimonial-attrib {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.calc-row .testimonial-attrib img { border-radius: 50%; }
+
+.calc-row .testimonial-attrib cite {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-fg);
+  display: block;
+}
+
+.calc-row .testimonial-attrib cite span {
+  display: block;
+  font-weight: 400;
+  font-size: var(--body-sm);
+  color: var(--color-slate);
+}
+
+/* === responsive === */
+@media (width <= 999px) {
+  .calc-row .calc-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .calc-row .calc-cell + .calc-cell {
+    border-left: 0;
+    border-top: var(--hairline-dotted);
+  }
+}
+
+@media (width <= 640px) {
+  .calc-row .calc-cell a.btn { width: 100%; }
+}

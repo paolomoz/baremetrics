@@ -1,0 +1,20 @@
+/* logos — stripe page patch (Wave B3; no shared-file edits).
+   The stripe +900 counter's label is a META-LABEL in the prototype
+   (.counter-label — the captured h5 demoted per F-006), where the shared
+   counter variant renders a 22px slate .counter-rest (home's treatment).
+   Scoped to counter+mist (stripe is the only mist counter). */
+
+.logos.counter.mist .counter-row { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); }
+
+.logos.counter.mist .counter-rest {
+  font: 600 var(--eyebrow) / 1.4 var(--body-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+  margin-top: var(--spacing-sm);
+  max-width: 30ch;
+}
+
+@media (width <= 900px) {
+  .logos.counter.mist .counter-row { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,0 +1,330 @@
+/* feature-hero — template-slotted feature mastheads (The Ledger).
+   CSS lifted verbatim from the approved prototypes, scoped `.feature-hero`
+   (blockWrapperClass NONE — never `.feature-hero.block`).
+   Sources: features-recover-proposed.html (hero), stripe-proposed.html
+   (integration-masthead, feature-cancellation-insights, feature-recover).
+   .fh-wrap carries the max-width container (#13/#74). */
+
+.feature-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--section-padding);
+}
+
+.feature-hero .fh-wrap {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* grounds */
+.feature-hero.mist { background: var(--color-mist); }
+
+/* tag chip — meta-label inside a hairline 999px chip; the feature coding is a
+   non-text dot (captured signal hues, non-text use only) */
+.feature-hero .tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  padding: 5px 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-chip);
+}
+
+.feature-hero .tag-chip::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.feature-hero .tag-chip[data-feature="recover"]::before { background: var(--color-signal-magenta); }
+
+.feature-hero .tag-chip[data-feature="cancellation"]::before { background: var(--color-signal-orange); }
+
+/* quiet inline link (the prototype's .ds-link) */
+.feature-hero .ds-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-action);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.feature-hero .ds-link:hover { color: var(--color-action-hover); }
+
+/* === recover — statement hero on dotted rulings + stat-sheet aside === */
+.feature-hero .hero-rulings {
+  position: absolute;
+  inset: -16px 0 -32px;
+  pointer-events: none;
+}
+
+.feature-hero .hero-rulings i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: var(--hairline-dotted);
+}
+
+.feature-hero .hero-rulings i:nth-child(1) { left: 25%; }
+
+.feature-hero .hero-rulings i:nth-child(2) { left: 50%; }
+
+.feature-hero .hero-rulings i:nth-child(3) { left: 75%; }
+
+.feature-hero .hero-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.feature-hero .hero-copy h1 {
+  max-width: 22ch;
+  background: var(--color-bg); /* rulings terminate at the text block */
+}
+
+.feature-hero .hero-lede {
+  color: var(--color-slate);
+  font-size: 19px;
+  max-width: 54ch;
+  margin-top: var(--spacing-md);
+  background: var(--color-bg);
+}
+
+.feature-hero .hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+}
+
+/* stat sheet — the captured world-map card, rebuilt as ledger evidence */
+.feature-hero .stat-sheet {
+  justify-self: center;
+  width: min(100%, 340px);
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.feature-hero .stat-sheet .tag-chip {
+  color: var(--color-slate);
+  font: 600 var(--eyebrow) / 1 var(--body-font-family);
+  letter-spacing: 0.04em;
+}
+
+.feature-hero .stat-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: var(--hairline-dotted);
+}
+
+.feature-hero .stat-sheet .figure {
+  display: block;
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  color: var(--color-fg);
+  line-height: 1;
+  font-size: clamp(44px, 4.5vw, 56px);
+  margin-top: var(--spacing-md);
+}
+
+/* === integration — ruled wordmark pairing (stripe) === */
+.feature-hero.integration { padding-block: calc(var(--section-padding) - 16px) var(--section-padding); }
+
+.feature-hero .handshake {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md) var(--spacing-lg);
+  flex-wrap: wrap;
+  padding-block: var(--spacing-md);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.feature-hero .handshake-pair {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.feature-hero .handshake-pair img { width: auto; }
+
+.feature-hero .handshake-bm { height: 26px; }
+
+.feature-hero .handshake-stripe { height: 30px; }
+
+.feature-hero .handshake-x {
+  font: 800 20px / 1 var(--heading-font-family);
+  color: var(--color-slate);
+}
+
+.feature-hero .handshake-verified { display: inline-flex; align-items: center; }
+
+.feature-hero .handshake-verified img { width: auto; height: 26px; }
+
+/* stripe-verified.svg is the captured WHITE badge — ink chip to read on light */
+.feature-hero .verified-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  background: var(--color-fg);
+  border-radius: var(--radius);
+}
+
+.feature-hero .masthead-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+  margin-top: var(--spacing-xl);
+}
+
+.feature-hero .masthead-kicker {
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.feature-hero .masthead-copy h1 { max-width: 20ch; }
+
+.feature-hero .masthead-lede {
+  color: var(--color-slate);
+  font-size: 19px;
+  max-width: 50ch;
+  margin-top: var(--spacing-md);
+}
+
+.feature-hero .masthead-ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+}
+
+.feature-hero .preview-note {
+  color: var(--color-slate);
+  font-size: 15px;
+  margin-top: var(--spacing-md);
+}
+
+.feature-hero .preview-note a {
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.feature-hero .masthead-media .win { display: block; }
+
+/* === case — feature promo split with record quote === */
+.feature-hero.case { padding-block: var(--section-padding); }
+
+.feature-hero .case-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.feature-hero .case-copy .tag-chip { margin-bottom: var(--spacing-md); }
+
+.feature-hero .case-copy .section-lede {
+  color: var(--color-slate);
+  max-width: 44ch;
+  margin-top: var(--spacing-md);
+}
+
+.feature-hero .feature-ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+}
+
+.feature-hero .feature-ctas .btn-group { gap: var(--spacing-lg); }
+
+.feature-hero .case-quote {
+  margin: var(--spacing-xl) 0 0;
+  border-top: 1px solid var(--color-hairline);
+  padding-top: var(--spacing-lg);
+}
+
+.feature-hero .case-quote blockquote {
+  margin: 0;
+  color: var(--color-fg);
+  font-weight: 600;
+  line-height: 1.55;
+  max-width: 48ch;
+}
+
+.feature-hero .case-quote .quote-attrib {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.feature-hero .case-quote .quote-attrib img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.feature-hero .case-quote cite {
+  font-style: normal;
+  font-size: var(--body-sm);
+  color: var(--color-slate);
+}
+
+.feature-hero .case-media .win { display: block; }
+
+/* mirrored dock — the recover promo's media sits left on desktop */
+@media (width >= 901px) {
+  .feature-hero.mirror .case-media { order: -1; }
+}
+
+/* === responsive === */
+@media (width <= 1024px) {
+  .feature-hero .masthead-grid,
+  .feature-hero .case-grid { gap: var(--spacing-lg); }
+}
+
+@media (width <= 999px) {
+  .feature-hero .hero-row { grid-template-columns: minmax(0, 1fr); }
+
+  .feature-hero .stat-sheet { justify-self: start; }
+}
+
+@media (width <= 900px) {
+  .feature-hero .masthead-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .feature-hero .case-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (width <= 640px) {
+  .feature-hero .handshake-bm { height: 20px; }
+
+  .feature-hero .handshake-stripe { height: 24px; }
+
+  .feature-hero .handshake-verified img { height: 22px; }
+
+  .feature-hero .hero-ctas a.btn,
+  .feature-hero .masthead-ctas a.btn,
+  .feature-hero .feature-ctas a.btn { width: 100%; }
+}
