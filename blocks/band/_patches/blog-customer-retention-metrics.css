@@ -1,0 +1,26 @@
+/* band _patch (B4: blog-customer-retention-metrics + founder-chats-natalie-nagele)
+   — newsletter form-title decode gap.
+
+   The captured newsletter title "Subscribe for Updates" is 21 chars: band.js's
+   eyebrow heuristic (first short text row → .meta-label.band-eyebrow) claims
+   it before the band-form-title path can, so the tint-form band renders the
+   title as an uppercase eyebrow while the prototypes render .nl-title (large
+   bold statement, role: body). This restyles the eyebrow slot on FORM bands
+   as the form title — visual parity AND the shared inventory classifier stops
+   reading it as an eyebrow (ROLE SWAP 🔴 otherwise). Safe globally: no other
+   form band authors a true eyebrow (open-startups' lede is long; help's
+   contact band is cta-quiet, not form).
+
+   MERGE NOTE for the main loop: fold into blocks/band/band.css; the cleaner
+   fix is in band.js — exempt form bands from the eyebrow heuristic when the
+   block has no heading (title-less form pattern). */
+
+.band.form .band-eyebrow {
+  display: block;
+  margin-bottom: 0;
+  font: 700 clamp(20px, 2.4vw, 26px) / 1.45 var(--body-font-family);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-fg);
+  text-wrap: balance;
+}

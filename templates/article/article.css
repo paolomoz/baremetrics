@@ -1,0 +1,220 @@
+/* templates/article — article prose typography + rail/prose grid (The Ledger).
+   Loaded by scripts/ak.js loadTemplate() from the page's `template: article`
+   metadata. VERIFIED 2026-07-11: loadTemplate() loads ONLY this CSS file —
+   there is no template JS loader — so the template's one JS behaviour
+   (window-chroming prose chart images) lives in blocks/article-head (which
+   every article page carries by definition).
+
+   PAGE STRUCTURE (documented decode, mirrors Wave A's section-head
+   reabsorption pattern in spirit): the article body is ONE section carrying
+   section-metadata `style: article-body` (+ `episode` on founder-chats).
+   Inside it the toc BLOCK renders the rail and the prose flows as DEFAULT
+   CONTENT (blog) or as the transcript BLOCK (founder-chats). The section is
+   the grid; `display: contents` on the .block-content wrapper and on the toc
+   block promotes the toc's two devices (mobile <details>, desktop rail) plus
+   the prose column to first-class grid items, so the template can place
+   disclosure ABOVE the prose and the More-Articles rail BELOW it at ≤900px —
+   the prototypes' reading order — from a single authored block.
+
+   PROSE AUTHORING CONVENTION (DA strips divs/figures — blockquote is the
+   carrier device, differentiated by content):
+   - FORMULA sheet  = <blockquote> whose formula line is wrapped in <code>
+     (first short <p> is the "Formula" meta-label).
+   - QUOTE sheet    = <blockquote> without <code>; first <p> = source
+     meta-label ("Source · Chanty"), last <p> = attribution with the name in
+     <em> (<em>Dmytro Okunyev,</em> Founder @ <a>Chanty</a>) — em, not
+     strong, so ak.js's strong>a button decoration can never fire on the
+     attribution link.
+   - CHART figure   = a <p> holding only the <img>, followed by the caption
+     <p>; blocks/article-head wraps the image in the .win window chrome. */
+
+body.article-template {
+  --prose-measure: 68ch;
+}
+
+/* === the rail + prose grid === */
+.article-template main .section.article-body {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  column-gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-lg) var(--section-padding);
+}
+
+.article-template main .section.article-body.episode {
+  padding-top: clamp(32px, 5vw, 48px);
+}
+
+/* promote the toc's devices + the prose to grid items */
+.article-template .section.article-body > .block-content,
+.article-template .section.article-body > .block-content > .toc { display: contents; }
+
+.article-template .section.article-body .toc-rail {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.article-template .section.article-body > .default-content,
+.article-template .section.article-body > .block-content > .transcript {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* the prose column: measure + reset of the global default-content container */
+.article-template .section.article-body > .default-content {
+  max-width: var(--prose-measure);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.article-template .toc .more-articles { scroll-margin-top: var(--spacing-lg); }
+
+/* === prose typography (blog article body as default content) === */
+.article-template .article-body > .default-content > p { margin-top: 18px; }
+
+.article-template .article-body > .default-content > p:first-child { margin-top: 0; }
+
+.article-template .article-body > .default-content h2 {
+  font-size: clamp(26px, 3.2vw, 34px);
+  margin-top: var(--spacing-xl);
+  scroll-margin-top: var(--spacing-lg);
+}
+
+.article-template .article-body > .default-content h3 {
+  font-size: var(--heading-md);
+  margin-top: 36px;
+}
+
+.article-template .article-body > .default-content a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.article-template .article-body > .default-content a:hover { color: var(--color-action-hover); }
+
+/* — shared sheet frame for both blockquote devices — */
+.article-template .article-body > .default-content blockquote {
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+}
+
+/* — FORMULA sheet: blockquote:has(code) — */
+.article-template .article-body > .default-content blockquote:has(code) {
+  margin: var(--spacing-lg) 0;
+  padding: 18px 24px 20px;
+  text-align: center;
+}
+
+.article-template .article-body > .default-content blockquote:has(code) > p:first-child {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+.article-template .article-body > .default-content blockquote code {
+  font: 600 var(--body) / 1.6 var(--body-font-family);
+  font-style: italic;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg);
+  text-wrap: balance;
+}
+
+/* — QUOTE sheet: blockquote without code — */
+.article-template .article-body > .default-content blockquote:not(:has(code)) {
+  margin: 28px 0;
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.article-template .article-body > .default-content blockquote:not(:has(code)) > p:first-child {
+  display: block;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-hairline);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+.article-template .article-body > .default-content blockquote:not(:has(code)) > p:not(:first-child):not(:last-child) {
+  font: 600 clamp(17px, 1.8vw, 19px) / 1.55 var(--body-font-family);
+  color: var(--color-fg);
+}
+
+.article-template .article-body > .default-content blockquote:not(:has(code)) > p:last-child {
+  margin-top: var(--spacing-md);
+  font: 400 var(--body-sm) / 1.5 var(--body-font-family);
+  color: var(--color-slate);
+}
+
+.article-template .article-body > .default-content blockquote:not(:has(code)) > p:last-child em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+/* — CHART figure: image paragraph (.win chrome via article-head) + caption — */
+.article-template .article-body > .default-content p:has(> .win),
+.article-template .article-body > .default-content p:has(> picture),
+.article-template .article-body > .default-content p:has(> img) { margin: 28px 0; }
+
+.article-template .article-body > .default-content p:has(> .win) + p,
+.article-template .article-body > .default-content p:has(> picture) + p,
+.article-template .article-body > .default-content p:has(> img) + p {
+  margin-top: 10px;
+  font: 600 var(--eyebrow) / 1.6 var(--body-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+/* === responsive === */
+@media (width <= 1024px) {
+  .article-template main .section.article-body {
+    grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+}
+
+@media (width <= 900px) {
+  /* rail collapses: <details> TOC above the prose, More-Articles list after
+     it (the toc block hides its rail .toc-nav ≤900px itself) */
+  .article-template main .section.article-body { grid-template-columns: minmax(0, 1fr); }
+
+  .article-template .section.article-body .toc-disclosure {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .article-template .section.article-body > .default-content,
+  .article-template .section.article-body > .block-content > .transcript {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .article-template .section.article-body .toc-rail {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  /* founder-chats decision (F-006): the single-entry TOC is not duplicated
+     as a disclosure — its one target (#more-articles) is adjacent in flow */
+  .article-template .section.article-body.episode .toc-disclosure { display: none; }
+}
+
+@media (width <= 640px) {
+  .article-template .article-body > .default-content h2 { font-size: 26px; }
+
+  .article-template .article-body > .default-content blockquote:not(:has(code)) > p:not(:first-child):not(:last-child) {
+    font-size: 17px;
+  }
+}

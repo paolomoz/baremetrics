@@ -1,0 +1,186 @@
+/* article-head — article/episode masthead (The Ledger).
+   CSS lifted verbatim from blog-customer-retention-metrics-proposed.html
+   (.article-topbar/.masthead/.byline/.exhibit) and
+   founder-chats-natalie-nagele-proposed.html (.kicker/.ep-*), scoped
+   `.article-head` (blockWrapperClass NONE — never `.article-head.block`).
+   The sheet/exhibit frames restate the prototypes' padding-less .sheet
+   locally (the foundation .sheet carries padding the exhibits must not). */
+
+.article-head { display: block; }
+
+.article-head .ah-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.article-head .article-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  padding-block: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.article-head .article-topbar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 0;
+  font: 600 var(--eyebrow) / 1.4 var(--body-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-action);
+  text-decoration: none;
+}
+
+.article-head .article-topbar a:hover {
+  color: var(--color-action-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-head .masthead h1 { max-width: 20ch; }
+
+.article-head .byline {
+  margin-top: var(--spacing-md);
+  font: 600 var(--body-sm) / 1.7 var(--body-font-family);
+  color: var(--color-slate); /* 5.7:1 */
+}
+
+.article-head .byline .byline-sep { color: var(--color-ruling); }
+
+/* — article variant: type-led split with the exhibit sheet — */
+.article-head.article .masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(240px, 400px);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  padding-block: clamp(32px, 5vw, 64px) clamp(24px, 3vw, 40px);
+}
+
+.article-head .exhibit {
+  margin: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.article-head .exhibit img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* — episode variant: kicker masthead + the honest player surrogate — */
+.article-head.episode .masthead { padding-block: clamp(32px, 5vw, 64px) 0; }
+
+.article-head.episode .kicker {
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.article-head .ep-sheet {
+  margin-top: clamp(28px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+}
+
+.article-head .ep-art {
+  position: relative;
+  margin: 0;
+  border-right: 1px solid var(--color-hairline);
+  min-height: 100%;
+}
+
+.article-head .ep-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-head .ep-play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: oklch(100% 0 0 / 94%);
+  border: 1px solid var(--color-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-head .ep-play svg {
+  display: block;
+  margin-left: 3px;
+}
+
+.article-head .ep-body { padding: clamp(20px, 3.2vw, 36px); }
+
+.article-head .ep-body .meta-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.article-head .ep-body h2 {
+  font-size: clamp(22px, 2.8vw, 30px);
+  line-height: 1.25;
+}
+
+.article-head .ep-note {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-hairline);
+  font: 400 var(--body-sm) / 1.65 var(--body-font-family);
+  color: var(--color-slate); /* 5.7:1 */
+}
+
+.article-head .ep-note + .ep-note {
+  margin-top: var(--spacing-sm);
+  padding-top: 0;
+  border-top: 0;
+}
+
+.article-head .ep-note a {
+  color: var(--color-action);
+  font-weight: 600;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.article-head .ep-note a:hover { color: var(--color-action-hover); }
+
+.article-head .ep-summary {
+  margin-top: var(--spacing-md);
+  max-width: var(--prose-measure, 68ch);
+}
+
+@media (width <= 900px) {
+  .article-head.article .masthead { grid-template-columns: minmax(0, 1fr); }
+
+  .article-head .exhibit { max-width: 480px; }
+}
+
+@media (width <= 700px) {
+  .article-head .ep-sheet { grid-template-columns: minmax(0, 1fr); }
+
+  .article-head .ep-art {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-hairline);
+    aspect-ratio: 904 / 520;
+  }
+
+  .article-head .ep-art img { height: 100%; }
+}

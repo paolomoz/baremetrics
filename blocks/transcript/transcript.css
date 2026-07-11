@@ -1,0 +1,55 @@
+/* transcript — speaker-turn ledger on one hairline spine (The Ledger).
+   CSS lifted verbatim from founder-chats-natalie-nagele-proposed.html
+   (.transcript/.turn), scoped `.transcript` (blockWrapperClass NONE).
+   The article template grid (templates/article, B4) places the block in the
+   prose column; --spine-gap/--prose-measure carry local fallbacks so the
+   block also stands alone (round-trip harness, future non-templated use). */
+
+.transcript {
+  --spine-gap: clamp(22px, 3vw, 36px);
+
+  display: block;
+  position: relative;
+  padding-left: var(--spine-gap);
+  max-width: calc(var(--prose-measure, 68ch) + var(--spine-gap));
+}
+
+.transcript::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--color-hairline);
+}
+
+.transcript .turn {
+  position: relative;
+  margin-top: 26px;
+}
+
+.transcript .turn:first-child { margin-top: 0; }
+
+.transcript .turn::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--spine-gap) - 4px);
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--color-bg); /* lifts the dot off the spine */
+}
+
+/* dot code: first distinct speaker = ink, second = periwinkle (non-text
+   surface use; the captured <strong> prefixes remain the text-level code) */
+.transcript .turn-a::before { background: var(--color-fg); }
+
+.transcript .turn-b::before { background: var(--color-accent); }
+
+.transcript .turn p { margin-top: 12px; }
+
+.transcript .turn p:first-child { margin-top: 0; }
+
+.transcript .turn p strong { font-weight: 700; }

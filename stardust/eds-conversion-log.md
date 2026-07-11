@@ -84,3 +84,56 @@ below is reviewable here before deploy.
   content (#48), segment repeat units on the most-frequent heading boundary with delimiter fallback
   (#52/#63), media matched `picture, img` (#72), text read by CELL not `querySelectorAll('p')` (#79).
 - Template-slotted blocks hold the prototype section DOM verbatim and slot authored values by role.
+
+## B4 — blog-article + founder-chats (2026-07-11)
+
+Files: `blocks/article-head/*`, `blocks/transcript/*`, `templates/article/article.css`,
+`blocks/band/_patches/blog-customer-retention-metrics.css`, `content/blog/customer-retention-metrics.html`,
+`content/founder-chats/natalie-nagele.html` (+ `qa/{customer-retention-metrics,natalie-nagele}.html`,
+`stardust/build-content-b4.mjs`, `stardust/qa-gate-b4.mjs`). Reuses `toc` + `band` untouched.
+
+- **Template loader (VERIFIED)**: `scripts/ak.js loadTemplate()` loads ONLY
+  `templates/<t>/<t>.css` — there is NO template JS loader. So `templates/article/article.js`
+  does not exist; the template's one JS behaviour (win-chroming prose chart images) lives in
+  `blocks/article-head` (`winChromeProse()`), which every article page carries by definition.
+- **Article-body structure (decode, documented)**: ONE section, section-metadata
+  `style: article-body` (blog) / `article-body, episode` (founder). The toc block + the prose
+  (default content on blog; the `transcript` block on founder) share the section; the template
+  makes the SECTION the rail+prose grid and `display: contents` on `.block-content`/`.toc`
+  promotes the toc's disclosure/rail and the prose to grid items — so ≤900px the disclosure sits
+  ABOVE the prose and the More-Articles rail BELOW it (prototype reading order) from one block.
+  `.episode` hides the disclosure (F-006: single-entry TOC not duplicated).
+- **Prose authoring convention (DA strips div/figure — blockquote is the carrier)**:
+  formula sheet = `<blockquote>` with the formula line in `<code>` (first `<p>` = "Formula" label);
+  quote sheet = `<blockquote>` without code — first `<p>` = source meta-label, last `<p>` =
+  attribution with the NAME in `<em>` (never strong: strong>a would trip ak.js's button decorator);
+  chart figure = `<p><img></p>` + caption `<p>` (win chrome added by article-head JS).
+  Template CSS differentiates via `blockquote:has(code)`.
+- **Transcript authoring**: one row per paragraph (142 rows), innerHTML byte-verbatim, extracted
+  programmatically (`build-content-b4.mjs`). Decode: `<strong>Name:</strong>` prefix = turn
+  boundary; unprefixed paragraphs attach to the preceding turn; speakers map in encounter order
+  to `.turn-a` (ink) / `.turn-b` (periwinkle). transcript.js also patches `id="more-articles"`
+  onto the toc rail's More-Articles nav (rAF wait) — MERGE SUGGESTION: toc.js should set
+  `nav.id = toClassName(label)` on its `.more-articles` group.
+- **_patches**: `blocks/band/_patches/blog-customer-retention-metrics.css` — the 21-char
+  newsletter title "Subscribe for Updates" trips band.js's short-text→eyebrow heuristic; patch
+  restyles `.band.form .band-eyebrow` as the form title (safe: no other form band authors a true
+  eyebrow). Cleaner js fix noted in the patch header.
+- **Heading ids**: blog h2s carry explicit ids matching the EDS pipeline's slugs
+  (`1-customer-retention` …) so TOC anchors resolve in the local harness too.
+- **Gates**: block-roundtrip exit 0 / 0 structural 🔴 on both pages (blog: article-head + toc
+  [mapped to the whole `[data-section="article"]` incl. prose — 130/130 text nodes] + band×2;
+  founder: two runs since article-head spans episode-masthead+episode-sheet; transcript vs
+  `.transcript` = 270/270 body nodes = 142 paragraphs + 128 prefixes). Roundtrip used
+  `--styles` concat of styles.css + article.css + band patch + a harness adapter (the harness
+  renders raw authored DOM without runtime section/template classes; adapter mirrors the
+  blockquote meta-label rule only). Harness gate (`qa-gate-b4.mjs`): one h1, no outline skips,
+  anchors resolve, measure 67.9ch/71.3ch @1440, transcript 142/142 byte-identical + 128/128
+  turns w/ exact speaker attachment, 0 overflow @360/1440, 0 pageerrors. Screenshots
+  `qa/{shot,proto}-{article,episode}-{1440,390}.png` eyeballed — parity.
+- **Deviations recorded**: (1) JS-off shows an empty main — foundation `main > div {display:none}`
+  until ak.js decorates; site-wide, needs a head-level noscript (Wave-A head.html) if wanted.
+  (2) ≤640 h1 is 38px (foundation clamp) vs prototype's 34px override; gutters 24px vs proto 16px —
+  foundation-scale choices, consistent site-wide. (3) band form title renders 700 body-font
+  (Wave-A band.css) vs proto's 800 heading-font `.nl-title` — locked Wave-A shape.
+  (4) JSON-LD per-page not carried (known gap, logged site-wide).
