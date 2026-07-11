@@ -1,0 +1,47 @@
+/* quote — home (B1) variant-gap patches; for merge into blocks/quote/quote.css.
+   Gaps covered (see B1 report):
+   1. `tint` ground — the home testimonial record sheet sits on the tint band
+      (quote.css only ships `mist`);
+   2. `note` — margin-note-scale sheet (the home feature sections' small
+      customer quotes: Cancellation Insights / Recover);
+   3. `ink` ground — the Recover note sits inside the ink moment. */
+
+/* — 1 · tint ground (testimonial) — */
+main .quote.tint { background: var(--color-tint); }
+
+/* — 2 · note — margin-note-scale record sheet — */
+main .quote.note { padding-block: 0 var(--section-padding); }
+
+main .quote.note .record-sheet {
+  max-width: 560px;
+  padding: var(--spacing-lg);
+}
+
+main .quote.note .record-sheet blockquote { font: 600 15px / 1.55 var(--body-font-family); }
+
+main .quote.note .testimonial-attrib { margin-top: var(--spacing-md); }
+
+main .quote.note .testimonial-attrib img {
+  width: 36px;
+  height: 36px;
+}
+
+main .quote.note .testimonial-attrib cite {
+  font-size: var(--eyebrow);
+  font-weight: 400;
+  color: var(--color-slate);
+}
+
+/* — 3 · ink ground (recover note) — */
+main .quote.ink { background: var(--color-fg); }
+
+main .quote.ink .record-sheet {
+  background: transparent;
+  border-color: oklch(100% 0 0deg / 25%);
+}
+
+main .quote.ink .record-sheet blockquote { color: oklch(100% 0 0deg); }
+
+main .quote.ink .testimonial-attrib cite { color: var(--color-footer-muted); }
+
+main .quote.ink :focus-visible { outline-color: oklch(100% 0 0deg); }

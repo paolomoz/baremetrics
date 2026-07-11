@@ -1,0 +1,126 @@
+/* band — home (B1) variant-gap patches; for merge into blocks/band/band.css.
+   Gaps covered (see B1 report):
+   1. `notify` — integrations-notify graph-paper band: left 2-col split
+      (h2 | lede+form) inside a `.section.tint.graph` ground;
+   2. `.band.ink.pull` — band.js's pull-row regex (/^[\d+×x%$.,—-]+$/) cannot
+      match the authored "$10k+" (no `k` in the class), so the figure decodes
+      as the band-note — style that note AS the pull figure (decode gap
+      reported for the main loop);
+   3. plain (non-btn) "Learn More" action links — ds-link grammar, white on ink;
+   4. `closing` — home closing-cta statement sheet on mist (band-wrap becomes
+      the hairline sheet, media bleeding out of its bottom edge). */
+
+/* — 1 · notify split + graph-paper section ground — */
+main .section.tint.graph {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 31px, oklch(85% 0.02 285 / 35%) 31px 32px),
+    repeating-linear-gradient(90deg, transparent 0 31px, oklch(85% 0.02 285 / 35%) 31px 32px),
+    var(--color-tint);
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+main .band.notify { padding-block: var(--section-padding) 0; }
+
+main .band.notify .band-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+  max-width: none;
+  text-align: left;
+}
+
+main .band.notify .band-copy h2 {
+  grid-row: 1 / span 2;
+  margin-inline: 0;
+  max-width: 24ch;
+}
+
+/* lede + form read as the prototype's notify sheet */
+main .band.notify .band-lede {
+  grid-column: 2;
+  margin: 0;
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+  border: 1px solid var(--color-hairline);
+  border-bottom: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--color-bg);
+  max-width: none;
+}
+
+main .band.notify .band-form {
+  grid-column: 2;
+  margin-top: 0;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  border: 1px solid var(--color-hairline);
+  border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--color-bg);
+}
+
+main .band.notify .band-form-row { justify-content: flex-start; }
+
+@media (width <= 900px) {
+  main .band.notify .band-copy { grid-template-columns: minmax(0, 1fr); }
+
+  main .band.notify .band-copy h2 { grid-row: auto; }
+
+  main .band.notify .band-lede,
+  main .band.notify .band-form { grid-column: auto; }
+}
+
+/* — 2 · recover pull figure (decoded as the band-note, see header) — */
+main .band.ink.pull .band-note {
+  font-family: var(--heading-font-family);
+  font-size: clamp(64px, 7vw, 96px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  line-height: 1;
+  color: oklch(100% 0 0deg);
+  border-top: 1px solid oklch(100% 0 0deg / 25%);
+  padding-top: var(--spacing-lg);
+  margin-inline: 0;
+  max-width: none;
+}
+
+@media (width <= 640px) {
+  main .band.ink.pull .band-note { font-size: 56px; }
+}
+
+/* — 3 · plain action links — the prototype's ds-link grammar — */
+main .band .band-actions a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+main .band.ink .band-actions a:not(.btn) { color: oklch(100% 0 0deg); }
+
+main .band.ink .band-actions a:not(.btn):hover { color: var(--color-footer-muted); }
+
+/* — 4 · closing statement sheet on mist — */
+main .band.closing .band-wrap {
+  max-width: 920px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  padding: clamp(24px, 5vw, 56px) clamp(24px, 5vw, 56px) 0;
+  overflow: hidden;
+}
+
+main .band.closing .band-media {
+  max-width: none;
+  margin: var(--spacing-xl) 0 0;
+}
+
+main .band.closing .band-media .win {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

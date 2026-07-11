@@ -1,37 +1,296 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
+/* hero — home statement hero on dotted column rulings (The Ledger).
+   CSS lifted verbatim from the approved prototype home-B-proposed.html
+   (section[data-section="hero"]), scoped `.hero` (blockWrapperClass NONE —
+   never `.hero.block`). Full-bleed block; .hero-wrap is the container.
+   The dotlottie panel is revealed only when block JS confirms a LOADED
+   player (`.hero.lottie-ready`) AND motion is allowed; the window-chromed
+   SVG dashboard sheet is the reduced-motion / no-JS / CDN-failure fallback. */
 
 .hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  background: var(--color-bg);
+  padding-block: var(--section-padding) calc(var(--section-padding) + 8px);
 }
+
+.hero .hero-wrap {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* dotted column rulings — the ledger grammar at the fold */
+.hero .hero-rulings {
+  position: absolute;
+  inset: -16px var(--spacing-lg) -32px;
+  pointer-events: none;
+}
+
+.hero .hero-rulings i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: var(--hairline-dotted);
+}
+
+.hero .hero-rulings i:nth-child(1) { left: 25%; }
+
+.hero .hero-rulings i:nth-child(2) { left: 50%; }
+
+.hero .hero-rulings i:nth-child(3) { left: 75%; }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+  position: relative;
+  max-width: 24ch;
+  font-size: clamp(34px, 5vw, var(--heading-xxl));
+  letter-spacing: -0.015em;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+/* integration-name carousel — one clipped h1 line, 0.5s translateY roll */
+.hero .hero-carousel-wrapper {
+  display: block;
+  overflow: clip;
+  height: 1.2222em; /* one 66px line at 54px — matches the live 70px clip box */
 }
 
-.hero img {
-  object-fit: cover;
+.hero .hero-carousel {
+  display: inline-block;
+  color: var(--color-slate);
+  transform: translateY(0);
+}
+
+.hero .hero-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+  margin-top: var(--spacing-xl);
+}
+
+/* rulings terminate at the text block (critique P3) */
+.hero .hero-lede {
+  color: var(--color-slate);
+  font-size: 19px;
+  max-width: 54ch;
+  background: var(--color-bg);
+}
+
+.hero .hero-facts {
+  color: var(--color-slate);
+  font-size: var(--body-sm);
+  line-height: 1.55;
+  max-width: 58ch;
+  background: var(--color-bg);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.hero .hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+}
+
+/* the secondary/plain CTA renders as the prototype's ds-link */
+.hero .hero-ctas a.btn-secondary,
+.hero .hero-ctas a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-action);
+  font-size: var(--body);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.hero .hero-ctas a.btn-secondary:hover,
+.hero .hero-ctas a:not(.btn):hover {
+  background: transparent;
+  border: 0;
+  color: var(--color-action-hover);
+}
+
+/* wide viewports: the window-chromed proof rises beside the statement h1 */
+@media (width >= 1200px) {
+  .hero .hero-row { margin-top: var(--spacing-lg); }
+
+  .hero .hero-media { margin-top: -190px; }
+}
+
+/* === signature hero media — Lottie behind a loaded-player gate === */
+.hero .hero-media { background: var(--color-bg); }
+
+.hero .carousel-right { display: none; }
+
+.hero .carousel-right dotlottie-wc,
+.hero .carousel-right .lottie-animation {
+  display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 650 / 331;
 }
 
-@media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+@media (prefers-reduced-motion: no-preference) {
+  .hero.lottie-ready .carousel-right { display: block; }
+
+  .hero.lottie-ready .hero-media .hero-dash { display: none; }
+}
+
+/* window-chromed SVG dashboard sheet (fallback) */
+.hero .hero-dash { margin: 0; }
+
+.hero .hero-dash-body { padding: var(--spacing-lg); }
+
+.hero .dash-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+.hero .dash-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 26px;
+  padding: 4px 12px;
+  border-radius: var(--radius-chip);
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-slate);
+  font: 600 var(--eyebrow) / 1 var(--body-font-family);
+  letter-spacing: 0.04em;
+}
+
+.hero .dash-chip::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.hero .dash-label {
+  font: 600 var(--body-sm) / 1.4 var(--body-font-family);
+  color: var(--color-slate);
+}
+
+.hero .dash-value {
+  font: 800 clamp(34px, 3.4vw, 44px) / 1.1 var(--heading-font-family);
+  letter-spacing: -0.015em;
+  color: var(--color-fg);
+  margin-top: var(--spacing-md);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero .dash-svg {
+  width: 100%;
+  height: auto;
+  margin-top: var(--spacing-md);
+}
+
+.hero .dash-grid-line {
+  stroke: var(--color-hairline);
+  stroke-width: 1;
+}
+
+.hero .dash-area { fill: oklch(58% 0.19 272 / 9%); }
+
+.hero .dash-line {
+  stroke: var(--color-accent);
+  stroke-width: 3.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero .dash-dot { fill: var(--color-accent); }
+
+.hero .dash-dot-halo { fill: oklch(58% 0.19 272 / 25%); }
+
+/* chart draws, MRR figure settles — motion only when allowed; under reduce
+   none of this applies, so the final frame (line drawn, dot visible) is the
+   base state */
+@media (prefers-reduced-motion: no-preference) {
+  .hero .dash-line {
+    stroke-dasharray: 720;
+    stroke-dashoffset: 720;
+    animation: hero-dash-draw 1.7s var(--ease-entrance) 0.25s forwards;
   }
+
+  .hero .dash-dot,
+  .hero .dash-dot-halo {
+    opacity: 0;
+    animation: hero-dash-appear 0.5s var(--ease-entrance) 1.75s forwards;
+  }
+
+  .hero .dash-dot-halo {
+    transform-origin: 524px 34px;
+    animation: hero-dash-appear 0.5s var(--ease-entrance) 1.75s forwards, hero-dash-pulse 3.2s var(--ease-state) 2.4s infinite;
+  }
+
+  .hero .dash-value { animation: hero-dash-settle 0.8s var(--ease-entrance) 1.1s backwards; }
+
+  .hero .dash-area {
+    opacity: 0;
+    animation: hero-dash-appear 0.9s var(--ease-entrance) 1.3s forwards;
+  }
+}
+
+@keyframes hero-dash-draw { to { stroke-dashoffset: 0; } }
+
+@keyframes hero-dash-appear { to { opacity: 1; } }
+
+@keyframes hero-dash-settle {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-dash-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.9);
+    opacity: 0.35;
+  }
+}
+
+/* === responsive === */
+@media (width <= 1024px) {
+  .hero .hero-row { gap: var(--spacing-lg); }
+}
+
+@media (width <= 900px) {
+  .hero .hero-row { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (width <= 768px) {
+  /* rulings hidden — the ledger grammar survives in hairlines + figures */
+  .hero .hero-rulings { display: none; }
+}
+
+@media (width <= 640px) {
+  .hero h1 { font-size: 34px; }
+
+  .hero .hero-ctas a.btn-primary { width: 100%; }
 }
