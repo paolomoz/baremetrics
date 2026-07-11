@@ -1,0 +1,228 @@
+<style>
+/* footer fragment — chrome lifted from stardust canon (home-B footer, verbatim)
+   Injected post-LCP into the page's <footer> (host gets class="footer").
+   Tokens come from /styles/styles.css (:root) — none are redefined here. */
+
+/* host chrome — ink ground + padding (complements styles.css footer reservation) */
+footer.footer {
+  background: var(--color-fg);
+  color: var(--color-footer-muted);
+  padding-block: var(--section-padding);
+  margin-top: 0;
+  border-top: 1px solid var(--color-hairline);
+  font-family: var(--body-font-family);
+}
+
+/* white ring on ink ground — WCAG 1.4.11 fix, applied site-wide */
+.footer :focus-visible {
+  outline: 3px solid oklch(100% 0 0);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.footer .container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--spacing-lg);
+}
+
+.footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.footer .footer-grid h3 {
+  font: 600 var(--eyebrow) / 1.4 var(--body-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-footer-muted);
+  margin: 0 0 var(--spacing-sm);
+}
+
+.footer .footer-grid h3 + h3,
+.footer .footer-col nav + h3 { margin-top: var(--spacing-lg); }
+
+.footer .footer-col nav { display: grid; }
+
+.footer .footer-col a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 9px 0;
+  color: var(--color-footer-muted);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.footer .footer-col a:hover { color: oklch(100% 0 0); text-decoration: underline; text-underline-offset: 3px; }
+
+.footer .footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid oklch(42% 0.04 285);
+}
+
+.footer .footer-contact { display: flex; align-items: center; gap: var(--spacing-lg); flex-wrap: wrap; }
+
+.footer .footer-contact a,
+.footer .footer-social a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 9px 4px;
+  color: var(--color-footer-muted);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer .footer-contact a:hover,
+.footer .footer-social a:hover { color: oklch(100% 0 0); text-decoration: underline; text-underline-offset: 3px; }
+
+.footer .footer-social { display: flex; align-items: center; gap: var(--spacing-xs); }
+
+.footer .footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  color: var(--color-footer-muted);
+}
+
+.footer .footer-social a:hover { color: oklch(100% 0 0); background: oklch(100% 0 0 / 0.08); }
+
+.footer .footer-social a svg { display: block; }
+
+.footer .stripe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  background: oklch(100% 0 0);
+  border-radius: var(--radius);
+  color: var(--color-fg);
+}
+
+.footer .stripe-badge-text {
+  font: 700 10px / 1 var(--body-font-family);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1150px) {
+  .footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .footer .container { padding-inline: var(--spacing-md); }
+  .footer .footer-grid { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-sm); }
+}
+</style>
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3>Features</h3>
+      <nav aria-label="Features">
+        <a href="https://baremetrics.com/hubspot-integration">Hubspot Integration</a>
+        <a href="https://baremetrics.com/features/control-center">Control Center</a>
+        <a href="https://baremetrics.com/features/people-insights">People Insights</a>
+        <a href="https://baremetrics.com/features/smart-dashboards">Smart Dashboards</a>
+        <a href="/features/recover">Recover</a>
+        <a href="https://baremetrics.com/features/cancellation-insights">Cancellation Insights</a>
+        <a href="https://baremetrics.com/features/email-reports">Email Reports</a>
+        <a href="https://baremetrics.com/features/trial-insights">Trial Insights</a>
+        <a href="https://baremetrics.com/features/segmentation">Segmentation</a>
+        <a href="https://baremetrics.com/features/augmentation">Augmentation</a>
+        <a href="https://baremetrics.com/features/benchmarks">Benchmarks</a>
+        <a href="https://baremetrics.com/features/slack-tools">Slack Tools</a>
+        <a href="https://baremetrics.com/features/api">Analytics API</a>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h3>Compare</h3>
+      <nav aria-label="Compare">
+        <a href="/compare/profitwell-alternative">ProfitWell</a>
+        <a href="https://baremetrics.com/compare/chartmogul-alternative">ChartMogul</a>
+        <a href="https://baremetrics.com/compare/firstofficer-alternative">FirstOfficer</a>
+        <a href="https://baremetrics.com/compare/saasoptics-alternative">SaaSOptics</a>
+        <a href="https://baremetrics.com/compare/mrrio-alternative">MRR.io</a>
+        <a href="https://baremetrics.com/compare/stripe-analytics-alternative">Stripe Analytics &amp; Dunning</a>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h3>Company</h3>
+      <nav aria-label="Company">
+        <a href="/about">About</a>
+        <a href="/about#careers">Careers</a>
+        <a href="/customers">Customers</a>
+        <a href="https://baremetrics.com/wall-of-love">Wall of Love</a>
+        <a href="/experts">Experts</a>
+        <a href="https://baremetrics.com/affiliate">Affiliate Partners</a>
+        <a href="mailto:hello@baremetrics.com">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h3>Publications</h3>
+      <nav aria-label="Publications">
+        <a href="/blog">Blog</a>
+        <a href="https://baremetrics.com/academy">Academy</a>
+        <a href="https://baremetrics.com/founder-chats">Founder Chats</a>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h3>Open Project</h3>
+      <nav aria-label="Open Project">
+        <a href="/open-startups">Startups</a>
+        <a href="https://baremetrics.com/open-benchmarks">Benchmarks</a>
+        <a href="https://baremetrics.com/build-vs-buy">Build vs Buy</a>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h3>Support</h3>
+      <nav aria-label="Support">
+        <a href="https://developers.baremetrics.com/reference">Developers</a>
+        <a href="https://help.baremetrics.com/">Help Center</a>
+        <a href="https://status.baremetrics.com/">Status</a>
+      </nav>
+      <h3>Legal</h3>
+      <nav aria-label="Legal">
+        <a href="https://baremetrics.com/privacy">Privacy</a>
+        <a href="https://baremetrics.com/security">Security</a>
+        <a href="https://baremetrics.com/terms">Terms of Use</a>
+        <a href="https://baremetrics.com/gdpr">GDPR</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-contact">
+      <a href="tel:+7252174827">(725) 217-4827</a>
+      <div class="footer-social">
+        <a href="https://www.dribbble.com/baremetrics" aria-label="Baremetrics on Dribbble">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.2 9.3c4.3.9 9 .5 13.4-1.6M16.8 20.1c-1-4.8-3.2-9-6.6-13.1M3.2 14.3c4.8-1.5 9.4-1 14.1 1.7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        </a>
+        <a href="https://www.instagram.com/baremetricsapp" aria-label="Baremetrics on Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.1" cy="6.9" r="1.3" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.twitter.com/baremetrics" aria-label="Baremetrics on Twitter">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.2-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7C8.5 8.9 5.5 7.3 3.5 4.8c-.4.7-.6 1.4-.6 2.2 0 1.4.7 2.7 1.8 3.4-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4-.3.1-.7.2-1.1.2l-.8-.1c.5 1.6 2 2.8 3.8 2.9A8.3 8.3 0 0 1 2 18.7a11.7 11.7 0 0 0 6.3 1.8c7.5 0 11.6-6.2 11.6-11.6v-.5c.8-.6 1.5-1.3 2.1-2.2z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/baremetrics" aria-label="Baremetrics on Facebook">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14 3h3v3.2h-2c-.7 0-1 .4-1 1.1V9.5h3l-.5 3H14V21h-3.2v-8.5H8v-3h2.8V7c0-2.4 1.4-4 3.2-4z"/></svg>
+        </a>
+      </div>
+    </div>
+    <span class="stripe-badge" role="img" aria-label="Stripe Verified Partner">
+      <svg viewBox="0 0 42 18" width="42" height="18" aria-hidden="true" focusable="false" class="stripe-wordmark"><text x="0" y="14" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="currentColor" letter-spacing="-0.4">stripe</text></svg>
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.3l2.2 2.2 4.4-4.6" fill="none" stroke="oklch(100% 0 0)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="stripe-badge-text">Verified Partner</span>
+    </span>
+  </div>
+</div>

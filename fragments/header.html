@@ -1,0 +1,327 @@
+<style>
+/* header fragment — chrome lifted from stardust canon (home-B header, verbatim)
+   Injected post-LCP into the page's <header> (host gets class="header").
+   Tokens come from /styles/styles.css (:root) — none are redefined here.
+   Interactivity is CSS-only: checkbox-hack nav collapse + <details> locale dock. */
+
+/* host chrome — hairline + ground (complements styles.css header reservation) */
+header.header {
+  position: relative;
+  z-index: var(--z-nav);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-hairline);
+  font-family: var(--body-font-family);
+}
+
+.header .container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--spacing-lg);
+}
+
+.header :focus-visible {
+  outline: 3px solid oklch(51% 0.21 270); /* full alpha: 6.1:1 on white (WCAG 1.4.11) */
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* skip link — first focusable, visible on focus */
+.header .skip-link {
+  position: absolute;
+  left: var(--spacing-md);
+  top: -64px;
+  z-index: var(--z-skip);
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  background: var(--color-action);
+  color: oklch(100% 0 0);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: top 0.15s var(--ease-state);
+}
+
+.header .skip-link:focus-visible { top: var(--spacing-md); outline-color: var(--color-fg); }
+
+.header .header-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-height: 76px;
+}
+
+.header .brand-link { display: inline-flex; align-items: center; padding: 8px 0; flex-shrink: 0; }
+
+/* checkbox hack — sr-clipped but NOT display:none (must stay toggleable) */
+.header .ds-nav-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.header .ds-nav-burger { display: none; }
+
+.header .ds-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex: 1 1 auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: var(--body-font-family);
+}
+
+/* panel-only; specificity must beat .ds-nav a */
+.header .ds-nav a.nav-locale { display: none; }
+
+.header .ds-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  color: var(--color-fg);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.header .ds-nav a:hover { color: var(--color-action); background: var(--color-tint); }
+
+.header .header-utility { display: flex; align-items: center; gap: var(--spacing-sm); }
+
+.header .ds-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font: 600 15px / 1 var(--body-font-family);
+  white-space: nowrap;
+  text-decoration: none;
+  background: oklch(100% 0 0);
+  color: var(--color-action);
+  border: 1.5px solid oklch(51% 0.21 270 / 0.72); /* composites >=3:1 on white (audit P2) */
+  transition: background 0.15s var(--ease-state), border-color 0.15s var(--ease-state);
+}
+
+.header .ds-btn-secondary:hover { border-color: var(--color-action); background: var(--color-tint); }
+
+.header .nav-signin {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  color: var(--color-fg);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+
+.header .nav-signin:hover { color: var(--color-action); background: var(--color-tint); }
+
+/* locale switcher — docked in header; <details> works without JS */
+.header .locale { position: relative; }
+
+.header .locale summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 12px;
+  font: 600 var(--body-sm) / 1 var(--body-font-family);
+  color: var(--color-slate);
+  border-radius: var(--radius);
+}
+
+.header .locale summary::-webkit-details-marker { display: none; }
+
+.header .locale summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.header .locale summary:hover { color: var(--color-action); background: var(--color-tint); }
+
+.header .locale-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: var(--z-dropdown);
+  min-width: 140px;
+  padding: var(--spacing-sm);
+  background: oklch(100% 0 0);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-rest); /* system chrome — the one shadow family kept */
+  display: grid;
+}
+
+.header .locale-menu a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-fg);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.header .locale-menu a:hover { background: var(--color-tint); color: var(--color-action); }
+
+@media (max-width: 1150px) {
+  /* Stock hamburger collapse (mobile-nav-collapse.md). Collapse at 1150px:
+     logo + 5 links + locale + Sign In + CTA need ~1130px. */
+  .header .ds-nav-burger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    min-height: 44px;
+    padding: 10px 14px;
+    font: 600 var(--body-sm) / 1 var(--body-font-family);
+    color: var(--color-fg);
+    background: transparent;
+    border: 1.5px solid var(--color-hairline);
+    border-radius: var(--radius);
+    user-select: none;
+    margin-left: auto;
+  }
+
+  .header .ds-nav-toggle:focus-visible + .ds-nav-burger { outline: 3px solid oklch(51% 0.21 270); outline-offset: 2px; }
+
+  .header .ds-nav-burger-icon { width: 16px; height: 12px; position: relative; }
+
+  .header .ds-nav-burger-icon::before,
+  .header .ds-nav-burger-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+  }
+
+  .header .ds-nav-burger-icon::before { top: 0; box-shadow: 0 5px 0 currentColor; }
+  .header .ds-nav-burger-icon::after { bottom: 0; }
+
+  .header .ds-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-hairline);
+    box-shadow: var(--shadow-rest); /* system chrome — allowed */
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.18s var(--ease-state), opacity 0.18s var(--ease-state), visibility 0s linear 0.18s;
+  }
+
+  .header .ds-nav a {
+    min-height: 48px;
+    border-bottom: 1px solid var(--color-hairline);
+    border-radius: 0;
+    font-size: var(--body);
+  }
+
+  .header .ds-nav a:last-child { border-bottom: 0; }
+
+  .header .ds-nav-toggle:checked ~ .ds-nav {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.18s var(--ease-state), opacity 0.18s var(--ease-state), visibility 0s linear 0s;
+  }
+
+  /* Sign In lives inside the panel when collapsed */
+  .header .nav-signin { display: none; }
+  .header .ds-nav .nav-signin-mobile { display: inline-flex; }
+
+  /* locale joins the panel whenever the nav is collapsed */
+  .header .header-utility .locale { display: none; }
+  .header .ds-nav a.nav-locale { display: inline-flex; }
+}
+
+@media (min-width: 1151px) {
+  /* JS-off guard: burger label is hidden at desktop, so the sr-clipped
+     checkbox must not remain a bare tab stop */
+  .header .ds-nav-toggle { display: none; }
+  .header .ds-nav .nav-signin-mobile { display: none; }
+}
+
+@media (max-width: 640px) {
+  .header .container { padding-inline: var(--spacing-md); }
+  .header .header-bar { min-height: 64px; gap: var(--spacing-sm); }
+  .header .brand-link { padding: 13px 0; } /* 44px target at shrunken logo size */
+  .header .brand-link img { width: 120px; height: 18px; }
+  .header .ds-btn-secondary { padding: 8px 12px; font-size: 13px; min-height: 44px; }
+  .header .ds-nav-burger { padding: 10px 14px; } /* keep >=44px wide */
+  .header .ds-nav-burger-label { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+</style>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="container header-bar">
+  <a class="brand-link" href="/">
+    <img src="https://baremetrics.com/hubfs/raw_assets/public/Baremetrics_July2023/images/baremetrics-logo.svg"
+         alt="Baremetrics front page logo" width="188" height="28" fetchpriority="high">
+  </a>
+
+  <input type="checkbox" id="ds-nav-toggle" class="ds-nav-toggle" aria-label="Menu">
+  <label class="ds-nav-burger" for="ds-nav-toggle">
+    <span class="ds-nav-burger-icon" aria-hidden="true"></span>
+    <span class="ds-nav-burger-label">Menu</span>
+  </label>
+
+  <nav id="ds-nav-list" class="ds-nav" aria-label="Primary">
+    <a href="https://baremetrics.com/features/metrics">Product</a>
+    <a href="/stripe">Integrations</a>
+    <a href="/pricing">Plans &amp; Pricing</a>
+    <a href="/blog">Resources</a>
+    <a href="/about">About</a>
+    <a class="nav-signin-mobile" href="https://app.baremetrics.com/users/sign_in">Sign In</a>
+    <a class="nav-locale" href="/" lang="en" aria-current="true">English</a>
+    <a class="nav-locale" href="https://baremetrics.com/ja/" lang="ja">日本語</a>
+  </nav>
+
+  <div class="header-utility">
+    <details class="locale">
+      <summary aria-label="Change language">English</summary>
+      <div class="locale-menu">
+        <a href="/" lang="en" aria-current="true">English</a>
+        <a href="https://baremetrics.com/ja/" lang="ja">日本語</a>
+      </div>
+    </details>
+    <a class="nav-signin" href="https://app.baremetrics.com/users/sign_in">Sign In</a>
+    <a class="ds-btn-secondary" href="https://app.baremetrics.com/users/sign_up">Start your free trial</a>
+  </div>
+</div>
