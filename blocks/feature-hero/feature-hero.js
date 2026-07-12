@@ -132,8 +132,13 @@ export default async function decorate(block) {
         model.actionCells = cells;
         actionsSeen = true;
       } else {
-        /* prose note with an inline link (integration preview note) */
-        model.note = cells[0].querySelector('p') || el('p', '', text(cells[0]));
+        /* prose note with an inline link (integration preview note).
+           DA unwraps a single-text cell's <p> to a bare <div> (#79), so when
+           there's no <p>, MOVE the cell's child nodes (incl. the <a>) into a
+           new <p> — never text(cell), which would drop the inline link. */
+        let np = cells[0].querySelector('p');
+        if (!np) { np = el('p'); while (cells[0].firstChild) np.append(cells[0].firstChild); }
+        model.note = np;
       }
       return;
     }
