@@ -5,7 +5,7 @@
    growth-drivers mosaic, open-startups filmstrip), about (team-roster).
    .cards-wrap carries the max-width container (#13/#74). */
 
-.cards { padding-block: 0 var(--section-padding); }
+.cards { padding-block: var(--section-padding); }  /* symmetric top+bottom, matching the prototype (heads butted the section above at top:0) */
 
 .cards .cards-wrap {
   max-width: var(--max-width);
