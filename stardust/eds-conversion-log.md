@@ -173,3 +173,31 @@ absolute positioning; `.rev-row` grid confirmed at depth 3).
 site-wide via head.html; page-type structured data deferred); subscribe/search forms are non-submitting
 chrome (owner decision: replace HubSpot); 156 origin links to unmigrated inventory pages remain
 absolute (scoped-run carve-out); proprietary-font licensing N/A (Inter is OFL).
+
+## Fix: section top-padding (2026-07-12, preview)
+
+**Reported:** section heads (home growth mosaics, "Join the movement" filmstrip, about roster)
+butted the section above with no top breathing room.
+
+**Root cause:** the prototype uses SYMMETRIC vertical padding on every section
+(`--section-padding` top+bottom, 56/56 or 48/48), but `blocks/cards/cards.css` was authored
+`padding-block: 0 var(--section-padding)` (zero top). The cards block carries the reabsorbed
+section head, so at top:0 the head sat flush.
+
+**Fix:** `.cards { padding-block: var(--section-padding); }` (symmetric) — matches the prototype;
+universally safe since every cards instance carries a head and every prototype section is symmetric.
+
+**Audited all 15 pages** for the same class of bug (visible-head butting). Confirmed the other
+`padding-block: 0 X` blocks are INTENTIONAL prototype-faithful continuations, verified against the
+prototypes' own section padding:
+- `ledger` (open-startups revenue pt:0 / help collections pt:0 / blog entries pt:0): the preceding
+  masthead carries the bottom spacing (open-startups masthead pb:76, help pb:32) — matches proto.
+  The audit's flags there were sr-only heads (clipped elements measure at top:0) — false positives.
+- `sheets.note` (ltv-calc method): proto method-note is pt:0 with a hairline top rule + METHOD label
+  register following the calculator (pb:56) — verified visually correct.
+- `band.guarantee`, `quote.note`: in-flow continuations of a preceding block (recover ROI, feature
+  promos) — no head, correctly top:0.
+
+Post-fix re-audit: 0 visible-head butting sections across all 15 pages (2 residual flags are the
+publications kicker→heading pair and the ltv-calc hairline-separated method note — both correct).
+CSS-only change; served on both .page and .live via the shared code bus (no content re-publish).
