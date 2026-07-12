@@ -209,3 +209,143 @@ main .logos.accent :focus-visible { outline-color: oklch(100% 0 0deg); }
 @media (width <= 640px) {
   .logos .logo-table { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ============================================================
+   MERGED per-page patches (Wave-B _patches folded in by main loop)
+   ============================================================ */
+
+/* ---- from compare-profitwell-alternative.css ---- */
+/* logos _patch (B2, compare) — `int` variant: the integrations strip
+   (centered meta-label + 20px ruled provider marks, tucked under the
+   versus masthead).
+   Source: compare-profitwell-alternative-proposed.html
+   [data-section="integrations"]. */
+
+.logos.int { padding-block: 0 var(--section-padding); }
+
+.logos.int .logo-strip-label {
+  margin-top: 0;
+  text-align: center;
+}
+
+.logos.int .logo-cells {
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.logos.int .logo-cells li {
+  min-height: 52px;
+  padding: 8px 16px;
+}
+
+.logos.int .logo-cells img { height: 20px; }
+
+@media (width <= 640px) {
+  .logos.int .logo-cells li {
+    padding: 10px 14px;
+    min-height: 56px;
+  }
+}
+
+/* ---- from customers.css ---- */
+/* logos `table` 5-column register — customers (Wave B5 patch; merge into
+   logos.css). Wave A's logo-table is 4-col (home payment-providers); the
+   customers capture rules its 10 marks 5 × 2 (3-col ≤900, 2-col ≤640). New
+   authored modifier class `five` (no JS change needed).
+   Source: customers-proposed.html customer-logos. */
+
+.logos.table.five .logo-table { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+@media (width <= 900px) {
+  .logos.table.five .logo-table { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (width <= 640px) {
+  .logos.table.five .logo-table { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---- from home.css ---- */
+/* logos — home (B1) variant-gap patch; for merge into blocks/logos/logos.css.
+   Gap covered (see B1 report): the notify logo strip sits INSIDE the
+   integrations-notify tint band section (below the band/form block) — the
+   prototype's .notify-logos row: ruled top hairline, no cell rules, compact
+   28px marks, 44px link targets. */
+
+main .section.tint .logos.strip { padding-block: var(--spacing-xl) var(--section-padding); }
+
+main .section.tint .logos.strip .logo-cells {
+  border-top: 1px solid var(--color-hairline);
+  padding-top: var(--spacing-md);
+  column-gap: var(--spacing-lg);
+  row-gap: var(--spacing-sm);
+}
+
+main .section.tint .logos.strip .logo-cells li {
+  border-left: 0;
+  min-height: 44px;
+  padding: 8px 12px;
+}
+
+main .section.tint .logos.strip .logo-cells a {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius);
+}
+
+main .section.tint .logos.strip .logo-cells a:hover { background: var(--color-bg); }
+
+/* ---- from pricing.css ---- */
+/* logos _patch (B2, pricing) — `trust` variant: the trust-at-decision
+   logo strip (centered meta-label + 18px ruled marks on the section's mist
+   ground, flowing into the customer-record quote below).
+   Source: pricing-proposed.html [data-section="trust-at-decision"]. */
+
+.logos.trust { padding-block: var(--section-padding) 0; }
+
+.logos.trust .logo-strip-label {
+  margin-top: 0;
+  text-align: center;
+}
+
+.logos.trust .logo-cells {
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.logos.trust .logo-cells li {
+  min-height: 52px;
+  padding: 8px 12px;
+}
+
+.logos.trust .logo-cells img { height: 18px; }
+
+@media (width <= 640px) {
+  .logos.trust .logo-cells li {
+    padding: 10px 14px;
+    min-height: 56px;
+  }
+
+  .logos.trust .logo-cells img { height: 22px; }
+}
+
+/* ---- from stripe.css ---- */
+/* logos — stripe page patch (Wave B3; no shared-file edits).
+   The stripe +900 counter's label is a META-LABEL in the prototype
+   (.counter-label — the captured h5 demoted per F-006), where the shared
+   counter variant renders a 22px slate .counter-rest (home's treatment).
+   Scoped to counter+mist (stripe is the only mist counter). */
+
+.logos.counter.mist .counter-row { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); }
+
+.logos.counter.mist .counter-rest {
+  font: 600 var(--eyebrow) / 1.4 var(--body-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+  margin-top: var(--spacing-sm);
+  max-width: 30ch;
+}
+
+@media (width <= 900px) {
+  .logos.counter.mist .counter-row { grid-template-columns: minmax(0, 1fr); }
+}

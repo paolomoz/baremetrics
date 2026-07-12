@@ -1,9 +1,0 @@
-/* band careers deep-link — about (Wave B5 patch; merge into band.css).
-   The captured page anchors /about#careers (footer Careers link). Neither the
-   runtime (ak.js decorateSection) nor section-metadata supports a section id,
-   and band.js is frozen for Wave B — so the id is AUTHORED on the careers h2
-   (<h2 id="careers">, the heading node survives band.js decorate intact) and
-   the capture's scroll offset is restored here. Source: about-proposed.html
-   careers (scroll-margin-top: var(--spacing-lg) on the section). */
-
-.band #careers { scroll-margin-top: var(--spacing-lg); }

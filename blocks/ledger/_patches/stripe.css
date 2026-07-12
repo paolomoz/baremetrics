@@ -1,5 +1,0 @@
-/* ledger — stripe page patch (Wave B3; no shared-file edits).
-   The publications section carries the prototype's .ruled-top hairline
-   (stripe is the publications variant's only user). */
-
-.ledger.publications { border-top: 1px solid var(--color-hairline); }

@@ -16,3 +16,4 @@ helix-importer-ui
 qa/
 node_modules/
 samples/
+content-staged/

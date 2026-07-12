@@ -347,3 +347,421 @@ main .band.ink .band-actions a.btn-primary:hover { background: var(--color-tint)
 
   .band.stats .stat + .stat { border-left: 0; }
 }
+
+/* ============================================================
+   MERGED per-page patches (Wave-B _patches folded in by main loop)
+   ============================================================ */
+
+/* ---- from about.css ---- */
+/* band careers deep-link — about (Wave B5 patch; merge into band.css).
+   The captured page anchors /about#careers (footer Careers link). Neither the
+   runtime (ak.js decorateSection) nor section-metadata supports a section id,
+   and band.js is frozen for Wave B — so the id is AUTHORED on the careers h2
+   (<h2 id="careers">, the heading node survives band.js decorate intact) and
+   the capture's scroll offset is restored here. Source: about-proposed.html
+   careers (scroll-margin-top: var(--spacing-lg) on the section). */
+
+.band #careers { scroll-margin-top: var(--spacing-lg); }
+
+/* ---- from blog-customer-retention-metrics.css ---- */
+/* band _patch (B4: blog-customer-retention-metrics + founder-chats-natalie-nagele)
+   — newsletter form-title decode gap.
+
+   The captured newsletter title "Subscribe for Updates" is 21 chars: band.js's
+   eyebrow heuristic (first short text row → .meta-label.band-eyebrow) claims
+   it before the band-form-title path can, so the tint-form band renders the
+   title as an uppercase eyebrow while the prototypes render .nl-title (large
+   bold statement, role: body). This restyles the eyebrow slot on FORM bands
+   as the form title — visual parity AND the shared inventory classifier stops
+   reading it as an eyebrow (ROLE SWAP 🔴 otherwise). Safe globally: no other
+   form band authors a true eyebrow (open-startups' lede is long; help's
+   contact band is cta-quiet, not form).
+
+   MERGE NOTE for the main loop: fold into blocks/band/band.css; the cleaner
+   fix is in band.js — exempt form bands from the eyebrow heuristic when the
+   block has no heading (title-less form pattern). */
+
+.band.form .band-eyebrow {
+  display: block;
+  margin-bottom: 0;
+  font: 700 clamp(20px, 2.4vw, 26px) / 1.45 var(--body-font-family);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-fg);
+  text-wrap: balance;
+}
+
+/* ---- from features-recover.css ---- */
+/* band — features/recover page patches (Wave B3; no shared-file edits).
+   Gaps vs blocks/band/band.css, keyed to extra authored variant tokens so a
+   merge into band.css stays page-safe:
+     .band.analytics  mist cta split — the recover analytics proof row
+                      (proto .analytics-row: 0.9/1.1 columns, h2 22ch,
+                      tight eyebrow→h2 rhythm)
+     .band.roi        pull — the 38× ROI head (action-colored pull figure at
+                      the captured clamp; figure stacks FIRST ≤900px;
+                      no bottom padding — the quote trio continues the
+                      prototype section)
+     .band.guarantee  cta split — the ROI-guarantee unit (dotted top rule,
+                      display claim, UN-chromed illustration docked left)
+     .band.trial      ink cta split — the trial band's magenta Recover
+                      tag-chip eyebrow (chip chrome the shared band lacks) */
+
+/* — analytics — */
+.band.analytics.split .band-wrap {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.band.analytics .band-eyebrow { margin-bottom: var(--spacing-sm); }
+
+.band.analytics .band-copy h2 {
+  margin-top: 0;
+  max-width: 22ch;
+}
+
+/* — roi head (38× pull) — */
+.band.roi { padding-bottom: 0; }
+
+.band.roi .band-copy h2 { max-width: 18ch; }
+
+.band.roi .band-pull {
+  color: var(--color-action); /* figures are the accent: ink or action */
+  font-size: clamp(88px, 13vw, 176px);
+}
+
+@media (width <= 900px) {
+  .band.roi .band-pull { order: -1; }
+}
+
+/* — guarantee — */
+.band.guarantee { padding-block: 0 var(--section-padding); }
+
+.band.guarantee .band-wrap {
+  margin-top: var(--spacing-2xl);
+  border-top: var(--hairline-dotted);
+  padding-top: var(--spacing-xl);
+}
+
+.band.guarantee.split .band-wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+
+/* the illustration docks left and is NOT window-chromed in the prototype */
+.band.guarantee .band-media { order: -1; }
+
+.band.guarantee .band-media .win {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.band.guarantee .band-media .win-bar { display: none; }
+
+/* the guarantee claim is a display line, not a lede */
+.band.guarantee .band-eyebrow { margin-bottom: 0; }
+
+.band.guarantee .band-eyebrow + .band-lede {
+  font: 800 clamp(24px, 2.6vw, 32px) / 1.25 var(--heading-font-family);
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+  text-wrap: balance;
+  margin-top: var(--spacing-sm);
+}
+
+/* — trial band's Recover tag-chip eyebrow (magenta dot = non-text coding) — */
+.band.trial .band-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  padding: 5px 14px;
+  margin-bottom: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-chip);
+  color: var(--color-slate);
+}
+
+.band.trial .band-eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-signal-magenta);
+  flex-shrink: 0;
+}
+
+/* ---- from home.css ---- */
+/* band — home (B1) variant-gap patches; for merge into blocks/band/band.css.
+   Gaps covered (see B1 report):
+   1. `notify` — integrations-notify graph-paper band: left 2-col split
+      (h2 | lede+form) inside a `.section.tint.graph` ground;
+   2. `.band.ink.pull` — band.js's pull-row regex (/^[\d+×x%$.,—-]+$/) cannot
+      match the authored "$10k+" (no `k` in the class), so the figure decodes
+      as the band-note — style that note AS the pull figure (decode gap
+      reported for the main loop);
+   3. plain (non-btn) "Learn More" action links — ds-link grammar, white on ink;
+   4. `closing` — home closing-cta statement sheet on mist (band-wrap becomes
+      the hairline sheet, media bleeding out of its bottom edge). */
+
+/* — 1 · notify split + graph-paper section ground — */
+main .section.tint.graph {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 31px, oklch(85% 0.02 285 / 35%) 31px 32px),
+    repeating-linear-gradient(90deg, transparent 0 31px, oklch(85% 0.02 285 / 35%) 31px 32px),
+    var(--color-tint);
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+main .band.notify { padding-block: var(--section-padding) 0; }
+
+main .band.notify .band-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+  max-width: none;
+  text-align: left;
+}
+
+main .band.notify .band-copy h2 {
+  grid-row: 1 / span 2;
+  margin-inline: 0;
+  max-width: 24ch;
+}
+
+/* lede + form read as the prototype's notify sheet */
+main .band.notify .band-lede {
+  grid-column: 2;
+  margin: 0;
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+  border: 1px solid var(--color-hairline);
+  border-bottom: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--color-bg);
+  max-width: none;
+}
+
+main .band.notify .band-form {
+  grid-column: 2;
+  margin-top: 0;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  border: 1px solid var(--color-hairline);
+  border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--color-bg);
+}
+
+main .band.notify .band-form-row { justify-content: flex-start; }
+
+@media (width <= 900px) {
+  main .band.notify .band-copy { grid-template-columns: minmax(0, 1fr); }
+
+  main .band.notify .band-copy h2 { grid-row: auto; }
+
+  main .band.notify .band-lede,
+  main .band.notify .band-form { grid-column: auto; }
+}
+
+/* — 2 · recover pull figure (decoded as the band-note, see header) — */
+main .band.ink.pull .band-note {
+  font-family: var(--heading-font-family);
+  font-size: clamp(64px, 7vw, 96px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  line-height: 1;
+  color: oklch(100% 0 0deg);
+  border-top: 1px solid oklch(100% 0 0deg / 25%);
+  padding-top: var(--spacing-lg);
+  margin-inline: 0;
+  max-width: none;
+}
+
+@media (width <= 640px) {
+  main .band.ink.pull .band-note { font-size: 56px; }
+}
+
+/* — 3 · plain action links — the prototype's ds-link grammar — */
+main .band .band-actions a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+main .band.ink .band-actions a:not(.btn) { color: oklch(100% 0 0deg); }
+
+main .band.ink .band-actions a:not(.btn):hover { color: var(--color-footer-muted); }
+
+/* — 4 · closing statement sheet on mist — */
+main .band.closing .band-wrap {
+  max-width: 920px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  padding: clamp(24px, 5vw, 56px) clamp(24px, 5vw, 56px) 0;
+  overflow: hidden;
+}
+
+main .band.closing .band-media {
+  max-width: none;
+  margin: var(--spacing-xl) 0 0;
+}
+
+main .band.closing .band-media .win {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ---- from pricing.css ---- */
+/* band _patches (B2, pricing) — two page variants Wave A didn't need:
+   `byo`  build-your-own periwinkle inversion band (copy left, CTA right) —
+          source: pricing-proposed.html [data-section="build-your-own"].
+          #6078FF is the captured brand hue; every white string on it is
+          display-size or bold-large (≥3:1 large-text AA).
+   `fin`  financial-planning document sheet on mist (centered sheet card) —
+          source: pricing-proposed.html [data-section="financial-planning"]. */
+
+/* — byo: accent inversion, split copy/CTA grid —
+   (`main` prefix: these must out-rank band.css's .band.cta ties whichever
+   order the patch is merged/loaded) */
+main .band.byo .band-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, auto);
+  gap: var(--spacing-md) var(--spacing-xl);
+  align-items: center;
+  text-align: left;
+}
+
+.band.byo .band-copy h2 {
+  color: oklch(100% 0 0deg);
+  max-width: none;
+  margin-inline: 0;
+  grid-column: 1;
+}
+
+.band.byo .band-lede {
+  color: oklch(100% 0 0deg);
+  font: 700 clamp(19px, 1.8vw, 22px) / 1.5 var(--body-font-family); /* bold-large exemption ≥700 → 4.49:1 */
+  max-width: 52ch;
+  margin: 0;
+  grid-column: 1;
+}
+
+.band.byo .band-actions {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+main .band.byo .band-actions a.btn-primary {
+  background: oklch(100% 0 0deg);
+  color: var(--color-action); /* 5.7:1 on white */
+  border-color: oklch(100% 0 0deg);
+  white-space: nowrap;
+}
+
+main .band.byo .band-actions a.btn-primary:hover { background: var(--color-tint); }
+
+main .band.byo :focus-visible { outline-color: oklch(100% 0 0deg); }
+
+/* — fin: the document sheet on mist — */
+.band.fin .band-copy {
+  max-width: 920px;
+  margin-inline: auto;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  padding: clamp(24px, 5vw, 56px);
+}
+
+.band.fin .band-copy h2 { max-width: none; }
+
+/* === responsive === */
+@media (width <= 1024px) {
+  .band.byo .band-copy { gap: var(--spacing-md) var(--spacing-lg); }
+}
+
+@media (width <= 900px) {
+  .band.byo .band-copy { grid-template-columns: minmax(0, 1fr); }
+
+  .band.byo .band-actions {
+    grid-column: 1;
+    grid-row: auto;
+    justify-content: flex-start;
+    margin-top: var(--spacing-sm);
+  }
+}
+
+@media (width <= 640px) {
+  main .band.byo .band-actions a.btn-primary { width: 100%; }
+
+  .band.fin .band-actions a.btn { width: 100%; }
+}
+
+/* ---- from stripe.css ---- */
+/* band — stripe page patches (Wave B3; no shared-file edits).
+   Gaps vs blocks/band/band.css, keyed to extra authored variant tokens:
+     .band.innovators  ink cta split — the open-startups moment (proto
+                       .open-grid 1/1.1 columns; the innovators.png exhibit
+                       is a radiused plate, NOT window-chromed)
+     .band.closing     tint cta — the closing ask (badge repeat: the captured
+                       WHITE stripe-verified.svg on an ink chip between the
+                       CTA and the window-chromed exhibit) */
+
+/* — open-startups innovators — */
+.band.innovators.split .band-wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+
+.band.innovators .band-copy h2 {
+  margin-top: 0;
+  max-width: none;
+}
+
+.band.innovators .band-media .win {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.band.innovators .band-media .win-bar { display: none; }
+
+.band.innovators .band-media img { border-radius: var(--radius); }
+
+/* — closing cta — */
+.band.closing .band-copy h2 { max-width: none; }
+
+.band.closing .band-media {
+  max-width: 1000px;
+  margin: var(--spacing-lg) auto 0;
+  display: grid;
+  justify-items: center;
+  gap: var(--spacing-xl);
+}
+
+/* first media unit = the verified badge: ink chip, no window chrome */
+.band.closing .band-media .win:first-child {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  background: var(--color-fg);
+  border: 0;
+  border-radius: var(--radius);
+  overflow: visible;
+}
+
+.band.closing .band-media .win:first-child .win-bar { display: none; }
+
+.band.closing .band-media .win:first-child img {
+  width: auto;
+  height: 26px;
+}
+
+.band.closing .band-media .win:last-child { justify-self: stretch; }

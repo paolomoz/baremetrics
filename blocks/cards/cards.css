@@ -448,3 +448,115 @@
     height: 84px;
   }
 }
+
+/* ============================================================
+   MERGED per-page patches (Wave-B _patches folded in by main loop)
+   ============================================================ */
+
+/* ---- from about.css ---- */
+/* cards `roster` gaps — about (Wave B5 patch; merge into cards.css).
+   Wave A shipped the roster as a single column; the about capture is
+   2-col ≥1000px with a dotted center partition, the mailto wraps anywhere,
+   and the "The team" section head (authored default content, absorbed into
+   .cards-head) is a VISUALLY-HIDDEN sr heading in the capture.
+   Source: about-proposed.html team-roster. */
+
+/* selectors carry an extra class over cards.css so the patch wins regardless
+   of load order (head-linked in the harness, appended on merge) */
+@media (width >= 1000px) {
+  .cards.roster .cards-wrap > .team-roster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 64px;
+    position: relative;
+  }
+
+  /* dotted center partition — ledger column ruling */
+  .cards.roster .cards-wrap > .team-roster::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    border-left: var(--hairline-dotted);
+  }
+}
+
+.cards.roster .person-mail { overflow-wrap: anywhere; }
+
+/* the sr section head ("The team") */
+.cards.roster .cards-head h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- from home.css ---- */
+/* cards — home (B1) variant-gap patches; for merge into blocks/cards/cards.css.
+   Gap covered (see B1 report): the filmstrip section head's view-all link
+   ("View Open Startups") is a short <p><a> — cards.js's head classifier
+   prepends short <p>s as .meta-label BEFORE the h2, but the prototype
+   rail-head order is label · h2 · lede · link. Restore the order with flex
+   `order` and strip the uppercase meta treatment off the link line. */
+
+main .cards.filmstrip .cards-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+main .cards.filmstrip .cards-head p.meta-label:has(a) {
+  order: 5;
+  margin: var(--spacing-md) 0 0;
+  font-size: var(--body);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+main .cards.filmstrip .cards-head p.meta-label:has(a) a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+/* ---- from stripe.css ---- */
+/* cards — stripe page patches (Wave B3; no shared-file edits).
+   Keyed to the extra authored token `padded` (stripe growth-triptych +
+   insight-mosaic): the shared cards block ships padding-block 0/56 and a
+   stacked head; stripe's sections carry full section padding and the
+   prototype's .split-head (h2 left, lede right). */
+
+.cards.padded { padding-block: var(--section-padding); }
+
+.cards.padded .cards-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--spacing-lg) var(--spacing-2xl);
+  align-items: start;
+  max-width: none;
+}
+
+.cards.padded .cards-head h2 { max-width: 18ch; }
+
+.cards.padded .cards-head .section-lede {
+  margin-top: 6px;
+  max-width: 54ch;
+}
+
+@media (width <= 1024px) {
+  .cards.padded .cards-head { gap: var(--spacing-lg) var(--spacing-xl); }
+}
+
+@media (width <= 900px) {
+  .cards.padded .cards-head { grid-template-columns: minmax(0, 1fr); }
+
+  .cards.padded .cards-head .section-lede { margin-top: 0; }
+}
