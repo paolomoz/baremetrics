@@ -133,11 +133,14 @@ export default async function decorate(block) {
         actionsSeen = true;
       } else {
         /* prose note with an inline link (integration preview note).
-           DA unwraps a single-text cell's <p> to a bare <div> (#79), so when
-           there's no <p>, MOVE the cell's child nodes (incl. the <a>) into a
-           new <p> — never text(cell), which would drop the inline link. */
-        let np = cells[0].querySelector('p');
-        if (!np) { np = el('p'); while (cells[0].firstChild) np.append(cells[0].firstChild); }
+           ak.js wraps the cell's leading text in a <p> and leaves the bare
+           <a> as a SIBLING, so querySelector('p') alone drops the link.
+           Flatten ALL of the cell's child nodes (unwrapping any inner <p>)
+           into one note <p> so text + <a> + trailing text are all preserved. */
+        const np = el('p');
+        [...cells[0].childNodes].forEach((n) => {
+          if (n.nodeName === 'P') { while (n.firstChild) np.append(n.firstChild); } else np.append(n);
+        });
         model.note = np;
       }
       return;
