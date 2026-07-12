@@ -137,3 +137,39 @@ Files: `blocks/article-head/*`, `blocks/transcript/*`, `templates/article/articl
   foundation-scale choices, consistent site-wide. (3) band form title renders 700 body-font
   (Wave-A band.css) vs proto's 800 heading-font `.nl-title` — locked Wave-A shape.
   (4) JSON-LD per-page not carried (known gap, logged site-wide).
+
+## Deploy + post-deploy reconcile (2026-07-12)
+
+**Deployed:** code branch `stardust-conversion` → github.com/paolomoz/baremetrics (Code Sync);
+content → DA `/paolomoz/baremetrics` via deploy-batch (PUT→preview→live, sanitised from
+`content-staged/`). All 15 pages delivered `live`, 0 failed.
+
+**Live URLs:** `https://stardust-conversion--baremetrics--paolomoz.aem.live/<path>` (branch;
+production `main` deliberately untouched — merge branch→main to promote).
+
+**Merge step (was pending, now done):** the 23 Wave-B `_patches/*.css` were only linked in local
+QA harnesses — EDS loads `blocks/<name>/<name>.css` only, so they were MISSING live. Folded all 23
+into their block CSS (scoped by per-page variant classes; patch dirs removed). This is the load-bearing
+fix the Wave-B `_patches` convention intends.
+
+**Post-deploy content-diff (live, per template):** 0 structural 🔴 on all 15.
+- 2 reds found + fixed: (a) customers form label rendered VISIBLE meta-label vs prototype sr-only →
+  fixed by the merged masthead/customers patch (clip sr-only); (b) founder-chats newsletter title
+  rendered small-eyebrow vs 28px title → fixed by the merged band `.band.form .band-eyebrow` override.
+- 1 red found + fixed in block JS: stripe "our live preview" → demo.baremetrics.com link dropped.
+  ROOT CAUSE (#79 variant): ak.js wraps the note cell's leading text in a `<p>` and leaves the bare
+  `<a>` a SIBLING; feature-hero's `querySelector('p')` grabbed only the text. Fixed by flattening ALL
+  note-cell child nodes (unwrapping inner `<p>`) into one paragraph. Committed + re-verified 56/56.
+- Advisory only (accepted): founder-chats toc rail labels ("Table of Contents"/"More Articles") land
+  in eyebrow/cta role buckets vs the prototype's heading bucket — chrome, not dropped content;
+  glossary 1 non-structural advisory.
+
+**Final computed-layout gate (live aem.live, all 15):** 200 · one h1 · every block decorated ·
+grids/flex compute (no `.block`-scoping display:block fallback) · 0 broken images · 0 pageerrors.
+open-startups' earlier `gridflex:0` was a false negative (2-level probe depth + masthead `art` uses
+absolute positioning; `.rev-row` grid confirmed at depth 3).
+
+**Known deferrals (recorded):** per-page JSON-LD not injected (Organization/WebSite JSON-LD ships
+site-wide via head.html; page-type structured data deferred); subscribe/search forms are non-submitting
+chrome (owner decision: replace HubSpot); 156 origin links to unmigrated inventory pages remain
+absolute (scoped-run carve-out); proprietary-font licensing N/A (Inter is OFL).
