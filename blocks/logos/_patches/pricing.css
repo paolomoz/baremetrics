@@ -1,0 +1,32 @@
+/* logos _patch (B2, pricing) — `trust` variant: the trust-at-decision
+   logo strip (centered meta-label + 18px ruled marks on the section's mist
+   ground, flowing into the customer-record quote below).
+   Source: pricing-proposed.html [data-section="trust-at-decision"]. */
+
+.logos.trust { padding-block: var(--section-padding) 0; }
+
+.logos.trust .logo-strip-label {
+  margin-top: 0;
+  text-align: center;
+}
+
+.logos.trust .logo-cells {
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.logos.trust .logo-cells li {
+  min-height: 52px;
+  padding: 8px 12px;
+}
+
+.logos.trust .logo-cells img { height: 18px; }
+
+@media (width <= 640px) {
+  .logos.trust .logo-cells li {
+    padding: 10px 14px;
+    min-height: 56px;
+  }
+
+  .logos.trust .logo-cells img { height: 22px; }
+}

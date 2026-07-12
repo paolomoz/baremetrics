@@ -1,0 +1,15 @@
+/* masthead _patch (B2, pricing) — `center` variant: the pricing-hero
+   statement is a CENTERED h1 (Wave A's masthead is left-anchored).
+   Source: pricing-proposed.html section[data-section="pricing-hero"].
+   The annual switch + note that follow the h1 in the prototype hero are
+   owned by the rate-card block (they need role=switch semantics). */
+
+.masthead.center {
+  text-align: center;
+  padding-block: var(--section-padding) calc(var(--section-padding) - 24px);
+}
+
+.masthead.center h1 {
+  max-width: 24ch;
+  margin-inline: auto;
+}

@@ -1,0 +1,216 @@
+/* compare-table — grouped comparison matrix (The Ledger).
+   CSS lifted verbatim from compare-profitwell-alternative-proposed.html,
+   scoped `.compare-table` (blockWrapperClass NONE). True tables, hairline
+   rows, NO zebra; ✓ = action, ✗ = var(--color-x) (Mode A+ recolor).
+   `.ct-wrap` carries the max-width container (#13/#74); `.ct-head` holds the
+   reabsorbed section prose (matrix statement / capability-gap entry type).
+   Variant `gap`: a ruled ledger entry (border-top + section rhythm).
+   ≤640px: role-RETAINING stacked collapse — the markup's explicit ARIA
+   table roles survive these display overrides. */
+
+.compare-table { padding-block: var(--section-padding); }
+
+.compare-table.gap { padding-block: 0 var(--section-padding); }
+
+.compare-table .ct-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.compare-table.gap .ct-wrap {
+  border-top: 1px solid var(--color-hairline);
+  padding-top: var(--section-padding);
+}
+
+/* — head prose — */
+.compare-table .ct-head h2 + p {
+  font: 700 clamp(19px, 1.8vw, 22px) / 1.5 var(--body-font-family);
+  color: var(--color-fg);
+  max-width: 52ch;
+  margin-top: var(--spacing-md);
+}
+
+.compare-table .ct-head p {
+  color: var(--color-slate);
+  max-width: 68ch;
+  margin-top: var(--spacing-md);
+}
+
+/* gap entries: lowercase action kicker (h3) + claim + body */
+.compare-table .ct-head h3 {
+  font: 700 14px / 1.4 var(--heading-font-family);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-action);
+}
+
+/* gap 1 carries the section h2 ("Capability Gaps") above its entry kicker */
+.compare-table .ct-head h2:has(+ h3) { margin-bottom: var(--spacing-xl); }
+
+.compare-table .ct-head h3 + p {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, var(--heading-lg));
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+  max-width: 26ch;
+  margin-top: var(--spacing-md);
+  text-wrap: balance;
+}
+
+.compare-table .ct-head p strong {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg);
+}
+
+/* — the tables — */
+.compare-table .cmp-wrap { margin-top: var(--spacing-xl); }
+
+.compare-table .cmp-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.compare-table .cmp-table thead th {
+  padding: 0 16px 14px 0;
+  border-bottom: 1px solid var(--color-fg); /* head ruling reads stronger than row hairlines */
+  vertical-align: bottom;
+  font: 600 15px / 1.4 var(--body-font-family);
+  color: var(--color-fg);
+}
+
+.compare-table .col-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-table .col-brand img { width: auto; }
+
+.compare-table .col-brand .wm-bm { height: 22px; }
+
+.compare-table .col-brand .wm-pw { height: 20px; }
+
+.compare-table .col-suffix {
+  color: var(--color-slate);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.compare-table .cmp-table tbody th,
+.compare-table .cmp-table tbody td {
+  padding: 20px 16px 20px 0;
+  border-top: 1px solid var(--color-hairline);
+  vertical-align: top;
+}
+
+.compare-table .cmp-table tbody tr:first-child th,
+.compare-table .cmp-table tbody tr:first-child td { border-top: 0; }
+
+.compare-table .cmp-table tbody tr:last-child th,
+.compare-table .cmp-table tbody tr:last-child td { border-bottom: 1px solid var(--color-hairline); }
+
+.compare-table .cmp-table tbody th {
+  font: 600 var(--body) / 1.45 var(--body-font-family);
+  color: var(--color-fg);
+  padding-right: 24px;
+}
+
+.compare-table .cmp-table tbody td {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-slate);
+}
+
+.compare-table .cmp-main col.c-feature { width: 24%; }
+
+.compare-table .cmp-main col.c-bm { width: 30%; }
+
+.compare-table .cmp-main col.c-pwm { width: 25%; }
+
+.compare-table .cmp-main col.c-pwr { width: 21%; }
+
+.compare-table .cmp-sub col.c-feature { width: 28%; }
+
+.compare-table .cmp-sub col.c-a,
+.compare-table .cmp-sub col.c-b { width: 36%; }
+
+.compare-table .cell {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.compare-table .cell > svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.compare-table .gl-yes { color: var(--color-action); } /* ✓ = action (Ledger: ink or action) */
+
+.compare-table .gl-no { color: var(--color-x); } /* ✗ = deepened red-x */
+
+.compare-table .cell-na { color: var(--color-slate); }
+
+.compare-table .data-col-label { display: none; } /* stacked-view column labels */
+
+/* === responsive === */
+@media (width <= 900px) {
+  .compare-table .cmp-main col.c-feature { width: 26%; }
+}
+
+@media (width <= 640px) {
+  /* Matrix stacked collapse — CSS-only; the explicit ARIA table roles
+     authored in the markup keep the table semantics. */
+  .compare-table .cmp-table,
+  .compare-table .cmp-table tbody,
+  .compare-table .cmp-table tbody tr,
+  .compare-table .cmp-table tbody th,
+  .compare-table .cmp-table tbody td { display: block; }
+
+  .compare-table .cmp-table col { width: auto; }
+
+  .compare-table .cmp-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .compare-table .cmp-table thead th { display: block; }
+
+  .compare-table .cmp-table tbody tr {
+    padding: 18px 0;
+    border-top: 1px solid var(--color-hairline);
+  }
+
+  .compare-table .cmp-table tbody tr:first-child { border-top: 0; }
+
+  .compare-table .cmp-table tbody tr:last-child { border-bottom: 1px solid var(--color-hairline); }
+
+  .compare-table .cmp-table tbody th,
+  .compare-table .cmp-table tbody td {
+    padding: 0;
+    border: 0 !important;
+  }
+
+  .compare-table .cmp-table tbody td { margin-top: var(--spacing-md); }
+
+  .compare-table .data-col-label {
+    display: block;
+    font: 600 var(--eyebrow) / 1.4 var(--body-font-family);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-slate);
+    margin-bottom: 4px;
+  }
+}

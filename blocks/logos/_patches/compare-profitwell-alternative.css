@@ -1,0 +1,31 @@
+/* logos _patch (B2, compare) — `int` variant: the integrations strip
+   (centered meta-label + 20px ruled provider marks, tucked under the
+   versus masthead).
+   Source: compare-profitwell-alternative-proposed.html
+   [data-section="integrations"]. */
+
+.logos.int { padding-block: 0 var(--section-padding); }
+
+.logos.int .logo-strip-label {
+  margin-top: 0;
+  text-align: center;
+}
+
+.logos.int .logo-cells {
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.logos.int .logo-cells li {
+  min-height: 52px;
+  padding: 8px 16px;
+}
+
+.logos.int .logo-cells img { height: 20px; }
+
+@media (width <= 640px) {
+  .logos.int .logo-cells li {
+    padding: 10px 14px;
+    min-height: 56px;
+  }
+}

@@ -1,0 +1,260 @@
+/* rate-card — pricing connected 3-plan table (The Ledger).
+   CSS lifted verbatim from pricing-proposed.html, scoped `.rate-card`
+   (blockWrapperClass NONE — never `.rate-card.block`). The prototype's
+   `.rate-card` grid class is renamed `.rc-grid` here (the block root owns
+   the name); `.rc-wrap` carries the max-width container (#13/#74).
+   Growth column = ink inversion (white 12.4:1; footer-muted 6.63:1) —
+   the pricing fingerprint's ARTICLE.plan variant idx 1. */
+
+.rate-card { padding-block: 0 var(--section-padding); }
+
+.rate-card .rc-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* — inert annual switch (captured default: checked/annual) — */
+.rate-card .discount-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.rate-card .toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius);
+  font: 600 var(--body-sm) / 1.4 var(--body-font-family);
+  color: var(--color-slate); /* 5.7:1 */
+  cursor: default;
+}
+
+.rate-card .toggle-track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: var(--radius-chip);
+  background: var(--color-action); /* checked (annual) state */
+  flex-shrink: 0;
+}
+
+.rate-card .toggle-knob {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: oklch(100% 0 0deg);
+}
+
+.rate-card .annual-note {
+  font-size: 14px;
+  color: var(--color-slate);
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* — ONE hairline-framed connected table — */
+.rate-card .rc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.rate-card .plan {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 40px) clamp(20px, 2.5vw, 32px);
+}
+
+.rate-card .plan + .plan { border-left: 1px solid var(--color-hairline); }
+
+.rate-card .plan-head {
+  display: flex;
+  align-items: center; /* identical head box in all three columns — rows share rulings */
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  min-height: 35px;
+  height: 35px;
+}
+
+.rate-card .plan h2 {
+  font-size: var(--heading-lg);
+  letter-spacing: -0.01em;
+}
+
+.rate-card .plan-desc {
+  color: var(--color-slate);
+  font-size: 15px;
+  margin-top: var(--spacing-sm);
+  max-width: 40ch;
+}
+
+.rate-card .plan > .meta-label {
+  display: block;
+  margin-top: var(--spacing-lg);
+}
+
+.rate-card .plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: var(--spacing-sm);
+}
+
+.rate-card .plan-price .figure {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--figure-tracking);
+  color: var(--color-fg);
+  line-height: 1;
+  font-size: clamp(44px, 4vw, 54px);
+}
+
+.rate-card .price-cur {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--color-fg);
+  align-self: flex-start;
+  line-height: 1.4;
+}
+
+.rate-card .price-per {
+  color: var(--color-slate);
+  font-weight: 600;
+  font-size: var(--body);
+}
+
+.rate-card .plan a.btn-primary {
+  margin-top: var(--spacing-lg);
+  width: 100%;
+}
+
+.rate-card .plan-arr {
+  margin-top: var(--spacing-md);
+  font-size: 15px;
+  align-self: flex-start;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-action);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.rate-card .plan-integration {
+  color: var(--color-slate);
+  font-size: 15px;
+}
+
+.rate-card .plan-includes {
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.rate-card .plan-features {
+  list-style: none;
+  margin: var(--spacing-md) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.rate-card .plan-features li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 15px;
+}
+
+.rate-card .plan-features li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 11px;
+  height: 6px;
+  border-left: 2px solid var(--color-action);
+  border-bottom: 2px solid var(--color-action);
+  transform: rotate(-45deg);
+}
+
+/* — Growth: the ink money-moment (fingerprint variant idx 1) — */
+.rate-card .plan-growth { background: var(--color-fg); }
+
+.rate-card .plan-growth h2,
+.rate-card .plan-growth .plan-price .figure,
+.rate-card .plan-growth .price-cur,
+.rate-card .plan-growth .plan-features li { color: oklch(100% 0 0deg); }
+
+.rate-card .plan-growth .plan-desc,
+.rate-card .plan-growth .meta-label,
+.rate-card .plan-growth .price-per,
+.rate-card .plan-growth .plan-integration,
+.rate-card .plan-growth .plan-includes { color: var(--color-footer-muted); }
+
+.rate-card .plan-growth .plan-includes { border-top-color: oklch(100% 0 0deg / 25%); }
+
+.rate-card .plan-growth .plan-features li::before { border-color: oklch(100% 0 0deg); }
+
+.rate-card .plan-growth .plan-arr { color: oklch(100% 0 0deg); }
+
+.rate-card .plan-growth .plan-arr:hover { color: var(--color-footer-muted); }
+
+main .rate-card .plan-growth a.btn-primary {
+  background: oklch(100% 0 0deg);
+  color: var(--color-action);
+  border-color: oklch(100% 0 0deg);
+}
+
+main .rate-card .plan-growth a.btn-primary:hover { background: var(--color-tint); }
+
+.rate-card .plan-growth :focus-visible { outline-color: oklch(100% 0 0deg); }
+
+/* — OR: captured divider, meta-label on the hairline ruling — */
+.rate-card .or-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.rate-card .or-divider::before,
+.rate-card .or-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--color-hairline);
+}
+
+/* === responsive === */
+@media (width <= 900px) {
+  .rate-card .rc-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .rate-card .plan + .plan {
+    border-left: 0;
+    border-top: 1px solid var(--color-hairline);
+  }
+}
+
+@media (width <= 640px) {
+  .rate-card .plan-price .figure { font-size: 44px; }
+}
