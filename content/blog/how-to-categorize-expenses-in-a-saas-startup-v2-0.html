@@ -1,0 +1,132 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Organize SaaS Expenses: COGS &amp; Chart of Accounts</div></div>
+      <div><div>Description</div><div>The main benefits of categorizing your SaaS company’s expenses are more accurate metrics and forecasts, and getting a better understanding of your company’s overall spending.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Blog</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to Categorize Expenses in a SaaS Startup v2.0</h1></div></div>
+      <div><div><p>By Swapnil Jain on December 07, 2023 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddc60911568aa5df03c117b_R_D-COA-1024x314.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>The main benefits of categorizing your SaaS company’s expenses are more accurate metrics and forecasts, and getting a better understanding of your company’s overall spending.</p>
+    <p>This is a v2.0 of my original post published on Baremetrics, converted and updated to a series of articles. The “rules” haven’t changed since last year, but we have gotten a lot of questions as to how to apply the rather generic advice in practice. This series attempts to give practical advice to SaaS CEOs and Founders on how to organize and automate their financial backend, giving them freedom to spend time with more value-adding parts of their business like financial planning.</p>
+    <p>After reading each post, you should be able to add your own comments and forward the article to your Accountant or Director of Ops for implementation.</p>
+    <p>Here’s an overview of the series:</p>
+    <p>Part 1: How to Categorize Expenses in a SaaS Startup v2.0</p>
+    <p>Part 2: How to Automate your SaaS Expenses – Payroll with Gusto and QuickBooks</p>
+    <p>Part 3: How to Automate your SaaS Expenses – QuickBooks Bank Rules</p>
+    <p>Part 4: How to Choose SaaS Billing Software</p>
+    <p>This post – Part 1 – focuses on how to categorize your SaaS expenses properly by using QuickBooks or Xero, and what are the benefits of doing so.</p>
+    <p>The main expense categories for any SaaS company are:</p>
+    <p>Research &amp; Development</p>
+    <p>These four categories are the standard for describing costs and expenses of any SaaS company from Salesforce to Zoom to your startup. Yet it never ceases to amaze me why so many accountants insist on creating their own set of categories, leaving you to figure out how to calculate your Gross Margin or CAC – without knowing what are your Cost of Revenue or Sales &amp; Marketing costs to begin with.</p>
+    <p>To illustrate this better, take a look at the expense breakdown below for a made-up $6MM ARR SaaS company.</p>
+    <p>The company grew their total spend from $390k/mo to $750k/mo during 2018. Even without any breakdowns, obviously the CEO was fully aware of the company’s increased spending in sales and marketing. Indeed, if you blow up their Sales &amp; Marketing spend below, you can see how their S&amp;M spend was driving half of the expense growth.</p>
+    <p>What might have been less clear for the CEO is whether this spend has been sustainable. What’s their new CAC Payback Time? CAC:LTV? New Gross Margins? I personally find it surprising that a SaaS company’s forecast may often include such an expense breakdown – as it should – but the company’s actuals are a mere black box.</p>
+    <p>Let’s start with your Cost of Revenue.</p>
+    <p>There’s somehow always the “question” of what goes into SaaS Cost of Goods Sold, as if there’s plenty of room for interpretation. Jason Cohen breaks down the question in his Quora post. The gist of it is that Cost of Revenue includes costs that go into providing your Software as a Service.</p>
+    <p>While not a GAAP-metric, it’s widely adopted and understood (examples here, here and here). You’ll need Cost of Revenue to calculate your Gross Margin, which in turn you need to calculate Customer Lifetime Value (LTV), Customer Acquisition Cost (CAC) Payback Time and to understand your company’s unit economics in general.</p>
+    <p>Hosting</p>
+    <p>AWS / Google Cloud / Azure</p>
+    <p>Payroll – Customer Support</p>
+    <p>Service Delivery Costs</p>
+    <p>Twilio, Sendgrid</p>
+    <p>Merchant Fees</p>
+    <p>Stripe, Braintree</p>
+    <p>You should also include software that helps your support team, such as Help Scout, or your Devops, such as CircleCI. It’s up to you if you want to group up all software in one category under Cost of Revenue, or several software categories under hosting, support, and service delivery.</p>
+    <p>Now, you need to take this from the high level into action.</p>
+    <p>Open QuickBooks Online, and navigate to Accounting on the left sidebar. Your company’s Chart of Accounts will open up, which is just a fancy name for a list of all of your expense categories (=accounts).</p>
+    <p>We’re using a SaaS-specific term Cost of Revenue, but QuickBooks and many traditional businesses call this category Cost of Goods Sold. Keep an eye on the Type column, and scroll down to see what do you currently have stowed away in there.</p>
+    <p>Start by creating a new account from clicking the button New on the top-right.</p>
+    <p>Set the Category Type as Cost of Goods Sold and give a name for the account. Let’s start with Payroll – Support. You’ll also have to select a Detail Type, but I haven’t found this setting to be particularly useful. You could set the Detail Type as Cost of Labor for payroll expenses, and Other for anything else.</p>
+    <p>As the last step of adding an account, make sure you select the checkbox to mark this account to be a sub-account of the larger category Customer Support, as using account -&gt; subaccount structure will give your books a cleaner look.</p>
+    <p>Next, repeat this process for the Wages, Payroll Taxes and Employee Benefits, and make sure they all are subaccounts of Payroll – Support. After that you can add any other Customer Support subaccounts, before moving on to creating another major category such as Merchant Fees.</p>
+    <p>As a result, you should see something like this in your QuickBooks:</p>
+    <p>The goal for separating your Sales &amp; Marketing from other expenses is to enable the calculation of CAC, but also to use the S&amp;M spend as a driver to forecast your revenue.</p>
+    <p>For example, if you know your advertising spend is $20,000 a month and it results in 200 new customers, your CAC is $100. Now, if you also know that your Cost Per Click (CPC) is $1, and conversion to trial averages 10% and further conversion to paid is 10%, you can use the advertising spend as a driver to forecast future revenue.</p>
+    <p>If spending $20,000 meant 200 new customers, spending $25,000 would result in 250. Although the conversion rates would eventually drop as lower quality leads would come to your site, you could account for that in your forecast. In the end, the goal here is to get a more accurate forecast than putting a finger into the air and declaring 10% month-over-month growth ad infinitum.</p>
+    <p>To do all this, you need to divide up your Sales &amp; Marketing to Sales, and Marketing sections, respectively. Which are then categorized further using subaccounts.</p>
+    <p>Here are some typical categories that fall under Sales:</p>
+    <p>Payroll</p>
+    <p>Software &amp; Tools</p>
+    <p>Salesforce, Pipedrive, other CRMs</p>
+    <p>Travel – Sales</p>
+    <p>Costs related to sales people travelling to see clients</p>
+    <p>If your sales team is entirely inbound, you probably won’t need a separate sales travel category but can combine it with your General &amp; Admin. Also, if your sales team is fairly large and includes inbound and outbound reps and SDRs, it’s probably worth it to break those out as separate subaccounts under Payroll – Sales.</p>
+    <p>In QuickBooks, start by creating a top-level account called Sales &amp; Marketing with a Category Type Expense. Add Sales as one the subaccounts. Next, add Payroll – Sales as a subaccount of Sales, and add its’ subaccounts of Wages, Payroll Taxes, Benefits and Commissions. Follow the process for the rest of the categories such as Software &amp; Tools – Sales.</p>
+    <p>Here are some typical categories that fall under Marketing:</p>
+    <p>Advertising</p>
+    <p>Adwords, Facebook, Other Digital Ads</p>
+    <p>Conferences</p>
+    <p>Payroll</p>
+    <p>Promotional</p>
+    <p>Swag, business cards, posters</p>
+    <p>Software &amp; Tools – Marketing</p>
+    <p>Hubspot, Intercom (if used for acquisition), Mailchimp</p>
+    <p>If traveling to conferences or events is a significant part of your Marketing team’s spend, it might be worth splitting out.</p>
+    <p>In QuickBooks, add “Marketing” account as a subaccount of Sales &amp; Marketing. As usual, follow by adding Payroll – Marketing as a subaccount of Marketing, and don’t forget the payroll subaccounts. Subaccounts for everyone! Follow the process for the rest of the categories such as Software &amp; Tools – Marketing.</p>
+    <p>There are fewer direct benefits from splitting out your tech team from the rest of the expenses, but I still recommend doing it.</p>
+    <p>First of all, you should compare your current engineering spend and compare it against your forecast. A good way to do that is to look at the R&amp;D spend as a % of your revenue. This is a good sanity check to see if you are spending enough in your tech in your forecasts and even enables you to benchmark yourself against other SaaS companies. For example, somewhat lesser-known fact about Zoom’s obviously superior video call tech is the fact that they invest less than half than an average SaaS company to their R&amp;D, given that their Engineering offices are based in a lower-cost countries.</p>
+    <p>Here are typical categories that fall under R&amp;D:</p>
+    <p>Contractors</p>
+    <p>Payroll</p>
+    <p>Software &amp; Tools</p>
+    <p>Github, Jira, even software like Bugsnag that helps you to build a better product</p>
+    <p>If you have a larger R&amp;D team, I’d split out the Engineering team from the Product and Design teams under in the payroll section.</p>
+    <p>In QuickBooks, start by creating a top-level expense account called Research &amp; Development, and add Payroll – R&amp;D as one the subaccounts. (Don’t forget the payroll’s subaccounts). You’ll probably want to include Contract Labor – R&amp;D for any product-related contractors you work with. Finally, add the software account.</p>
+    <p>R&amp;D is typically a rather concise section consisting mostly of engineering payroll, so don’t be surprised if you total only a few accounts here.</p>
+    <p>As far as expenses go, almost everything else can be categorized under General &amp; Admin (or just G&amp;A). This means things like rent or the accountant fees, but also your C-level managers and their assistants.</p>
+    <p>If you are a smaller team, I recommend not to categorize your CTO or the Sales Leader in G&amp;A until they have at least a few people in their teams. Otherwise it looks like you have a huge overhead and little to no Sales or Engineering expenses, which defeats the purpose of this exercise.</p>
+    <p>Here are some of the typical categories that fall under General &amp; Admin:</p>
+    <p>Insurance</p>
+    <p>Meals</p>
+    <p>Office Expenses</p>
+    <p>Equipment, supplies, postage</p>
+    <p>Payroll</p>
+    <p>Professional Services</p>
+    <p>Accounting, executive coach, legal</p>
+    <p>Rent</p>
+    <p>Software &amp; Tools</p>
+    <p>Hellosign, Chargebee, Slack, etc.</p>
+    <p>Travel</p>
+    <p>Utilities</p>
+    <p>In QuickBooks, add “General &amp; Admin” expense account. Now, setting up G&amp;A is a little different from previous sections. Given you’re probably working with a business that already has a Chart of Accounts, you will need to move some of your existing accounts as subaccounts under G&amp;A. Probably most of them.</p>
+    <p>I usually recommend renaming the existing payroll accounts as the Payroll – G&amp;A, and adding the typical tax &amp; benefit subaccounts if they don’t exist already. While you could create a completely new set of accounts for G&amp;A, there are rarely any benefits of doing so.</p>
+    <p>Instead of adding a screenshot of a fairly long list of accounts, here’s a SaaS Chart of Accounts template. It won’t have all the accounts you need, but it should give you a solid start that you can then modify to your needs.</p>
+    <p>These changes should improve the visibility of your past performance but also make your future forecasts more accurate. You’ll get cleaner-looking books that are easier to understand and share with your board or investors.</p>
+    <p>And remember. SaaS Cost of Revenue = Hosting and Support.</p>
+    <p>Note: This is not a tax or accounting advice. I’m not a CPA or a lawyer, and you should consult with yours before making any permanent changes to your books.</p>
+    <p>What are S&amp;M expenses in a SaaS company? S&amp;M expenses in a SaaS company are all costs directly tied to acquiring and converting customers, split into two distinct buckets: Sales, which covers salesperson payroll, commissions, CRM software, and sales travel, and Marketing, which covers advertising spend, conference costs, marketing payroll, and tools like email platforms. Keeping these costs separate from your Cost of Revenue and G&amp;A is not just tidy accounting. It is what makes it possible to calculate your customer acquisition cost, model CAC payback time, and use your actual sales and marketing spend as a reliable driver in your revenue forecast rather than guessing at a growth percentage.</p>
+    <p>What is included in SaaS cost of sales, and how is it different from S&amp;M expenses? SaaS cost of sales, also called Cost of Revenue, covers the costs required to deliver your product to paying customers: hosting on AWS, Google Cloud, or Azure, customer support payroll, merchant fees from processors like Stripe or Braintree, and service delivery tools like Twilio or SendGrid. S&amp;M expenses are entirely separate and cover the costs of acquiring those customers in the first place, including ad spend, sales headcount, and marketing software. Confusing the two makes it impossible to calculate an accurate gross margin, and without gross margin you cannot derive a reliable LTV or CAC payback period, which are the unit economics that tell you whether your growth is actually sustainable.</p>
+    <p>How do I calculate customer acquisition cost from my S&amp;M expenses? Customer acquisition cost is calculated by dividing your total sales and marketing expenses for a given period by the number of new customers acquired in that same period. To get a number you can actually act on, you first need your books structured so that S&amp;M costs are cleanly separated from Cost of Revenue, R&amp;D, and G&amp;A, otherwise you are dividing an inflated or incomplete number. Once your chart of accounts is set up correctly in QuickBooks or Xero with sales and marketing as distinct sub-categories, you can pull the exact spend figure, divide by new customers, and then use that CAC alongside your LTV data in a platform like Baremetrics to track whether your acquisition cost is trending in a direction your gross margin can support.</p>
+    <p>How much should a SaaS startup spend on sales and marketing as a percentage of revenue? There is no single right answer, but for most growth-stage SaaS companies, sales and marketing expenses typically run between 25 and 50 percent of revenue, with earlier-stage or faster-growing businesses sitting at the higher end of that range. What matters more than the absolute percentage is whether you can see it clearly and model it forward. When your S&amp;M costs are properly categorised in your chart of accounts, you can track this ratio over time, compare it against your CAC and payback period, and use it as a forecasting input rather than a residual line item. Baremetrics publishes open benchmark data across hundreds of SaaS companies, which gives you a concrete reference point for whether your sales and marketing spending is in line with businesses at a similar MRR stage.</p>
+    <p>How do I set up a SaaS chart of accounts for sales and marketing expenses in QuickBooks? Setting up your SaaS chart of accounts for S&amp;M expenses in QuickBooks starts with creating a top-level Expense account called Sales and Marketing, then adding Sales and Marketing as separate sub-accounts beneath it. Under Sales, you create sub-accounts for payroll items like wages, payroll taxes, benefits, and commissions, plus accounts for CRM software and sales travel. Under Marketing, you add sub-accounts for advertising channels, conference costs, marketing payroll, and marketing-specific software. Using this parent-to-sub-account structure keeps your books readable, makes it straightforward to pull the total S&amp;M figure when calculating your customer acquisition cost formula, and gives you a clean foundation for building a forecast where advertising spend or headcount drives projected new customer volume rather than an assumed growth rate.</p>
+    <p>Swapnil is a seasoned Chartered Accountant with a decade of experience across both budding startups and large international companies. He has always been at the heart of financial strategy, bringing a touch of personal commitment and passion.</p>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Swapnil Jain</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

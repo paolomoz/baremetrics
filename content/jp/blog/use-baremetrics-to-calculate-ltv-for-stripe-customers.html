@@ -1,0 +1,87 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Stripe決済の顧客のLTVを計算する方法 - Baremetrics Japan</div></div>
+      <div><div>Description</div><div>オンラインでビジネスを運営するには、顧客とその請求書を管理するためのCRM(顧客関係管理)ソフトウェアパッケージや支払いプロセッサが必要になる可能性があります。これは様々な地域に住む多くの顧客の情報を手作業で処理することが難しいためです。</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/jp/blog">← ブログ</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Stripe決済の顧客のLTVを計算する方法 - Baremetrics Japan</h1></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Tomotaka Endo 2021 10 24</p>
+    <p><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/rectangle_large_type_2_0bfc42908754ec25006c35559c5b5c86.png" alt="" loading="lazy" decoding="async"></p>
+    <p>オンラインでビジネスを運営するには、顧客とその請求書を管理するための<a href="https://www.salesforce.com/jp/hub/crm/what-is-crm/">CRM(顧客関係管理)</a>ソフトウェアパッケージや支払いプロセッサが必要になる可能性があります。これは様々な地域に住む多くの顧客の情報を手作業で処理することが難しく、競争の激しい市場では、そうした手作業によって起こるミスさえも許されないためです。</p>
+    <p><a href="https://stripe.com/en-se">Stripe</a>は定期的な収益ストリームを処理できるため、SaaSビジネスに最適な支払い処理業者であることがよくあります。</p>
+    <p>ただしStripeに含まれている基本的な分析ダッシュボードには、そのビジネスの成長を最大化するために必要なすべての機能が全て提供されているわけではありません。実際、SaaSビジネス各社は顧客データを最大限に活用するために、基本的なSaaSメトリックから財務予測、顧客セグメンテーションといったすべてをStripeではない他の分析ダッシュボードに依存することもよくあります。</p>
+    <p>ここで最も重要な指標の1つが<a href="https://baremetrics.com/jp/blog/ltv-part1">LTV(顧客生涯価値)</a>です。LTVとは契約期間中に平均的な顧客が獲得した収益の合計額です。単純な概念のように聞こえるかもしれませんが、LTV計算に必要なユーザーあたりのARPU(平均収益)と解約率の計算は、他の多くをデータを用いて計算されるため複雑です。</p>
+    <p>顧客が価格帯を変更したり、アドオンを購入したり、<a href="https://baremetrics.com/jp/blog/usage-based-pricing">従量制の価格設定</a>を実装したりする傾向がある場合は、この複雑さは増加する可能性があります。</p>
+    <p>Stripeの顧客のLTVを関連するすべてのメトリックとともに計算する場合、<a href="https://baremetrics.com/jp/">Baremetrics</a>が優れています。 Baremetricsは、MRR、ARR、LTV、ARPU、チャーン、総顧客数など、ビジネスに関する26のメトリックを提供するビジネスメトリックツールです。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>は支払いゲートウェイと直接繋がっているため、顧客に関する情報は自動的にBaremetricsダッシュボードにパイプされます。</p>
+    <p><a href="https://app.baremetrics.com/">Baremetricsの無料トライアル</a>にサインアップして、サブスクリプション収益の監視を正確かつ簡単にしましょう。</p>
+    <h2 id="ltv">LTVとは何か？</h2>
+    <p><a href="https://baremetrics.com/jp/blog/ltv-part1">LTV</a>は顧客が解約する前に支払う平均金額であり、これは次のように計算できます。</p>
+    <p>LTV = ARPU×顧客生涯</p>
+    <p>たとえば、ARPUが月額60ドルで、平均契約期間が20か月の場合、LTVは60ドル×20 = 1200ドルになります。しかし、どのようにして60ドルのARPUまたは20か月の契約期間に到達するのでしょうか。</p>
+    <p>定義は単純ですが、計算は単純ではありません。これには契約の平均の長さを計算するための当て推量がたくさんあり、その当て推量を改善するための計算がたくさんあるためです。</p>
+    <p>サービスを終了するまでの顧客の存続期間、または統計的に意味のあるサンプルが離れるまでの顧客の平均存続期間を知ることはできないため、LTVは多くの場合チャーンで計算されます。</p>
+    <p>LTV = ARPU /解約率</p>
+    <p>解約率は、指定された期間（通常は毎月）にそのサービスを辞める顧客の割合です。次のように計算できます。</p>
+    <p>解約率=（顧客者数/総顧客数）×100</p>
+    <p>1000人の顧客がいて1か月の間に50人の顧客が辞める場合、解約率は（50/1000）×100 = 5％になります。</p>
+    <p>顧客が上記と同じ金額（$ 60）を毎月支払っている場合、5％の解約により、LTVは60 / 0.05 = $ 1200になります。計算では、解約率をパーセンテージではなく小数として使用する必要があることに注意してください。</p>
+    <h2 id="stripe-ltv">Stripeの顧客のLTVを計算するのが難しいのはなぜか？</h2>
+    <p>LTVは、どのように計算しても数値が固定されていないため、計算が難しい場合があります。たとえば、3つの価格帯と複数のアドオンがある場合、顧客は毎月異なる金額を費やしている可能性があります。これにより、ARPUを特定するのが難しくなる可能性があります。</p>
+    <p>これも非常に単純な例です。サービスの最初の数か月間割引を提供するか、別のクライアントを募集する場合は有料の顧客にクレジットを与える可能性があります。次に、恒久的な価格の上昇または下降にどのように対処するかという問題があります。あなたが非常に長い平均顧客生涯のうらやましい立場を持っている場合はどうなりますか？その場合、将来のARPUに割引率を適用する必要がありますか？</p>
+    <p>解約率も同様に急激な変化があります。顧客が契約期間中は解約することは少ないでしょう。しかしほとんどの企業で、その最初の請求期間の後に、サービスに満足できず解約してしまうことで顧客数の急激な落ち込みに遭遇するでしょう。この場合、指数関数を使用する方が良いのでしょうか。またそれを正確に行うにはどうすればよいでしょうか。</p>
+    <p>これらの課題はStripeだと解決できないケースが多いです。たとえばStripeの基本的な分析ダッシュボードでは、MRR、MRRの成長、LTVを計算するときに、有料の顧客とトライアルを区別できない場合があります。すべてのトライアルが有料のサインアップに変換されれば楽ですが基本的に起こり得ないでしょう。</p>
+    <h2 id="stripe-ltv-2">Stripeの顧客のLTVをどのように計算するか？</h2>
+    <p>Stripeの限られた分析ダッシュボードで、Stripeの顧客のLTVを含む、必要な収益、顧客、解約率、およびMRRの動きの指標をすべて直接計算するのは難しい場合があります。そのため、データを最大限に活用するには、ベアメトリクスを使用することが重要です。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>は、サブスクリプションベースのサービスを通じて収益をもたらす企業の収益を監視します。 Baremetricsは、Stripeなどの支払いゲートウェイと直接統合し、顧客とその行動に関する情報を非常に明確なダッシュボードに取り込むことができます。</p>
+    <p>Baremetricsは、メトリック、督促、エンゲージメントツール、および顧客インサイトを提供します。 Baremetricsが監視するものには、MRR、ARR、LTV、顧客の総数、総費用、当座比率などがあります。</p>
+    <p><a href="https://app.baremetrics.com/">Baremetricsの無料トライアル</a>にサインアップして、サブスクリプションビジネスの管理を開始してください。</p>
+    <p><img src="https://baremetrics.com/hs-fs/hubfs/Imported_Blog_Media/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2021-04-12-13_59_33-Jul-17-2023-02-03-16-3529-PM.png?width=205&amp;height=222&amp;name=%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2021-04-12-13_59_33-Jul-17-2023-02-03-16-3529-PM.png" alt="" loading="lazy" decoding="async"></p>
+    <p>ビジネス指標の分析を始めてみる</p>
+    <p>MRRやLTVなど���自動で追跡し、ビジネスの成長につなげましょう！！</p>
+    <h2 id="cac-ltv">CAC(顧客獲得コスト)とLTV</h2>
+    <p>LTVは、<a href="https://baremetrics.com/jp/blog/customer-acquisition-cost">CAC(顧客獲得コスト)</a>と組み合わせると最も価値があります。 CACは、1人の新規有料顧客を獲得するための平均コストです。 LTVはCACと組み合わされることがよくあります。 LTVとCACの比率が3の場合（つまり、CACに1ドル費やすごとにLTVで3ドルを稼ぐ）は、一般的にビジネスとして良い傾向だと見なされます。</p>
+    <p>LTVとCACの比率が3未満の場合は新しいクライアントをより少ない費用でオンボーディングする方法を見つけるか、LTVを増やす必要があります。 ARPUを改善する(価格を上げるか顧客プールにアップセルする)か、解約率を下げる(顧客の存続期間を長くする)ことで、LTVを増やすことができます。</p>
+    <p>ここで成功するにはクライアントの母集団をセグメント化し、各グループに異なるアクションを指示する必要があります。</p>
+    <h2 id="ltv-2">各顧客セグメントのLTVが何であるかを知ることは重要</h2>
+    <p>Stripeの顧客のLTVやその他の必要なSaaSメトリックをプラットフォームで直接計算しようとすると、必要な情報を取得するのが難しい場合があります。たとえば、顧客のさまざまなセグメントに基づいたLTVの変動を理解することが重要です。これはBaremetricsなら自動的に行えます。</p>
+    <p>なぜこれが重要なのか？と聞かれることがよくあります。</p>
+    <p>理由としては、あなたのビジネスをより効果的にするのを助けるからです。たとえば、アメリカ人の顧客がカナダの顧客の3倍の長さでサービスを維持していて、アメリカ人があなたのサービスからどのような価値を得ているのか、またカナダ人は反対に価値を得ていないのかを知りたい場合があります。また例えば、ソフトウェアが米国の税務コンプライアンスを念頭に置いているが、カナダの税務コンプライアンスを念頭に置いていない場合は、海外の顧客向けにその機能を開発することを検討する時期かもしれません。</p>
+    <p>一部の顧客が年払いで、他の顧客が月払いで、年次顧客がはるかに長い期間あなたのサービスを継続してくれる傾向がある場合は、年払いを選択した時の割引を増やすことをおすすめします。</p>
+    <p>3つの価格タイプを提供していて最も値段の低いタイプのLTVが他に比べて非常に低いことに気付いた場合は、それはなくすことをお勧めします。機能が低下しクライアントにアップグレードを強制することで、導入期間中は同じ価格にしていても、アップグレードの価値を理解できるようになるはずです。</p>
+    <p>これにより、あなたのプラットフォームの寿命を延ばします。</p>
+    <h2 id="section">まとめ</h2>
+    <p>LTVは、会社全体の意思決定に必要な重要な指標です。 LTVはCAC予算の計算に使用され、そのコンポーネントであるARPUとチャーンは多くの成長指標で使用されます。</p>
+    <p>ただし、LTVは全体像の一部にすぎません。他の多くの指標がなければ最適な決定を下すのは困難です。 Stripeの顧客のLTVを、これらの他のすべてのメトリックとともに、Stripeで直接計算するのは難しい場合があります。</p>
+    <p>したがって、どの支払い処理業者またはCRMを選択する場合でも、<a href="https://baremetrics.com/jp/">Baremetrics</a>を使用して販売データを監視するべきです。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>を使用すると、すべての販売データを簡単に収集して視覚化できます。クライアントが多い場合、MRR、ARR、LTVなどを計算するのは難しい場合があります。Baremetricsはあなたのためにこれらをすべてを行います。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>は、SaaSの当座比率を監視することもできます。この革新的なツールを統合することで、SaaS企業の財務分析をシームレスに行うことができます。すぐに無料トライアルを開始できます。</p>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/d7772e62c7a5f8f5f5bbdb21dc39d1d1.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="tomotaka-endo">Tomotaka Endo</h3>
+    <p>Tomo Endo is a dynamic professional with a rare blend of achievements in technology, community leadership, and sports. As the Co-Founder of Nihonium.io since August 2023 and Community Lead at Xenon Partners since September 2019, Tomo has been pivotal in driving innovation and fostering community engagement within the tech industry in Tokyo, Japan. His role in facilitating growth and providing actionable insights at Baremetrics, coupled with his contribution to MetricFire's technical monitoring community, underscores his proficiency in leveraging technology to nurture professional communities. Beyond his tech-centric endeavors, Tomo has excelled as a professional athlete in squash, achieving the no.1 ranking in Japan and a global ranking of 79th by August 2020.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#ltv">LTVとは何か？</a></li><li><a href="#stripe-ltv">Stripeの顧客のLTVを計算するのが難しいのはなぜか？</a></li><li><a href="#stripe-ltv-2">Stripeの顧客のLTVをどのように計算するか？</a></li><li><a href="#cac-ltv">CAC(顧客獲得コスト)とLTV</a></li><li><a href="#ltv-2">各顧客セグメントのLTVが何であるかを知ることは重要</a></li><li><a href="#section">まとめ</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

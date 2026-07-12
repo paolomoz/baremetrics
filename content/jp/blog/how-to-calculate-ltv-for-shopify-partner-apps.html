@@ -1,0 +1,100 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>ShopifyパートナーアプリのLTVを計算する方法 - Baremetrics Japan</div></div>
+      <div><div>Description</div><div>顧客（Shopifyストアのオーナー）に購読料を請求し、サービスのプランサイズに基づいて、月額または年額の料金を徴収します。この記事はShopifyパートナーアプリの開発者向けで、サブスクリプション顧客のLTVを計算する方法です。</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/jp/blog">← ブログ</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>ShopifyパートナーアプリのLTVを計算する方法 - Baremetrics Japan</h1></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Tomotaka Endo 2021 12 13</p>
+    <p><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/rectangle_large_type_2_367fc04479c3cdf86671bc97b5a727c3-1.png" alt="" loading="lazy" decoding="async"></p>
+    <p>アマゾンと同じように、Shopifyも最初はスノーボードを販売するシンプルなオンラインショップとしてスタートしました。冬のワンダーランドであるオタワで設立された会社としては当然のことだったのかもしれません。</p>
+    <h2 id="shopify">Shopifyパートナーアプリとは何か？</h2>
+    <p>Shopifyはエコシステムの機能を拡大するためにShopifyパートナーの強力なネットワークを構築しました。ShopifyパートナーアプリはShopifyストアオーナーにサービスやアプリを販売するサードパーティ企業です。例えば、ShopifyパートナーアプリはShopifyストアオーナーが全てのお客様にメールを送ることを可能にするかもしれません。</p>
+    <p>このアプリのオーナーは、顧客（Shopifyストアのオーナー）に購読料を請求し、サービスのプランサイズに基づいて、月額または年額の料金を徴収します。</p>
+    <p>この記事はShopifyパートナーアプリの開発者向けで、サブスクリプション顧客のLTVを計算する方法です。それでは、ShopifyパートナーアプリのLTVを計算する方法について説明します。</p>
+    <h2 id="ltv">LTVとは？</h2>
+    <p>Shopifyパートナーにとって最も重要な指標の一つは、<a href="https://baremetrics.com/jp/blog/ltv-part1">LTV(顧客生涯価値)</a>です。顧客の生涯価値とは、平均的な顧客が契約期間中に獲得した収益の総額のことです。</p>
+    <p>表面的には単純な概念ですが、LTVの計算に必要な要素として<a href="https://baremetrics.com/jp/blog/average-revenue-per-user-arpu">ARPU(ユーザーあたりの平均収入)</a>、顧客寿命、解約率の計算は、情報が多くのソースから得られるため複雑です。</p>
+    <p>この複雑さは、お客様が価格帯を変更したり、アドオンを購入したり、<a href="https://baremetrics.com/jp/blog/usage-based-pricing">使用量ベースの価格</a>を導入したりする傾向がある場合には、さらに増大します。</p>
+    <p>しかし、Shopifyパートナーはどこで彼らのアプリのメトリクスを追跡するのでしょうか？</p>
+    <h2 id="baremetrics-shopify-ltv">Baremetricsを使ってShopifyパートナーアプリのLTVを計算する</h2>
+    <p>ありがたいことに、ShopifyパートナーアプリのLTVを<a href="https://baremetrics.com/blog/saas-financial-metrics-use-baremetrics-for-all-of-your-saas-financial-metrics">関連する全てのメトリクス</a>と共に計算することに関しては、Baremetricsが優れています。Shopifyパートナーアプ���のLTVを手で計算する必要はありません。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>は、MRR、ARR、LTV、ARPU、解約、総顧客数など、ビジネスに関する26のメトリクスを提供するビジネスメトリクスツールです。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>は決済ゲートウェイと直接統合しているので、顧客に関する情報は自動的にBaremetricsのダッシュボードにパイプされます。</p>
+    <p><a href="https://app.baremetrics.com/users/sign_up">Baremetricsの無料トライアル</a>にサインアップして、サブスクリプション収益を正確かつ簡単にモニタリングしてみてはいかがでしょうか。この記事では、その簡単さを確認してください。</p>
+    <h2 id="shopify-ltv">ShopifyパートナーアプリのLTVはどのように計算するのか？</h2>
+    <p>LTV(顧客生涯価値)とは、ユーザーがあなたのアプリを購読している間に発生した平均収益のことです。これは2つの方法で計算できます。</p>
+    <h3 id="1">方法1</h3>
+    <p>LTV＝ARPU×顧客寿命</p>
+    <p>ARPU(ユーザーあたりの平均収入)は、平均的なお客様が1ヶ月に生み出す金額です。顧客寿命とは、ユーザーがアプリを継続して利用する平均的な月数のことです。</p>
+    <p>例えばARPUが200ドル/月で、平均顧客寿命が30ヶ月の場合、LTVは200ドル×30＝6000ドルとなります。計算は簡単ですが、実際に数字を出すのは大変です。</p>
+    <p>お客様の寿命は、お客様が解約した後でなければはっきりとはわかりません。平均的な顧客寿命は、統計的にある一定数の顧客が解約して初めて知ることができます。そこで便利なのが方法2です。</p>
+    <h3 id="2">方法2</h3>
+    <p>解約率＝（解約された顧客数／総顧客数）×100</p>
+    <p>LTV = ARPU / 解約率</p>
+    <p>例えば、2000人のユーザーがいて、1ヶ月の間に100人がサイトを離れたとすると、解約率は(100/2000)×100=5%となります。</p>
+    <p>上記と同じARPU（200ドル）を使用した場合、5％の解約率を10進数で表記すると（0.05）、LTVは200ドル/0.05＝4000ドルとなります。</p>
+    <p>最後に、ARPUの計算も簡単ではないことを述べておきます。ある月の<a href="https://baremetrics.com/jp/japan-blog/mrr-part1">MRR</a>を総顧客数で割ることはできますが、これではLTVのための十分な情報を得ることができません。</p>
+    <p><a href="https://baremetrics.com/blog/price-optimization-in-saas-a-series">価格の最適化</a>とは、おそらくアプリに対して永遠に同じ金額を請求することはないということであり、顧客は異なる料金のティア間を移動することができ、アドオンや利用料金があるかもしれないなど、多くの問題があるため、正確なARPU値を手で計算することは不可能であり、したがって正確なLTVも不可能です。</p>
+    <p>LTVは他の多くの指標に使用されるだけでなく、<a href="https://baremetrics.com/jp/blog/customer-acquisition-cost">CAC(顧客獲得コスト)</a>の予算化から価格設定、アプリのさらなる開発、そしてその間のすべての意思決定の中心となるため、この数値は可能な限り正確である必要があります。</p>
+    <h2 id="shopify-ltv-baremetrics">ShopifyパートナーアプリのLTVを含むすべてのメトリクスを計算するためのBaremetricsの必要性</h2>
+    <p>ShopifyパートナーアプリのLTVを含む、必要な収益、顧客、解約、MRRの動きのメトリクスをすべて計算するのは難しいです。だからこそ、データを最大限に活用するためにBaremetricsを利用することが重要です。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>はShopifyパートナーのサブスクリプション収益をモニターします。BaremetricsはShopifyと直接統合することができ、顧客とその行動に関する情報をダッシュボードに引き出すことができます。</p>
+    <p>Baremetricsはメトリクス、ダニング、エンゲージメントツール、そして顧客のインサイトを提供します。MRR、ARR、LTV、総顧客数、総経費、クイックレシオなどをモニターしています。</p>
+    <p><a href="https://app.baremetrics.com/users/sign_up">Baremetricsの無料トライアル</a>に登録して、サブスクリプションビジネスの正しい管理を始めましょう。</p>
+    <h2 id="cac-ltv">CAC(顧客獲得コスト)とLTV</h2>
+    <p>前述の通り、LTVはCAC(顧客獲得コスト)と組み合わせることで、最も多くの情報を得ることができます。CACは、新しい有料顧客を1人獲得するための平均コストです。<a href="https://baremetrics.com/jp/blog/what-is-the-ltv-to-cac-ratio">LTVとCACの比率</a>は、平均的なユーザーから得られる収益のうち、有料会員に登録してもらうために費やした費用の割合を教えてくれます。</p>
+    <p>例えばお客様にアプリを登録してもらうために、広告、コンテンツマーケティング、カスタマーサービスへの働きかけ、無料トライアルの運営などに2500ドルかかります。平均的なユーザーは、解約するまでに15,000ドルをアプリの購読に費やします。そうすると、LTVとCACの比率は、$15,000/$2500=6となります。</p>
+    <p>LTV/CAC比が3（CACに1ドル費やすごとに3ドルを稼ぐ）は一般的に持続可能と考えられているので、この場合は非常にうまくいっていると言えます。</p>
+    <p>LTVとCACの比率が3未満というのは、新しい会社では珍しくありませんが（ただし良い口コミを生み出し、ユーザーの解約を阻止し、Shopify PartnersのApp Storeのトップに表示されるほどの5つ星の評価を得るには長い時間がかかります）、長期的には問題です。</p>
+    <p>もしあなたのLTVとCACの比率が3よりも低い場合、次の質問ののうち1つ以上を対処する必要があります。</p>
+    <ol><li>どうすればユーザーに満足してもらい、より長く購読してもらうことができるか？</li><li>コンバージョン率を上げるために、セールスやマーケティングファネルを改善するにはどうしたらいいか？</li><li>ユーザー1人あたりの月間収入を増やすにはどうしたらいいか？</li></ol>
+    <p>ここで成功するためには顧客層をセグメント化し、それぞれのグループに対して異なるアクションを起こす必要があります。</p>
+    <h2 id="ltv-2">各顧客セグメントのLTVを知ることが重要</h2>
+    <p>ShopifyパートナーアプリのLTVやその他の必要なSaaS指標を単独で計算しようとすると難しいです。また粗い計算になってしまい、指標の実用性が低下してしまいます。</p>
+    <p>例えばショップの年齢、場所、平均価格帯、加入しているサービス層など、顧客の異なるセグメントに基づくLTVの変動を理解することが重要です。<a href="https://baremetrics.com/jp/">Baremetrics</a>ならこれを自動的に行うことができます。</p>
+    <h2 id="shopify-customer-apps-ltv">なぜShopify Customer AppsのLTVをセグメント化することが重要なのか？</h2>
+    <p>セグメントごとにメトリクスを計算することで、より効果的に行動を絞ることができます。</p>
+    <p>ここにいくつかの例があります。</p>
+    <p>アメリカのユーザーがイギリスのユーザーよりも3倍長くサービスを維持している場合、アメリカ人があなたのサービスから得ていて、イギリス人が得ていない価値は何かを把握したいと思うでしょう。</p>
+    <p>年間契約者の解約率が月間契約者よりもはるかに低い場合は、年間契約者に提供する割引額を増やしたほうがよいでしょう。</p>
+    <p>3つの層を提供していて、一番安い層のLTVが他の層に比べて非常に低い場合は、その層を廃止したほうがいいでしょう。それは機能が低下したことで、アプリを利用する価値がないと判断されたからかもしれません。顧客にアップグレードを強要することで、あなたが提供するプラットフォームの真の価値を知ってもらい、顧客の寿命を延ばすことができます。</p>
+    <p>BaremetricsではShopifyの顧客を簡単にセグメント化することができます。私たちのセグメンテーションツールをこちらでご確認ください。</p>
+    <h2 id="section">まとめ</h2>
+    <p>LTVは会社全体の意思決定に使われます。LTVはCAC予算の計算に使用され、その構成要素であるARPUと解約は成長指標の多くで使用されます。</p>
+    <p>しかし、LTVは全体像の一部に過ぎません。<a href="https://baremetrics.com/jp/blog/saas-quick-ratio">Quick Ratio</a>を含む他の多くの指標がなければ、最適な意思決定を行うことは困難です。ShopifyパートナーアプリのLTVを、他の指標と一緒に手作業で計算することは困難です。</p>
+    <p>だからこそ、<a href="https://baremetrics.com/jp/">Baremetrics</a>を使って販売データをモニターすべきなのです。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>を使えば、すべての販売データを簡単に収集し、視覚化することができます。多くの顧客を抱えている場合、MRR、ARR、LTVなどを計算するのは難しいでしょう。実際、Baremetricsはこれらすべてを代行してくれますし、それ以上のこともしてくれます。</p>
+    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>は、SaaSのQuick Ratioを監視することもできます。この革新的なツールを統合することで、あなたのSaaS企業は財務分析をシームレスに行うことができ、今すぐ無料トライアルを開始することができます。</p>
+    <p><img src="https://baremetrics.com/hs-fs/hubfs/Imported_Blog_Media/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2021-04-12-13_59_33-Jul-17-2023-02-03-16-3529-PM.png?width=205&amp;height=222&amp;name=%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2021-04-12-13_59_33-Jul-17-2023-02-03-16-3529-PM.png" alt="" loading="lazy" decoding="async"></p>
+    <p>ビジネス指標の分析を始めてみる</p>
+    <p>MRRやLTVなどを自動で追跡し、ビジネスの成長につなげましょう！！</p>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/d7772e62c7a5f8f5f5bbdb21dc39d1d1.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="tomotaka-endo">Tomotaka Endo</h3>
+    <p>Tomo Endo is a dynamic professional with a rare blend of achievements in technology, community leadership, and sports. As the Co-Founder of Nihonium.io since August 2023 and Community Lead at Xenon Partners since September 2019, Tomo has been pivotal in driving innovation and fostering community engagement within the tech industry in Tokyo, Japan. His role in facilitating growth and providing actionable insights at Baremetrics, coupled with his contribution to MetricFire's technical monitoring community, underscores his proficiency in leveraging technology to nurture professional communities. Beyond his tech-centric endeavors, Tomo has excelled as a professional athlete in squash, achieving the no.1 ranking in Japan and a global ranking of 79th by August 2020.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#shopify">Shopifyパートナーアプリとは何か？</a></li><li><a href="#ltv">LTVとは？</a></li><li><a href="#baremetrics-shopify-ltv">Baremetricsを使ってShopifyパートナーアプリのLTVを計算する</a></li><li><a href="#shopify-ltv">ShopifyパートナーアプリのLTVはどのように計算するのか？</a></li><li><a href="#shopify-ltv-baremetrics">ShopifyパートナーアプリのLTVを含むすべてのメトリクスを計算するためのBaremetricsの必要性</a></li><li><a href="#cac-ltv">CAC(顧客獲得コスト)とLTV</a></li><li><a href="#ltv-2">各顧客セグメントのLTVを知ることが重要</a></li><li><a href="#shopify-customer-apps-ltv">なぜShopify Customer AppsのLTVをセグメント化することが重要なのか？</a></li><li><a href="#section">まとめ</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

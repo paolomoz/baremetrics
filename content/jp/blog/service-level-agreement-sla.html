@@ -1,0 +1,65 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>SLA (サービス品質保証)</div></div>
+      <div><div>Description</div><div>企業と顧客の間で契約上合意された最低限のサービスレベルのことです。アップタイム、パフォーマンス保証、顧客サービス要件、セキュリティなどの要件が含まれることがあり、契約には、サービスレベルが満たされなかった場合の返金やクレジット、その他のペナルティーなどの対応も含まれます。</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/jp/blog">← ブログ</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>SLA (サービス品質保証)</h1></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Tomotaka Endo 2023 9 20</p>
+    <p><img src="https://baremetrics.com/hubfs/%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC%E3%82%B7%E3%83%83%E3%83%97%20(1).jpg" alt="" loading="lazy" decoding="async"></p>
+    <p>SLA（サービス品質保証）とは、企業と顧客の間で契約上合意された最低限のサービスレベルのことです。サービスレベルには、アップタイム、パフォーマンス保証、顧客サービス要件、データセキュリティ、インシデントレスポンス時間などの要件が含まれることがあり、契約には、サービスレベルが満たされなかった場合の返金やクレジット、その他のペナルティーなどの対応も含まれます。</p>
+    <h2 id="sla">SLAを使用する理由</h2>
+    <p>SLAは、提供されるサービスがビジネスに不可欠である企業契約で主に使われます。例えば決済プラットフォームやウェブホスティングサービスなどの企業において、顧客は可用性とパフォーマンスの維持に第三者を信頼し、大きなリスクを負っています。過去のパフォーマンスに関する透明性のあるデータの提供によって、可用性に対する信頼を築けますが、サービスに対する顧客の信頼確保には、SLAが不可欠です。</p>
+    <p>SLAは、「期待」を明確に定めたものです。サービスの「許容レベル」に両者が合意することは難しいため、契約書のSLAを正確にすることで、将来の誤解を防ぐことができます。</p>
+    <h2 id="sla-2">SLAに盛り込むべき内容</h2>
+    <h3 id="section">許容できるサービスレベル</h3>
+    <p>当然のことかもしれませんが、どのようなサービスレベルを提供することに同意するのかの明記が必要であり、「利用可能」とは何か、「停止」とは何か、「メンテナンス」には何が含まれるのか、などの定義も記載されることになります。</p>
+    <ul><li>可用性 ：一定期間内にサービスが利用可能であった時間であり、通常、99.99%など9の数字で表される。SLAの可用性パーセントの秒や分への変換は、Uptime.isで確認できる。</li><li>パフォーマンス：通常、自身のサービスの応答性はどの程度かがPingの応答時間で表示され、サービスが一定の速度を超えて低下した場合、顧客はサービスを適切に利用できなくなる可能性がある。</li><li>カスタマーサポート： 通常、応答時間や解決時間が記載される。顧客は、質問が迅速かつ効果的に答えに行き着くことを確信したいものであり、カスタマーサポートのSLAは、サービスへのサインアップ後に、質問があっても放ったらかしにされるというようなことを防ぐ。</li><li>セキュリティ：顧客データの保護のために、どのような工夫をしているか？万が一情報漏えいが発生した場合、SLAによって、例えば2要素認証やエンジニアのセキュリティクリアランスなど、どのような保護が必要だったかの説明ができる。</li></ul>
+    <h3 id="section-2">応答時間</h3>
+    <p>何らかの問題が発生したとき、チームはその問題をどれだけ早く認識して解決することができるでしょうか。Magnetoは、問題の深刻度による対応時間の細分化に関して<a href="https://magento.com/legal/terms/cloud-sla">明確化</a>しており、問題解決のための具体的なステップを顧客に提示しています。</p>
+    <p><img src="https://baremetrics.com/hubfs/SLA%20response%20time-1.png" alt="SLA response-time" loading="lazy" decoding="async"></p>
+    <h3 id="section-3">罰則</h3>
+    <p>SLAを満たしていないとどうなるでしょう？契約書には、SLAを満たせなかった場合の罰則やクレジットの支払いについても記載しておく必要があり、それはサービスのレベルやダウンタイムの量によって分けることができます。以下にあるPagerDutyの<a href="https://www.pagerduty.com/enterprise-service-level-agreement/">罰則規定</a>は、包括的な良例です。</p>
+    <p>SLAの原文に罰則が含まれていなかった場合、顧客は「罰則（SLAに記載されていないことの履行）は契約違反になる」ことを理由に罰則なしで契約解除をできる可能性があります。</p>
+    <p><img src="https://baremetrics.com/hubfs/SLA%20penalty.png" alt="SLA 罰則" loading="lazy" decoding="async"></p>
+    <h3 id="section-4">除外項目と例外</h3>
+    <p>1時間の定期メンテナンスは、稼働率保証契約の対象となるのでしょうか？</p>
+    <p>その場合は、顧客が24時間以内にメンテナンスの通知を受け取らなかった場合のみカウントされるかもしれません。ではDDoS（Distributed Denial of Service）攻撃についてはどうでしょうか？SLAの適用のために従わなければならない利用規約はありますか？WolframにはSLAの免責事項で例外について<a href="https://www.wolfram.com/legal/service-level-agreements/enterprise-support.html">明確に説明</a>しています。</p>
+    <p>また、SLAに例外がある場合は、必ずその旨を記載しましょう。そうしないと、顧客から補償を求められる可能性があります。</p>
+    <p><img src="https://baremetrics.com/hubfs/SLA%20%20%E4%BE%8B%E5%A4%96.png" alt="SLA  例外" loading="lazy" decoding="async"></p>
+    <h2 id="sla-3">SLAの測定</h2>
+    <p>SLAを使う場合、パフォーマンスを測れないといけません。稼働時間や応答時間、パフォーマンスが確実かつ迅速に示されなければ、顧客はどのようにして保証に応じることができるでしょうか？</p>
+    <p><a href="https://newrelic.com/jp">New Relic</a> や Pingdom のようなモニタリングツールの使用で、警告を発することによる長時間停止の防止や、停止後の後始末がしやすくなります。サービスにアクセスできなかった時間や、ダッシュボードがどのくらい遅かったかなどをみる時、信頼できる追跡ツールがなければ顧客と自分の言葉を比較することになり、契約上これはあまり良いことではありません。</p>
+    <h2 id="section-5">通信障害後</h2>
+    <p>SLAに違反した顧客への積極的な連絡は、厳しい状況でも好意的に受け止めてくれます。多くの場合、顧客はあなたが期待するほどには動揺しないでしょう。(こちらの、<a href="https://baremetrics.com/blog/outages">通信障害時の連絡に関する筆者達の経験</a>をご覧ください）。</p>
+    <p>SLAは法的契約なので、守られなければいけません。SLAの締結は潜在的なリスクですが、おそらく必要なリスクでしょう。</p>
+    <p>SaaSビジネスを成功させたい方は、SLAの管理も同様に指標の管理が必要となってきます。SaaS経営者は、まずは<a href="https://baremetrics.com/jp/">Baremetrics</a>の無料トライアルにて、MRRやLTVなどSaaS指標を管理するところから始めてみるのもいいかもしれません。無料トライアルは以下のリンクとなります。</p>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/d7772e62c7a5f8f5f5bbdb21dc39d1d1.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="tomotaka-endo">Tomotaka Endo</h3>
+    <p>Tomo Endo is a dynamic professional with a rare blend of achievements in technology, community leadership, and sports. As the Co-Founder of Nihonium.io since August 2023 and Community Lead at Xenon Partners since September 2019, Tomo has been pivotal in driving innovation and fostering community engagement within the tech industry in Tokyo, Japan. His role in facilitating growth and providing actionable insights at Baremetrics, coupled with his contribution to MetricFire's technical monitoring community, underscores his proficiency in leveraging technology to nurture professional communities. Beyond his tech-centric endeavors, Tomo has excelled as a professional athlete in squash, achieving the no.1 ranking in Japan and a global ranking of 79th by August 2020.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#sla">SLAを使用する理由</a></li><li><a href="#sla-2">SLAに盛り込むべき内容</a></li><li><a href="#sla-3">SLAの測定</a></li><li><a href="#section-5">通信障害後</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

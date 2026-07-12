@@ -1,0 +1,114 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Why Subscription Payments Fail: 4 Causes &amp; Fixes (2026)</div></div>
+      <div><div>Description</div><div>Subscription payments fail for 4 reasons: expired cards, insufficient funds, hard declines, geographic holds. Each needs a different recovery approach.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Why Are Subscription Payments Failing? The 4 Causes and How to Fix Each</h1></div></div>
+      <div><div><p>By Luke Marshall on June 03, 2026 Last updated on June 03, 2026</p></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Subscription payments fail for four main reasons: expired or reissued cards, insufficient funds or temporary soft declines, hard declines (cancelled / lost / stolen cards), and geographic or fraud-mismatch holds. Each cause needs a different recovery approach — and treating them all the same wastes most of the available recovery.</p>
+    <p>Across hundreds of subscription businesses, the average company loses ~9% of monthly recurring revenue to failed payments. The portion you can recover depends almost entirely on whether your dunning system identifies why each payment failed and responds appropriately. This guide breaks down the four causes, how recoverable each one is, and what to do about each.</p>
+    <p>If your "payment failed" emails read the same regardless of why the payment failed, you're leaving most of the recoverable revenue untouched. The fix isn't more emails — it's better targeting.</p>
+    <h2 id="the-4-reasons-subscription-payments-fail">The 4 reasons subscription payments fail</h2>
+    <h3 id="1-expired-or-reissued-cards">1. Expired or reissued cards</h3>
+    <p>The single most common cause of failed subscription payments. A customer's card hits its expiry date, gets reissued by their bank (often after fraud detection or a chip upgrade), or is replaced by an updated card the customer didn't think to update on their subscriptions.</p>
+    <p>Most credit cards expire every 3 years, so on a year-by-year basis, roughly a third of your customer base is rotating cards. Banks reissue cards far more frequently than they used to — fraud-prevention reissues, EMV chip upgrades, contactless replacements. The customer typically gets the new card in the mail, activates it, and forgets about all the recurring subscriptions billed to the old one.</p>
+    <p>Recoverable? Almost always — but requires customer action.</p>
+    <p>Most payment processors offer card-updater services (Visa Account Updater, Mastercard Automatic Billing Updater) that refresh card details automatically when a card is reissued. Stripe's Card Account Updater handles this transparently for participating banks. Always have this enabled. It catches a meaningful share of expired-card failures invisibly.</p>
+    <p>For the rest — the cards your processor's updater service can't refresh — recovery requires a dunning email asking the customer to update their billing details. Email content should match the cause: "Your card expired — here's a one-click update" is the right framing, not "Your payment failed."</p>
+    <h3 id="2-insufficient-funds-or-temporary-soft-declines">2. Insufficient funds or temporary soft declines</h3>
+    <p>A customer's card was valid but the charge was declined at the moment of attempt — most commonly because the account didn't have sufficient funds, the customer hit a daily-spending limit, or the issuing bank's fraud system flagged the transaction for review.</p>
+    <p>These are called soft declines because the underlying card is still good. The issue is temporary. Retrying the same charge at a different time often succeeds — particularly after payday cycles, off-peak hours, or once the bank's fraud check clears.</p>
+    <p>Recoverable? Usually invisibly via smart retries — no customer action required.</p>
+    <p>Modern payment processors (Stripe Smart Retries, similar offerings from Braintree / Recurly / Adyen) use machine learning to time retries for moments when success is most likely. The card that failed at 2pm Friday often succeeds at 9am Monday after the customer's payday clears. This pattern of recovery — sometimes called "invisible recovery" — is the highest-converting retry path available and is mostly automated by the payment processor layer.</p>
+    <p>If your dunning system fires an email for every soft decline, you're over-communicating. Most soft declines resolve themselves within 24-48 hours via smart retries. The right pattern is: let the retries run, only escalate to email if retries exhaust.</p>
+    <h3 id="3-hard-declines-cancelled-lost-or-stolen-cards">3. Hard declines — cancelled, lost, or stolen cards</h3>
+    <p>The issuing bank refused the charge categorically. The card has been cancelled by the bank, reported lost or stolen, or the underlying account has been closed. Unlike soft declines, retrying won't help — the card itself is no longer valid.</p>
+    <p>Recoverable? Only if the customer takes action to add a new payment method.</p>
+    <p>For hard declines, dunning emails are the only recovery path. Smart retries shouldn't fire (they waste attempts and can trigger fraud alerts on the customer's account). The right pattern is: detect the hard-decline status from the processor response, suppress retries, send a dunning email immediately with a clear one-click update path.</p>
+    <p>Email content for hard declines should be specific about the cause without being alarming: "The card on file with us was declined by your bank. This usually happens when a card has been cancelled or reissued — easiest fix is to update your details here." Avoid implying the customer did something wrong (their card being stolen isn't their fault).</p>
+    <h3 id="4-geographic-or-fraud-mismatch-holds">4. Geographic or fraud-mismatch holds</h3>
+    <p>The card is valid, the funds are available, but the issuing bank is blocking the charge for fraud-prevention reasons. Common triggers: a card issued in one country being used to charge a merchant in another, an unusually large charge that breaks the customer's normal pattern, or a transaction velocity check (multiple recent charges flagging the bank's anti-fraud system).</p>
+    <p>Recoverable? Sometimes, but requires the customer to authorise the charge with their bank.</p>
+    <p>This category needs a completely different dunning message from the others. Retrying won't help (the bank will keep declining until the customer authorises). Asking the customer to update their card won't help (the card is fine). The right message is: "Your bank flagged this charge for review — usually the fastest fix is a quick call to the number on the back of your card to authorise [Product]." Include the option to update to a different payment method as a fallback.</p>
+    <p>Geographic failures are increasingly common for global subscription businesses charging customers across multiple regions. If a meaningful share of your customer base is international, dedicated handling of this failure type significantly lifts recovery rate.</p>
+    <h2 id="soft-declines-vs-hard-declines-the-framework-that-matters">Soft declines vs hard declines: the framework that matters</h2>
+    <p>The single most important framework for thinking about failed payments is the soft-vs-hard decline distinction. It changes the entire recovery approach:</p>
+    <p>Most failed-payment recovery systems treat soft and hard declines the same way. That's the single biggest source of wasted recovery effort. The right system reads the processor's decline-reason code, classifies the failure, and routes to the matching recovery path.</p>
+    <p>If you're using <a href="https://baremetrics.com/features/recover">Baremetrics Recover</a>, the decline-classification happens automatically — soft declines go to the retry layer, hard declines route to the customer email sequence with content tailored to the failure reason. For more on how this routing works in practice, see our complete dunning management guide.</p>
+    <h2 id="what-happens-after-a-payment-fails">What happens after a payment fails</h2>
+    <p>If your subscription billing system does nothing after a payment fails, the customer will most likely churn — not because they decided to leave, but because nobody told them in a way that registered. This is involuntary churn, and it accounts for <a href="https://baremetrics.com/blog/involuntary-churn">20-40% of total churn</a> in subscription businesses according to Paddle research.</p>
+    <p>A working response system does four things, in this order:</p>
+    <h3 id="step-1-classify-the-failure">Step 1: Classify the failure</h3>
+    <p>Read the decline code from the payment processor response. Determine whether it's a soft decline, hard decline, or geographic/fraud hold. Route to the matching recovery path.</p>
+    <h3 id="step-2-run-smart-retries-for-soft-declines-only">Step 2: Run smart retries (for soft declines only)</h3>
+    <p>For soft declines, the payment processor's smart retry layer (or equivalent ML-based timing) should retry the charge at moments when success is statistically likely. Most subscription businesses get this for free from their processor. For hard declines, suppress retries — they waste attempts and can trigger fraud flags.</p>
+    <h3 id="step-3-send-a-dunning-email-sequence-for-failures-that-retry-can-t-fix">Step 3: Send a dunning email sequence (for failures that retry can't fix)</h3>
+    <p>For hard declines, geographic holds, and soft declines where retries exhausted, send a multi-step email sequence. The Baremetrics Recover default is a 7-email cadence over 27 days, with the most strategically important email landing at day 13 — just before most subscription businesses lock customers out at day 15.</p>
+    <p>Each email should match the failure reason. "Your card expired" emails for expired cards. "Your bank declined this charge" emails for geographic holds. Generic "your payment failed" emails for everything underperform meaningfully.</p>
+    <p>For full email-side detail (subject patterns, body templates, optimal cadence, SMS amplification), see our <a href="https://baremetrics.com/blog/dunning-emails">dunning emails guide</a>.</p>
+    <h3 id="step-4-escalate-before-hard-cancelling">Step 4: Escalate before hard-cancelling</h3>
+    <p>After the email sequence, before any hard cancellation, transition the subscription to a "paused" state rather than terminating it. Pausing preserves customer data and the reactivation path; cancellation throws them out.</p>
+    <p>For high-value accounts, a CSM or account manager should reach out personally between days 5-10 of delinquency. Automated emails alone aren't enough for accounts above ~$50K ARR.</p>
+    <h2 id="how-to-measure-whether-your-recovery-is-working">How to measure whether your recovery is working</h2>
+    <p>Three metrics matter for understanding subscription payment failure recovery:</p>
+    <ol><li>Attempted recovery rate — the percentage of failed payments your dunning system actively tried to recover that succeeded. This is the methodologically honest version of recovery rate; the naive version ("recovered ÷ all failed charges") contaminates the denominator with failures the system never engaged with. Full breakdown of why this matters: How to Improve Your Dunning Recovery Rate.</li></ol>
+    <ol><li>MRR at risk — the dollar value of recurring revenue currently tied to failed payments. Use this for prioritisation; high-value accounts in the delinquent pool should get manual outreach.</li></ol>
+    <ol><li>Recovery rate by failure reason — slicing recovery rate across the 4 categories above tells you which segments of your recovery system are working. If your expired-card recovery is 70% but your soft-decline recovery is 40%, something's wrong with the soft-decline path (likely under-using smart retries or over-sending emails for failures that would have self-resolved).</li></ol>
+    <h2 id="faq">FAQ</h2>
+    <h3 id="why-is-my-subscription-payment-failing">Why is my subscription payment failing?</h3>
+    <p>Subscription payments fail for four main reasons: expired or reissued cards (the most common, usually after a bank reissue), insufficient funds or soft declines (typically resolve within hours via smart retries), hard declines (cancelled, lost, or stolen cards that require a new payment method), and geographic or fraud-mismatch holds (where the bank is blocking the charge but the card itself is valid). Each cause needs a different recovery approach.</p>
+    <h3 id="what-s-the-difference-between-a-soft-decline-and-a-hard-decline">What's the difference between a soft decline and a hard decline?</h3>
+    <p>A soft decline is a temporary failure where the underlying card is still valid — insufficient funds, processing error, temporary fraud check. Soft declines often clear themselves within 24-48 hours via smart retries. A hard decline is a categorical refusal by the issuing bank — expired card, cancelled card, lost or stolen card, geographic restriction. Hard declines won't succeed no matter how many times you retry; they require customer action to update the payment method.</p>
+    <h3 id="how-can-i-recover-failed-subscription-payments">How can I recover failed subscription payments?</h3>
+    <p>The recovery approach depends on the failure cause. For soft declines, smart retry logic from your payment processor (Stripe Smart Retries, Braintree's equivalent, etc.) handles most recovery invisibly. For hard declines and stubborn soft declines, you need a multi-step dunning email sequence (typically 6-7 emails over 27-30 days) with a one-click billing-update link. For geographic / fraud holds, the email should direct the customer to authorise the charge with their bank. Doing all three together — rather than relying on any one alone — is what moves recovery rate materially.</p>
+    <h3 id="how-much-revenue-do-subscription-businesses-lose-to-failed-payments">How much revenue do subscription businesses lose to failed payments?</h3>
+    <p>Baremetrics data across hundreds of subscription businesses shows the average company loses around 9% of monthly recurring revenue to failed payments. For a business at $100K MRR, that's $9,000 a month — every month — walking out the door without any customer deciding to leave. Most of that is recoverable with a structured dunning system.</p>
+    <h3 id="should-i-retry-a-failed-payment-automatically">Should I retry a failed payment automatically?</h3>
+    <p>For soft declines, yes — modern payment processors retry these automatically at machine-learning-optimised timing, and this recovers a meaningful share of failures invisibly. For hard declines (expired, cancelled, lost cards), no — retrying won't help and can trigger fraud flags on the customer's account. The right dunning system classifies the decline type and routes to the matching path: smart retries for soft declines, immediate customer communication for hard declines.</p>
+    <h3 id="what-should-a-payment-failed-email-say">What should a "payment failed" email say?</h3>
+    <p>It should be short (three sentences is often enough), neutral in tone (not collections-toned), specific about the cause, and contain a one-click update link. The pattern: (1) what happened — "Your card on file has expired" — (2) what to do — "Update it here in 30 seconds" — (3) what happens next — "We'll automatically retry the charge once your new details are saved." Avoid all-caps urgency ("FAILED PAYMENT", "FINAL NOTICE") which lowers open rates and triggers spam filters. For deeper email templates and patterns, see our <a href="https://baremetrics.com/blog/dunning-emails">dunning emails guide</a>.</p>
+    <h3 id="how-many-emails-should-i-send-when-a-subscription-payment-fails">How many emails should I send when a subscription payment fails?</h3>
+    <p>A standard sequence is 6-7 emails over 27-30 days, weighted toward the first two weeks after a failed payment. Baremetrics Recover ships a 7-email default cadence with the most important email landing at 13 days delinquent — just before most subscription businesses lock customers out at day 15. Single-email dunning recovers a fraction of what a properly sequenced flow does.</p>
+    <h3 id="when-should-i-just-cancel-a-subscriber-whose-payment-failed">When should I just cancel a subscriber whose payment failed?</h3>
+    <p>Not until you've exhausted a structured recovery sequence — typically at least 27-30 days of recovery attempts. Even then, pause the subscription rather than hard-cancelling it. Pausing preserves customer data and the reactivation path; cancellation throws all of that away. Hard cancellation should typically only happen after 30 days of failed recovery attempts, and even then, only for customers who haven't engaged with any communication during that window.</p>
+    <h2 id="where-to-go-next">Where to go next</h2>
+    <p>Understanding why subscription payments fail is half the problem. Building the system that recovers them is the other half:</p>
+    <ul><li>The complete guide to dunning management — what dunning is, the 3-phase process (Prevention / Recovery / Escalation), and the system to build around it</li><li>Why your dunning recovery rate isn't what you think it is — the attempted-vs-naive recovery rate methodology</li><li>Dunning email templates and cadence — practical templates for each step of the 7-email sequence</li><li>The State of Subscription Payment Recovery: $1.24M recovered in a single month — what a sample of 119 typical US B2B SaaS companies using Recover reclaimed in May 2026, at a median 12.7% attempted recovery rate</li></ul>
+    <p>For most subscription businesses, the 9% of MRR lost to failed payments is the largest single recovery opportunity available — and it's the only retention lever that doesn't require product changes or organisational restructuring.</p>
+    <p><a href="https://baremetrics.com/features/recover">Start a free trial of Baremetrics Recover →</a></p>
+    <p><img src="https://baremetrics.com/hubfs/Luke.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="luke-marshall">Luke Marshall</h3>
+    <p>Luke Marshall is the CEO of Baremetrics. His expertise spans strategic advisory roles at firms like Xenon Partners and DreamFactory Software and he has established himself as a thought leader in the SaaS Metrics space. His career is marked by a commitment to driving growth and operational excellence.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#the-4-reasons-subscription-payments-fail">The 4 reasons subscription payments fail</a></li><li><a href="#soft-declines-vs-hard-declines-the-framework-that-matters">Soft declines vs hard declines: the framework that matters</a></li><li><a href="#what-happens-after-a-payment-fails">What happens after a payment fails</a></li><li><a href="#how-to-measure-whether-your-recovery-is-working">How to measure whether your recovery is working</a></li><li><a href="#faq">FAQ</a></li><li><a href="#where-to-go-next">Where to go next</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Luke Marshall</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

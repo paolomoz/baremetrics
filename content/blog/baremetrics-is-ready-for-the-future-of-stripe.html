@@ -1,0 +1,78 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Baremetrics Updates Its Stripe Integration for 2021</div></div>
+      <div><div>Description</div><div>Baremetrics has made major updates to the Baremetrics product to accommodate changes with the Stripe API.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Baremetrics is ready for the future of Stripe</h1></div></div>
+      <div><div><p>By Lindsey Rogerson on October 19, 2021 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Copy-of-Unnamed-Design.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>As of May 20th, 2021, Baremetrics has launched a new version of our Stripe integration that better accommodates the new Stripe updates. As of now, all customers are experiencing the benefits of the new Stripe integration.</p>
+    <p>Here at Baremetrics, we’re stoked to bring you better Stripe service. If you have any questions, reach out to us at <a href="mailto:hello@baremetrics.com">hello@baremetrics.com</a> or jump into the chat box at the bottom right and get chatting with us!</p>
+    <p>Now, let’s dive into the specifics of what changes were made and the benefits of these changes.</p>
+    <h2 id="stripe-has-discontinued-the-stripe-retrieve-event-api">Stripe has discontinued the Stripe Retrieve Event API</h2>
+    <p>Stripe now only allows access to their events records through the API for 30 days.</p>
+    <p>A Stripe Event refers to any action in the history of a Stripe account. For example, upgrading a plan, adding a one-time payment, changing the number of users, and more. Any of these changes would become a “Stripe event” and then get recorded into that Stripe User's history.</p>
+    <p>To monitor Stripe account histories, users would access their Stripe events through the “Retrieve Stripe Event API”. In Stripe’s recent update, Stripe reduced the user's access to this information to the most recent 30 days.</p>
+    <p>This change disables users from querying long-term trends in the behavior of their customers.</p>
+    <p>This also means that Baremetrics must adjust how we query and store information about the long-term behavior of Stripe accounts.</p>
+    <h2 id="the-new-baremetrics-and-stripe-integration">The new Baremetrics and Stripe integration</h2>
+    <p>The new Baremetrics Stripe integration immediately provides users with five new data settings. It also means it will become much easier for Baremetrics to support new Stripe features in the future.</p>
+    <p>Here are a couple of other changes have occurred that add to how your Stripe data is handled in Baremetrics:</p>
+    <ul><li>Auto-cancellation will now happen 31 days after the first failed invoice. Previously it was happening 31 days from the time that the subscription transitioned to the “unpaid” state on Stripe.</li><li>Baremetrics can read plan specific discounts.</li><li>Baremetrics can support backdated invoices now.</li><li>Baremetrics excludes on_behalf_of subscriptions for all accounts (Stripe docs).</li><li>Discount handling is now more granular (sub item level).</li></ul>
+    <h2 id="five-new-data-settings-for-baremetrics-stripe-integration-users">Five new data settings for Baremetrics Stripe integration users</h2>
+    <p>Baremetrics now has five new data settings for Baremetrics Stripe integration users. Let’s dive into the five data settings now!</p>
+    <h3 id="adjust-your-customer-s-historical-plan-price-record">Adjust your customer’s historical plan price record</h3>
+    <p>Some customers update the price of an existing customer plan rather than change that customer over to a new plan. When customers changed their prices in this way, Baremetrics was not previously able to see it. Baremetrics wasn’t able to recognize the historical plan price in our records of MRR. Now, we are able to keep the historical record of your customer’s plan price intact while calculating MRR.</p>
+    <h3 id="choose-how-the-baremetrics-mrr-calculation-handles-canceled-plans">Choose how the Baremetrics MRR calculation handles canceled plans</h3>
+    <p>When a customer cancels their plan, when do we stop including the revenue from the cancelled plan in the MRR calculation? Do we stop including the revenue when the cancellation occurs, even if the customer is still paying you for 3 more months? Or, do we include the payments in the MRR all the way until the customer stops paying? Now, you can choose how Baremetrics handles the remaining revenue from your cancelled plans.</p>
+    <h3 id="choose-to-ignore-voided-invoices">Choose to ignore voided invoices</h3>
+    <p>The default Baremetrics behavior is to treat voided invoices as causing a delinquency. This might not work for every Baremetrics user, so you can now choose to ignore voided invoices.</p>
+    <h3 id="choose-to-ignore-uncollectible-invoices">Choose to ignore uncollectible invoices</h3>
+    <p>If an invoice is labelled as uncollectible, this typically results in a bad debt. Now, you can choose to ignore uncollectible invoices by marking them as void. Once they’re marked as void, you can choose to completely ignore them or keep them in your record as a voided invoice.</p>
+    <h3 id="receive-invoices-with-active-status-rather-than-delinquent-status">Receive invoices with active status rather than delinquent status</h3>
+    <p>Invoices received into a Baremetrics account have the default status of delinquent until it’s paid. This happens even if the invoice isn’t delinquent. For customers who don’t want to have a list of delinquent invoices, you can choose to import invoices into the “active” status.</p>
+    <h2 id="future-positioning-with-stripe">Future Positioning with Stripe</h2>
+    <p>These updates position us to maintain a strong partnership with Stripe moving forward. Stripe is positioned to keep developing into the future, and Baremetrics will be heading in the same direction alongside Stripe.</p>
+    <p>With these updates, Baremetrics is ready to continue to provide excellent metrics for Stripe users, regardless of changes within the Stripe platform. We’re excited to help our customers make more from their data through great insights!</p>
+    <h2 id="metered-billing-is-on-the-roadmap">Metered Billing is on the roadmap</h2>
+    <p>Metered billing is immensely important to us, so we’re building out metered billing as the next part of our Stripe integration! Baremetrics users will be able to measure the revenue from their customers even when that revenue changes daily.</p>
+    <p>We’re looking forward to it! Please reach out to us at <a href="mailto:hello@baremetrics.com">hello@baremetrics.com</a> if you’re interested in more. We want to hear about how you would use metered billing.</p>
+    <h2 id="reach-out-to-us">Reach out to us!</h2>
+    <p>We’re stoked to have you as our customers, and we can’t wait to see how these updates help you get the most out of your data. Reach out to us at <a href="mailto:hello@baremetrics.com">hello@baremetrics.com</a> or through the chat box if you have any questions!</p>
+    <p>We’re here to help you build <a href="https://baremetrics.com/blog/baremetrics-is-the-best-stripe-analytics-dashboard">dashboards</a>, get great data insights, and make more from your data. We’re always here to chat!</p>
+    <p><img src="https://baremetrics.com/hubfs/Lindsey.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="lindsey-rogerson">Lindsey Rogerson</h3>
+    <p>Lindsey is the former Marketing Manager for Xenon Partners, where she advised on SaaS growth strategy across several products. Lindsey's passion is great documentation and reporting on brilliant ideas, enabling people to actually act on and communicate about these ideas. Lindsey loves working with the Baremetrics blog because it is here where we can really make this happen.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#stripe-has-discontinued-the-stripe-retrieve-event-api">Stripe has discontinued the Stripe Retrieve Event API</a></li><li><a href="#the-new-baremetrics-and-stripe-integration">The new Baremetrics and Stripe integration</a></li><li><a href="#five-new-data-settings-for-baremetrics-stripe-integration-users">Five new data settings for Baremetrics Stripe integration users</a></li><li><a href="#future-positioning-with-stripe">Future Positioning with Stripe</a></li><li><a href="#metered-billing-is-on-the-roadmap">Metered Billing is on the roadmap</a></li><li><a href="#reach-out-to-us">Reach out to us!</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Lindsey Rogerson</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

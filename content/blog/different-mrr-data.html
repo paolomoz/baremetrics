@@ -1,0 +1,120 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Why Your MRR Differs Between Baremetrics and Stripe</div></div>
+      <div><div>Description</div><div>Platforms like Stripe can present an MRR that doesn't take everything into account. Get the truth about your MRR with Baremetrics.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>My MRR Data is Different: Why Baremetrics Doesn’t Match Stripe</h1></div></div>
+      <div><div><p>By Allison Barkley on May 31, 2024 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/mrr-formula.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>If you use multiple data reporting platforms, we can almost guarantee that you’ve experienced that frustrating, squinting-at-the-computer confusion when you find discrepancies in the data— even when both platforms are seemingly tracking simple metrics that should be calculated consistently across the board.</p>
+    <p>Monthly recurring revenue (MRR) is a great example. Your MRR metric should show you how much recurring income you can expect to predictably make on a monthly basis.</p>
+    <p>While this should be a fairly straightforward metric, and is clearly an important one, especially for subscription businesses trying to make smart revenue decisions, the reality is that MRR can show up differently on individual platforms.</p>
+    <p>Many of our customers have asked why Baremetric’s reported MRR is different from other platforms, especially Stripe.</p>
+    <p>Let’s take a close look at why this happens and how to know which data you can trust.</p>
+    <h2 id="how-to-calculate-mrr">How to Calculate MRR</h2>
+    <p><a href="https://baremetrics.com/academy/saas-calculate-mrr#:~:text=The%20MRR%20calculation%20is%20pretty,of%20customers%20for%20that%20month.">Calculating MRR</a> is easy: Just multiply the number of customers and the average billed amount in a set month.</p>
+    <h3 id="mrr-formula">MRR formula</h3>
+    <p>MRR = number of customers * average billed amount</p>
+    <p>This will tell you exactly how much your predictable recurring monthly income is. It should account for customer subscriptions, upgrades, downgrades, membership pauses, and cancellations.</p>
+    <p>It should not, however, include one-time fees. Some SaaS companies, for example, may have optional set-up fees or one-time activation fees.</p>
+    <p>Because these only happen once in the customer journey, they are not “recurring” income.</p>
+    <p>As your MRR gives you a solid baseline for what you can expect to see in terms of recurring monthly income, it’s a vital metric for subscription businesses. It’s understandably frustrating when one platform is telling you that your monthly recurring income is 100K and another might say it’s 80K, because this information directly impacts decisions about the budget, cash flow, and revenue.</p>
+    <h2 id="why-stripe-s-mrr-reporting-data-doesn-t-match-baremetrics">Why Stripe’s MRR Reporting Data Doesn’t Match Baremetrics</h2>
+    <p>There are plenty of reasons why Stripe’s MRR reporting doesn’t exactly match Baremetrics’ MRR data (and why both may be different from other analytics platforms).</p>
+    <p>Let’s take a look at each factor.</p>
+    <h3 id="calculation-methods">Calculation Methods</h3>
+    <p>Platforms may each use different formulas or input data to calculate their MRR.</p>
+    <p>Stripe, like most platforms, calculates MRR based exclusively on the price of a user’s plan and the total number of non-cancelled subscriptions.</p>
+    <p>Baremetrics, however, considers actual invoiced amounts, factoring in discounts, coupons, and prorated charges. We also verify that payments are made so that delinquent or paused accounts aren’t being counted as revenue when it might not hit your account.</p>
+    <p>This leads to a more accurate portrayal of recurring revenue in Baremetrics.</p>
+    <h3 id="timing">Timing</h3>
+    <p><a href="https://baremetrics.com/blog/stripe-reports-what-is-and-isnt-available">Stripe reports</a> MRR based on subscription creation/renewal dates.</p>
+    <p>Baremetrics uses paid invoice payment dates. This slight variance in recognition timing can result in minor discrepancies but can also provide more accurate estimates for your accounting and cash flow decisions.</p>
+    <h3 id="free-trials">Free Trials</h3>
+    <p>Unlike Baremetrics, Stripe includes free trial users in its active user calculations.</p>
+    <p>This can ultimately provide inaccurate information, since only around <a href="https://www.singlegrain.com/blog/ms/free-to-paid-conversion-rates/">25-50%</a> of free trials convert to paid customers in the most successful cases, with some industries having much, much lower conversion rates.</p>
+    <p>It’s best to only count active paying subscriptions towards MRR and track trial performance separately.</p>
+    <h3 id="active-subscribers">Active Subscribers</h3>
+    <p>Stripe may include customers who made a one-time purchase, are on the free level of a <a href="https://baremetrics.com/blog/freemium-saas-implode">freemium plan</a>, or whose invoices are past due as “active” customers.” This can significantly overinflate their MRR statistics, especially since customers who are two months past due are less likely to be retained without significant intervention.</p>
+    <p>Baremetrics, however, validates all invoice payments to ensure that only active and paid invoices are counting toward your MRR.</p>
+    <h3 id="cancellations">Cancellations</h3>
+    <p>The point at which reporting platforms account for cancellations can have a big impact on your immediate MRR data, leading to some significant inconsistencies.</p>
+    <p>Stripe will actually keep canceled customers as an active subscriber until the end of the billing period. At that point, they’ll record the churn.</p>
+    <p>Baremetrics, however, records churn the second the cancellation happens, giving you a much more accurate depiction of active engagement, subscriber account, and predicted revenue.</p>
+    <h3 id="coupons">Coupons</h3>
+    <p>Stripe will count permanent discounts or coupons that are permanent in their MRR calculations, such as when a large client is given a deal on an ongoing contract.</p>
+    <p>That’s good, but they don’t count any temporary or “finite duration” discounts.</p>
+    <p>Baremetrics, meanwhile, considers all coupons and discounts into MRR calculations, regardless of their duration. It shows the immediate impact of discount strategies on both subscription performance and financial health.</p>
+    <p>While it is good to have “forever” discounts reflected, the finite duration discounts can also have major impacts on your revenue.</p>
+    <p>Overstating financial health by ignoring the temporary discounts when they’re heavily used (which may happen during peak sale periods, for example) can be disastrous for cash flow.</p>
+    <h3 id="currency-conversions">Currency Conversions</h3>
+    <p>Stripe samples exchange rates over a certain period to convert transactions made in foreign currencies. This is largely accurate, at first.</p>
+    <p>Exchange rates are updated frequently, with currency exchanges having the potential to fluctuate multiple times per day.</p>
+    <p>In contrast, Baremetrics applies the exchange rate at the exact time of each transaction. This method ensures that financial data reflects the most current and accurate monetary values, and can help businesses make sure that their location-based pricing strategies and price points are in line with where they need to be.</p>
+    <h3 id="prorated-charges">Prorated Charges</h3>
+    <p><a href="https://baremetrics.com/blog/understanding-proration#:~:text=Prorated%20pricing%20(also%20sometimes%20called,time%20they%20use%20your%20service.">Prorated charges</a> allow customers to pay only for the specific number of days they used a service. They’re particularly common in upgrades or downgrades in SaaS brands, but may also be used for cancellations.</p>
+    <p>Stripe does not adjust for mid-month signups or cancellations, which can skew your MRR.</p>
+    <p>Baremetrics, however, accounts for these prorated charges, providing a more accurate and reliable measure of your recurring revenue.</p>
+    <p>This precision is particularly beneficial for assessing the financial impact of new signups, cancellations, upgrades, or downgrades that happen mid-billing cycle.</p>
+    <h2 id="why-stripe-s-mrr-is-consistently-higher-than-baremetrics">Why Stripe’s MRR Is Consistently Higher than Baremetrics</h2>
+    <p>As you can see, there are multiple factors— eight, to be specific— that contribute to discrepancies. Some are minor, while some may be major differences in MRR reporting.</p>
+    <p>Many platforms have discrepancies based on the timing of revenue attribution or cancellations in their calculations. Those can be frustrating, but also aren’t necessarily going to send you into permanent chaos.</p>
+    <p>However, based on the factors detailed above, it’s easy to see why Stripe’s MRR is consistently reported as being much higher than MRR in Baremetrics:</p>
+    <ul><li>They’re counting inactive or delinquent customers as active, contributing towards the MRR</li><li>They do not account for temporary discounts or coupons, even though they have a real impact on your revenue</li><li>They don’t adjust for mid-month signups or cancellations regarding pro-rated charges.</li><li>Free trials may be counted towards active user counts</li><li>Their MRR calculation is less detailed overall, accounting for less nuance that’s essential in revenue calculations</li></ul>
+    <h2 id="why-customers-integrate-stripe-with-baremetrics">Why Customers Integrate Stripe with Baremetrics</h2>
+    <p>After reviewing the reasons for the differences between the two platforms, it’s easy to understand why customers integrate Stripe with Baremetrics: You get more consistent, accurate reporting— and that’s the only kind of data you should use to make financial decisions for your business.</p>
+    <p>Baremetrics offers 26 subscription-focused metrics, including subscription performance data like upgrades, downgrades, trial conversion rates, and more.</p>
+    <p>But even when measuring MRR alone, these are the most common reasons Stripe customers integrate with Baremetrics.</p>
+    <ul><li>Get consistent reporting across all platforms. You can integrate with other platforms, too, to compare performance and revenue data with consistently reported metrics.</li></ul>
+    <ul><li>Know that your data is accurate. We’ve worked hard to account for all nuances that actually impact your bottom line, so you’re never left guessing about what critical metrics like MRR truly look like.</li></ul>
+    <ul><li>Better detect trends and patterns with real-time updates. Don’t wait until the end of the month to find out how a cancellation now will hurt your MRR; get consistently updated data at all times, and use it to better detect trends in customer behavior, identify churn risks, and optimize retention strategies throughout the month.</li></ul>
+    <ul><li>Leverage insights designed to promote revenue. Use our Cancellation Insights to identify churn risks, for example, and Recover to prevent missed payments before they happen.</li></ul>
+    <ul><li>Improve forecasting. Having real-time churn data enables more accurate forecasting and financial planning, allowing businesses to adjust their growth strategies and budget allocations accordingly.</li></ul>
+    <ul><li>Drive into granular details with additional metrics. Customer lifetime value, acquisition cost per subscriber, churn rates, and more can reveal hidden trends that can better inform strategic decisions.</li></ul>
+    <ul><li>Assess audience segments. Determine who your high-value audiences are, and pinpoint growth opportunities based on their behavior.</li></ul>
+    <ul><li>Leverage benchmark data. Compare your performance against industry standards to identify potential areas for improvement.</li></ul>
+    <h2 id="how-to-integrate-stripe-with-baremetrics">How to Integrate Stripe with Baremetrics</h2>
+    <p>To integrate Stripe with Baremetrics, first <a href="https://app.baremetrics.com/">create a Baremerics account</a>. Once you do, the first thing you’ll be asked to do is connect your first data source.</p>
+    <p>We designed the integration process to be fast and easy.</p>
+    <p>Select Stripe, and in a few clicks, you’ll be able to connect the two accounts. Data synching will start right away.</p>
+    <p>We strongly recommend integrating every subscription platform that you use, even if it’s a minimal contributor to your overall revenue. The more accurate data you have, the better.</p>
+    <h2 id="final-thoughts">Final Thoughts</h2>
+    <p>In the world of SaaS metrics, truth matters. Choose the platform that reveals the real story behind your MRR, not just a fictionalized facade. While Stripe offers a simple overview of your revenue, Baremetrics provides advanced analytics and a user-friendly interface to give you actionable insights.</p>
+    <p>While Stripe may paint a prettier picture of MRR (and one that businesses may love to believe), Baremetrics’ MRR gives you a much more accurate understanding of what’s happening with your business.</p>
+    <p>Get the truth about your MRR. Try a <a href="https://app.baremetrics.com/users/sign_up">free trial of Baremetrics</a> today!</p>
+    <p><img src="https://baremetrics.com/hubfs/Screenshot_1.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="allison-barkley">Allison Barkley</h3>
+    <p>Allison Barkley is the Director of Operations at Baremetrics, where she oversees day-to-day operations. With a background in finance, payments, and analytics, Allison is known for turning data into actionable insights that drive business growth. Allison is passionate about helping SaaS businesses leverage data to become part of the 10% of startups that succeed. Outside of Baremetrics, she’s a champion of startups, frequently organizing events to fuel innovation and entrepreneurship.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#how-to-calculate-mrr">How to Calculate MRR</a></li><li><a href="#why-stripe-s-mrr-reporting-data-doesn-t-match-baremetrics">Why Stripe’s MRR Reporting Data Doesn’t Match Baremetrics</a></li><li><a href="#why-stripe-s-mrr-is-consistently-higher-than-baremetrics">Why Stripe’s MRR Is Consistently Higher than Baremetrics</a></li><li><a href="#why-customers-integrate-stripe-with-baremetrics">Why Customers Integrate Stripe with Baremetrics</a></li><li><a href="#how-to-integrate-stripe-with-baremetrics">How to Integrate Stripe with Baremetrics</a></li><li><a href="#final-thoughts">Final Thoughts</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Allison Barkley</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

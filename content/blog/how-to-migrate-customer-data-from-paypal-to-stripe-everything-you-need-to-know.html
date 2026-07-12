@@ -1,0 +1,129 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Switch from PayPal to Stripe Without Losing Customer Data</div></div>
+      <div><div>Description</div><div>This article covers in detail how to migrate customer data from PayPal to Stripe, using Stripe's resources as well as custom logic.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to Migrate Customer Data from PayPal to Stripe: Everything You Need to Know</h1></div></div>
+      <div><div><p>By Lea LeBlanc on June 03, 2021 Last updated on June 18, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/large-bm-blog-image.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>This article covers in detail how to migrate customer data from PayPal to Stripe using Stripe’s resources as well as custom logic. Baremetrics customer, Sync with Connex, shared with us how they accomplished the migration.</p>
+    <p>Joseph Anderson is the Founder and CEO of <a href="https://www.syncwithconnex.com/">Sync with Connex</a>, a SaaS company that automates data entry between QuickBooks and online e-commerce channels. After using PayPal for payment processing for 10 years, he decided to switch to Stripe’s platform.</p>
+    <p>He decided to migrate from PayPal to Stripe because PayPal’s software and data reporting were insufficient for Sync with Connex’s needs. With Stripe, Joseph can get more out of the developer-friendly features and he can easily integrate his account with third-party applications like <a href="https://baremetrics.com/">Baremetrics</a> for smarter analytics.</p>
+    <p>In this guide, he explains how Sync with Connex successfully handled a full PayPal to Stripe migration, including the code he used to edit specific subscription information, create subscriptions, and update customers after they had been imported to Stripe.</p>
+    <p>Baremetrics is a business metrics tool that <a href="https://baremetrics.com/stripe">amplifies Stripe</a> to drive better insights with your data. If you’re using Stripe, you should definitely be using Baremetrics. Get the Baremetrics free trial here.</p>
+    <h2 id="overview-how-did-sync-with-connex-do-it">Overview: How did Sync with Connex do it?</h2>
+    <p>Although Stripe and Paypal are both payment gateways, they are very different tools. The attributes of a customer in Stripe are different from how they’re organized in PayPal.</p>
+    <p>This article will cover the process of migrating from Stripe to PayPal in detail.</p>
+    <p>Although Stripe and Paypal are both payment gateways, they are very different tools. The attributes of a customer in Stripe are different from how they’re formatted in PayPal.</p>
+    <p>Because of this, Sync with Connex completed the migration by the following process:</p>
+    <ol><li>First, Sync with Connex worked with Stripe’s migration team to import PayPal customer data into Stripe using a spreadsheet prepared by PayPal. PayPal sent Stripe the customer information and Stripe imported the data. The spreadsheet included customer name, email, and credit card information.</li><li>Some user accounts were marked as active, instead of cancelled.</li><li>Some users had incorrect plan levels associated with their account.</li><li>Some Sync with Connex accounts were incorrectly associated with their PayPal accounts.</li></ol>
+    <p>This article will explain exactly how Sync with Connex accomplished these steps, starting with important learnings to be aware of before getting started.</p>
+    <h2 id="5-key-points-to-know-before-migrating-from-paypal-to-stripe">5 Key Points to Know before Migrating from PayPal to Stripe</h2>
+    <p>As Sync with Connex migrated from PayPal to Stripe, they overcame a number of challenges to get their existing customer data to fit into Stripe’s environment.</p>
+    <h3 id="1-you-must-use-the-stripe-api-to-import-subscription-information-legacy-pricing-and-contact-info">1. You must use the Stripe API to import subscription information, legacy pricing, and contact info.</h3>
+    <p>Joseph recommends creating a spreadsheet, then writing code to import the spreadsheet to Stripe.</p>
+    <p>Subscription Information</p>
+    <p>If your business offers different products with different subscription tiers, you will be able to see which product each customer is signed up for, but not the subscription tier.</p>
+    <p>Rather, you must edit your Stripe accounts by manually importing a spreadsheet of RP numbers (this is what PayPal calls customer IDs), their new Stripe Price ID, the member since date, the next payment date, and payment frequency (monthly / yearly).</p>
+    <p>Legacy Pricing</p>
+    <p>Some Sync with Connex users have legacy pricing. The logic Sync with Connex used said that “If the “member since date” was prior to 6/1/2019, then choose the legacy Price ID. Otherwise, use the new Price ID.” When you make your spreadsheet to import, ensure the price ID is accurate for legacy users. Stripe allows the same product to contain multiple price points.</p>
+    <p>Billing and Shipping Addresses</p>
+    <p>To add billing details, you must manually import them using a spreadsheet of RP numbers, phone, email and billing address.</p>
+    <p>To create this spreadsheet, head to PayPal Manager. Go to Reports and generate a Custom Report. Make sure to include all of the fields you need. The “Comment 2” field contains the RP number.</p>
+    <h3 id="2-you-will-need-to-create-stripe-price-ids">2. You will need to create Stripe Price IDs.</h3>
+    <p>If you don’t have Price IDs in Stripe, you will need to create them. This means creating new Price IDs that match with your existing PayPal products.</p>
+    <p>Sync with Connex did this by creating specific codes, which they call SKUs, for each product. Using SKUs made it easier to map these products to Stripe Price IDs, as Connex’s product names have changed over the years. Then, they wrote code to match these SKUs to a list in Stripe.</p>
+    <p>After exporting the SKUs from PayPal into a spreadsheet, Sync with Connex created a Meta field called SKU. Then, their custom code mapped the PayPal SKU information into new Stripe Price IDs via the Stripe Price ID SKU meta field.</p>
+    <p>For more information on how to map PayPal fields to Stripe, keep reading. To see their code, you can find it towards the end of this article.</p>
+    <h3 id="3-paypal-can-export-a-customer-s-credit-card-information-but-miscommunications-can-have-major-consequences">3. PayPal can export a customer’s credit card information, but miscommunications can have major consequences.</h3>
+    <p>To import credit card information from PayPal to Stripe, you can easily export to Stripe via customers’ PayPal profile ID. However, this can be difficult to do accurately at scale.</p>
+    <p>In Sync with Connex’s experience, during the migration a miscommunication caused Stripe to receive transaction IDs when they should have received PayPal Profile IDs. This was a problem because transaction IDs would not have properly recognized the differences in payment schedules for Sync with Connex customers; some customers pay monthly, whereas others pay annually.</p>
+    <p>This miscommunication resulted in a 2-week delay.</p>
+    <h3 id="4-deactivating-a-customer-pre-migration-will-erase-their-customer-history">4. Deactivating a customer pre-migration will erase their customer history.</h3>
+    <p>If you deactivate a customer in PayPal before migrating everything to Stripe, not only will their information not appear in Stripe, you won’t be able to reactivate their profile in the future.</p>
+    <h3 id="5-stripe-allows-you-to-import-subscriptions-and-customer-data-one-at-a-time">5. Stripe allows you to import subscriptions and customer data one at a time.</h3>
+    <p>As a workaround, you can use parallel programming to import them in batches.</p>
+    <h2 id="how-do-the-paypal-fields-map-to-the-stripe-fields">How do the PayPal fields map to the Stripe fields?</h2>
+    <p>Before we migrate the custom data, let’s take a look at how the fields map from PayPal to Stripe.</p>
+    <p>This is the information that will import automatically when working with Stripe’s migration team:</p>
+    <p>PayPal</p>
+    <p>Stripe</p>
+    <p>Notes</p>
+    <p>RPNumber is the recommended approach to link.</p>
+    <p>The below chart shows how Sync with Connex mapped customer email, billing schedule, Price ID, and subscription frequency:</p>
+    <p>Your Customers (in PayPal)</p>
+    <p>Stripe</p>
+    <p>Notes</p>
+    <p>Use the Stripe subscription billing cycle anchor to set the next payment date.</p>
+    <p>Then, enter 3/1/2021 as the back date start date.</p>
+    <p>Then, they wrote logic to match Stripe price IDs to SKUs.</p>
+    <h2 id="post-migration-what-does-customer-data-in-stripe-look-like">Post-Migration: What does Customer Data in Stripe look like?</h2>
+    <p>As discussed earlier, Stripe will only import the email and payment method. Information such as previous payment data, plan information, customer name, and billing details will not be imported from PayPal to Stripe.</p>
+    <p>Below is an example of a customer account immediately after the migration. Note the absence of subscriptions and payment history.</p>
+    <h2 id="post-migration-using-apis-to-edit-and-add-additional-information">Post-Migration: Using APIs to Edit and Add Additional Information</h2>
+    <p>After the initial export into Stripe, Sync with Connex used the Stripe and PayPal APIs to further modify customer information in Stripe.</p>
+    <p>The method that he used is as follows:</p>
+    <ol><li>List subscriptions in PayPal</li></ol>
+    <ol><li>Create subscriptions in Stripe</li></ol>
+    <ol><li>Update customers in Stripe using custom code</li></ol>
+    <p>Below is the code Joseph wrote to update customers:</p>
+    <p>Here is Sync with Connex’s data transfer object. Some of the fields are unnecessary for the Stripe integration:</p>
+    <p>Here is code for importing the users:</p>
+    <h2 id="matching-paypal-and-stripe-products-using-sku-labels">Matching PayPal and Stripe Products using SKU labels</h2>
+    <h3 id="how-do-i-match-products">How Do I Match Products?</h3>
+    <p>As mentioned earlier, if you don’t have Price IDs in Stripe, you’ll need to create them.</p>
+    <p>Sync with Connex’s method was to map a spreadsheet of product SKUs (their way of labeling different products) and Stripe Price IDs</p>
+    <p>In the code below, you’ll see the SKUs and their Price IDs: .</p>
+    <p>Finally, here’s what two Sync with Connex products ultimately looked like in Stripe:</p>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>It’s imperative to find the right payment processor for your business needs. For Sync with Connex, Stripe was the smarter choice because of its advanced billing capabilities, simple integrations, and the tools built for developers.</p>
+    <p>But processing payments is only the first step. SaaS and subscription businesses need to understand metrics like MRR, ARR, LTV, and more in order to accurately understand the health of their business and forecast growth.</p>
+    <p>Connex uses Baremetrics to stay on top of key metrics, as well as <a href="https://baremetrics.com/features/recover">recover failed payments</a> and better understand why customers cancel subscriptions. To learn more about how Sync with Connex used Baremetrics to recover over $7,500 in failed payments in just 3 weeks, check out their story here.</p>
+    <p>Joseph Anderson is the Founder and CEO of <a href="https://www.syncwithconnex.com/">Sync with Connex</a>, a SaaS company that automates data entry between QuickBooks and online selling channels. Joseph is the author of “The $20 SaaS Company: From Zero to Seven Figures Without Venture Capital”, published on June 6th, 2021.</p>
+    <h3 id="the-recovery-layer-most-billing-setups-are-missing">The recovery layer most billing setups are missing</h3>
+    <p>Beyond the billing mechanics covered above, the silent revenue leak in most subscription businesses is failed-payment recovery. Subscription businesses lose an average of 9% of MRR to expired cards, insufficient funds, and declined charges — almost all of which is recoverable with a structured dunning system. Across 148 Baremetrics customers using <a href="https://baremetrics.com/features/recover">Recover</a> in December 2024, $1.35 million was reclaimed in a single month; 82% of customers saw the tool pay for itself within month one. The full system is covered in our dunning management guide; for the practical email side, see how to write dunning emails.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>How do you migrate customer data from PayPal to Stripe without losing subscription history?
+              Migrating customer data from PayPal to Stripe requires a coordinated process: export a PayPal spreadsheet, work with Stripe's migration team to import customer records, then use the Stripe API to add subscription details manually.Stripe's import process only brings over basic customer information such as email and payment method. Subscription history, plan levels, billing addresses, and legacy pricing all need to be added separately via API calls or custom code. Before starting your customer data migration, map your PayPal fields to their Stripe equivalents, create matching Stripe Price IDs for every product tier you offer, and ensure you are passing PayPal Profile IDs rather than transaction IDs to avoid billing errors. Deactivating a customer in PayPal before the migration is complete will erase their history permanently, so sequence the steps carefully.</li><li>What customer data transfers automatically from PayPal to Stripe and what has to be added manually?
+              Stripe's migration process automatically imports basic fields including customer name, email, and credit card information, but subscription details, billing addresses, plan levels, and payment history all require manual import via the Stripe API.This distinction matters because most of the data a SaaS business actually needs, such as the customer's pricing tier, billing cycle anchor, and member-since date, will not carry over on its own. You will need to build a spreadsheet that maps PayPal reference numbers (called RP numbers) to Stripe Price IDs, subscription frequencies, and next payment dates, then write custom code to push that data into Stripe. For subscription businesses especially, skipping this step means your new Stripe environment will show customers with no active plans and no payment history.</li><li>How do you handle legacy pricing when migrating subscriptions from PayPal to Stripe?
+              Legacy pricing must be managed manually during a PayPal to Stripe migration by creating separate Stripe Price IDs for each historical price point and writing logic to assign the correct price to each customer based on their original sign-up date.Stripe supports multiple price points within a single product, which makes this workable. A common approach is to set a conditional rule in your import code: if a customer's member-since date predates your pricing change, assign the legacy Price ID; otherwise use the current one. Getting this wrong means billing long-term subscribers at the wrong rate, which creates churn risk and support overhead. Build your price-mapping logic before you run any bulk import, and validate a sample of accounts before migrating your full subscriber base.</li><li>What are the most common mistakes that cause SaaS businesses to lose revenue data during a payment processor migration?
+              The most common revenue-damaging mistakes in a payment processor migration are deactivating customers before migration is complete, confusing transaction IDs with customer profile IDs, and failing to map legacy pricing tiers to the correct new Price IDs.Each of these errors can have lasting consequences for a subscription business. Deactivating a PayPal customer account before their data is fully transferred permanently deletes their history with no recovery path. Sending transaction IDs instead of Profile IDs to Stripe breaks billing schedules for customers on different payment frequencies. And incorrect Price ID mapping silently puts customers on the wrong plan, which inflates or understates MRR. A clean migration checklist that covers field mapping, pricing logic, and a staged rollout with validation checkpoints reduces the risk of each of these failure modes.</li><li>How do you track MRR and churn accurately after switching from PayPal to Stripe?
+              After migrating to Stripe, connecting your account to a subscription analytics platform like Baremetrics gives you real-time MRR tracking, churn reporting, and LTV calculations without any additional setup.Stripe on its own shows transaction data but does not give you the subscription-level metrics a SaaS business needs to monitor revenue health. Baremetrics pulls directly from your Stripe data and breaks MRR into new revenue, expansion, contraction, and churned MRR, so you can see exactly where revenue is growing or leaking after the migration. This is especially useful in the weeks following a payment processor switch, when billing anomalies are most likely to surface. You can also benchmark your post-migration churn rate against industry data from hundreds of other SaaS companies using Baremetrics open benchmark data.</li><li>What platforms offer automated failed payment recovery for subscription businesses that process payments through Stripe?
+              Baremetrics includes a built-in automated dunning tool called Recover that retries failed Stripe payments on an optimised schedule and sends customisable email sequences to reduce involuntary churn.Failed payments are one of the most recoverable sources of churn for subscription businesses. Across 148 Baremetrics customers using Recover in December 2024, the tool reclaimed $1.35 million in a single month, with 82% of customers seeing it pay for itself within the first month. Recover works directly on top of your existing Stripe integration, so there is no additional billing infrastructure to manage. For SaaS businesses that have just completed a payment processor migration and want to protect the revenue they have moved across, automated failed payment recovery is one of the highest-leverage tools to activate immediately.</li><li>How can SaaS founders benchmark their churn rate after a major billing infrastructure change like a payment processor migration?
+              Baremetrics offers open benchmark data drawn from hundreds of SaaS companies, allowing founders to compare their churn rate, MRR growth, and LTV against businesses at a similar revenue scale after a payment processor migration.A migration from PayPal to Stripe often causes a temporary spike in failed payments and customer contact, which can make churn metrics look worse than they actually are. Having a reliable benchmark helps you distinguish a migration-related blip from a real retention problem. Baremetrics segments benchmark data by MRR range, so a subscription business with $50K MRR is not being compared to an enterprise SaaS company with a completely different customer profile. Monitoring new MRR, expansion MRR, and churned MRR separately in the weeks following a migration gives you the clearest picture of whether revenue is stabilising or whether action is needed.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/febcbd14d0c94d6691a3a23b5bdc969a.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="lea-leblanc">Lea LeBlanc</h3>
+    <p>Lea is passionate about impactful businesses, good writing, and the stories founders have to tell. When she’s not writing about SaaS topics, you can find her trying new recipes in her tiny Tokyo kitchen.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#overview-how-did-sync-with-connex-do-it">Overview: How did Sync with Connex do it?</a></li><li><a href="#5-key-points-to-know-before-migrating-from-paypal-to-stripe">5 Key Points to Know before Migrating from PayPal to Stripe</a></li><li><a href="#how-do-the-paypal-fields-map-to-the-stripe-fields">How do the PayPal fields map to the Stripe fields?</a></li><li><a href="#post-migration-what-does-customer-data-in-stripe-look-like">Post-Migration: What does Customer Data in Stripe look like?</a></li><li><a href="#post-migration-using-apis-to-edit-and-add-additional-information">Post-Migration: Using APIs to Edit and Add Additional Information</a></li><li><a href="#matching-paypal-and-stripe-products-using-sku-labels">Matching PayPal and Stripe Products using SKU labels</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Lea LeBlanc</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

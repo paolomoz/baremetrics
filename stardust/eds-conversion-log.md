@@ -201,3 +201,36 @@ prototypes' own section padding:
 Post-fix re-audit: 0 visible-head butting sections across all 15 pages (2 residual flags are the
 publications kicker→heading pair and the ltv-calc hairline-separated method note — both correct).
 CSS-only change; served on both .page and .live via the shared code bus (no content re-publish).
+
+## Full migration — generation complete, deploy pending token (2026-07-12)
+
+Scope: user chose "Everything (~1,015)". All waves crawled + generated + gated + committed on `stardust-conversion`.
+
+**Content tree: 1,024 pages** (content/) — 15 archetypes + 59 wave-1 structural + 721 wave-2 (639 blog/academy articles + 82 founder-chats episodes) + 229 wave-3 jp/ja mirrors. (1030 inventory − 2 junk sample-test-pages − a few index dupes.)
+
+**Generators (deterministic, stardust/gen/):** features, integrations, compare, stories, experts-cat, indexes, static, misc (usercase/kb/tools/open-data), articles (blog+academy, ordered-content interleave), episodes (founder-chats, byte-verbatim transcripts), localized (jp/ja router reusing all the above via exported buildPage fns; English output verified byte-unchanged). Ordered-content extractor: stardust/scripts/order-extract.mjs (adds document-order body to article captures).
+
+**Fidelity:** archetype tier for the 15 hand-crafted; "sibling" tier for the 1,009 generated (correct structure via existing blocks, real captured content, nothing invented — thin/absent prose rendered faithfully, dynamic forms/search inert per the fragments rule).
+
+**BLOCKED — deploy needs a fresh DA_TOKEN** (expired 15:13). content-staged/ is sanitised + ready (0 residual non-ASCII). RESUME:
+```
+cd /Users/paolo/stardust/semrush/baremetrics-eds
+export DA_TOKEN=<fresh token>   # refresh in ../baremetrics/.env
+node skills/deploy/scripts/deploy-batch.mjs --org paolomoz --repo baremetrics \
+  --branch stardust-conversion --content content-staged --concurrency 4
+```
+Ledger is idempotent — skips the 15 already-live, deploys the ~1,009 new, resumes cleanly if the token expires again mid-run. After deploy: per-template computed-layout gate on live URLs (stardust/live-layout-gate.mjs pattern) + content-diff spot-checks.
+
+## DEPLOY COMPLETE (2026-07-12, token refreshed)
+
+Deployed all staged pages to DA (branch stardust-conversion) via deploy-batch (PUT→preview→live→delivered-check, concurrency 4). **Result: 1,022/1,024 live** (99.8%).
+
+Reconciled 3 deploy failures:
+- `/features/metrics` — preview 409 `AEM_BACKEND_FETCH_FAILED: Images 8-12 failed validation`. Cause: 5 complex feature-illustration SVGs (integrations/reports/benchmark/trial-insights/visual.svg) that EDS's server-side media validator rejects (customer-logo SVGs pass). Dropped the 5 decorative SVGs → live.
+- `/blog/baremetrics-stripe-platform-integrations` + `/blog/backlinks-and-google-penalties-...` — verify-fail `about:error`: embedded googleusercontent.com (expiring Google-Docs) images. Stripped the broken `<img>` → live.
+
+2 NOT deployed (skipped-nonascii-path, recorded in ledger): the 2 jp/blog posts with native Japanese-character URL slugs — DA/EDS content-bus rejects non-ASCII paths (`html2md` 400). Content is generated + committed; deploying them needs romaji slugs + redirects (a product decision — not invented).
+
+Post-deploy computed-layout gate on 25 live URLs across every template: all render correctly (200, one h1, sections>0, grids/flex compute, 0 broken images, 0 pageerrors). Legal-prose pages (gdpr, ja/privacy) are single-masthead + article prose by design (no grid block) — correct, not a failure.
+
+**Live:** https://stardust-conversion--baremetrics--paolomoz.aem.live/ (branch; merge → main to promote to production). Full stardust pipeline complete: extract → audit → direct → prototype → migrate → deploy, scaled to the full 1,030-URL inventory.

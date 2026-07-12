@@ -1,0 +1,93 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Automate NPS Feedback With Promoter.io and Zapier</div></div>
+      <div><div>Description</div><div>We’ve been using Promoter.io, Zapier and Intercom to fully automate the collection of NPS scores and comments as well as initial replies to the feedback. Doing this saves a ton of time without compromising personal touch, leaving you more time to act on that feedback. Here’s how we did it.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How To Fully Automate Customer Feedback</h1></div></div>
+      <div><div><p>By Kaegan Donnelly on June 30, 2015 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/blog4-1.jpg" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>We’ve found that NPS surveys are <a href="https://baremetrics.com/blog/increase-saas-customer-loyalty-with-nps">a great way</a> to get actionable customer feedback at scale. They’re easy to send, easy for customers to take, and give a quantifiable data point on how customer happiness and loyalty is improving (or not).</p>
+    <p>A few months ago we ran an <a href="http://www.netpromoter.com/why-net-promoter/know">NPS survey</a> after a bit of a hiatus. Within minutes, hundreds of responses flooded in, and I spent most of that day and the next following up, logging responses and sharing those responses with the team. Assembly line type work. Yuck.</p>
+    <p>Since then, we’ve been using <a href="http://www.promoter.io/">Promoter.io</a>, Zapier and Intercom to fully automate the collection of NPS scores and comments as well as initial replies to the feedback. Doing this saves a ton of time without compromising personal touch, leaving you more time to act on that feedback. Hurrah! Here’s how we did it.</p>
+    <h2 id="sending-the-surveys">Sending the surveys</h2>
+    <p>Promoter.io has Drip and Throttle features that let you almost fully automate the continues sending of NPS surveys. Right now we just periodically upload a list of new customers and then create a new NPS campaign and let Promoter.io’s Drip &amp; Throttle take care of sending it to those customers at the appropriate time, so we don’t over survey them.</p>
+    <h2 id="followups">Followups</h2>
+    <p>You have to follow up with everyone who gives you a score and or a comment, or else what’s the point of soliciting feedback in the first place?! But responding to every. single. person gets really draining, especially when a lot of the responses are quite similar.</p>
+    <p>When you do get comments along with the NPS scores, the first order of business is forwarding them to a central place to do the follow-up.</p>
+    <p>Promoter.io will forward all responses with comments to an e-mail address—choose one that ties into your Help Desk of choice (for us, it’s Intercom).</p>
+    <p>But what about folks who don’t leave a comment? You need to try to get a bit more information from them about why they left the score they did. You can either manually reply to every one of them in Promoter.io or automate it with Zapier.</p>
+    <h3 id="automating-additional-feedback">Automating additional feedback</h3>
+    <p>You need to create automatic e-mails to elicit additional feedback from folks who didn’t leave a comment.</p>
+    <p>It’s best to create three separate Zaps with different content for Promoters, Passives, and Detractors.</p>
+    <h4 id="create-your-zap">Create Your Zap</h4>
+    <p>Create a Zap from Promoter.io to your e-mail provider of choice, and authenticate both of them. We do this through Gmail, but you could just as easily do this through Intercom or some other mail-y doodad of your choice.</p>
+    <h4 id="configure-the-filters">Configure the Filters</h4>
+    <p>Set your filters so the messages go to the right segment. Above, you’re looking at the filters for Promoters. For Passives and Detractors, change the NPS Score Type filter to either “passive” or “detractor”. Remember, you need to make three separate zaps.</p>
+    <p>Fortunately, you can click on the dropdown arrow on this Zap on the main Zapier dashboard and copy it to create a new one. Woohoo, automated automation… automaception… or something.</p>
+    <h4 id="setup-the-contact-fields">Setup the Contact Fields</h4>
+    <p>Make sure this is set to “Contact’s Email” and that the “Reply to” is set to an e-mail address that feeds into your Help Desk. Set the other parameters (CC, BCC, From name, From E-mail) as desired.</p>
+    <h4 id="create-segment-specific-messaging">Create segment-specific messaging</h4>
+    <p>Next up you need some content for the message depending on whether it’s for Promoters, Passives or Detractors.</p>
+    <p>Here are the messages we send for each feedback type.</p>
+    <p>Promoter</p>
+    <p>Hey Joe! Thanks so much for the awesome score. We really appreciate it.</p>
+    <p>If you wouldn’t mind sharing Baremetrics with folks, that’d be such a huge help.</p>
+    <p>If you use the Twitters, here’s a pre-populated tweet. 🙂 http://brmtrcs.io/17lHx8D</p>
+    <p>Passive</p>
+    <p>Hey Jane! Thanks so much for responding!</p>
+    <p>If we could do just one thing to get you to score us a 9 or 10 in the future, what would that be?</p>
+    <p>Detractor</p>
+    <p>Hey Pat! Sorry to see that you’re not happy with Baremetrics.</p>
+    <p>Is there a specific thing we’re not doing a great job with? Definitely want to get this fixed for you.</p>
+    <h3 id="growing-a-million-dollar-company">Growing a Million Dollar Company</h3>
+    <p><img src="https://convertkit.s3.amazonaws.com/subscription_forms/images/004/814/593/standard/gamdc_cover_small.png?1438543452" alt="" loading="lazy" decoding="async"></p>
+    <p>Get our free book with 30+ free lessons on how we're growing a million dollar company!</p>
+    <p>Thanks! Check your email for the book download!</p>
+    <h2 id="get-the-scores-into-a-messaging-system">Get the scores into a messaging system</h2>
+    <p>Getting the scores in to a messaging system like Intercom or <a href="http://customer.io/">Customer.io</a> lets you send automated messages to specific segments based on their score. We use Intercom, but this step should work for any system that has Zapier integration.</p>
+    <p>Set up a new Zap from Promoter.io to Intercom, like you did before. Here’s the key bits you want to move over. Each new score you receive in Promoter.io will be sent to that customer’s profile in Intercom.</p>
+    <p>Now you can do all kinds of cool stuff using those new attributes you’ve created!</p>
+    <p>For example, we created a “Beta Team” from our Promoters, and Josh personally follows up with Detractors a few days after the survey result comes in. Here’s Josh’s e-mail for Detractors.</p>
+    <p>Hey Pat! A couple of days ago you let us know through our survey that you weren’t super happy with Baremetrics. Definitely want to fix that, so would you mind letting me know how I can help?</p>
+    <p>Happy to chat over e-mail or setup a call, let me know what works best for you.</p>
+    <h2 id="share-the-feedback-with-your-team">Share the feedback with your team</h2>
+    <p>Next step is to share NPS comments with your team!</p>
+    <p>Like before, create a new Zap, but this time from Promoter.io to Slack. Set your channel (we have a dedicated #nps channel), a username for the Bot, and a fun emoji to use as the bot’s avatar. Here’s what the text bit looks like, as well as what it looks like in Slack.</p>
+    <p>Congratulations! You’ve now turned a multi-day project into a super easy task with a few simple-to-setup automations. This is great because you’re likely to run NPS surveys more often, and you can spend more time acting on the feedback you get rather than parsing through it.</p>
+    <p>I’m a Zapier and automation addict, so please let me know in the comments if you’ve come up with any similarly creative ways to speed up your workflow.</p>
+    <p><img src="https://baremetrics.com/hubfs/Kaegan.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="kaegan-donnelly">Kaegan Donnelly</h3>
+    <p>Kaegan Donnelly is the bringer of happiness, maker of GIFs, and resident Canadian at Baremetrics. He’s also a "digital nomad", which is a fancy word for homeless. Follow his adventures at @kaequan.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#sending-the-surveys">Sending the surveys</a></li><li><a href="#followups">Followups</a></li><li><a href="#get-the-scores-into-a-messaging-system">Get the scores into a messaging system</a></li><li><a href="#share-the-feedback-with-your-team">Share the feedback with your team</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Kaegan Donnelly</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

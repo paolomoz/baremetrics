@@ -1,0 +1,84 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Cut SaaS Bookkeeping Errors Using Xero Bank Rules</div></div>
+      <div><div>Description</div><div>This post is part of a series for SaaS CEOs and Founders on organizing SaaS Chart of Accounts.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to Automate your SaaS Expenses with Xero Bank Rules</h1></div></div>
+      <div><div><p>By Swapnil Jain on December 07, 2023 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a5164e4a6b75ccf6409_5985wide1-1024x768.jpeg" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <h2 id="bank-rules-the-basics">Bank Rules – The Basics</h2>
+    <p>If you run a SaaS company with outsourced accounting help, chances are that you have experienced the monthly ritual of back and forth emails when categorizing transactions. Somehow expenses under one account end up in another the following month. Even though you send a bunch of red-lined emails saying "as I told you last month, bills from X go to...", the process repeats in the coming months.</p>
+    <p>While not excusable, the process is at least understandable. Your bookkeeper may not be dedicated to your company, and it's not like they are incentivized to come up with solutions that cut down their billable hours. You aren't probably paying them enough either.</p>
+    <p>Enter Xero bank rules.</p>
+    <p>Bank rules pick up an expense description provided by your bank - the Reference - and use the fixed instructions from you to always categorize the expense the same exact way. The goal is to reduce human error and speed up the monthly closing process.</p>
+    <p>This is best understood by looking at an example. One of the most common mistakes we see is incorrectly categorized hosting expenses. The inaccuracy leads to inaccurate SaaS metrics such as <a href="https://baremetrics.com/academy/gross-margin">lower gross profit margins</a>, and thus lower LTVs and longer CAC Payback times. The reason for the error is often very simple – their bookkeeper lumps all expenses from Amazon under hosting (or worse, software or office expenses). If the company buys their computer equipment, office supplies, and say, referral gift cards all from Amazon, suddenly this discrepancy becomes material.</p>
+    <p>If we use the bank rules, this error won’t occur as we can tell the rule to categorize anything with a bank description of Amazon Web Services to Hosting, but anything with Amazon.com or Amazon MKTPLACE to Office Expenses.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a5164e4a6b75ccf6409_5985wide1-1024x768.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <p>This post is part of a series for SaaS CEOs and Founders on organizing SaaS Chart of Accounts. The goal of the series is to provide practical advice on organizing and automating your financial backend, which results in more accurate forecasts and a faster feedback loop through a quicker closing of the books.</p>
+    <p>Note: This is a the same post as How to Automate your SaaS Expenses with Quickbooks Bank Rules, but with examples specific to Xero.</p>
+    <h3 id="how-to-use-bank-rules-example">How to Use Bank Rules – Example</h3>
+    <p>Let’s look at another common mistake where all expenses from Google have been applied to one expense category.</p>
+    <p>Your forecasting needs for Adwords, GSuite and Google Cloud are all very different, which is why you should also categorize them separately: Google Cloud is a hosting cost that increases alongside your revenue, whereas GSuite is an General &amp; Admin (overhead) software cost that grows as your team grows. Adwords, on the other hand, is a potential revenue driver for your business, and grouping it with other expenses will make it impossible to accurately project your future revenue.</p>
+    <p>For simplicity, we’re going to leave out Google Cloud and GSuite from the example below.</p>
+    <p>Here is a view from the Xero Reconciliation (Cash Coding), which pulls your company transactions from your bank accounts and credit cards. Below is an example of a transaction spent to Google Adwords.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5e4c027a5cfa1d0056c1aece_Bank%20Transaction.png" alt="" loading="lazy" decoding="async"></p>
+    <p>The Reference column displays a long line of text and numbers, but the first part – GOOGLE*ADS – is what we care about. Let’s use this information to create our first bank rule.</p>
+    <p>Click on the arrow on right, and select Create bank rule. Feel free to check out <a href="https://central.xero.com/s/article/Create-a-bank-rule#Whileyourecashcoding">Xero's more detailed instructions</a>.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5e4c05400df7eb31fb28aca1_Create%20Bank%20Rule.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Next, fill in the blanks. The key part to get right is the conditions - as in, what should the rule acutally pick up.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5e4c0a4c0df7eb4eba28d621_Bank%20Rule%20Example.png" alt="" loading="lazy" decoding="async"></p>
+    <p>1. Conditions: Select all, and use Reference from the available options. Now, take the same GOOGLE*ADS and write it to the empty text field. Alternatively, you could select Any Text Field instead of the Reference column.</p>
+    <p>‍2. Set the contact: Add a contact, if applicable. You can also change this to be entered during reconciliation.</p>
+    <p>3. Allocate fixed value (Split expense). Optional step to split the expense into multiple Accounts. For example, if you pay for Google Cloud, you might want to allocate a few hundred from your bill towards R&amp;D software spend instead of testing, given your engineers are likely to run non-customer facing environments for testing purposes.</p>
+    <p>‍4. Allocate the remainder: This is the where you want to categorize the expense on an ongoing basis. For example, we can allocate all Google Adwords transactions into "Adwords" account. The Tax Rate is something you you need to figure out with your accountant.</p>
+    <p>5. Set the reference.</p>
+    <p>6. Target a bank account. Usually, you'd want the rule to apply to all bank accounts.</p>
+    <p>7. Give the rule a title. This is quite self-explanatory.</p>
+    <h3 id="apply-the-bank-rules">Apply the Bank Rules</h3>
+    <p>Now as you navigate back to Reconcile tab, you'll see the suggested bank rule you just created. All you need to do is to click OK.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5e4c0fd89fcdd7d470499071_Apply%20Bank%20Rules.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="takeaway">Takeaway</h3>
+    <p>In this post we went through automating your SaaS expenses by using Xero bank rules. The rules only apply going forward, so for any historical cleanup you’ll have to go to the Account transactions tab and Remove &amp; Redo transactions you want to re-categorize using rules. Just make sure not to remove anything before checking in with your accountant.</p>
+    <p>Automating the categorization of your recurring expenses will enable more accurate financial projections and faster closing of the books. It will also save time for your accountant that can be used for more value-adding work.</p>
+    <h3 id="faq">FAQ</h3>
+    <ul><li>How do you set up bank rules in Xero for SaaS expense tracking?
+              To set up a bank rule in Xero, navigate to the Reconcile tab, find a transaction with the reference text you want to target, click the arrow on the right, and select Create bank rule. From there, set your condition to match on the Reference field using the exact text your bank provides, such as GOOGLE*ADS or AMAZON WEB SERVICES, then assign the expense to the correct account category and give the rule a descriptive title. Once saved, the rule applies automatically to every matching transaction going forward, so your bookkeeper never has to make that categorisation call again. For SaaS businesses tracking hosting costs, ad spend, and SaaS tools separately, this removes the manual error that quietly distorts gross margin, LTV, and CAC payback calculations.</li><li>How do you automate recurring SaaS expense categorisation in Xero without manual entry?
+              You can automate recurring SaaS expense categorisation in Xero by creating bank rules that match on the reference text your bank or card network sends through with each transaction. Instead of relying on a bookkeeper to remember that Amazon Web Services is a hosting cost while Amazon.com is an office expense, the rule enforces that distinction every time, with no manual input required. This matters for subscription businesses because incorrect expense categorisation flows directly into understated gross margins, which in turn skews LTV models and makes revenue forecasting unreliable. Connecting clean, correctly categorised expense data to a tool like Baremetrics gives your finance team an accurate picture of unit economics in real time, rather than discovering errors after the monthly close.</li><li>Why does incorrect expense categorisation hurt SaaS metrics like LTV and gross margin?
+              Incorrect expense categorisation distorts the cost of goods sold line, which reduces your reported gross margin, and because LTV is calculated using gross margin as a core input, a lower margin produces a lower LTV even if actual revenue is unchanged. For SaaS operators, the most common version of this problem is lumping hosting costs like AWS in with office supplies or general software expenses, which understates cost of revenue and makes the business appear more efficient than it is. When your gross margin is overstated or understated, every downstream metric built on it, including CAC payback period and revenue forecasting, becomes unreliable. Fixing the categorisation at the source, through automated expense management rules in Xero, is the most durable way to keep these numbers accurate.</li><li>What is the difference between Xero bank rules and manual reconciliation for subscription businesses?
+              Xero bank rules apply a fixed, pre-defined categorisation logic to every transaction that matches a specified condition, while manual reconciliation requires a person to review and assign each transaction individually during each monthly close. For subscription businesses that pay the same vendors, hosting providers, and SaaS tools every month, manual reconciliation introduces recurring human error because the same judgment call is being made repeatedly by someone who may not be dedicated to your account. Bank rules remove that variable entirely, so Google Ads always maps to your advertising account, Google Cloud always maps to hosting, and GSuite always maps to general and admin software, regardless of who is doing the books that month. The practical result is a faster close, fewer correction cycles, and expense data that is reliable enough to feed into accurate financial projections.</li><li>How do accurate SaaS expense categories in Xero connect to better revenue forecasting?
+              Accurate expense categorisation in Xero is the foundation of reliable SaaS revenue forecasting because different cost types scale on entirely different drivers. Hosting costs like Google Cloud tend to grow in line with revenue, advertising spend like Google Ads is a direct lever on customer acquisition, and overhead costs like GSuite scale with headcount. When these are lumped together under a single expense category, it becomes impossible to model how costs will behave as the business grows, which means any revenue forecast built on that data will carry significant error. Connecting clean, category-specific expense data from Xero to your subscription metrics in Baremetrics gives SaaS founders and finance leads a full picture of unit economics, where MRR trends, LTV, and cost structure are all drawing from the same reliable source.</li></ul>
+    <h4 id="swapnil-jain">Swapnil Jain</h4>
+    <p>Swapnil is a seasoned Chartered Accountant with a decade of experience across both budding startups and large international companies. He has always been at the heart of financial strategy, bringing a touch of personal commitment and passion.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#bank-rules-the-basics">Bank Rules – The Basics</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Swapnil Jain</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

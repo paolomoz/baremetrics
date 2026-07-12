@@ -1,0 +1,116 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Shopify CLI Commands: A Complete Guide to Building Apps</div></div>
+      <div><div>Description</div><div>Shopify CLI helps developers create apps efficiently. Here is a comprehensive guide on how to use Shopify CLI to build your Shopify app.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to Use the Shopify CLI to Build Shopify Apps</h1></div></div>
+      <div><div><p>By Timothy Ware on February 01, 2022 Last updated on June 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Untitled-design.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Shopify’s CLI (Command Line Interface) is one of the <a href="https://baremetrics.com/blog/top-10-tools-for-shopify-app-developers-2021">best tools for building Shopify apps</a>.</p>
+    <p>With Mantle winding down in 2026, many Shopify app developers are switching to Baremetrics. See the <a href="https://baremetrics.com/compare/mantle-alternative">Baremetrics Mantle alternative for Shopify Partners</a>.</p>
+    <p>Shopify CLI helps Shopify Partners perform a number of important app-building tasks. This includes generating Node.js, PHP, and Ruby on Rails apps, as well developing app extensions, themes, and Shopify Scripts (currently in beta).</p>
+    <p>Shopify CLI also automates a number of these tasks, which shortens and simplifies the app-building cycle significantly.</p>
+    <p>In this guide we’ll cover some of the tasks you can perform with Shopify CLI and the benefits of this specific tool for app developers.</p>
+    <h2 id="what-is-shopify-cli-for-apps">What is Shopify CLI for apps?</h2>
+    <p>CLI stands for Command Line Interface. CLI tools are scripts, programs, and libraries that have been created for a specific developmental purpose.</p>
+    <p>Shopify announced the beta release of the Shopify CLI for apps in November 2019. Their goal was to help developers speed up the app creation process and boost productivity.</p>
+    <p>How? By releasing a tool that could help in two ways: create a scaffolding for app code, and partially automate app development.</p>
+    <p>The Shopify CLI for apps is currently on version 1.1. Since the beta release, there have been major improvements to its robustness, and it can now be installed easily across more platforms, including Windows 10.</p>
+    <h2 id="what-are-the-benefits-of-using-shopify-cli">What are the benefits of using Shopify CLI?</h2>
+    <p>Shopify CLI simplifies the entire app development process. It removes some of the major barriers to entry first-time developers face, rendering app development more accessible to all kinds of users.</p>
+    <p>It’s also designed to be highly flexible, so it can be used for a range of different types of apps.</p>
+    <p>These principles of flexibility, adaptability and accessibility manifest within a number of key design decisions:</p>
+    <ul><li>CLI can be used on Windows as well as Mac</li><li>Developers install the program in whatever language is most comfortable to them</li><li>Tools are open source and don’t require escalating privileges</li><li>Operations don’t self-destruct; users are in full control of deleting files and projects</li></ul>
+    <p>Let’s take a look at Shopify CLI in action!</p>
+    <h2 id="how-to-use-shopify-cli">How to use Shopify CLI</h2>
+    <p>Shopify CLI for apps is a highly intuitive tool. Shopify and GitHub also provide detailed tutorials for every step of the way.</p>
+    <h3 id="1-installation">1. Installation</h3>
+    <p>Shopify CLI can be installed on several different operating systems. The easiest way to do this is through your computer’s command line. <a href="https://shopify.dev/apps/tools/cli/installation">Here</a> is a full list of software requirements.</p>
+    <h3 id="2-creating-a-project">2. Creating a project</h3>
+    <p>When you go to create an app in Shopify CLI, you will be prompted to input some key information about yourself, such as your organization, development store, and the type of app you want to make (here, you have the option to build one with a node.js backend and React frontend or use Ruby on Rails). Shopify will then create your app on the <a href="https://baremetrics.com/blog/shopify-partner-dashboard-for-app-developers-what-business-metrics-you-can-get-for-your-shopify-app">Shopify Partner Dashboard</a>.</p>
+    <p>Take a look at this model from the Shopify website:</p>
+    <p>Next, Shopify CLI will run a tunnel for you with “shopify serve”. Your app is now accessible to the Internet via a “https” port, which is an authentication requirement for Shopify. This will then tunnel your app using ngrok, as well as run your server for local development.</p>
+    <h3 id="3-app-population-for-testing">3. App population for testing</h3>
+    <p>So, how do you know if it’s working?</p>
+    <p>Shopify CLI has a test function built in: you can populate your app exclusively for testing purposes. If you run the command ‘’shopify populate’’, you can choose to populate your app with products, customers, and draft orders.</p>
+    <h3 id="4-deployment">4. Deployment</h3>
+    <p>As the name suggests, the “shopify deploy” command deploys your app to external platforms. Currently, Heroku is the only available external platform, but more are in development (and by the time you’re reading this, might already be available!)</p>
+    <h2 id="how-shopify-built-the-shopify-cli-for-apps">How Shopify built the Shopify CLI for apps</h2>
+    <p>Shopify has built many tools to help its partners create apps for the Shopify App Store. That’s just one reason we recently argued that developing apps for Shopify is better than WooCommerce.</p>
+    <p>Some of the previous command line tools built by Shopify use Node, Go, and Ruby. Shopify ultimately settled on Ruby for the following reasons:</p>
+    <ul><li>Ruby is more approachable than Go.</li><li>It can be difficult to manage paths and installations for a Node-based tool, even though it has some great libraries for writing CLIs (yargs, ink, etc.)</li><li>Go would make it more difficult for Shopify Partners to contribute to the tool over time.</li><li>Shopify dev teams are already familiar with Ruby, and built the CLI-kit framework, and the CLI-UI collection of command line UI patterns using Ruby.</li></ul>
+    <h2 id="using-the-shopify-cli-for-themes">Using the Shopify CLI for themes</h2>
+    <p>Shopify Partners can now use Shopify CLI for apps to safely download, develop, preview, and test changes within development themes before launch. Changes are instantly populated, so you can preview as you go. Once the theme is ready, it can be pushed and published directly from the command line.</p>
+    <p>You can also use CLI together with Shopify GitHub integration to add version control to any themes you’re developing. If you want to take a look at how that works, <a href="https://shopify.dev/themes/getting-started/create">this tutorial</a> takes you through all the steps of theme development.</p>
+    <h2 id="what-commands-are-available-on-shopify-cli">What commands are available on Shopify CLI?</h2>
+    <p>Let’s run through some functions of Shopify CLI. Once you’ve created a Node.js app, the following commands are available:</p>
+    <ul><li>connect: This will connect or reconnect an existing project to a Shopify Partner organization and/or store. It will create or update the .env file and create the .shopify-cli.yml file.
+
+Usage: shopify connect</li><li>create: This will create a new project.
+
+Usage: shopify create [ node | rails ]</li><li>logout: This will log out of a currently authenticated Shopify Partner organization / store, or clear invalid credentials
+
+Usage: shopify logout</li><li>version: This will print the version number.
+
+Usage: shopify version</li><li>deploy: This will deploy the current Node project to a hosting service. Note that Heroku is currently the only option, but Shopify plans to add more in the future.
+
+Usage: shopify deploy [ heroku ]</li><li>generate: This will generate code in your Node project. It supports generating new billing API calls, new pages, or new webhooks.
+
+Usage: shopify generate [ billing | page | webhook ]</li><li>open: This will open your local development app in the default browser.
+
+Usage: shopify open</li><li>populate: This will populate your Shopify development store with example customers, orders, or products.
+
+Usage: shopify populate [ customers | draftorders | products ]</li><li>serve: This will start a local development node server for your project and a public ngrok tunnel to your localhost.
+
+Usage: shopify serve</li><li>tunnel: This will start or stop an http tunnel to your local development app using ngrok.
+
+Usage: shopify tunnel [ auth | start | stop ]</li></ul>
+    <h2 id="improve-your-app-development-with-shopify-cli-and-baremetrics">Improve your app development with Shopify CLI and Baremetrics</h2>
+    <p>Shopify is the leading e-commerce platform today, thanks to its 1.7 million loyal merchants, as well as the 6,000 third-party apps currently for sale in the Shopify App Store.</p>
+    <p>Shopify always strives to create a better, more streamlined process for its developers. Shared values based on accessibility, open communication, and innovation are why Baremetrics built our integration for Shopify apps.</p>
+    <p>With our <a href="https://app.baremetrics.com/users/sign_up">free trial</a>, you can access the best of what both Baremetrics and Shopify have to offer: better app development and full financial insights, all in one place.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>What is Shopify CLI and what can it do for app developers?
+              Shopify CLI is a command line interface tool that helps developers scaffold, build, and deploy Shopify apps faster by automating repetitive setup tasks.Rather than configuring everything by hand, the Shopify CLI lets you generate a working app structure in minutes, choosing your preferred backend language such as Node.js or Ruby on Rails. It handles tunneling via ngrok so your local app is immediately accessible over HTTPS, which is required for Shopify authentication. You can also populate a development store with test products, customers, and draft orders to validate your app before going live. It runs on Windows, Mac, and Linux, and uses open-source tools so no escalating privileges are required.</li><li>How do I set up and use Shopify CLI to start building a Shopify app?
+              To use the Shopify CLI for app development, install it via your computer's command line, run shopify create to scaffold a new project, then use shopify serve to start a local development server with a live ngrok tunnel.During project creation you will be prompted for your Shopify Partner organization details and your preferred stack. Node.js with a React frontend and Ruby on Rails are the two supported options. Once the server is running, your app is accessible via a secure HTTPS port. From there you can use commands like shopify populate to add test data, shopify generate to create new pages or webhooks, and shopify deploy to push your app to Heroku when you are ready to go live.</li><li>What are the key Shopify CLI commands every app developer should know?
+              The most important Shopify CLI commands are create, serve, populate, generate, deploy, connect, and tunnel, each handling a distinct stage of the app development workflow.Here is what each one does:shopify create: scaffolds a new Node or Rails app and registers it in your Partner Dashboardshopify serve: starts your local server and opens an ngrok tunnel for HTTPS accessshopify populate: fills your dev store with sample customers, products, or draft orders for testingshopify generate: adds billing API calls, new pages, or webhooks to an existing projectshopify deploy: pushes your app to Heroku for external hostingshopify connect: links an existing project back to a Partner org or store</li><li>Why did Shopify choose Ruby for the Shopify CLI instead of Node or Go?
+              Shopify built the CLI in Ruby because it is more approachable than Go, avoids the path and installation complexity of Node-based tooling, and aligns with the internal frameworks their own engineering teams already use.Go would have made it harder for Shopify Partners to contribute to the open-source project over time. Node has useful CLI libraries like yargs and ink, but managing dependencies and environment paths creates friction for developers who are new to the platform. Ruby allowed Shopify to reuse their existing CLI-kit framework and CLI-UI pattern library, keeping the tool consistent with their internal development practices while keeping the barrier to entry low for external contributors.</li><li>How does Shopify CLI compare to building Shopify apps manually without a CLI tool?
+              Using the Shopify CLI to build apps is significantly faster than manual setup because it automates scaffolding, tunnel configuration, and test data creation in a single workflow.Without a command line interface tool, developers must manually configure authentication, set up HTTPS tunneling, register the app in the Partner Dashboard, and write boilerplate code from scratch. The Shopify CLI handles all of that in a few commands. It also reduces the risk of configuration errors that slow down early development cycles. For SaaS founders and development teams who want to ship a Shopify app quickly, the CLI shortens the setup stage from hours to minutes and keeps the focus on building the actual product logic rather than infrastructure.</li><li>How can SaaS founders track revenue from a Shopify app after it goes live?
+              Once your Shopify app is live and generating subscription revenue, you need a dedicated analytics platform to track MRR, churn, LTV, and trial-to-paid conversion in real time.The Shopify CLI helps you build and deploy the app, but it does not give you visibility into how that app is performing as a subscription business. That is where Baremetrics comes in. By connecting your payment processor, you get real-time dashboards showing new MRR, expansion MRR, contraction, and churned revenue broken out cleanly. You can also use Baremetrics Recover to automatically retry failed payments and reduce involuntary churn, which is one of the most common revenue leaks for early-stage subscription apps.</li><li>How can I benchmark my Shopify app's subscription metrics against other SaaS companies?
+              You can benchmark your churn rate, MRR growth, and LTV against comparable SaaS companies using Baremetrics Open Benchmarks, which aggregates anonymised data from hundreds of subscription businesses.Once you have deployed your Shopify app and are collecting subscription revenue, knowing whether your numbers are strong or lagging behind similar products is critical for making pricing and retention decisions. Baremetrics surfaces benchmark data so you can compare your churn rate, average revenue per account, and trial conversion rate against businesses at a similar MRR stage. Rather than guessing whether a 5% monthly churn rate is acceptable, you can see exactly where you stand relative to your peer group and prioritise the metrics that need the most attention.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Timothy%20Ware.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="timothy-ware">Timothy Ware</h3>
+    <p>Tim is a natural entrepreneur. He brings his love of all things business to his writing. When he isn’t helping others in the SaaS world bring their ideas to the market, you can find him relaxing on his patio with one of his newest board games. You can find Tim on LinkedIn.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#what-is-shopify-cli-for-apps">What is Shopify CLI for apps?</a></li><li><a href="#what-are-the-benefits-of-using-shopify-cli">What are the benefits of using Shopify CLI?</a></li><li><a href="#how-to-use-shopify-cli">How to use Shopify CLI</a></li><li><a href="#how-shopify-built-the-shopify-cli-for-apps">How Shopify built the Shopify CLI for apps</a></li><li><a href="#using-the-shopify-cli-for-themes">Using the Shopify CLI for themes</a></li><li><a href="#what-commands-are-available-on-shopify-cli">What commands are available on Shopify CLI?</a></li><li><a href="#improve-your-app-development-with-shopify-cli-and-baremetrics">Improve your app development with Shopify CLI and Baremetrics</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Timothy Ware</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

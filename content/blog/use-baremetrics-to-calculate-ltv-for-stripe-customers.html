@@ -1,0 +1,88 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Calculate LTV for Stripe Customers Using Baremetrics</div></div>
+      <div><div>Description</div><div>To run a business online, you probably need a customer relationship management (CRM) software package and/or payment processor to manage your customers This article explains LTV and how Baremetrics can calculate LTV for Stripe customers easily. | Baremetrics</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Use Baremetrics to calculate LTV for Stripe customers</h1></div></div>
+      <div><div><p>By Timothy Ware on October 08, 2021 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Use-Baremetrics-to-calculate-LTV-for-Stripe-customers.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Key takeaways:</p>
+    <ul><li>Customer lifetime value (LTV) is a critical metric that helps you understand the average revenue clients bring in during their contract and can be broken down based on audience segments.</li><li>Calculating LTV manually can be complicated, but integrating Stripe with reporting analytics platforms like Baremetrics can do this automatically.</li><li>Tracking LTV alongside customer acquisition costs and churn allows for strategic decision-making when looking for ways to improve the customer experience or choose which audience segments to target.</li></ul>
+    <p>One of the most important metrics is customer lifetime value (<a href="https://baremetrics.com/academy/saas-calculating-ltv">LTV</a>). The lifetime value of a customer is just what it says—the total amount of revenue earned by the average customer during the duration of their contract. While it might sound like a simple concept, calculating the average revenue per user (ARPU) and the customer churn, which are necessary components of the LTV calculation, is complicated because the information comes from many sources.</p>
+    <p>This complication can only increase when your customers tend to change pricing tiers, purchase add-ons, or implement <a href="https://baremetrics.com/blog/usage-based-pricing">usage-based pricing</a>.</p>
+    <p>Table of contents:</p>
+    <ul><li>Calculating LTV</li><li>Why is it difficult to calculate LTV for Stripe customers?</li><li>Do you calculate LTV for Stripe customers?</li><li>Customer acquisition cost (CAC) and LTV</li><li>Knowing what your LTV is for each customer segment is critical</li><li>Use Baremetrics to calculate LTV</li></ul>
+    <h2 id="calculating-ltv">Calculating LTV</h2>
+    <p>LTV is simply the average amount of money a customer pays you before they churn. This can be calculated as follows:</p>
+    <p>LTV = ARPU × Customer Lifetime</p>
+    <p>For example, if your ARPU is $60/month and your average contract length is 20 months, your LTV would be $60 × 20 = $1200. But how do you get to an ARPU of $60 or a contract length of 20 months?</p>
+    <p>While the definition is simple, the calculations aren’t. That’s because a lot of guesswork goes into calculating the average length of a contract—and a lot of math to improve that guesswork.</p>
+    <p>Since it isn’t possible to know the lifetime of your customers until they quit your service or the average lifetime of your customers until a statistically meaningful sample of them leave, LTV is often calculated with churn:</p>
+    <p>LTV = ARPU/Customer Churn</p>
+    <p>Customer churn is the percentage of customers that leave your platform during a specified period, usually monthly. It can be calculated as follows:</p>
+    <p>Customer Churn = (Churned Customers/Total Customers) × 100</p>
+    <p>If you have 1000 customers and 50 customers leave your site over the course of a month, then your customer churn is: (50/1000) × 100 = 5%.</p>
+    <p>If your customers pay the same amount monthly as above ($60), then your 5% churn gives you an LTV of 60/0.05 = $1200. Note that you should use churn as a decimal, not a percentage, in the calculation.</p>
+    <h2 id="why-is-it-difficult-to-calculate-ltv-for-stripe-customers">Why is it difficult to calculate LTV for Stripe customers?</h2>
+    <p>LTV can be difficult to calculate because the numbers are not fixed in whatever way you choose to calculate it. For example, if you have three pricing tiers and several add-ons, then your customers might be spending different amounts each month. This can make ARPU hard to pin down.</p>
+    <p>That’s a pretty simple example, too. It could be that you offer discounts for the first few months of service or you give credit to paying customers if they recruit another client. Then there is the question of how to deal with permanent price increases or decreases. What if you have the enviable position of a very long average customer lifetime? In that case should you apply a <a href="https://baremetrics.com/blog/what-is-the-discount-rate-and-what-does-it-mean-for-saas">discount rate</a> to future ARPU?</p>
+    <p>Churn can similarly jump around. It is often the case that customers do not churn linearly over the lifetime of their contract. Most companies will find that there is a sharp drop off after the first billing period along with some customers—hopefully the ones that truly find the value you offer and not just those that forget about their monthly payments—that just never quit. In this case, is it better to use an exponential function, and how does one do that exactly?</p>
+    <p>These don’t even include the issues specific to calculating LTV for Stripe customers. For example, Stripe’s basic analytics dashboard might not differentiate between paid customers and trials when calculating MRR, MRR growth, and LTV. Although everyone in the industry would love it if every trial converted to a paid sign up, that’s an overly optimistic approach to forecasting!</p>
+    <h2 id="do-you-calculate-ltv-for-stripe-customers">Do you calculate LTV for Stripe customers?</h2>
+    <p>It can be difficult to calculate all of your needed revenue, customer, churn, and MRR movement metrics, including LTV for Stripe customers, directly on <a href="https://baremetrics.com/blog/stripe-reports-what-is-and-isnt-available">Stripe’s limited analytics dashboard</a>. That’s why it is important to use Baremetrics to get the most out of your data.</p>
+    <p><a href="https://baremetrics.com/blog/integrating-baremetrics-with-stripe">Baremetrics integrates directly</a> with your payment gateways, pulling data from your billing history so information about your customers is automatically piped into the Baremetrics dashboards.</p>
+    <p>Our software monitors subscription revenue for businesses that generate revenue through subscription-based services. It can integrate directly with your payment gateway, such as Stripe, and pull information about your customers and their behavior into a <a href="https://demo.baremetrics.com/">crystal-clear dashboard</a>.</p>
+    <p>Baremetrics brings you metrics, dunning, engagement tools, and customer insights. Baremetrics monitors are MRR, ARR, LTV, the total number of customers, total expenses, quick ratio, and more.</p>
+    <h2 id="customer-acquisition-cost-cac-and-ltv">Customer acquisition cost (CAC) and LTV</h2>
+    <p>LTV is at its most valuable when it is combined with customer acquisition cost (<a href="https://baremetrics.com/academy/customer-acquisition-cost">CAC</a>). CAC is the average cost of getting one new paid customer. LTV is often combined with CAC as the LTV to CAC ratio. An LTV to CAC ratio of 3 (i.e., you earn $3 in LTV for every $1 spent on CAC) is generally considered sustainable.</p>
+    <p>If your LTV to CAC ratio is below 3, you probably need to either lower your onboarding costs or increase your LTV. You can increase your LTV by improving your ARPU, i.e. increasing your prices or upselling to your customer pool, or decreasing your churn, i.e. increasing the length of your customer lifetime.</p>
+    <p>To succeed here, you need to segment your client population and direct different actions to each group.</p>
+    <p>See <a href="https://baremetrics.com/blog/use-baremetrics-to-calculate-cac-for-stripe-customers">how to calculate CAC for Stripe customers</a> to get started.</p>
+    <h2 id="knowing-what-your-ltv-is-for-each-customer-segment-is-critical">Knowing what your LTV is for each customer segment is critical</h2>
+    <p>When trying to calculate your LTV for Stripe customers, as well as the other needed SaaS metrics, directly on their platform, it can be difficult getting the fine grain detail needed. For example, it is important to understand the variation in your LTV based on different segments of your customers. This is something that <a href="https://baremetrics.com/features/segmentation">Baremetrics</a> can do automatically.</p>
+    <p>The obvious follow up question is: Why is this important?</p>
+    <p>Well, it helps you target your actions more effectively. For example, if your American customers are keeping their services three times longer than those in Canada, you might want to see what value Americans are getting out of your service that Canadians are not. For example, if your software has American but not Canadian tax compliance in mind, it could be time to look into developing that functionality for your international customers.</p>
+    <p>If you have some customers paying annually while others paying monthly and see that annual customers tend to remain loyal to your business for a much longer period of time, then you might want to increase the discount you offer for paying on an annual basis.</p>
+    <p>If you offer three tiers and notice that the bottom tier has a very low LTV compared to the others, then you might want to scrap it. It could be that the reduced functionality removes that magic element that makes your product worth using, and forcing clients to upgrade, possibly at the same price for an introductory period, would get them to see the true value of the platform you provide and increase their longevity.</p>
+    <h2 id="use-baremetrics-to-calculate-ltv">Use Baremetrics to Calculate LTV</h2>
+    <p>LTV is an important metric that is needed for decision-making throughout the company. LTV is used to calculate your CAC budget, and its components ARPU and churn are used in many of your growth metrics.</p>
+    <p>However, LTV is only part of the picture. It is hard to make optimal decisions without a host of other metrics. Calculating LTV for Stripe customers, along with all of these other metrics, directly in Stripe can be difficult.</p>
+    <p>So, whatever payment processor or CRM you choose, use <a href="https://baremetrics.com/">Baremetrics</a> to monitor your sales data and track other essential metrics like customer churn.</p>
+    <p>We have the <a href="https://baremetrics.com/blog/baremetrics-is-the-best-stripe-analytics-dashboard">best Stripe analytics dashboard</a>, which makes it easy to collect and visualize all of your sales data. When you have many clients, it can be difficult to calculate your MRR, ARR, LTV, and so much more. Indeed, Baremetrics does all of this for you, and more.</p>
+    <p>Tired of wasting time on spreadsheets? Get a <a href="https://app.baremetrics.com/users/sign_up">free trial of Baremetrics</a> today!</p>
+    <p><img src="https://baremetrics.com/hubfs/Timothy%20Ware.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="timothy-ware">Timothy Ware</h3>
+    <p>Tim is a natural entrepreneur. He brings his love of all things business to his writing. When he isn’t helping others in the SaaS world bring their ideas to the market, you can find him relaxing on his patio with one of his newest board games. You can find Tim on LinkedIn.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#calculating-ltv">Calculating LTV</a></li><li><a href="#why-is-it-difficult-to-calculate-ltv-for-stripe-customers">Why is it difficult to calculate LTV for Stripe customers?</a></li><li><a href="#do-you-calculate-ltv-for-stripe-customers">Do you calculate LTV for Stripe customers?</a></li><li><a href="#customer-acquisition-cost-cac-and-ltv">Customer acquisition cost (CAC) and LTV</a></li><li><a href="#knowing-what-your-ltv-is-for-each-customer-segment-is-critical">Knowing what your LTV is for each customer segment is critical</a></li><li><a href="#use-baremetrics-to-calculate-ltv">Use Baremetrics to Calculate LTV</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Timothy Ware</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

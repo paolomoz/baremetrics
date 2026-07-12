@@ -1,0 +1,68 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Stripe vs. Braintree: Features, Pricing &amp; Payment Comparison</div></div>
+      <div><div>Description</div><div>Stripe vs. Braintree (now PayPal Enterprise Payments) compared on 2026 fees, wallet acceptance, and developer tools — plus how to track revenue across both.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Stripe vs. Braintree: Fees, Features, and Which to Choose</h1></div></div>
+      <div><div><p>By Lea LeBlanc on February 24, 2021 Last updated on July 10, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/stripe-vs_-braintree.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Stripe vs. Braintree is the closest matchup in online payments — two full-stack, API-first processors that have both powered household names (Stripe: Amazon, Shopify; Braintree: Uber, Airbnb, GitHub). It's also a comparison where the basic facts have shifted: Braintree (founded in Chicago in 2007, acquired by PayPal in 2013 for around $800 million) is now being folded into the "PayPal Enterprise Payments" brand. The product isn't going away. The name on the door is changing, and it tells you where PayPal is pointing it: enterprise.</p>
+    <p>The short version:</p>
+    <ul><li>Choose Braintree if native PayPal and Venmo acceptance matters to your checkout — it's the only processor where those wallets are first-party, in a single integration.</li><li>Choose Stripe for SaaS and subscriptions — Stripe Billing, the broader product suite, and the industry-benchmark developer experience are a clear tier ahead.</li><li>Fees are close enough that they shouldn't decide it — this one comes down to wallet strategy and product needs, not rates.</li></ul>
+    <h2 id="what-each-platform-is-in-2026">What each platform is in 2026</h2>
+    <p>Stripe is the modular payments platform. Payments sits at the core, with Billing (subscriptions), Connect (marketplaces), Radar (fraud), Terminal (in-person), Tax, and Sigma (analytics) as products on top, plus ~300+ third-party integrations. Its 2026 moves (the ~$1B Metronome acquisition for usage-based billing, stablecoin settlement) show where the R&amp;D budget lives.</p>
+    <p>Braintree is PayPal's developer-focused processing platform. It offers full-stack card processing with the signature advantage of native PayPal and Venmo acceptance, the well-regarded Vault tokenization system, and marketplace/sub-merchant capabilities. Its integration ecosystem is smaller (~50+ apps), and enterprise-grade PayPal dev work increasingly routes through it under the new Enterprise Payments banner.</p>
+    <h2 id="fees-closer-than-you-think">Fees: closer than you think</h2>
+    <p>Both offer custom interchange-plus pricing at volume — ask, don't assume the rack rate is final. Braintree's standard rate (2.89% + 29¢) actually sits a hair below Stripe's 2.9% + 30¢ (about 2¢ on a $100 sale) and clearly below PayPal's own Advanced Checkout (2.99% + 49¢). The differences that add up are elsewhere: wallet pricing on PayPal/Venmo volume, and Stripe's lower international surcharge (+1% vs. +2%). For most businesses these roughly wash. Fees shouldn't decide it.</p>
+    <h2 id="braintree-s-real-advantage-the-wallets">Braintree's real advantage: the wallets</h2>
+    <p>If your customers skew consumer and mobile, PayPal and Venmo in a single native integration is a genuine conversion asset — no redirect bolted onto your stack, one settlement flow, one reporting surface. That's the honest reason to pick Braintree. No amount of Stripe tooling replicates it (Stripe does not process PayPal or Venmo).</p>
+    <p>A second, quieter advantage: the Vault. Braintree's stored-card tokenization is known for being portable — if you ever leave, your customer payment data migrates out with less friction than most processors allow. Anti-lock-in is worth something.</p>
+    <h2 id="stripe-s-real-advantage-everything-around-payments">Stripe's real advantage: everything around payments</h2>
+    <p>For subscription businesses the gap is wide. Stripe Billing (0.7% of billing volume pay-as-you-go, or annual tiers from $620/month) handles trials, proration, smart retries, and usage-based pricing natively; Braintree's recurring billing covers the basics. Add the documentation and API design that remain the industry's reference point, the larger integration ecosystem, and a product suite that keeps expanding, and Stripe is the default for SaaS — that's not controversial in 2026, and Braintree's own enterprise repositioning tacitly agrees.</p>
+    <h2 id="running-both-that-s-normal-and-it-creates-a-metrics-problem">Running both? That's normal — and it creates a metrics problem</h2>
+    <p>Plenty of scaled companies run Stripe and Braintree simultaneously: a legacy stack on one, new markets on the other, or Braintree specifically for PayPal/Venmo volume. It works fine for payments. Reporting is another story — two dashboards that define MRR differently, and no single answer to "what's our revenue?"</p>
+    <p><a href="https://baremetrics.com/">Baremetrics</a> integrates natively with both Stripe and Braintree — connect either (or both) in a few clicks and get 26 subscription metrics in one dashboard, with revenue segmentable by source so you can see which processor drives higher-LTV customers. No spreadsheet reconciliation, no definitional drift. See how it works in our guide to unifying Stripe and Braintree reporting, or start a free trial.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>Is Braintree owned by PayPal?
+              Yes — PayPal acquired Braintree in 2013, and it's now being rebranded as PayPal Enterprise Payments.</li><li>Is Braintree going away?
+              No. The platform continues; PayPal is renaming and repositioning it for enterprise merchants. Existing integrations keep working.</li><li>Does Stripe accept PayPal or Venmo?
+              No — Stripe processes cards, bank debits, wallets like Apple Pay/Google Pay, and 100+ other methods, but not PayPal or Venmo. Native acceptance of both is Braintree's core advantage.</li><li>Which is better for SaaS subscriptions?
+              Stripe. Stripe Billing is purpose-built subscription infrastructure; Braintree's recurring billing is basic by comparison.</li><li>Can I use Stripe and Braintree together?
+              Yes — it's common at scale. The main cost is fragmented reporting, which a subscription analytics layer like Baremetrics (native to both) consolidates.</li><li>Are Braintree's fees lower than Stripe's?
+              Marginally, yes: 2.89% + 29¢ vs. Stripe's 2.9% + 30¢ for standard US cards (confirmed from Braintree's official fee schedule, July 2026). Both negotiate at volume. The meaningful differences are wallet pricing (PayPal/Venmo rates) and international surcharges (+2% vs. Stripe's +1%).</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/febcbd14d0c94d6691a3a23b5bdc969a.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="lea-leblanc">Lea LeBlanc</h3>
+    <p>Lea is passionate about impactful businesses, good writing, and the stories founders have to tell. When she’s not writing about SaaS topics, you can find her trying new recipes in her tiny Tokyo kitchen.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#what-each-platform-is-in-2026">What each platform is in 2026</a></li><li><a href="#fees-closer-than-you-think">Fees: closer than you think</a></li><li><a href="#braintree-s-real-advantage-the-wallets">Braintree's real advantage: the wallets</a></li><li><a href="#stripe-s-real-advantage-everything-around-payments">Stripe's real advantage: everything around payments</a></li><li><a href="#running-both-that-s-normal-and-it-creates-a-metrics-problem">Running both? That's normal — and it creates a metrics problem</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Lea LeBlanc</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

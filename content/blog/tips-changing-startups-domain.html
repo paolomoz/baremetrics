@@ -1,0 +1,60 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Tips for to changing your startup’s domain - Baremetrics</div></div>
+      <div><div>Description</div><div>How we migrated from baremetrics.io to baremetrics.com with zero interruption or downtime In 2014 I managed to get our .com for $600 after about 11 months</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Tips for changing your startup’s domain</h1></div></div>
+      <div><div><p>By Josh Pigford on June 08, 2016 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/1VoS3RbsT3Q4GI5uw1dkB7Q.jpeg" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <h2 id="how-we-migrated-from-baremetrics-io-to-baremetrics-com-with-zero-interruption-or-downtime">How we migrated from baremetrics.io to baremetrics.com with zero interruption or downtime</h2>
+    <p>Domain migration is the process of transitioning a website from one domain to another, often requiring significant technical and logistical efforts. In 2014, I managed to acquire our desired .com domain for $600 after about 11 months of work, and subsequently navigated the complex process of switching from our existing .io domain. This experience taught me the importance of careful planning in domain migration, which I will outline in this post.</p>
+    <p>Worth noting is that the things covered here work for any domain switch, not just TLD changes.</p>
+    <p>When I decided it was time for us to make the switch to our .com, I decided to consult some folks who’d gone before us. <a href="https://twitter.com/calvinfo">Calvin @ Segment</a> (segment.io to segment.com) and Marc @ BetaList (betali.st to betalist.com) were insanely helpful, patiently walking me through all the things they did and the potential pitfalls of each step.</p>
+    <p>I wish there was a real method to the madness…some sort of sane, chronological series of steps to take. But the reality is, it’s basically a freaking huge pile of ALL THE THINGS!</p>
+    <h2 id="things-to-keep-in-mind-as-you-migrate-domains">Things to keep in mind as you migrate domains</h2>
+    <ul><li>Beware of your new domain’s history. Find out via Google Webmaster Tools if your domain was on any blacklists and request a reconsideration. You should do this early on as the process can take a bit of time for Google to review and for caches to get cleared.</li><li>Create a spreadsheet of all subdomains and URLs you have. Wherever you have your DNS setup is a great place to remind yourself of all the obscure subdomains you’ve got. 🙂</li><li>Set up 301 redirects from the old domain to the new. A 301 redirect is important for SEO as it tells Google to update the old links with the new and maintain any mythical SEO juice you had.</li><li>Use Google Webmaster Tools change of address tool after you make the switch. This helps Google more thoroughly update your links throughout its system.</li><li>If you use Google Apps for Work, you’ll want to just set up an entirely new account for the new domain. They’re heavily tied to the domain itself and while you can do aliases, it’ll haunt you forever. It’s just better to rip the bandaid off.</li><li>Use Google’s Migration Tool to migrate Email, Contacts and Calendars over.</li><li>After migrating email, set up forwarding on the old email addresses to your new one so things don’t fall through the cracks.</li><li>You’ll need to add new SPF/DKIM records for email-sending services that send on your behalf (such as Intercom, Mailchimp, Customer.io, etc).</li><li>You’ll lose social counts on blogs posts when switching URLs. One option is to use the data-counturl to set the count. It won’t increment, but it also won’t drop you back down to zero.</li><li>If there are external links that send a substantial or consistent amount of traffic, it’s worth reaching out and asking them to update their links to the new one.</li><li>You’ll need a new SSL certificate for the new domain. You’ll also need to maintain the old domain’s SSL certificate as well, otherwise SSL redirects will not work. Yes, you’ll be maintaining the old URL and its SSL cert for all eternity.</li><li>Email all of your customers about the domain switch to help maintain confidence that it’s the same service. This is especially true if the new domain isn’t only a simple TLD switch.</li></ul>
+    <h2 id="other-resources">Other resources</h2>
+    <ul><li>Achieving an SEO-Friendly Domain Migration</li><li>Changing your website’s domain name</li></ul>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>What should you do first when migrating your startup to a new domain?
+              Before you touch DNS settings, audit your new domain's history and build a complete spreadsheet of every subdomain and URL you currently own.A domain with a spammy past can tank your search visibility overnight. Check Google Search Console to see if the new domain appears on any blacklists and submit a reconsideration request early, because the review process takes time. While you wait, map out every subdomain, landing page, and app endpoint in a single spreadsheet so nothing slips through the cracks during the switch. For SaaS businesses, this matters more than most: broken API subdomains or misconfigured billing endpoints can interrupt subscriptions and spike involuntary churn before you even notice the problem.</li><li>How do you migrate a startup domain without losing SEO rankings?
+              Set up 301 redirects from every old URL to its new equivalent, then use the Google Search Console change of address tool to accelerate the transition.A 301 redirect tells search engines to transfer the authority of your old pages to the new domain rather than treating them as new, unproven URLs. After the redirects are live, the change of address tool helps Google update its index faster. Two additional steps most teams miss: reach out to high-traffic external sites linking to your old domain and ask them to update the links, and use a data-counturl attribute on social share buttons so your post counts do not reset to zero. Skipping any of these steps is how a domain change turns into a months-long traffic recovery project.</li><li>What email and DNS records do you need to update when changing your startup's domain?
+              You need to set up new SPF and DKIM records for every third-party service that sends email on your behalf, and you need a fresh SSL certificate for the new domain.Tools like Intercom, Mailchimp, and Customer.io send email using your domain's identity. If you do not add new SPF and DKIM records for each one, your messages will fail authentication checks and land in spam. On top of that, keep the SSL certificate on your old domain active indefinitely: without it, visitors hitting your old URLs will see a security error before the 301 redirect can fire. For Google Workspace users, it is cleaner to create an entirely new account tied to the new domain rather than trying to alias across both, then use Google's migration tool to move email, contacts, and calendar data across.</li><li>How do you communicate a domain change to your customers without losing their trust?
+              Send a direct email to your entire customer base before the switch goes live, explaining what is changing, why, and that their service will not be interrupted.For B2B SaaS businesses especially, an unexplained domain change looks like a phishing attempt or a company in distress. A short, plain-language note from the founder resolves that immediately. Be specific: tell customers the old domain, the new domain, and the date the change happens. If the new domain is not a simple TLD swap (for example, moving from a startup-name.io to an entirely different brand name), give customers even more lead time and context. Keeping your subscriber base informed during a business transition is the same principle that applies to pricing changes or product pivots: silence creates churn, transparency builds confidence.</li><li>How do you track the revenue impact of a major business change like a domain migration or startup pivot?
+              Monitor your MRR trend, churn rate, and trial-to-paid conversion rate in the weeks surrounding any major business change to isolate whether the change helped or hurt revenue.A domain migration, a product pivot, or a rebrand can all introduce friction that shows up first in your subscription metrics before it appears anywhere else. Watching new MRR, expansion MRR, and churned MRR as separate components lets you pinpoint exactly where customers are responding negatively rather than guessing. Baremetrics surfaces these metrics in real time from your Stripe, Braintree, or Recurly data, so you can see the impact of a business transition as it unfolds rather than discovering it in a month-end report. For SaaS founders changing direction, having live visibility into LTV and churn by customer segment is how you make the call to stay the course or adjust faster.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Josh%20Pigford.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="josh-pigford">Josh Pigford</h3>
+    <p>Josh is most famous as the founder of Baremetrics. However, long before Baremetrics and until today, Josh has been a maker, builder, and entrepreneur. His career set off in 2003 building a pair of link directories, ReallyDumbStuff and ReallyFunArcade. Before he sold those for profits, he had already started his next set of projects. As a design major, he began consulting on web design projects. That company eventually morphed into Sabotage Media, which has been the shell company for many of his projects since. Some of his biggest projects before Baremetrics were TrackThePack, Deck Foundry, PopSurvey, and Temper. The pain points he experienced as PopSurvey and Temper took off were the reason he created Baremetrics. Currently, he's dedicated to Maybe, the OS for your personal finances.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#how-we-migrated-from-baremetrics-io-to-baremetrics-com-with-zero-interruption-or-downtime">How we migrated from baremetrics.io to baremetrics.com with zero interruption or downtime</a></li><li><a href="#things-to-keep-in-mind-as-you-migrate-domains">Things to keep in mind as you migrate domains</a></li><li><a href="#other-resources">Other resources</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Josh Pigford</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

@@ -1,0 +1,113 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>SaaS Price Optimization: Run Experiments With the Right Data</div></div>
+      <div><div>Description</div><div>This is part 3 of our Price Optimization series. We cover why you should be running experiments on your SaaS pricing &amp; what data to use.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Price Optimization in SaaS: Why You Should Experiment &amp; What Data to Use</h1></div></div>
+      <div><div><p>By David Noonan on May 24, 2021 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Untitled-design-1-2-1.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Everyone should be interested in using their data to optimize their SaaS pricing. After all, finding the right pricing is one of the best opportunities for revenue growth in our industry.</p>
+    <p>But what if I said you need to start our data collection over again from scratch, years after launch? What if I told you to stop working with your old data and commit to six months of carefully controlled data collection in the interest of price optimization?</p>
+    <p>Many would balk at the notion. If you have a dashboard and data, why can’t you use that information for price optimization experiments?</p>
+    <p>The short answer is that if we use old data for price optimization, any insights we find are probably noise.</p>
+    <p>To get a reliable signal for our price optimization, we need to collect data in a structured way. If we plan our data collection carefully, our  experiment avoids wasting resources on inconclusive results.</p>
+    <p>This article (part three of our <a href="https://baremetrics.com/blog/price-optimization-in-saas-an-introduction">Price Optimization series</a>) will explain in detail why experiments are key for finding the best price, and what data you to run experiments correctly.</p>
+    <h2 id="price-optimization-in-saas-why-you-shouldn-t-use-old-data">Price Optimization in SaaS: Why You Shouldn’t Use Old Data</h2>
+    <p>Pricing a SaaS product is hard, especially when your company is first starting out.</p>
+    <p>The good news is that after some initial sales, you can start collecting data to run experiments and collect actionable data.</p>
+    <p>Let’s look at an example. Below is an <a href="https://baremetrics.com/academy/saas-calculate-mrr">MRR</a> plot from a real Baremetrics customer in its first two years:</p>
+    <p>We can use this data to gather insights on a relationship between our price and sign-up rates. Spoiler alert: something is going to go wrong!</p>
+    <p>This business owner launches at a low price, $25/month, then raises the price twice: first to $39/month, then finally to $45/month.</p>
+    <p>Maybe the strategy this business owner followed was to increase the price until something bad happens.</p>
+    <p>Whatever the strategy, for it to help optimize our revenue, we need a KPI by which to judge which price is better. For our purposes, to find the best price we will look at what happened to sign-up rates when we raised the price.</p>
+    <p><a href="https://baremetrics.com/">Baremetrics</a> offers powerful reporting tools that make it easy to track important metrics and KPIs. Get your free trial here.</p>
+    <h3 id="comparing-sign-up-rates">Comparing Sign-Up Rates</h3>
+    <p>How do we compare the sign-up rates between these price points? We can assume if we raise the price, there will be fewer signups, but by how much?</p>
+    <p>Let’s try plugging the data into a simple statistical model to estimate monthly signup rates. For the curious, this is a <a href="https://en.wikipedia.org/wiki/Poisson_regression">Poisson model</a> which we will discuss more in future posts.</p>
+    <p>This model uses data in the form of sign-up counts per month. For now, all we need to know is that data points get put into the model, and an estimate for sign-up rates comes out.</p>
+    <p>The above shows estimates for the sign-up rates at each price point. The error bars show uncertainty about the estimate (95% confidence intervals).</p>
+    <p>What does it tell us?</p>
+    <ul><li>The model is confident that the signups at $25/month (blue) are higher than the others.”</li><li>What’s more, there is overlap between the purple and green, which is the model’s way of telling us it isn’t sure that the sign-ups are actually different between those prices.</li></ul>
+    <h3 id="which-price-gives-the-most-revenue">Which Price Gives the Most Revenue?</h3>
+    <p>Now that we’ve compared sign-up rates, we can explore what this implies for revenue.</p>
+    <p>To get revenue estimates, we multiply the sign-up rates by the expected lifetime of a customer. In this dataset, that’s 49.8 months (to see more of how we got this number, check out our previous article about <a href="https://baremetrics.com/blog/price-optimization-in-saas-customer-retention">customer retention</a>!)</p>
+    <p>Then we multiply this by the price:</p>
+    <p>Expected Revenue = Signup Rate Expected Lifetime Price</p>
+    <p>This equation gives us an estimate for the total revenue we expect to earn for each month for each price point.</p>
+    <p>Now, let’s transform the Poisson regression results using the formula. This allows us to compare these groups by their total revenue, as shown in the below chart:</p>
+    <p>Note that now, even the lowest price group (in blue) overlaps with the highest price!</p>
+    <p>Overlapping error bars mean our model doesn’t know which price gives the most revenue, they may even be the same!</p>
+    <p>Simply put, we spent two years collecting data on our prices, and we still don’t know which one is better for revenue.</p>
+    <p>What went wrong here?</p>
+    <p>For one, we couldn’t distinguish our prices because we didn’t collect enough data. The error bars are so large, they overlap. With more data, we would get tighter error bars, which would allow us to distinguish the prices.</p>
+    <p>Take, for example, the error bar for $25/month (blue). It’s much bigger than the others. If we had more data on $25/month, the error bar would be smaller, and we could tell with greater certainty whether it’s different or not.</p>
+    <p>Let’s look at how many days we gave to each price:</p>
+    <p>Notice how the launch price (blue) was online for only a fraction of the others’ time. We have a highly unequal, possibly random distribution of days given to each price.</p>
+    <p>If we planned the comparison before collecting the data, we would give each price an equal number of active days. Better yet, we could select only two prices instead of three, so that each price would receive even more data for a higher resolution comparison.</p>
+    <p>You may ask, how many days should we give to each price? It turns out we can use statistical techniques related to <a href="https://en.wikipedia.org/wiki/Power_of_a_test">Power Analysis</a> to estimate how much data we need to collect to answer our question reliably.</p>
+    <p>This way, we can assess whether we have the resources to carry out a successful experiment—more on that in a future post.</p>
+    <p>In any case, the result of analyzing this old data is disappointing—two years of data collection, and nothing to show for it.</p>
+    <p>We may grasp for a way to salvage it. In the absence of any good signal on revenue, we notice that the $25/month plan appears to have higher revenue because the average amount is higher than the others, and most of the space covered by the error bars is above the other options.</p>
+    <p>Maybe we could plan on using the $25 a month plan while we plan our next experiment. But even then, assuming the results were better, would we be justified in our choice? The answer turns out to be no, and here’s why.</p>
+    <h4 id="the-best-way-to-see-your-data">The Best Way to See Your Data</h4>
+    <p>Use Baremetrics to measure MRR, LTV and other critical business metrics that power your analytics. Want to try it for yourself?</p>
+    <h2 id="additional-factors-to-be-aware-of">Additional Factors to Be Aware Of</h2>
+    <p>Lack of data wasn’t our only problem. To see what else is wrong, let’s look at the data from a different perspective. Here’s the data as a time series:</p>
+    <p>The chart above shows sign-ups as a time series. The line indicates a 20-day moving average to reveal the trend. Each color shows where each price was active.</p>
+    <p>Notice how much variability the sign-ups have, even when the price stays constant. Sign-ups dip and soar in a way that doesn’t seem to have anything to do with the prices we chose. What is going on?</p>
+    <p>Do we see a trend between sign-ups and price? No. Why?</p>
+    <p>As it turns out, price is not the only factor changing our customers’ sign-up rates. There are all kinds of factors that could be changing sign-up rates that have nothing to do with price. But we didn’t collect data on any of them.</p>
+    <p>Sign-up rates could be affected by changing market conditions, different sales teams, or the arrival of a competitor, or something we never thought about.</p>
+    <p>Since we didn’t keep track of those, our results are distorted. We don’t know what changes we should attribute to price and which to something else.</p>
+    <p>The truth is that we can’t know all the possible factors that affect our dataset.</p>
+    <p>All we know is that our data on sign-ups were distorted by factors we didn’t know about. At this point we are stuck. We can’t get any insights into the causal relationship between price and our customers’ willingness to sign up. There is no way to fix this after the data is collected.</p>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>Experiments are time consuming and can feel like a hassle. But when done properly, they’re the best way to gain valuable insights under these circumstances. If we don’t do an experiment, we will end up mining noise from our data.</p>
+    <p>If you are intimidated by the challenges we faced here, don’t fret!</p>
+    <p>Our next articles will discuss the methods we use to work around these problems. We will discuss ideas about planning experiments that truly offer actionable insights.</p>
+    <p>Our posts in the series will include questions about:</p>
+    <ul><li>What prices should I choose to test?</li><li>How much data do I need?</li><li>How can I finish my experiment in a reasonable timeframe?</li><li>What would an experiment look like in practice?</li><li>What if I don’t have the resources to do an experiment?</li></ul>
+    <p>Stay tuned for more, and send any questions you may have to <a href="mailto:david@baremetrics.com">david@baremetrics.com</a>. Happy experimenting!</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>What is price optimization in SaaS and why does it matter for subscription revenue?
+              Price optimization in SaaS is the process of using data and structured experiments to find the price point that maximizes subscription revenue without driving away customers.For subscription businesses, getting pricing right is one of the highest-leverage growth levers available. A price that is too low leaves MRR on the table. A price that is too high increases churn rate and shrinks your subscriber base. The goal is to find the balance where signup rates, average contract value, and customer lifetime value combine to produce the most total revenue. Unlike one-time purchases, SaaS pricing decisions compound over time because they affect LTV, expansion revenue potential, and net revenue retention across every cohort.</li><li>Why can't I use historical billing data to run a SaaS pricing optimization experiment?
+              Historical billing data produces unreliable pricing insights because confounding factors like market shifts, competitor moves, and team changes distort the signal, making it impossible to isolate price as the cause of any change in signup rates or MRR.When you analyze old data, you are looking at periods where many variables changed simultaneously. A dip in signups during a price increase might have been caused by a new competitor entering the market, not the price itself. Without controlling for those variables upfront, any insight you extract is likely noise. Structured pricing experiments, planned before data collection begins, give each price point equal exposure time and control conditions so you can draw a genuinely causal conclusion about which pricing tier drives the most revenue.</li><li>How can I run experiments to test new pricing and monitor the impact on MRR?
+              To run a reliable SaaS pricing experiment, choose two price points, define equal test windows for each, set a clear revenue KPI upfront, and track MRR impact in real time as data comes in.Start by selecting only two prices to compare rather than three or more. Splitting your test across too many variants means each price receives less data, producing wide confidence intervals that make it impossible to distinguish a winner. Before launching, use power analysis to estimate how many days of data you need to reach a statistically reliable conclusion. Once the experiment is live, Baremetrics lets you monitor MRR, signup rates, and customer lifetime value in real time against your payment processor data, so you can see revenue impact as it develops rather than waiting until the experiment ends.Pick two price points, not three or moreAssign equal active days to each variantDefine your revenue KPI before collecting dataTrack MRR and LTV changes throughout, not just at the end</li><li>What data should SaaS founders use to evaluate which pricing tier generates the most revenue?
+              The most reliable data for evaluating SaaS pricing tiers combines signup rates per price point, average customer lifetime, and price to produce an expected total revenue figure for each option.The core formula is straightforward: multiply your signup rate by expected customer lifetime and then by the price. This gives you a comparable revenue estimate for each pricing tier rather than comparing raw signup counts, which can be misleading. Signup volume is not the goal. Revenue generated over a customer's lifetime is. Baremetrics surfaces MRR, LTV, and churn rate from your Stripe, Braintree, or Recurly data in real time, giving you the subscription metrics you need to plug into this kind of analysis without building a custom data pipeline.</li><li>How do I benchmark my SaaS churn rate to know if pricing changes are hurting retention?
+              You can benchmark your churn rate against similar SaaS companies by comparing your monthly and annual churn figures to published industry data segmented by MRR range, pricing model, and customer segment.Benchmarking matters during pricing experiments because a price increase that lifts MRR but also lifts churn rate may produce a net revenue loss once you account for reduced LTV across your subscriber base. Baremetrics publishes open benchmark data from hundreds of SaaS companies, so you can compare your churn rate against businesses at a similar revenue stage rather than relying on generic industry averages. Within your own account, you can also segment churn by pricing tier or cohort to see whether a specific plan change is driving involuntary churn or cancellations at a higher rate than your baseline.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/David.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="david-noonan">David Noonan</h3>
+    <p>David is a data professional in the Bay Area with a background in molecular biology. When he's not exploring Bayesian inference and statistical modeling for price optimization, David is in the kitchen, using way too much garlic.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#price-optimization-in-saas-why-you-shouldn-t-use-old-data">Price Optimization in SaaS: Why You Shouldn’t Use Old Data</a></li><li><a href="#additional-factors-to-be-aware-of">Additional Factors to Be Aware Of</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>David Noonan</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

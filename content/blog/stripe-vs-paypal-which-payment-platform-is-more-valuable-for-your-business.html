@@ -1,0 +1,78 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Stripe vs. PayPal: Compare Features, Fees &amp; Payment Tools</div></div>
+      <div><div>Description</div><div>Stripe vs. PayPal compared on 2026 fees, subscriptions, POS, and international payments — plus why many businesses use both. Real numbers, worked examples.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Stripe vs. PayPal: Fees, Features, and Which to Use in 2026</h1></div></div>
+      <div><div><p>By Mathew Gollow on March 23, 2021 Last updated on July 10, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Untitled-design-1-Jul-17-2023-01-57-41-7784-PM.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Most of the Stripe vs. PayPal advice you'll find is years out of date. PayPal retired the plans most comparison articles still describe, replaced its point-of-sale product twice, and no longer charges the fees most blogs quote. Stripe restructured its subscription billing pricing. The honest 2026 answer is also more useful than the old either/or framing: most businesses shouldn't choose between them.</p>
+    <p>Here's the short version, then the detail:</p>
+    <ul><li>Stripe is cheaper for online payments (2.9% + 30¢ vs. PayPal's 3.49% + 49¢ for wallet payments) and far stronger for subscriptions and developer control.</li><li>PayPal is cheaper in person (PayPal POS charges 2.29% + 9¢ — less than Stripe Terminal and Square) and its checkout button measurably lifts conversion because ~430 million people already have accounts.</li><li>The best setup for many businesses is both: Stripe as your primary payment rails, PayPal as an additional checkout option.</li></ul>
+    <h2 id="the-real-difference-infrastructure-vs-wallet">The real difference: infrastructure vs. wallet</h2>
+    <p>Everything in this comparison flows from one architectural split. PayPal is a branded consumer wallet. Your customers check out through PayPal's interface using credentials they already have — you're borrowing PayPal's trust and speed, at the cost of brand control and a higher fee. Stripe is white-label payment infrastructure. It's invisible to your customers; you own the entire checkout experience, and you (or your developers) decide exactly how it works.</p>
+    <p>Neither is "better." They're different products that happen to both move money.</p>
+    <h2 id="what-each-platform-actually-offers-in-2026">What each platform actually offers in 2026</h2>
+    <p>PayPal's current lineup (the Payments Standard/Pro plans you may remember are retired):</p>
+    <ul><li>PayPal Checkout — the branded button, one-click integration on every major e-commerce platform. 3.49% + 49¢ when customers pay by PayPal or Venmo balance.</li><li>Advanced Checkout — API-integrated card processing at 2.99% + 49¢, customizable flow, and eligibility for interchange-plus pricing at volume.</li><li>PayPal Complete Payments — the bundled small-business package: cards, wallets, PayPal, Venmo, and Pay Later.</li><li>Invoicing — 2.99% + 49¢ by card, or 1% capped at $10 via ACH bank transfer. A genuinely good deal for B2B invoices.</li><li>PayPal POS — formerly Zettle, formerly PayPal Here. More below; it's PayPal's most underrated product.</li><li>PayPal Enterprise Payments — the platform formerly known as Braintree, for large merchants.</li></ul>
+    <p>Stripe's current structure is still not "plans" — it's one platform with modular products: Payments (core), Billing (subscriptions), Invoicing, Terminal (in-person), Connect (marketplaces), Radar (fraud), Tax, Sigma (SQL analytics), and Issuing. Recent additions include usage-based billing via its ~$1B Metronome acquisition and stablecoin settlement. Stripe processes roughly $1.9 trillion a year. That's about a fifth of global online payments.</p>
+    <h2 id="pricing-the-numbers-that-actually-apply-in-2026">Pricing: the numbers that actually apply in 2026</h2>
+    <p>What that means in dollars: a business processing $50,000/month at a $50 average order pays roughly $1,750/month on Stripe versus $2,235/month through PayPal's standard checkout — a gap of about $485/month, or $5,800/year. At $100,000/month, the difference exceeds $11,000/year. That's the structural reason Stripe wins as primary rails.</p>
+    <h2 id="in-person-the-answer-flips">In person, the answer flips</h2>
+    <p>Here's the nuance most comparisons miss: PayPal POS (the successor to Zettle and the discontinued PayPal Here) charges 2.29% + 9¢ for card-present transactions with no monthly fee and a $29 first card reader. Stripe Terminal charges 2.7% + 5¢ with readers from $59 — and PayPal POS also undercuts Square's 2.6% + 15¢. On a $100 in-person sale? PayPal costs $2.38. Stripe costs $2.75. If a meaningful share of your revenue is face-to-face, PayPal is the cheaper processor, full stop.</p>
+    <h2 id="subscriptions-not-close">Subscriptions: not close</h2>
+    <p>If you run a SaaS or subscription business, this section decides it. Stripe Billing is real subscription infrastructure — trials, proration, smart retries, usage-based pricing, revenue recognition. (Stripe Billing costs 0.7% of billing volume pay-as-you-go, charged on top of standard processing, or discounted annual subscription tiers starting at $620/mo for up to $100K in monthly billing volume, saving 11–18%.) PayPal supports recurring payments, but its subscription tooling is thin by comparison, and replicating Stripe Billing's features means bolting on third-party tools at extra cost. The premium compounds on every renewal. An extra 0.5–0.6 points on recurring revenue is real money at scale.</p>
+    <h2 id="international-sales">International sales</h2>
+    <p>Stripe supports 135+ currencies and 100+ payment methods (including local methods like iDEAL, Bancontact, and BNPL options like Klarna and Affirm), with +1% for international cards and +1% for conversion. PayPal's genuine international strength is reach: buyers in 200+ markets who already trust the button. But it charges +1.5% on international transactions and roughly 2.5% on currency conversion. On cost, Stripe wins. On buyer familiarity in markets where PayPal dominates checkout, the button earns its fee.</p>
+    <h2 id="developers-usability-and-the-thing-nobody-puts-in-comparisons">Developers, usability, and the thing nobody puts in comparisons</h2>
+    <p>Stripe's docs remain the industry benchmark. Prebuilt Checkout, Payment Links, and Elements have made it accessible to non-developers too. PayPal's developer experience has improved meaningfully — and for a non-technical merchant, dropping the PayPal button into Shopify or WooCommerce is still the fastest path to accepting payments, no code involved.</p>
+    <p>One thing both platforms share: documented complaints about account holds and freezes. Search either brand's name plus "held my funds." You'll find horror stories. This is a property of modern payment risk management, not a differentiator — keep clean records, respond to disputes fast, and keep your dispute rate low on either platform.</p>
+    <h2 id="the-verdict-use-stripe-s-rails-keep-paypal-s-button">The verdict: use Stripe's rails, keep PayPal's button</h2>
+    <p>For most online businesses in 2026, the right answer is Stripe as your primary processor, with PayPal offered as an additional option at checkout — lower fees, real subscription billing, and full checkout control, plus the trusted button that measurably lifts conversion for a slice of buyers. Sell in person? Add PayPal POS and pay less than Terminal or Square. This isn't a compromise verdict; it's what the fee math and conversion data actually support.</p>
+    <h2 id="tracking-revenue-across-stripe-and-paypal">Tracking revenue across Stripe and PayPal</h2>
+    <p>Running two payment platforms creates a familiar problem: two dashboards, two revenue numbers, and no single answer to "what's our MRR?" That's what <a href="https://baremetrics.com/">Baremetrics</a> solves. Baremetrics connects natively to Stripe (every subscription metric, live in minutes), and PayPal data comes into the same dashboard through the open API, so all your revenue normalizes into one MRR view, segmentable by source. On the Stripe side, Recover automatically chases failed payments (the median customer earns back roughly 8× its cost in a month, per our May 2026 recovery benchmark), and Cancellation Insights tells you why customers actually leave. Try it free or poke around the live demo.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>Is Stripe cheaper than PayPal?
+              Online, yes: Stripe charges 2.9% + 30¢ versus PayPal's 3.49% + 49¢ for wallet payments (2.99% + 49¢ for cards). In person, PayPal is cheaper: PayPal POS charges 2.29% + 9¢ versus Stripe Terminal's 2.7% + 5¢.</li><li>Can I use Stripe and PayPal together?
+              Yes — it's common and often optimal. Stripe handles your primary checkout and subscriptions; PayPal appears as an additional button for the buyers who prefer it.</li><li>Does PayPal work for SaaS subscriptions?
+              It supports recurring payments, but its subscription tooling is far thinner than Stripe Billing's, and its higher fees compound on every renewal.</li><li>Which is better for international sales?
+              Stripe on cost (+1% international, +1% conversion vs. PayPal's +1.5% and ~2.5%). PayPal on buyer familiarity — 430 million active accounts across 200+ markets.</li><li>What happened to PayPal Here and Zettle?
+              PayPal Here was discontinued and replaced by Zettle in 2021, which has since been rebranded PayPal POS: 2.29% + 9¢ in person, no monthly fee, $29 first reader.</li><li>How do I migrate from PayPal to Stripe?
+              See our step-by-step guide: How to Migrate Customer Data from PayPal to Stripe.</li><li>How do I track MRR and churn across Stripe and PayPal?
+              Connect Stripe to Baremetrics natively and import PayPal via the API — both revenue streams normalize into one MRR, churn, and LTV dashboard.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Mathew%20Gollow.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="mathew-gollow">Mathew Gollow</h3>
+    <p>Mathew spends his days bringing the brilliant ideas of the Baremetrics team to the blog. When Mathew’s not chasing after his team for more accurate and clear information, you can find him teaching voice at the local music academy.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#the-real-difference-infrastructure-vs-wallet">The real difference: infrastructure vs. wallet</a></li><li><a href="#what-each-platform-actually-offers-in-2026">What each platform actually offers in 2026</a></li><li><a href="#pricing-the-numbers-that-actually-apply-in-2026">Pricing: the numbers that actually apply in 2026</a></li><li><a href="#in-person-the-answer-flips">In person, the answer flips</a></li><li><a href="#subscriptions-not-close">Subscriptions: not close</a></li><li><a href="#international-sales">International sales</a></li><li><a href="#developers-usability-and-the-thing-nobody-puts-in-comparisons">Developers, usability, and the thing nobody puts in comparisons</a></li><li><a href="#the-verdict-use-stripe-s-rails-keep-paypal-s-button">The verdict: use Stripe's rails, keep PayPal's button</a></li><li><a href="#tracking-revenue-across-stripe-and-paypal">Tracking revenue across Stripe and PayPal</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Mathew Gollow</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

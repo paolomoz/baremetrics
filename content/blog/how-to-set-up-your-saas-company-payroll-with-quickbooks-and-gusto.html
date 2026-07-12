@@ -1,0 +1,97 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Sync Gusto and QuickBooks for Your SaaS Payroll</div></div>
+      <div><div>Description</div><div>This article walks you through how to use Gusto’s integration with Quickbooks to split your payroll into categories according to SaaS best practices.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to Set Up Your SaaS Company Payroll with Quickbooks and Gusto</h1></div></div>
+      <div><div><p>By Swapnil Jain on December 07, 2023 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dbd41c9b80b5ca8cb2_image-3.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>This article walks you through how to use Gusto’s integration with Quickbooks to split your payroll into categories according to SaaS best practices. An automatic sync will save you money, reduce the room for error, and speed up the monthly closing of your books. If you are using both tools already, the set up is quick and easy.</p>
+    <p>Note: This post is a part of a series on organizing SaaS Chart of Accounts. The goal of the series is to provide practical advice to SaaS CEOs and Founders on how to organize and automate their financial backend.After reading each article, you should be able to add your own comments and forward it to your Accountant or Director of Ops for implementation.</p>
+    <h2 id="1-set-up-departments">1. Set Up Departments</h2>
+    <p>First, make sure you have your <a href="https://support.gusto.com/team-management/hr-tools/departments/1066807381/Organize-your-team-by-departments.htm">Departments set up in Gusto</a> and everyone in your team has been assigned to a Department.</p>
+    <p>This post assumes you are following SaaS best practices in categorizing your books – and thus payroll – to Cost of Revenue, Research &amp; Development, Sales &amp; Marketing and General &amp; Admin, as described in the Part 1 of this series. As a result, your General &amp; Admin payroll should look something like this in Quickbooks:</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db83c9d77460ec90e1_image-1.png" alt="" loading="lazy" decoding="async"></p>
+    <p>If your books look different, implement the Part 1 of the series first before continuing further.</p>
+    <h2 id="2-connect-quickbooks">2. Connect Quickbooks</h2>
+    <p>After completing the Quickbooks Online (QBO) connection, you’re prompted to map your default Gusto accounts to the ones in your accounting. Personally, I prefer mapping only the bank account and set everything else to Uncategorized Expense. This will ensure that if a department-level mapping fails (to be set up in Step 5), you’ll notice it quickly as your uncategorized expenses will shoot up.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db83c9d7974bec90e2_image-1024x303.png" alt="" loading="lazy" decoding="async"></p>
+    <h2 id="3-enable-department-sync">3. Enable Department Sync</h2>
+    <p>Next, while staying in the Quickbooks Online Integration page, enable the Department Account Mappings from the sidebar on the right. Optionally, you’re able to change the entry date of the expense in Quickbooks. In my experience, End of Pay Period seems to be the most common choice.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dbd41c9bb194ca8cb1_image.png" alt="" loading="lazy" decoding="async"></p>
+    <h2 id="4-department-account-mappings-basic">4. Department Account Mappings – Basic</h2>
+    <p>Now, we can begin to map the departments. You should see something like this at the bottom of the Integrations page:</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db5f1762478e39a19f_image-1-1024x131.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Click Setup and you’re going to see an option of setting the Basic Mappings. I recommend doing this step first as it’s going to make it a lot faster to go through the Advanced Mappings.</p>
+    <p>Map the Wages &amp; Salaries Gusto account to the salary account in Quickbooks. It’s likely named something like Salaries – G&amp;A. Repeat for the Employer Taxes. Finally, map the benefits liability account to any account in your balance sheet. It doesn’t matter which one, as you’re going to reset this in the next step in a few minutes.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dbd41c9b80b5ca8cb2_image-3.png" alt="" loading="lazy" decoding="async"></p>
+    <p>One quirk worth noting is that Gusto does not pull in the formatting of your Quickbooks accounts, so you can’t use the indentation to see whether you are linking the right account. Gusto does pull in the QBO syntax however, which just means that each parent-child account relationship is marked with a colon. For example, General &amp; Administrative: Payroll – G&amp;A: Salaries – G&amp;A represents a Salaries – G&amp;A account, which also happens to be a child or the Payroll – G&amp;A and a grandchild of the General &amp; Administrative accounts.</p>
+    <p>Since I would not recommend doing reimbursements through Gusto (use Abacus or Expensify instead), you can map Reimbursements to go to Uncategorized Expense account in Quickbooks. This way you can always clear out the uncategorized account if you happen to do an one-off Gusto reimbursement.</p>
+    <p>Hit Save for the changes to take effect.</p>
+    <h2 id="5-department-account-mappings-advanced">5. Department Account Mappings – Advanced</h2>
+    <p>After completing the Basic mapping, you should see the same Department with 3-5 accounts mapped. Select Edit, and navigate to the Advanced mapping tab.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db5f1762771f39a1a0_image-2-1024x136.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Now you have about 30-50 options to select from, depending on how many benefits you offer. Luckily, most of the mappings go to the same account, such as the first four of Regular Salaries, Vacation Pay, Sick Pay and Overtime all mapping to the default Wages account in Quickbooks.</p>
+    <p>The first account you want to map differently is likely your contractors. Select a contractor account from your Quickbooks accounts – probably named along the lines of Subcontractors – G&amp;A.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dc5f1762b9fd39a1a1_image-4.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Next, map all your Employer Benefits Expenses to their respective Quickbooks accounts, typically named as Employee Benefits – Department Name.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dc747d41e99476efb6_image-5.png" alt="" loading="lazy" decoding="async"></p>
+    <p>You can skip Employer Taxes and Reimbursements as those were set in the previous step., but you do need to change every mapping for Benefit Liabilities.</p>
+    <p>If you haven’t set them up already, now is a good time to hit Save and go to your Quickbooks to create clearing accounts for each of your benefit vendors. As Gusto doesn’t handle the payments to your benefits providers directly – unlike the payments to IRS and state tax agencies – each payroll run creates a liability in your books that gets paid out to the benefit provider.</p>
+    <p>In Quickbooks, navigate to Accounting on the left sidebar, and select “New” on the top-right section of the Chart of Accounts page.</p>
+    <p>Start by selecting the Account Type. Set it to Other Current Liabilities, followed by setting the Detail Type to Payroll Clearing. Name the account according to the type of the benefit, such as Health Insurance Clearing.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db83c9d746feec90e3_Health-Insurance-Clearing.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Keep in mind you should create a clearing account for each one of your benefit vendors, such as medical, dental, vision and 401k, as it makes it easier to trace things back if integrations get out of sync or you miss a vendor payment.</p>
+    <p>Select Save and Close, and navigate back to your Gusto Integration screen. There’s no need to create clearing accounts for each department, as mapping the benefit expenses will do the work for you.</p>
+    <p>All there’s left to do in Gusto is to map each Benefits Liability account to Quickbooks:</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dc83c9d7ad90ec90e4_image-6.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Finally, repeat this process to the other departments of Cost of Revenue, Research &amp; Development, Sales, and Marketing. The sync will be faster as you have your benefit clearing accounts created already, and all you need to do is a bunch of syncing. Keep in mind that for Sales payroll, you’ll probably want to map Commissions to its’ own individual account in Quickbooks – not the regular salaries.</p>
+    <h2 id="6-monthly-closing">6. Monthly Closing</h2>
+    <p>Although everything is syncing already, let’s take a look how things look in Quickbooks for the month-end close. Once you run your next payroll, you should see something like this in the Banking section of your Quickbooks Online:</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dc5f176210a539a1a2_image-7-1024x228.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Gusto debited the company bank account for $96,698.30 for the net salaries, $32,269.85 for the taxes, and $900.00 for employee donation matching. Now, without the sync these would be tedious to allocate to each department, but luckily the newly created sync will do it automatically. In short, Gusto creates three journal entries that will tell Quickbooks how these transactions should be categorized.</p>
+    <p>The very last part of the puzzle is to wait for your next benefit vendor payment to come through, as this is often happening outside your regular payroll schedule. Once the transactions shows up in Quickbooks, select Add – not match – it to your clearing account for the same vendor. For example, your Medical Insurance paid to Blue Cross might end up in Health Insurance Clearing account, whereas 401k payments to Guideline ends up in 401k clearing.</p>
+    <h2 id="takeaway">Takeaway</h2>
+    <p>We learned how to set up a sync between Gusto and Quickbooks to automate splitting your payroll into categories. This will save you time, and if you were paying an accountant to do this manually, also money. You should be able to set up the sync and leave it until you create a new team in Gusto or sign up with a different benefit vendor.</p>
+    <h2 id="faq">FAQ</h2>
+    <ul><li>Does Gusto integrate with QuickBooks Online?
+              Yes, Gusto integrates directly with QuickBooks Online and can automatically sync payroll data to your chart of accounts without manual journal entries. Once you connect the two platforms through Gusto's QuickBooks Online integration settings, you can map your Gusto payroll accounts to the corresponding QuickBooks accounts for wages, employer taxes, and benefit liabilities. For SaaS finance teams, the most valuable part of this accounting integration is the department-level sync, which lets you split payroll costs automatically across Cost of Revenue, Research and Development, Sales and Marketing, and General and Admin, matching standard SaaS chart of accounts conventions and saving significant time at month-end close.</li><li>Does Gusto integrate with QuickBooks Desktop?
+              Gusto's native payroll integration is built for QuickBooks Online and does not offer a direct sync with QuickBooks Desktop. SaaS founders and finance leads running QuickBooks Desktop would need to export payroll data manually from Gusto and import it into QuickBooks Desktop as a journal entry, which removes the automation benefit that makes the gusto quickbooks integration worthwhile. For subscription businesses that process payroll across multiple departments each month, this manual reconciliation approach introduces more room for error and slows down the monthly close, which is why most SaaS teams at the growth stage migrate to QuickBooks Online to take full advantage of automated accounting integrations.</li><li>How does the Gusto and QuickBooks integration work for SaaS companies?
+              The Gusto QuickBooks integration works by creating automated journal entries in QuickBooks Online each time you run payroll in Gusto, splitting costs across whichever chart of accounts you have mapped in the integration settings. To set it up, you connect Gusto to QuickBooks Online, map your default accounts, then enable department-level account mappings so that each payroll run automatically allocates wages, employer taxes, contractor payments, and benefit expenses to the correct department buckets. From there, benefit liabilities are routed to vendor-specific clearing accounts in QuickBooks, such as separate accounts for health insurance and 401k, which makes it straightforward to reconcile when vendor payments clear outside the normal payroll cycle. For SaaS teams categorising payroll costs by function, this removes the need to manually allocate headcount spend each month.</li><li>What platforms help SaaS companies measure and reduce involuntary churn caused by failed payments?
+              Baremetrics is one of the most direct tools for measuring and reducing involuntary churn caused by failed payments in subscription businesses. It connects to Stripe, Braintree, and Recurly to separate voluntary cancellations from MRR lost purely due to card declines or payment failures, so you can see the true scale of the problem in your churn analytics. Baremetrics Recover then automatically retries failed payments and triggers customer-facing recovery sequences, letting you track recovered MRR over time and measure the direct revenue impact of your dunning process. For SaaS teams between ten thousand and several million in MRR, involuntary churn is often the fastest win available because the revenue is recoverable once you have visibility into which billing intervals and customer segments carry the highest failed payment rates.</li><li>How can I benchmark my SaaS churn rate against similar subscription companies?
+              Baremetrics publishes open benchmark data drawn from hundreds of SaaS companies, giving you a direct comparison point for churn rate, MRR growth, LTV, and other core subscription metrics against businesses at a similar revenue stage. To use it effectively, filter the benchmark data by MRR range so you are comparing against companies with similar scale rather than outliers at either end of the spectrum. Knowing where your churn rate sits relative to your peer group helps you prioritise whether to focus retention efforts on pricing tier changes, failed payment recovery, or trial-to-paid conversion improvements, rather than optimising in the dark against an internal baseline that may already be far off market.</li></ul>
+    <h3 id="swapnil-jain">Swapnil Jain</h3>
+    <p>Swapnil is a seasoned Chartered Accountant with a decade of experience across both budding startups and large international companies. He has always been at the heart of financial strategy, bringing a touch of personal commitment and passion.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#1-set-up-departments">1. Set Up Departments</a></li><li><a href="#2-connect-quickbooks">2. Connect Quickbooks</a></li><li><a href="#3-enable-department-sync">3. Enable Department Sync</a></li><li><a href="#4-department-account-mappings-basic">4. Department Account Mappings – Basic</a></li><li><a href="#5-department-account-mappings-advanced">5. Department Account Mappings – Advanced</a></li><li><a href="#6-monthly-closing">6. Monthly Closing</a></li><li><a href="#takeaway">Takeaway</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Swapnil Jain</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

@@ -1,0 +1,120 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Are Churn-Based LTV Calculations Giving You Bad Data?</div></div>
+      <div><div>Description</div><div>Lifetime Value (LTV) is one of the most important metrics we follow in SaaS. It tells us the value our customers bring to our business.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Do Churn-Based LTV Calculations Mislead Us?</h1></div></div>
+      <div><div><p>By David Noonan on August 05, 2021 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/ltv-noonan.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Key takeaways:</p>
+    <ul><li>LTV is a commonly prioritized metric for SaaS businesses, but accurately tracking and analyzing it is difficult</li><li>Simple LTV can provide detailed insight into customer value in multiple different scenarios, though you may need to consider a potential margin of error</li><li>Combining statistical data and historical performances with your LTV data can provide subscription businesses with more detailed and accurate insights</li></ul>
+    <p>Lifetime Value (LTV) is one of the most important metrics we follow in SaaS. It tells us the value our customers bring to our business.</p>
+    <p>Typically, LTV is estimated using a <a href="https://baremetrics.com/academy/saas-calculating-ltv">“simple” LTV calculation</a>. But is it really effective?</p>
+    <p>In a <a href="https://baremetrics.com/blog/price-optimization-in-saas-what-does-churn-tell-us">previous post</a>, we explored pitfalls in using churn metrics. We found that churn calculations misleads us in some circumstances, such as when there are many short-term customers, which may make it difficult to accurately identify users at risk for churn and requires careful assessment of customer vs revenue churn..</p>
+    <p>Our most popular metric for LTV is a “churn”-based metric, where churn is in the denominator when calculating it. So, what does that say about our LTV calculations? Are they wrong sometimes?</p>
+    <p>In this post, we’re going to test the “simple” LTV metric.</p>
+    <ul><li>When is it accurate?</li><li>Where does it mislead us?</li><li>How close does it get us to the actual LTV?</li></ul>
+    <h2 id="calculating-simple-ltv">Calculating Simple LTV</h2>
+    <p>Before we dive in, let’s review what “simple” LTV is. Here is the formula</p>
+    <p>LTV = Average monthly revenue per user/user churn</p>
+    <p>Notice that it includes churn in the denominator.</p>
+    <p>If churn misleads us for customer retention, does it also mislead us for lifetime value calculations?</p>
+    <p>Let’s run some simulations where we know the actual value for LTV and see how the “simple” method estimates it.</p>
+    <h2 id="scenario-1-ltv-in-a-stagnant-business-with-many-short-term-subscribers">Scenario 1: LTV in a Stagnant Business With Many Short-Term Subscribers</h2>
+    <p>Here we have our first scenario: a stagnant business where nothing changes. Sign-ups stay the same. Dropouts stay the same, and the average lifetime of a subscription does not change. Here’s a summary:</p>
+    <ul><li>Average sign-ups per month: 30</li><li>Average subscription lifetime: 2 months</li><li>Subscription price: $20/month</li><li>Average lifetime value: $40</li><li>Many short-term subscribers</li></ul>
+    <p>The graph below illustrates a simulation where we generate the data ourselves using known parameters (such as sign-up rates and subscription lifetimes). We can evaluate key metrics, such as “simple” LTV, by comparing them against the truth.</p>
+    <p>Here’s a look at the active subscriber population in the simulation we described above:</p>
+    <p>Notice how the population of active subscribers grows quickly over the first 20 months, then the population fluctuates above and below the red dotted line for the following duration of the simulation. After about 15 months, the business is truly stagnant. The purple active subscriber line will forever hug the red dotted line, fluctuating at around 72 subscribers.</p>
+    <p>An LTV metric should be easy to handle in a stagnant business scenario because nothing changes. The metric should have plenty of data to capture the true LTV. But can our “simple” LTV metric approach the true LTV that we know?</p>
+    <h3 id="breaking-it-down-by-month">Breaking it Down by Month</h3>
+    <p>Let’s calculate LTV each month in the time series above. We will begin with small amounts of data in the early months, but as our dataset grows, the estimate should get closer to the real LTV value. Does it?</p>
+    <p>The chart above shows the simple LTV estimate calculated every month. The blue line indicates the actual lifetime value for this customer base. Notice that while the business is in its growth phase, our “simple” LTV underestimates the true LTV by a lot.</p>
+    <p>Just to recap, we know the LTV in this simulated situation as we have chosen it. We then used the simple LTV metric to calculate LTV. Then, we compared the simple LTV metric and the LTV metric, which is a parameter of the simulation, to see if they were the same or not.</p>
+    <p>The simple LTV starts near zero. It starts small because the customer population hasn’t stabilized yet, and many short-term customers are dropping out relative to the rest.</p>
+    <p>The simple LTV is much closer to the real thing when the population stabilizes, but we still tend to underestimate LTV. The average LTV estimate when the population stabilizes is $32. That’s 20% less than the true value of $40. It’s an underestimate, but surprisingly, it isn’t terrible!</p>
+    <h3 id="the-results">The Results</h3>
+    <p>While not perfect, simple LTV calculations in the above scenario seem usable, only about 20% off.</p>
+    <p>But how does the “simple” LTV calculation fare in a more typical Baremetrics user’s customer base, where customers subscribe for an average of a few years?</p>
+    <h2 id="scenario-2-ltv-in-a-stagnant-business-with-long-term-subscribers">Scenario 2: LTV in a Stagnant Business with Long-Term Subscribers</h2>
+    <p>What if we tried the simulation with a different customer base? Would we still get underestimates? Let’s try a new simulation with fewer short-term subscribers. Would our LTV estimate be any better once <a href="https://baremetrics.com/blog/reduce-churn">churn is reduced</a>? (Keep in mind: Churn is inevitable, even though many brands strive for negative churn.)</p>
+    <p>The graph below represents a different simulation. The parameters are the same as before, except for a different distribution of subscribers. This population closely resembles an actual Baremetrics customer.</p>
+    <p>In this simulation, there are fewer short-term subscribers, and the average subscription lifetime is 3.7 years. If the average subscription lasts for 3.7 years, then the actual LTV is $904.</p>
+    <p>This is calculated by spending 3.7 years x 12 months x $20 monthly.</p>
+    <p>Can “simple” LTV get close to that $904 number?</p>
+    <p>In the above chart, the yellow line represents the simple LTV calculation calculated each month as the simulation progresses. Notice that we get dramatic overestimates at the beginning. Why is this? It’s because we have more longer-term subscribers. Very few customers are dropping out in the early months of this process. As a result, our estimate for LTV is much too high because our estimates expect the subscriptions to last forever with such a low drop-out rate.</p>
+    <p>The customer population stabilizes after 3.7 years, however. After 3.7 years, we get estimates close to the actual LTV (blue line). What’s more, it appears to be a much more accurate estimate than in our previous scenario. It’s off by only a few percentage points!</p>
+    <p>So, as a verdict, “simple” LTV is not so bad when customers stay long-term, and nothing fundamentally changes in the business! Especially considering the issues we discussed <a href="https://baremetrics.com/blog/price-optimization-in-saas-what-does-churn-tell-us">in our previous post about churn</a>.</p>
+    <p>So, can we find a scenario where “simple” LTV fails? Maybe “simple” LTV fails when the customer population rapidly changes. Perhaps we see the same problem here because our simple LTV estimate wildly overestimates the lifetime value for the first two years.</p>
+    <h2 id="scenario-3-ltv-in-a-growing-business">Scenario 3: LTV in a Growing Business</h2>
+    <p>Let’s try another simulation to explore this issue further. Let’s keep everything the same as the scenario we did above, but with one key.</p>
+    <p>Suppose we have a great marketing team that steadily increases the number of monthly sign-ups, and our average sign-up rate goes up by one percent each month.</p>
+    <p>After 100 months, we should be getting double the number of customers on average each day. The lifetime value, however, doesn’t change. Does this extreme growth ruin our LTV estimate?</p>
+    <p>Here is a chart of the active customer base:</p>
+    <p>As we get increasing sign-ups, our active customer population rockets upward.</p>
+    <p>Amazing! How does our LTV calculation fare?</p>
+    <p>See the chart below:</p>
+    <p>In the above chart, we see how “simple” LTV estimates (yellow) take longer to converge with the true value for LTV (dotted line).</p>
+    <p>The estimates do eventually converge with the true value, but only after about ten years. Even five years into this time series, our LTV estimates are off by as much as 50%.</p>
+    <p>It appears the “simple” LTV estimate is sensitive to a changing customer population, even though the customer population size should have nothing to do with the individual's lifetime value.</p>
+    <p>This sensitivity to population size is because the simple LTV estimate depends on churn, which is sensitive to a rapidly changing population size.</p>
+    <h2 id="let-s-try-a-different-metric-for-ltv">Let’s Try a Different Metric For LTV</h2>
+    <p>Can we find a better metric for LTV? One that doesn’t get distorted by changing sign-up rates? Instead of the simple LTV estimate, let’s build one based on statistics.</p>
+    <p>In this example, let's estimate a customer's average lifetime using a statistical model. Using our data, we’ll build a statistical model for subscription durations.</p>
+    <p>We’ll use Weibull regression as our statistical model. We feed data into the model, and it will produce an estimate for the average subscription lifetime.</p>
+    <p>Then, we multiply the average subscription lifetime by our monthly rate of $20/month to obtain an LTV estimate. How would such an estimate compare with “simple” LTV?</p>
+    <p>Let’s repeat the previous simulation with growing customer sign-up rates and calculate the LTV both ways to compare.</p>
+    <p>In the plot above, we show LTV estimates over time. The “simple” LTV estimate is blue, and the statistical estimate is purple.</p>
+    <p>Notice how the statistical method converges with the true LTV value (dotted line) long before the “simple” estimate. With the statistical estimate, we get within a few percentage points of the actual LTV with about 18 months of data, long before the customer base reaches a stable population.</p>
+    <p>In contrast, the churn-based estimate takes ten years to catch up and never reaches the same level of accuracy. The statistical estimate outperforms the simple churn-based one.</p>
+    <h2 id="statistics-beats-simple-ltv-but-can-we-do-better">Statistics Beats “Simple” LTV, But Can We Do Better?</h2>
+    <p>An interesting side-note: Notice how, at the beginning of the above chart, the churn-based estimate overestimates the actual LTV, whereas the statistical method underestimates it. Why? Both of these distortions happen because these estimates are naive. They don’t know anything before seeing data, so they begin with absurd estimates: the statistical estimate starts at zero, and “simple” churn starts near infinity.</p>
+    <p>So, can we improve our estimates by giving them a better starting point before they see any data?</p>
+    <p>Good news: Yes.</p>
+    <p>It turns out we can improve our statistical estimate by giving the model some education. If the model starts with a vague idea of what an average subscription lifetime looks like, based on previous experiences or experiences of peers. Let’s say we expect a subscription lifetime to last about a year. A wide ball-park guess, but more realistic than zero. Then as the data rolls in, we update our estimates.</p>
+    <p>As we collect more data, our vague starting point will steadily disappear, giving way to whatever the data tells us. But initially, it will help by starting closer to the truth.</p>
+    <p>What we are doing is called <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a> in statistics and machine learning. It’s a technique where we add bias to our model–the good kind of bias. It puts more weight on realistic data points and treats extreme observations with skepticism. We get better estimates as a result.</p>
+    <p>Below, we’ve added a new, improved estimate that uses regularization. It’s similar to the statistical estimate, but it makes use of something called a <a href="https://en.wikipedia.org/wiki/Prior_probability">Bayesian prior</a>. A prior is like a vague pre-conception. It nudges our estimates towards what we know to be reasonable subscription lifetimes, so our estimates start closer to the real thing. Let’s see how it does:</p>
+    <p>We’ve added an improved statistical estimate (green) in the above chart. Notice how the new estimate outperforms the others in the first few months. This improvement does exactly what we intended.</p>
+    <p>Our improved estimate is closer to the real LTV value in the early months. As the data rolls in, however, the two statistical estimates converge, eventually becoming indistinguishable.</p>
+    <h2 id="using-baremetrics-to-accurately-track-key-performance-metrics">Using Baremetrics to Accurately Track Key Performance Metrics</h2>
+    <p>Hopefully, we have shown that it is possible to find better LTV metrics than churn-based ones. Churn-based LTV estimates can be highly inaccurate, especially when there is little data. We can replace it with these better metrics. Further, we can also fine-tune them, so they are better suited for our field in SaaS.</p>
+    <p>Baremetrics provides accurate, up-to-date data for 26 performance and financial metrics that are critical for SaaS businesses, including <a href="https://baremetrics.com/blog/gross-churn-vs-net-churn">gross vs net churn</a>, monthly recurring revenue, and of course LTV. If you want to reduce SaaS churn— or even analyze churn to better understand why customers aren’t retaining—, Baremetrics can help.</p>
+    <p>We also have advanced customer segmentation features, <a href="https://baremetrics.com/features/cancellation-insights">Cancellation Insights</a> to provide insight into customer cancellation, and Recover to prevent involuntary churn with dunning management.</p>
+    <p>Tired of wasting time on spreadsheets? Get a <a href="https://app.baremetrics.com/users/sign_up">free trial of Baremetrics</a> today!</p>
+    <p><img src="https://baremetrics.com/hubfs/David.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="david-noonan">David Noonan</h3>
+    <p>David is a data professional in the Bay Area with a background in molecular biology. When he's not exploring Bayesian inference and statistical modeling for price optimization, David is in the kitchen, using way too much garlic.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#scenario-1-ltv-in-a-stagnant-business-with-many-short-term-subscribers">Scenario 1: LTV in a Stagnant Business With Many Short-Term Subscribers</a></li><li><a href="#scenario-2-ltv-in-a-stagnant-business-with-long-term-subscribers">Scenario 2: LTV in a Stagnant Business with Long-Term Subscribers</a></li><li><a href="#scenario-3-ltv-in-a-growing-business">Scenario 3: LTV in a Growing Business</a></li><li><a href="#let-s-try-a-different-metric-for-ltv">Let’s Try a Different Metric For LTV</a></li><li><a href="#statistics-beats-simple-ltv-but-can-we-do-better">Statistics Beats “Simple” LTV, But Can We Do Better?</a></li><li><a href="#using-baremetrics-to-accurately-track-key-performance-metrics">Using Baremetrics to Accurately Track Key Performance Metrics</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>David Noonan</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

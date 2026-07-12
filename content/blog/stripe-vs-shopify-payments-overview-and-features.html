@@ -1,0 +1,68 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Stripe vs. Shopify Payments: Which Is Right for You?</div></div>
+      <div><div>Description</div><div>Stripe vs. Shopify Payments compared with 2026 fees — including the third-party gateway penalty that decides the whole question. Worked examples inside.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Stripe vs. Shopify Payments: Fees, the Gateway Penalty, and How to Choose in 2026</h1></div></div>
+      <div><div><p>By Lea LeBlanc on April 01, 2021 Last updated on July 10, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Untitled-design-1-1.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Stripe vs. Shopify Payments sounds like a processor comparison, but nobody actually faces it in the abstract. In practice it's two different questions: if you sell on Shopify, should you use Shopify Payments or plug in Stripe? And should you build on Shopify at all, or build a custom store on Stripe? The first question has a surprisingly definitive answer that most comparison articles never mention. Let's start there.</p>
+    <h2 id="the-fee-that-decides-everything-shopify-s-third-party-gateway-penalty">The fee that decides everything: Shopify's third-party gateway penalty</h2>
+    <p>Shopify charges an additional fee on every transaction processed through an external gateway (Stripe included), on top of whatever that gateway charges:</p>
+    <p>Run the math on a store doing $50,000/month on the Basic plan: Shopify Payments costs roughly $1,600/month in processing. The same store running Stripe as its gateway pays about $2,600/month. That's processing plus penalty. Using Stripe inside Shopify costs an extra ~$1,000 a month at that volume. Unless you have a hard requirement Shopify Payments can't meet, the penalty settles question one: on Shopify, use Shopify Payments.</p>
+    <h2 id="what-shopify-payments-actually-charges">What Shopify Payments actually charges</h2>
+    <p>Shopify Payments (originally built on Stripe's payment rails, which is why this comparison exists at all) prices by plan: roughly 2.9% + 30¢ online on Basic, 2.7% on Grow, 2.5% on Advanced, and rates from 2.25% + 30¢ on Plus, with in-person rates from ~2.6% down to ~2.4%. So Shopify's headline rate matches Stripe's on the entry plan and undercuts it as you move up. Your plan fee buys the discount.</p>
+    <p>Stripe direct is 2.9% + 30¢ flat, no monthly fee, no plan tiers. But also no storefront. That's the real trade: Shopify's plan fee ($29–39/month entry, $2,300+/month for Plus) buys the entire commerce platform (hosting, themes, checkout, apps, PCI compliance), not just payments.</p>
+    <h2 id="question-two-shopify-store-vs-custom-stripe-build">Question two: Shopify store vs. custom Stripe build</h2>
+    <ul><li>Selling physical products / DTC: Shopify. Live in a day, the app ecosystem is unmatched, and Shopify Payments removes the penalty question entirely.</li><li>Selling SaaS or digital subscriptions: Stripe direct. Subscriptions on Shopify require apps (Recharge, Loop, and similar) that carry their own monthly and per-transaction fees, while Stripe Billing is purpose-built recurring infrastructure — 0.7% of billing volume pay-as-you-go, or annual tiers from $620/month. Trials, proration, retries, usage-based pricing: all native.</li><li>Hybrid businesses — a Shopify storefront and a SaaS product, or merch alongside memberships: you'll likely end up with both platforms, which is common and fine. It does create a two-dashboard revenue problem (more on that below).</li></ul>
+    <h2 id="everything-else-quickly">Everything else, quickly</h2>
+    <p>Data and control. Stripe gives you full API access to raw payment objects; Shopify mediates data through its platform. If you're building custom checkout logic or need granular payment data, Stripe wins. If you want to never think about checkout again, that's precisely what Shopify sells.</p>
+    <p>International. Stripe: 135+ currencies, 100+ payment methods, ~46 countries. Shopify Payments has expanded country coverage substantially, with multi-currency selling built into the platform. Verify current availability for your country on both — this changes quarterly.</p>
+    <p>Payouts. Both pay out on a rolling basis measured in a few business days, with instant options for a fee.</p>
+    <h2 id="tracking-revenue-across-shopify-and-stripe">Tracking revenue across Shopify and Stripe</h2>
+    <p>If you're a subscription business on either platform (or straddling both), the metrics gap shows up fast. Neither Shopify's analytics nor Stripe's dashboard calculates MRR movements, churn cohorts, or LTV by plan. Neither was built for that.</p>
+    <p><a href="https://baremetrics.com/">Baremetrics</a> has a native Shopify integration and a native Stripe integration, so subscription revenue from both lands in one dashboard: MRR broken into new, expansion, contraction, and churn; trial conversion; LTV; forecasting. Merchants who ran Shopify-native analytics tools that have since shut down (including Mantle, which closed in June 2026) can reconnect their Shopify data and keep their metrics history going. And if Stripe is in your stack, Recover automatically retries failed payments and recovers revenue that would otherwise silently churn. Try it free. Or explore the live demo.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>Can I use Stripe with Shopify?
+              Technically yes, but Shopify adds a 2% (Basic) / 1% (Grow) / 0.6% (Advanced) penalty on third-party gateway transactions — making Stripe inside Shopify cost ~4.9% + 30¢ effective on the Basic plan. For most merchants, Shopify Payments is the economically rational choice on Shopify.</li><li>Is Shopify Payments the same as Stripe?
+              It was originally built on Stripe's payment infrastructure, but it's a distinct product: plan-tiered rates, Shopify-only, managed entirely inside Shopify.</li><li>Which is cheaper, Stripe or Shopify Payments?
+              On Shopify's Basic plan they match (2.9% + 30¢); on higher Shopify plans, Shopify Payments is cheaper (2.7%, then 2.5%). Stripe-inside-Shopify is always the most expensive option because of the penalty.</li><li>Does Shopify work for subscriptions?
+              Yes, via apps like Recharge or Loop, which add their own fees. Pure SaaS businesses are usually better served by Stripe Billing.</li><li>What happened to Mantle?
+              Mantle, a Shopify-focused analytics platform, shut down in June 2026. Former Mantle users can connect their Shopify (and Stripe) data to Baremetrics natively.</li><li>How do I see MRR across Shopify and Stripe together?
+              Baremetrics integrates natively with both and normalizes revenue from each into a single MRR, churn, and LTV dashboard, segmentable by source.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/febcbd14d0c94d6691a3a23b5bdc969a.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="lea-leblanc">Lea LeBlanc</h3>
+    <p>Lea is passionate about impactful businesses, good writing, and the stories founders have to tell. When she’s not writing about SaaS topics, you can find her trying new recipes in her tiny Tokyo kitchen.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#the-fee-that-decides-everything-shopify-s-third-party-gateway-penalty">The fee that decides everything: Shopify's third-party gateway penalty</a></li><li><a href="#what-shopify-payments-actually-charges">What Shopify Payments actually charges</a></li><li><a href="#question-two-shopify-store-vs-custom-stripe-build">Question two: Shopify store vs. custom Stripe build</a></li><li><a href="#everything-else-quickly">Everything else, quickly</a></li><li><a href="#tracking-revenue-across-shopify-and-stripe">Tracking revenue across Shopify and Stripe</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Lea LeBlanc</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

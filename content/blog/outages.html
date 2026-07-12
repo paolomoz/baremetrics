@@ -1,0 +1,99 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Communicate During a SaaS Outage Without Losing Trust</div></div>
+      <div><div>Description</div><div>A month ago we were knee deep in server issues that caused sporadic data issues, outages and performance problems for nearly every customer over the course of a full week. It was intensely frustrating for our team not only because it was a really hard problem to get to the bottom of, but more importantly, because it meant our customers weren’t getting the service they deserved.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to handle major outages &amp; service interruptions</h1></div></div>
+      <div><div><p>By Josh Pigford on July 13, 2016 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/blog1-Jul-17-2023-01-52-09-3816-PM.jpg" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>A month ago we were knee deep in server issues that caused sporadic data issues, outages and performance problems for nearly every customer over the course of a full week. It was intensely frustrating for our team not only because it was a really hard problem to get to the bottom of, but more importantly, because it meant our customers weren’t getting the service they <a href="https://baremetrics.com/blog/startup-culture-manifesto">deserved</a>.</p>
+    <p>Handling these types of issues can be touchy, especially when the issues aren’t necessarily affecting every customer.</p>
+    <p>Do you show a notice to all customers, even if only a random 50% are having issues? Do you share everything that’s happening? Or only when there’s significant progress? What should the tone be? Should offer refunds?</p>
+    <p>Obviously there are a multitude of variables that might come into play, here’s how we generally handle outage and server interruptions and how we like to communicate to our customers during those times.</p>
+    <h2 id="escalation-procedure">Escalation procedure</h2>
+    <p>Ideally you’ve got some sort of system monitoring in place. On a basic level, that can be done with a simple ping to make sure a given URL is accessible. On a deeper level, monitoring things like database load, application errors and response times can go a long way to catching things before they’re actually a noticeable issue to your customers.</p>
+    <p>In addition to system monitoring, if you have more than one engineer, having an on-call schedule is worth your while. Pinging every engineer whenever there’s a problem is nerve-racking and not a great use of anyone’s time.</p>
+    <p>The combination of those two things lets you put a solid escalation procedure in place.</p>
+    <h3 id="step-1-general-chat-notification">Step 1: General chat notification</h3>
+    <p>When a potential issue comes through the door, whether that’s via system monitoring or customer support, it’s first reported to our #backend channel in Slack, @-mentioning all engineers. Since our engineers are spread across multiple timezones in various parts of the world, most hours of the day someone is online.</p>
+    <p>It’s preferable for someone who’s actually awake to handle an issue instead of having to wake someone up.</p>
+    <p>If an engineer is online, they can confirm if it’s an issue or not and keep the process moving.</p>
+    <h3 id="step-2-text-message">Step 2: Text message</h3>
+    <p>If there’s no engineer online and the issue appears to be critical, system monitoring kicks in most of the time and will text message the on-call engineer who, awake or not, will hop on and begin working on the issue.</p>
+    <h3 id="step-3-call">Step 3: Call</h3>
+    <p>In the scenario where system monitoring didn’t pick up the issue or a text message clearly didn’t work, then whoever did notice the issue (usually someone in Customer Support) will call the on-call engineer.</p>
+    <p>Usually after all of this, someone has been made aware of the problem and is working on a fix.</p>
+    <h2 id="communicating-the-problem">Communicating the problem</h2>
+    <p>Once you’ve verified that there is indeed an issue, post a status message. Our preferred approach is to have everyone see the status message as soon as possible instead of waiting and trying to just notify a smaller group of people.</p>
+    <p>The reason for that is it’s usually too difficult to pinpoint the extent of an issue at the start. We’d rather tell everyone that there might be an issue, even if they aren’t experiencing it, than leave a customer wondering if something is going on. Our personal rule of thumb is to be open and honest right from the start.</p>
+    <p>We find you can’t over-communicate these things.</p>
+    <p>We start by posting to our <a href="https://status.baremetrics.com/">status page</a>, which also posts to our Twitter account and creates a message within the Baremetrics dashboard.</p>
+    <h3 id="support-during-an-outage">Support during an outage</h3>
+    <p>When there’s an outage or interruption, our primary goal is to communicate and reply to customers as fast as possible. That means our support team puts higher priority on tweets, emails and tickets relating to the outage.</p>
+    <p>The less time our customers have to spend wondering if something is wrong and when it will be fixed, the better.</p>
+    <p>In our outage a month ago, after we’d had nearly a week of sporadic ups and downs, we decided responding to incoming inquiries about the outage wasn’t enough. I actually sent out a “Letter from the CEO” to all of our customers. Enough people had experienced issues that me blanket-updating everyone and laying out what had happened and how we were fixing it felt necessary. Again, communication is the key to keeping your customers trust and thereby their business.</p>
+    <p>As you’ve likely noticed, over the past week there have been a number of issues with your dashboard. You’ve probably seen drops in certain metrics (which would cause spikes in others). Usually you’d notice them in the mornings.</p>
+    <p>First off, I’m sorry. Seriously. Few things spike my stress level more than our customers not seeing the data they expect and deserve.</p>
+    <p>Ultimately these issues have boiled down to our servers getting behind on calculations as we’ve nearly doubled the number of data points we process in the past few weeks.</p>
+    <p>There’s a sequence of events that happen to import, process and calculate any given metric and when one thing gets behind it can sometimes cause a bit of a domino effect which causes other numbers to get behind.</p>
+    <p>Second, we’ve been working day and night to tackle this and improve processing speeds as well as bringing new servers on line to help with the backlog.</p>
+    <p>We’ve actually been working the past few months on an entirely new infrastructure that scales orders of magnitude more efficiently than our current set up and we’ll begin rolling that out in the next two weeks (more info about that coming soon).</p>
+    <p>At the end of the day you trust us with your business data to help you make accurate business decisions and when we don’t meet those expectations it’s simply not okay.</p>
+    <p>Our hope is to be fully caught back up on processing in the next 24 hours.</p>
+    <p>If you have any questions at all, just reply to this note. Happy to answer or listen to any questions and concerns.</p>
+    <h2 id="after-the-storm">After the storm</h2>
+    <p>Once you’re past the outage, write up a postmortem. Include an overview of what happened, when it happened, how it happened and what you’re doing to prevent it from happening again.</p>
+    <p>The reality is, most customers won’t read this. They’re just not that interested in the meaty details. However, for the customers that do care about it…they really care about it and it will go a long way to re-establish trust in your product.</p>
+    <h3 id="what-about-refunds-for-the-downtime">What about refunds for the downtime?</h3>
+    <p>We don’t do automatic refunds for downtime. The only time you should preemptively issue refunds to everyone is if you have a service level agreement (SLA) in place that guarantees a certain level of performance or uptime.</p>
+    <p>Now, that being said, you also shouldn’t be stingy. If someone is clearly upset by the downtime, offer them a full refund for the past month. Unquestionably worth it.</p>
+    <h2 id="bearing-the-weight-of-customer-frustration">Bearing the weight of customer frustration</h2>
+    <p>Usually you and your team care a lot more about an outage than your customers. Yes, it will annoy and frustrate them, but the stress you feel is essentially the weight of all your customers frustrations. It can be pretty intense.</p>
+    <p>Resist the impulse to micromanage. Stay focused on keeping your customers informed and let your engineering team do their job.</p>
+    <p>We’ve found the large majority of customers are understanding of server issues. That “Letter from the CEO” I sent to nearly 800 people resulted in exactly two people who were frustrated. The rest of the responses were incredibly supportive and gave a nice pick-me-up to me and the team.</p>
+    <h2 id="tools">Tools</h2>
+    <p>Here are some of the tools we use or have used over the years to help manage every part of this process:</p>
+    <ul><li>StatusPage — Powers our status page and in-app notifications</li><li>Honeybadger — Error &amp; uptime monitoring and notifications</li><li>PagerDuty — On-call scheduling and escalation procedures</li><li>Datadog — Infrastructure monitoring and alerts</li><li>Intercom — Email, chat and general support during outages</li></ul>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>How should a SaaS company communicate with customers during a major service outage?
+              Communicate early, communicate often, and default to telling everyone even if only a subset of customers are affected.Trying to pinpoint exactly who is impacted before posting a status update wastes time and leaves customers wondering what is going on. Post to your status page the moment you have confirmed something is wrong, then keep updating as the situation develops. A few specific practices that hold up well in practice:Publish a status message immediately, even if the root cause is still unknownPush notifications through every channel your customers already watch: status page, in-app banners, Twitter, and direct emailEscalate to a direct note from the CEO for outages that stretch beyond 24 hours or affect a significant portion of your subscriber baseRespond to support tickets and tweets about the outage faster than your usual SLAOver-communicating during a service interruption builds more trust than silence does, even when you do not yet have all the answers.</li><li>What is the difference between a service outage and service degradation for a SaaS product?
+              A service outage means your product is fully unavailable, while service degradation means it is accessible but performing below expected levels, such as slow response times, calculation delays, or partial data errors.For subscription businesses, the practical distinction matters because degradation is often harder to detect and harder to communicate clearly. Customers may see inconsistent metrics or dashboard anomalies without understanding why, which quietly erodes trust in your data. Both states warrant a public status update and active customer support. Monitoring tools that track database load, application errors, and response times, not just simple uptime pings, are what catch degradation before it tips into a full outage that drives involuntary customer frustration and increases churn risk.</li><li>What tools do SaaS companies use to detect and manage service outages?
+              The most reliable outage detection and incident management stack for a SaaS company typically combines uptime monitoring, error tracking, infrastructure observability, and on-call scheduling tools.Commonly used tools include:Honeybadger for error tracking and uptime monitoringDatadog for infrastructure monitoring and real-time alerts on database load and response timesPagerDuty for on-call scheduling and escalation procedures so the right engineer is paged at any hourStatusPage for publishing customer-facing status updates and triggering in-app notifications automaticallyIntercom for managing support volume during an active incidentA layered approach matters because simple URL ping monitoring misses degradation. The combination of deep infrastructure alerts plus a clear escalation path, from Slack notification to SMS to phone call, reduces the time between a problem starting and an engineer actively working on it.</li><li>Should SaaS companies offer refunds after a service outage or extended downtime?
+              Automatic refunds are only necessary if you have a service level agreement that contractually guarantees a specific uptime percentage, but you should never be stingy with individual customers who are clearly frustrated.For most early and growth-stage subscription businesses without formal SLAs, a practical refund approach looks like this:Do not issue blanket proactive refunds for routine downtimeDo offer a full month refund, without hesitation, to any customer who contacts you visibly upset about the outageTreat the refund as a retention investment, not a loss, since the LTV of a retained customer far exceeds one month of MRRThe goodwill created by a fast, no-questions-asked refund to an unhappy customer almost always prevents a churn event that would cost you far more over the customer lifetime.</li><li>How do service outages affect SaaS churn rate and what can you do to reduce the impact?
+              Service outages increase involuntary and voluntary churn by eroding customer trust, particularly for B2B SaaS products where users depend on accurate real-time data to make business decisions.The churn risk compounds when customers experience an outage and receive no communication about it, because silence signals unreliability more than the downtime itself does. Steps that demonstrably reduce churn impact during a service interruption include:Posting a status update within minutes of confirming an issue, before customers start emailing inSending a direct CEO or founder email for outages lasting more than 24 hoursPublishing a postmortem that explains root cause and what you changed to prevent recurrenceBaremetrics tracks MRR movements and churn events in real time, so you can monitor whether a major outage is actually translating into cancellations and respond with targeted retention outreach before the revenue impact compounds.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Josh%20Pigford.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="josh-pigford">Josh Pigford</h3>
+    <p>Josh is most famous as the founder of Baremetrics. However, long before Baremetrics and until today, Josh has been a maker, builder, and entrepreneur. His career set off in 2003 building a pair of link directories, ReallyDumbStuff and ReallyFunArcade. Before he sold those for profits, he had already started his next set of projects. As a design major, he began consulting on web design projects. That company eventually morphed into Sabotage Media, which has been the shell company for many of his projects since. Some of his biggest projects before Baremetrics were TrackThePack, Deck Foundry, PopSurvey, and Temper. The pain points he experienced as PopSurvey and Temper took off were the reason he created Baremetrics. Currently, he's dedicated to Maybe, the OS for your personal finances.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#escalation-procedure">Escalation procedure</a></li><li><a href="#communicating-the-problem">Communicating the problem</a></li><li><a href="#after-the-storm">After the storm</a></li><li><a href="#bearing-the-weight-of-customer-frustration">Bearing the weight of customer frustration</a></li><li><a href="#tools">Tools</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Josh Pigford</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

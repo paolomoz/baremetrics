@@ -1,0 +1,154 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How SaaS Pricing Affects Retention, Churn &amp; Subscriber LTV</div></div>
+      <div><div>Description</div><div>This article covers how pricing can improve customer retention for your SaaS business. Learn what metrics to use in 2021 and more!</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Price Optimization in SaaS: Customer Retention</h1></div></div>
+      <div><div><p>By David Noonan on January 25, 2021 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/winback-email-1.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>This article will discuss the relationship between price change and customer retention.</p>
+    <p>If I raise the price, will customers leave?</p>
+    <p>The biggest challenge that leaders face is understanding how to think about price optimization and customer retention with the right framework.</p>
+    <p>For example, many leaders focus on the <a href="https://baremetrics.com/academy/churn">churn</a> metric as a proxy for customer retention. The problem with this is that churn doesn’t tell us anything about how long our customers subscribe for. After all, as some in the industry have pointed out, churn relates more to the age of our subscriptions than to the persistence of our subscribers.</p>
+    <p>In this article (this is part one of our <a href="https://baremetrics.com/blog/price-optimization-in-saas-an-introduction">Price Optimization series</a>), we will discuss the relationship between price change and customer retention, as well as the best metrics and methods for measurement.</p>
+    <h2 id="does-my-new-price-make-customers-unsubscribe-sooner">Does my new price make customers unsubscribe sooner?</h2>
+    <p>Let’s consider the price example from our <a href="https://baremetrics.com/blog/price-optimization-in-saas-an-introduction">series introduction</a>. Suppose we quadrupled our price, gained some new customers, and our MRR was looking good. Do we know the customers will stay just as long as they used to?</p>
+    <p>What if the higher price makes our service more noticeable in their budget, causing them to drop out sooner? Will they decide after a few months that our service is not worth it? What if we raise our prices and they don’t care?</p>
+    <p>We need an accurate way to measure our customer’s subscription lengths in order to answer these questions.</p>
+    <p>BE HONEST</p>
+    <p>How well do you know your business?</p>
+    <p>Get deep insights into churn, LTV, MRR and more to grow your business</p>
+    <h2 id="beware-avoid-bad-metrics-to-measure-customer-retention">Beware: Avoid bad metrics to measure customer retention</h2>
+    <p>Typically we are told to use metrics like churn as a proxy for customer retention. These metrics will mislead us. First, let’s tackle why churn isn’t a useful metric.</p>
+    <p>Take a look at this distribution plot of known subscription lengths from an actual SaaS sample below. Next to the subscription lengths graph, we have the implied <a href="https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator">survival curve</a> as a function of time (it shows the probability of a subscription surviving up to that time).</p>
+    <p>Notice the long tail in the distribution plot on the left. The plot has a mix of mostly short subscription lengths and a few long ones.</p>
+    <p>Now, suppose we consider the population from the graph on the left as a distinct cohort of subscribers, and they all start simultaneously. Imagine measuring their churn over time. After the bulk of customers churn out initially, the remaining customers in the long tail are the only ones remaining. This means the churn rate would decrease over time.</p>
+    <p>We can also see this in the decreasing trend in survival rates on the right. The probability curve for survival stops decreasing as fast when subscriptions get longer. Indicating the remaining customers are less likely to cancel.</p>
+    <p>This shows us that, in reality, the churn rate is not constant. As this cohort progressed over time, we saw less and less churn. The longer a subscriber subscribes for, the less likely they are to churn. The churn metric is blind to this. People assume it measures retention when in reality, all it tells us is how young or old the subscriptions are.</p>
+    <p>The churn metric won’t help us with price optimization. Let’s abandon the churn metric and look for something else!</p>
+    <h2 id="if-we-can-t-use-churn-can-we-use-the-average-subscription-lengths">If we can’t use churn, can we use the average subscription lengths?</h2>
+    <p>We might think a good alternative to the churn metric is using the average subscription lengths. While this is partly true, chances are we are calculating it wrong.</p>
+    <p>When we simply take the average subscription lengths in our data, we aren’t actually approaching the true average. We are actually doing what we call the naive average subscription length.</p>
+    <p>Let’s think this through:</p>
+    <p>If we want to compare subscription lengths, then we should collect all the subscription lengths we have for each price, and compare their respective averages. Then we can tell if there is a difference, right?</p>
+    <p>Nope. That would be a huge mistake. When we do this, we bias our estimate against longer subscriptions. The long-lasting subscribers are more likely to be still subscribing.</p>
+    <p>These kinds of observations, where subscribers aren’t finished yet, are called censored data. We know when they began, and we know their subscriptions survived until the present. But we don’t know when they will cancel. That part is censored.</p>
+    <p>The naive average subscription length ignores these censored customers, but they are the most valuable subscribers, and their contribution is critical for us to understand our customer retention.</p>
+    <p>So both churn and naive averages are the wrong metrics to use. What options do we have for measuring customer retention?</p>
+    <h2 id="time-for-some-statistics">Time for some statistics!</h2>
+    <p>Since we don’t know how long the censored subscriptions will last, we need to make an educated guess. That’s where statistics comes in. We draw from a field of statistics that deals with time-to-event data, commonly known as <a href="https://en.wikipedia.org/wiki/Survival_analysis">Survival Analysis</a>.</p>
+    <p>Instead of using naive averages in our subscription lengths dataset, we will use the data we have to build a survival model.</p>
+    <p>It is a model that attempts to describe all the possible subscription lengths and assigns a probability to each. It treats our data as a small subset of a much larger distribution of subscription lengths.</p>
+    <p>If we use the model, we can extrapolate beyond our dataset, to define the overall pattern of subscription lengths, and get accurate estimates of its features, to answer questions like “what is the average subscription length.” The correct subscription length average to use is the average subscription length seen in that model. How does this work?</p>
+    <p>First, we need to choose the distribution we will build our model with. Time-to-event data tend to follow a series of probability distributions called the <a href="https://en.wikipedia.org/wiki/Exponential_family">exponential family</a>. These probability distributions neatly model time-to-event processes in nature. The great thing about these is that they assign a likelihood that the subscription could reach any given length for both censored and uncensored data.</p>
+    <p>We seamlessly plug in censored and uncensored data to get likelihood estimates for each subscription length. Then we use those likelihood estimates to choose the parameters for our model, in a process called <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">Maximum Likelihood Estimation</a>.</p>
+    <p>We choose the parameters that maximize the likelihood of seeing the observations from our original real dataset. This ensures that our model closely fits our data.</p>
+    <p>For now, we are going to use a flexible member of the exponential family: the <a href="https://en.wikipedia.org/wiki/Weibull_distribution">Weibull distribution</a>. Other distributions may be a closer fit to our data, but we will go with this one for the sake of simplicity.</p>
+    <p>The Weibull distribution is flexible because it can handle increasing and decreasing cancelation rates as a function of time. You don’t need to understand this equation or remember it, but for those who are curious about how this works, here is the Weibull probability density function:</p>
+    <p>The shape parameter denoted alpha () defines increasing or decreasing rates of survival. The scale parameter denoted sigma (σ) determines the spread, which dials the mean subscription length.</p>
+    <p>From this, we can derive a function for the probability of surviving at least a given duration, called the <a href="https://en.wikipedia.org/wiki/Survival_function">Survival function S(t)</a>.</p>
+    <p>The survival function gives the likelihood of survival of censored data because, in censored data, all we know is that the subscription lasted up to a certain point of time, and that it will end at some time beyond that.</p>
+    <p>Note that the survival function also depends on both the shape and scale parameters. This allows us to use censored observations along with the uncensored ones to find optimal values for shape () and scale (α) to get the weibull distribution that is the closest fit to your data.</p>
+    <p>After we fit a model like this to the data, we can take the mean of the distribution as our estimate for average customer retention.</p>
+    <p>Below is an example of a Weibull distribution. This is just an example distribution to illustrate what it could look like. Moving forward we can play with the subscription price, sign up rates and customer retention to model our data:</p>
+    <p>Now let’s compare using the Weibull distribution to estimate subscription lengths with the naive average, and see the difference.</p>
+    <h2 id="the-na-ve-estimate-for-subscription-lengths-is-very-bad">The Naïve estimate for subscription lengths is very bad</h2>
+    <p>To show how much better it is to model your subscriptions with Weibull, let’s illustrate with a simulated example.</p>
+    <p>Let’s imagine 60 subscriptions following the Weibull distribution, and censor about half of them. To make things harder and closer to reality, let’s censor them early, mostly below the actual mean subscription length. We’ll compare the naive average to the estimate from a survival model assuming the Weibull distribution.</p>
+    <p>For speed, we’ll use a <a href="https://en.wikipedia.org/wiki/Frequentist_inference">frequentist</a> method for estimating the parameters with the Survival library in R.</p>
+    <p>Let’s repeat this 100,000 times and compare the results on a density plot:</p>
+    <p>See? The naïve estimate is terrible. It underestimates the actual average subscription length all the time.</p>
+    <p>The Weibull estimate, on the other hand, tends to hit the target. Consider the challenges here: most of the data is of short duration and highly censored.</p>
+    <p>Nevertheless, the model does a great job and wins. So how can we use this in a price optimization scheme?</p>
+    <p>The next section will show two applications of the Weibull distribution.</p>
+    <h2 id="using-survival-analysis-the-weibull-model-correctly-predicts-subscription-lengths-in-two-scenarios">Using Survival Analysis: The Weibull model correctly predicts subscription lengths in two scenarios</h2>
+    <p>Let’s begin with a fundamental question. If we make a price change, are the subscription durations different?</p>
+    <p>What if we raise our price, collect data, and want to compare subscription durations between two price points?</p>
+    <p>Here are two examples to test using the Weibull distribution to model subscription lengths on simulated data.</p>
+    <p>Since it’s a simulated example, we already know the truth, and we can test if our method can detect it.</p>
+    <h3 id="scenario-1-higher-price-makes-subscribers-cancel-sooner">Scenario 1: Higher price makes subscribers cancel sooner</h3>
+    <p>Let’s simulate a dataset that follows this story: say we offer a service at a low price, $20/month, and get 60 customers. We provide the same plan but raise it 80% to $36/month and get another 60 customers.</p>
+    <p>In reality, we know that many factors can affect revenue, like sign-up rates, time, marketing, and so on. But for this example, we are going to assume that these don’t affect revenue, so we can focus on understanding the relationship between price, customer retention, and revenue.</p>
+    <p>In this story, let’s assume that customers don’t like the higher price and cancel their subscriptions sooner, enough to neutralize any revenue gains.</p>
+    <p>To summarize:</p>
+    <ul><li>We created a data set where there are two prices being offered.</li><li>One price is $20/month and there are 60 signups.</li><li>Another price is $36/month and there are 60 signups.</li><li>The customer retention is affected by price.</li><li>We gave a longer customer retention to the lower price.</li><li>We gave a shorter customer retention to the higher price.</li><li>We designed it so that the LTV per customer (regardless of their signup price) is constant.</li><li>Half the dataset is censored.</li></ul>
+    <p>Because we’re “playing God” in this data set, all the data points in our simulated data set follow the above conditions.</p>
+    <p>So, what we will do is feed the Weibull model these simulated data points. Half of the data we feed to the Weibull model is censored. Then we will use the Weibull model to predict the customer retention based on a given subscription price.</p>
+    <p>In other words, we will let the Weibull model learn from our simulated and censored data set. Then we can plug in a subscription price, and the Weibull model will predict the subscription length for us.</p>
+    <p>This time, we fit a Weibull model using a <a href="https://en.wikipedia.org/wiki/Bayesian_inference">Bayesian</a> framework with the brms package in R, so we can visualize the marginal effects easily. We’ll add the price plan as a predictor for comparison. After we train the model, we’ll display the results on a marginal effects plot to show what the model thinks the average subscription lengths are for each plan. See the results below:</p>
+    <p>Look at that! In the top plot, we see <a href="https://en.wikipedia.org/wiki/Density_estimation">density plots</a> for the average subscription length for each price point estimated by the model. These are the relative probabilities assigned by the model for the estimates. The higher the peak, the more likely the model thinks the estimate is.</p>
+    <p>Notice that there is minimal overlap between the subscription lengths. We can interpret the lack of overlap as the model assigning very little probability that the average subscription lengths are the same between price points.</p>
+    <p>In other words, the model is very confident that the subscription lengths are different between plans, and that customers drop out sooner in the more expensive plan. But what does that mean for our revenue?</p>
+    <p>We get the implied revenue by multiplying the predicted durations by the respective monthly prices of each plan. This gives us an estimate of the expected <a href="https://help.baremetrics.com/en/articles/5380345-lifetime-value">lifetime value for a customer</a>.</p>
+    <p>It shows a lot of overlap between predictions. More overlapped than not. This means that the model isn’t sure if either plan is better concerning long-term revenue.</p>
+    <p>While the less expensive price point retains more customers, it doesn’t yield more revenue. The Weibull model accurately detects this conclusion, while other methods may not be able to.</p>
+    <h3 id="scenario-2-price-doesn-t-affect-subscription-lengths">Scenario 2: Price doesn’t affect subscription lengths</h3>
+    <p>Let’s pretend there is no difference in customer retention between price plans. Can our model detect this? What are the implications for revenue? Let’s set up another fake dataset, where we know that price does not affect subscription lengths.</p>
+    <p>Half of the points in the dataset will be censored. After feeding our dataset to the Weibull model, will it be able to correctly predict the subscription lengths when given a price?</p>
+    <p>Here is a summary of this scenario:</p>
+    <ul><li>We created a data set where there are two prices being offered.</li><li>One price is $20/month and there are 60 signups.</li><li>Another price is $36/month and there are 60 signups.</li><li>The customer retention is NOT affected by price.</li><li>We designed it so that the LTV per customer is higher in the $36/month price.</li><li>Half the dataset is censored.</li></ul>
+    <p>In this scenario, the model shows a lot of overlap in the expected durations between plans. This means that the model assigns a lot of probability on the subscription lengths being the same.</p>
+    <p>As a side note: the densities don’t overlap entirely because we used random samples to make our estimates, and that made them slightly different by chance.</p>
+    <p>Despite this, the estimates weren’t different enough to tell if they came from different distributions, which is correct, because we know they came from the same distribution because we simulated it that way.</p>
+    <p>When we multiply the durations by their prices, however, we see a big difference. The model is confident that the higher-priced plan is better. The higher-priced plan yields greater revenue in this scenario, because customers don’t drop out sooner.</p>
+    <p>This is a situation where correctly estimating customer retention is critical, because the model (correctly) predicts that the more expensive plan yields $2000 lifetime value on average, compared to the less expensive plan that averages $750 lifetime value.</p>
+    <p>This is all dependent on confirming that customers don’t drop out sooner, which our model also predicts correctly.</p>
+    <h2 id="key-learnings-pricing-and-customer-retention">Key Learnings: Pricing and customer retention</h2>
+    <ul><li>It’s very important to avoid churn and naive average subscription length as your metric for customer retention.</li><li>The correct metric for measuring subscription lengths is generated through estimating the distribution that best matches the nature of our data.</li><li>We can predict real differences in subscription lengths when the price changes using survival analysis even with highly censored data.</li><li>Being able to model subscription lengths means we can identify a more optimal price point for our services, assuming all other factors are equal.</li></ul>
+    <h2 id="beware-correlation-is-not-causation">Beware: Correlation is not causation</h2>
+    <p>It is easy to assume a causal relationship between price and duration in our simulations because we coded it that way. However, it would be a mistake to assume a causal relationship between prices and durations in the real world.</p>
+    <p>This is because many factors other than price could cause the correlation. For example, a superior competitor could enter the market shortly after a price change. Or world events like a pandemic could force your customers out of business, shortening subscriptions. Small sample size and randomness could also make an apparent correlation.</p>
+    <p>Unless we carefully construct an experiment, we can’t control for factors that confound our results. We need to be vigilant about finding any factor that could throw our predictions off.</p>
+    <p>Even if we feel very confident in our methods, we can’t possibly know all the factors that could mislead us, so we need to look at our results with a healthy dose of skepticism before we act on them.</p>
+    <p>If we do an experiment, it’s essential to control for as many potential differences between customer groups as possible if we want to be more confident in a causal relationship.</p>
+    <p>A great experiment to start with would be to compare different prices within the same cohort. Imagine an experiment similar to an <a href="https://en.wikipedia.org/wiki/A/B_testing">A/B test</a>, where two randomly selected customer groups are offered different prices in the same time window to reduce the chances of a spurious result. More on that in a future article!</p>
+    <h2 id="next-steps">Next Steps</h2>
+    <p>You should now be thinking about experimenting with prices and estimating subscription lengths correctly to improve customer retention. Take a look at a survival analysis package in your favorite programming language and try it out.</p>
+    <p>And since we now know the metrics we need to use, how do we use them in an experiment?</p>
+    <p>Our next article will be about how to put together a price experiment, and get the right data so you can build a great model like you’ve seen in this article.</p>
+    <p>Happy experimenting! If you need help, don’t hesitate to contact <a href="mailto:support@baremetrics.com">support@baremetrics.com</a> or start your 14 day free trial. We’ll show you how to understand the value you provide to your customer through price optimization.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>What is price optimization in SaaS and why does it affect customer retention?
+              Price optimization in SaaS is the process of finding the price point that maximizes revenue without accelerating customer cancellations or shortening subscription lifespans.For subscription businesses, pricing decisions are not just about acquisition. A price increase can make your product more visible in a customer's budget, causing them to question whether the value justifies the cost. If they cancel sooner after a price change, any MRR gains from higher pricing can be wiped out by shorter average subscription lengths. The goal of a pricing optimization strategy is to understand that tradeoff using actual subscription duration data, not surface-level churn rate figures.</li><li>Why is churn rate a bad metric for measuring the impact of a price change on customer retention?
+              Churn rate is a poor proxy for retention because it reflects the age distribution of your subscriptions, not how loyal or price-sensitive your customer base actually is.As a subscription cohort matures, the customers most likely to cancel do so early. The remaining subscribers are inherently more sticky, which causes the churn rate to fall over time regardless of pricing decisions. This means a rising or falling churn rate after a price change can be completely misleading. To evaluate how a new price affects subscription duration, you need a metric that accounts for how long customers actually stay, including those who are still active and have not yet cancelled.</li><li>How do I accurately measure average subscription length when optimizing SaaS pricing?
+              To accurately measure average subscription length for pricing decisions, you need survival analysis rather than a simple average of completed subscription lengths.A naive average ignores active subscribers who have not yet cancelled. These censored observations, where you know when a subscription started but not when it will end, represent your most valuable long-term customers. Leaving them out biases your estimate downward and makes retention look worse than it is. Survival analysis models, such as the Weibull distribution, incorporate both completed and still-active subscriptions to give you an accurate estimate of true average subscription duration. Baremetrics tracks LTV and cohort data that can feed directly into this kind of analysis.</li><li>How can I run experiments to test a new SaaS pricing strategy and monitor the impact on MRR?
+              To test a new pricing strategy and monitor its MRR impact, you need to segment customers by price point into distinct cohorts and track subscription duration and revenue metrics separately for each group.Start by isolating customers on the old price versus the new price as a controlled comparison. Then monitor metrics including MRR movement, average subscription length, and LTV per customer across those groups over time. A price increase that looks positive in raw MRR terms can still be damaging if it shortens how long customers stay. Baremetrics breaks MRR into new, expansion, contraction, and churned components in real time, so you can see exactly where revenue gains or losses are coming from as a pricing experiment plays out.</li><li>What platforms offer automated failed payment recovery to reduce involuntary churn for subscription businesses?
+              Baremetrics Recover is a purpose-built failed payment recovery tool that automatically retries declined charges and sends smart dunning sequences to reduce involuntary churn for subscription businesses.Involuntary churn, where customers are lost not because they chose to cancel but because a card payment failed, is one of the most recoverable forms of revenue loss in a SaaS business. Recover integrates directly with Stripe and other payment processors to retry failed payments at optimized intervals, send in-app and email prompts, and surface recovery metrics in your analytics dashboard. For teams working on price optimization, reducing involuntary churn ensures that any revenue gains from a pricing change are not quietly eroded by billing failures on the backend.</li><li>How can I benchmark my SaaS churn rate and subscription metrics against similar companies?
+              Baremetrics publishes open benchmark data drawn from hundreds of SaaS companies, so you can compare your churn rate, LTV, MRR growth, and other subscription KPIs against businesses at a similar revenue stage.Benchmarking matters most when you are evaluating a pricing change. If your monthly churn is 5% and the median for comparable SaaS businesses is 2%, that context tells you whether a retention problem is a pricing issue, a product issue, or both. Knowing where you stand against peer companies helps you set realistic targets for subscription length and LTV improvement, rather than optimizing in a vacuum. You can explore Baremetrics benchmark data at baremetrics.com/open-startups.</li><li>What is the difference between value-based pricing and cost-plus pricing for a SaaS subscription business?
+              Value-based pricing sets your subscription price based on the measurable outcome your product delivers to customers, while cost-plus pricing adds a margin on top of your cost to serve, which often underprices the actual value you provide.For B2B SaaS companies, cost-plus pricing is rarely the right framework. Your cost to serve an additional subscriber is close to zero, so anchoring price to cost leaves significant revenue on the table. Value-based pricing, by contrast, ties your price to the LTV improvement, time saved, or revenue generated for your customer. When you optimize pricing using survival analysis and cohort data, you are essentially testing whether customers agree with your value assessment by measuring how long they stay and what their LTV looks like at each price point.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/David.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="david-noonan">David Noonan</h3>
+    <p>David is a data professional in the Bay Area with a background in molecular biology. When he's not exploring Bayesian inference and statistical modeling for price optimization, David is in the kitchen, using way too much garlic.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#does-my-new-price-make-customers-unsubscribe-sooner">Does my new price make customers unsubscribe sooner?</a></li><li><a href="#beware-avoid-bad-metrics-to-measure-customer-retention">Beware: Avoid bad metrics to measure customer retention</a></li><li><a href="#if-we-can-t-use-churn-can-we-use-the-average-subscription-lengths">If we can’t use churn, can we use the average subscription lengths?</a></li><li><a href="#time-for-some-statistics">Time for some statistics!</a></li><li><a href="#the-na-ve-estimate-for-subscription-lengths-is-very-bad">The Naïve estimate for subscription lengths is very bad</a></li><li><a href="#using-survival-analysis-the-weibull-model-correctly-predicts-subscription-lengths-in-two-scenarios">Using Survival Analysis: The Weibull model correctly predicts subscription lengths in two scenarios</a></li><li><a href="#key-learnings-pricing-and-customer-retention">Key Learnings: Pricing and customer retention</a></li><li><a href="#beware-correlation-is-not-causation">Beware: Correlation is not causation</a></li><li><a href="#next-steps">Next Steps</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>David Noonan</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

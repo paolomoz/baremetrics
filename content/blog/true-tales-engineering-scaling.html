@@ -1,0 +1,55 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How App Scaling Can Break Your SaaS (A Real Story)</div></div>
+      <div><div>Description</div><div>We recently wrote about how freemium nearly caused our business to implode. And the core of that impending implosion were scaling issues as a result of</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>True tales of engineering scaling</h1></div></div>
+      <div><div><p>By Josh Pigford on November 11, 2015 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/1VSLIiO7WUfyOX1TTC3SJSw.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Scaling issues are problems that arise when a system or application is unable to handle exponentially larger amounts of data or user traffic. We recently wrote about how freemium nearly caused our business to implode due to such scaling issues. This is a true tale of why scaling an app is never as easy as it seems.</p>
+    <p>Building software is sorta like a bright-eyed and bushy-tailed camp counselor. At first, kids are dropped off by their parents, one or two at a time. Each kid has some special request that has to be handled. One has a ton of luggage to be stored. Another is a vegan. Another just wants to do archery and nothing else.</p>
+    <p>That’s fine.</p>
+    <p>Then, busloads of kids start getting dropped off — all who are camping for free, but all have luggage, dietary constraints, planning issues. Not fun.</p>
+    <p>By the end of the day…the poor counselor is toast.</p>
+    <p>Software and camp counselors have so much in common.</p>
+    <h2 id="the-trail-of-good-intensions">The trail of good intensions</h2>
+    <ul><li>Write your app in Rails and use Postgres — Everything is great!</li><li>Add a simple webhook for Stripe in Rails as a controller in the main app — We’re kicking!</li><li>Start calculating in the background — use Sidekiq — Still great!</li><li>Until a customer signs up that sends up 20,000+ events within a 24 hour period.</li><li>Now, that simple webhook is causing the main dashboard to be slow</li><li>Pull the webhook out into its own little microservice — it’s been running for months without intervention…</li><li>Importing data from Stripe by months works great until a customer signs up with 8,000 events in a single day.</li><li>Now we have to import by segment (2–3 days of movement forward lost)</li><li>In that same time, more accounts sign up, we need more workers… no worries, crank them up!</li><li>But wait, high memory workers on Heroku quite literally cost an arm, leg, kidney and first born.</li><li>We’re a bootstrapped business, we can’t afford to spend this. Time to move to AWS. That’s totally reasonable.</li><li>Eeeek, now pulling data down for local testing becomes nearly impossible, which slows development. Sigh.</li><li>Worker issues solved.</li><li>Oh, but PG has a connection limit issue hardly worth mentioning…</li><li>Fine, fire up pgbouncer on each machine</li><li>Fantastic! That works, until it doesn’t — finally move pgbouncer to it’s own machine — connection issues resolved</li><li>Oh, but in the meantime, the queries on the DB server are killing the CPU</li><li>In that case, pull out a high traffic table into its own separate DB</li><li>Well hot dog, there are connection limit issues with the new DB (repeat lessons learned previously)</li><li>Oh, someone signed up with 4,000 plans — all our per-plan workers are dying.</li><li>In the meantime, marketing material in main app works great initially</li><li>Until the marketing actually works and 1,000’s of people go to look at it</li><li>Which kills main dashboard response time for paying customers</li><li>Which means we have to quickly split the marketing site and app in to separate pieces</li><li>And on and on it goes…</li></ul>
+    <p>We couldn’t have known about any of this in the beginning. Sure, we could have assumed it, but then we’d also have never launched the product in the first place because we’d be spending all eternity optimizing for scale we didn’t have.</p>
+    <p>Building and, more importantly, shipping software is about the constant trade off of forward movement and present stability.</p>
+    <p>Silicon Valley is filled with graves of startups that never actually shipped anything because they were bent on fixing problems they didn’t have. Shipping is better than dying before ever leaving the runway. And yes, I’m aware that’s a clunky metaphor. But at least I shipped it. 🙂</p>
+    <p><img src="https://baremetrics.com/hubfs/Josh%20Pigford.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="josh-pigford">Josh Pigford</h3>
+    <p>Josh is most famous as the founder of Baremetrics. However, long before Baremetrics and until today, Josh has been a maker, builder, and entrepreneur. His career set off in 2003 building a pair of link directories, ReallyDumbStuff and ReallyFunArcade. Before he sold those for profits, he had already started his next set of projects. As a design major, he began consulting on web design projects. That company eventually morphed into Sabotage Media, which has been the shell company for many of his projects since. Some of his biggest projects before Baremetrics were TrackThePack, Deck Foundry, PopSurvey, and Temper. The pain points he experienced as PopSurvey and Temper took off were the reason he created Baremetrics. Currently, he's dedicated to Maybe, the OS for your personal finances.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#the-trail-of-good-intensions">The trail of good intensions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Josh Pigford</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

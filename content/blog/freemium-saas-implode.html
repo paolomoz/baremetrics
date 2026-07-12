@@ -1,0 +1,98 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Why Freemium Failed Baremetrics (And Hurt Our MRR)</div></div>
+      <div><div>Description</div><div>Three months ago, we introduced a Free plan…and it nearly brought Baremetrics to its knees. Let’s take a look at what we did, how it affected our business and how it was ultimately a failure.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How freemium nearly caused our business to implode</h1></div></div>
+      <div><div><p>By Josh Pigford on November 09, 2015 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/blog-Jul-17-2023-01-54-52-5816-PM.jpg" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Three months ago, we introduced a Free plan…and it nearly brought Baremetrics to its knees. Let’s take a look at what we did, how it affected our business and how it was ultimately a failure.</p>
+    <p>When I first built and launched Baremetrics over two years ago, I charged from day 1. No free plan and no trial. You signed up with a credit card and were charged real actual money. Not happy? No sweat, we had a 60 day money back guarantee.</p>
+    <p>We kept this setup for almost two years and grew the business from $0 to over $30k/mo in revenue using it. Then we decided to shake things up.</p>
+    <h2 id="our-free-plan-setup">Our free plan setup</h2>
+    <p>In August, we launched a totally free plan. No time limits and no limits on the number of customers (which was a major segmenting factor for the paid plans). The only limit was on the feature set.</p>
+    <p>Want full historical metrics? Upgrade, please. Want powerful tools to dig deeper in to your metrics? You’ll need to upgrade for that. Want to automatically collect on failed charges? You guessed it: upgrade.</p>
+    <p>We didn’t require a credit card until you were ready to upgrade. There was essentially zero commitment to actually doing anything other than signing up.</p>
+    <h2 id="the-results">The results</h2>
+    <p>We launched the Free plan on August 18 via a slightly atypical manner: <a href="http://beardmetrics.com/">Beardmetrics</a>. The results of our Beardmetrics marketing experiment is content for another post, but ultimately we didn’t actually make a huge “BAREMETRICS NOW HAS A FREE PLAN!” announcement. We sent out an email to 7,000 people and tweeted to a few thousand more as a way to create some buzz around Baremetrics. We then attempted to convert as many people as possible by making it super easy/fast to sign up.</p>
+    <p>Over the course of 11 weeks, over 1,000 free accounts were created. To be clear, that wasn’t 1,000 “potential paying customers”. We’re still geared strongly towards “subscription” companies. That means a company needs to have subscription revenue and, more specifically, has to be using Stripe’s Subscription API. (Update! We now support Stripe, Braintree, Recurly and Chargify.)</p>
+    <p>So, of the 1,000 accounts, 461 were actually eligible to even think about becoming a paying customer.</p>
+    <p>Of the 461 eligible paying customers, 53 actually upgraded.</p>
+    <p>53 as a % of 461 = 11.5%</p>
+    <p>Our Free-to-Pay conversion rate over the course of almost 3 months was just over 11%, and with an ARPU of $90, that meant nearly $5000 in new MRR.</p>
+    <p>Honestly, that’s pretty amazing. The average B2B conversion rate is around 3-5%…so we were killing that. But as these things go, it wasn’t quite that simple.</p>
+    <h2 id="when-free-started-breaking-down">When free started breaking down</h2>
+    <p>We were adding over a dozen new accounts a day, but that’s about where the fun stopped.</p>
+    <p>Quickly, we started coming up against a lot of performance and database issues. Within a few weeks our “free” customers were outnumbering our “paying” customers and the amount of data were both storing and processing had doubled.</p>
+    <p>Because we have to pull down and store your entire data set from Stripe and then generate the metrics for every single day for every single plan on your account (and store that as well), there’s just simply a crap ton of data processing that happens.</p>
+    <p>We had over two years to slowly work our way up to the amount of data we were processing before the free plan. We then found ourselves needing to double the processable load in a matter of days. Needless to say, it didn’t work out in our favor.</p>
+    <p>We were dealing with day-after-day and week-after-week of progressively more complex server and performance issues as we just kept piling on the new free accounts.</p>
+    <p>In addition, the number of customers we were supporting tripled. We found ourselves spread really thin, unable to provide the same responsiveness as before. And on top of that, our regular support load was increased due to the aforementioned server issues.</p>
+    <p>Then, to make matters worse, we were so focused on putting out server fires, we found ourselves making zero progress on the product itself.</p>
+    <p>To say the issues were compounding would be an understatement.</p>
+    <h3 id="growing-a-million-dollar-company">Growing a Million Dollar Company</h3>
+    <p><img src="https://convertkit.s3.amazonaws.com/subscription_forms/images/004/814/593/standard/gamdc_cover_small.png?1438543452" alt="" loading="lazy" decoding="async"></p>
+    <p>Get our free book with 30+ free lessons on how we're growing a million dollar company!</p>
+    <p>Thanks! Check your email for the book download!</p>
+    <h2 id="calling-it-what-it-was-failure">Calling it what it was: failure</h2>
+    <p>The net result of those compounded issues led to what was at the heart of our free plan failure: churn.</p>
+    <p>We started losing customers left and right because day after day they were experiencing down time, delayed data and inaccurate metrics, which is absolutely never okay. On top of that their support experience was less-than-ideal and the product itself was becoming stagnant and buggy.</p>
+    <p>We lost nearly 60 customers during the 11 weeks we had our free plan, doubling our revenue churn and resulting in a net loss of customers. Our free plan was causing our business to slowly implode.</p>
+    <h2 id="when-free-doesn-t-make-sense">When free doesn’t make sense</h2>
+    <p>People talk a lot about how the support load for free customers is one of the main negative factors of freemium. That was certainly part of it for us.</p>
+    <p>The bigger issues came down to the fact that our resources are finite. We’d been able to scale our infrastructure slowly because our growth before had been predictable and we could figure out ahead of time when certain bottlenecks would become major issues.</p>
+    <p>The free plan threw all of that out the window, though.</p>
+    <p>When your available resources, whether it be team size, performance caps or money, are tight, then “free” has a real possibility of causing more damage than providing any real benefit.</p>
+    <h2 id="things-we-could-have-done-differently">Things we could have done differently</h2>
+    <p>There are a couple of things we could have done differently that may have resulted in a different outcome.</p>
+    <ul><li>Limited how much historical data we imported and processed — If we’d only imported the 30 days of data we were showing for free plans, that’d have saved us quite a bit of processing, but I believe it would have also made for a crummy upgrade experience as you’d have to re-import all your historical data.</li><li>Provided a full-featured trial to start with and then just downgrade to free — Theoretically this would have resulted in more upgrades, but it wouldn’t have solved scaling issues.</li><li>Limited the number of paying customers on the free plan — This would have preventing huge accounts from hogging resources, but ultimately this would have just delayed the inevitable by a week or two.</li></ul>
+    <p>There are all sorts of setups we could have tested, but at the end of the day we needed to course correct as quickly as possible. We can revisit some of these things later on.</p>
+    <h2 id="what-we-re-doing-now">What we’re doing now</h2>
+    <p>In the past week, we’ve switched to a free trial. For 14 days, you get full access to everything, after which you can pick a plan. If you chose not to pick a plan, we stop processing your data.</p>
+    <p>This puts a hard limit on resource hogging and keeps us from having compounding performance issues.</p>
+    <p>We’ve also made significant improvements to our infrastructure to avoid these issues in the future.</p>
+    <p>I’m not going to write off freemium completely. I believe there are definitely situations where it can work. But right now, in our situation, it definitely did not work.</p>
+    <p>I’d love to hear your candid feedback on things we could have done differently as well as your own experiences with freemium.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>Why do freemium SaaS models fail at scale?
+              Freemium SaaS models often fail at scale because free users consume infrastructure, support, and engineering resources without generating revenue to cover those costs.The core problem is resource imbalance. Free user signups can grow faster than your team or servers can handle, which compounds into performance issues, slower product development, and degraded support for the paying customers who actually fund the business. When infrastructure buckles under free-tier load, paying customers experience downtime and delayed data, and churn accelerates. Baremetrics lived this directly: 1,000 free accounts in 11 weeks doubled database load, tripled support volume, and caused revenue churn to double. For subscription businesses with $10K–$500K MRR, finite engineering and infrastructure budgets make freemium a particularly high-risk model compared to a time-limited free trial.</li><li>What is a realistic freemium-to-paid conversion rate for B2B SaaS?
+              A strong freemium-to-paid conversion rate for B2B SaaS is roughly 3 to 5 percent, with high-performing products reaching around 10 to 15 percent.Baremetrics hit an 11.5 percent free-to-paid conversion rate across 461 eligible accounts over three months, which is well above the typical B2B benchmark. But conversion rate alone does not determine whether freemium is the right model. Even at 11.5 percent, the operational strain of supporting free users caused revenue churn among existing paying customers to double, wiping out much of the MRR gained from upgrades. For SaaS founders evaluating freemium, the correct metric to monitor is net MRR impact, not conversion rate in isolation. Tracking MRR movements through a subscription analytics platform like Baremetrics makes it easier to see whether new expansion MRR from upgrades is actually offsetting churned MRR from degraded customer experience.</li><li>Freemium vs free trial for SaaS: which model converts better?
+              A time-limited free trial typically outperforms a perpetual freemium plan for B2B SaaS because it creates urgency to upgrade and puts a hard cap on infrastructure consumption.With freemium, users have no deadline and no forcing function to evaluate paid features, which tends to produce passive, low-intent signups. A free trial, by contrast, gives every user a clear conversion window and automatically stops resource usage for non-converters when the trial ends. Baremetrics switched from a freemium plan to a 14-day full-access free trial after the freemium experiment caused compounding server issues and doubled revenue churn. The trial model restored infrastructure stability and maintained a better experience for paying subscribers. For most B2B subscription businesses, especially those where data processing scales with customer size, a free trial is the lower-risk path to improving trial-to-paid conversion without cannibalising existing MRR.</li><li>How do I know if my freemium model is hurting MRR?
+              If your freemium model is hurting MRR, the warning signs are rising churn among paying customers, stalling product development, and infrastructure costs growing faster than upgrade revenue.The clearest signal is involuntary and voluntary churn accelerating at the same time your free user base grows. Free users can indirectly cause paying customer churn by degrading performance, overwhelming support queues, and slowing down product improvements. To diagnose this, track your churned MRR, expansion MRR from free-to-paid upgrades, and net new MRR week over week. If churned MRR is outpacing upgrade revenue, the freemium tier is destroying value rather than building it. Baremetrics breaks MRR into its components, including new MRR, expansion MRR, contraction MRR, and churned MRR, so you can see the net impact of a pricing model change in real time rather than discovering the damage weeks later.</li><li>How can I reduce involuntary churn caused by failed payments in a subscription business?
+              Involuntary churn from failed payments can be reduced by automatically retrying failed charges at optimised intervals and sending targeted dunning emails before a subscription lapses.Failed payments are one of the most preventable sources of revenue loss for subscription businesses. Many cancellations are not intentional; they happen because a card expired, a payment limit was hit, or a bank flagged an unusual charge. A systematic retry and recovery process catches a large share of these before the customer ever realises there was an issue. Baremetrics includes a feature called Recover that automates failed payment retries and dunning sequences directly on top of your existing Stripe, Braintree, or Recurly data, with no additional setup required. For SaaS companies at $10K to $10M MRR, reducing involuntary churn by even one or two percentage points can have a compounding positive effect on LTV and net revenue retention.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Josh%20Pigford.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="josh-pigford">Josh Pigford</h3>
+    <p>Josh is most famous as the founder of Baremetrics. However, long before Baremetrics and until today, Josh has been a maker, builder, and entrepreneur. His career set off in 2003 building a pair of link directories, ReallyDumbStuff and ReallyFunArcade. Before he sold those for profits, he had already started his next set of projects. As a design major, he began consulting on web design projects. That company eventually morphed into Sabotage Media, which has been the shell company for many of his projects since. Some of his biggest projects before Baremetrics were TrackThePack, Deck Foundry, PopSurvey, and Temper. The pain points he experienced as PopSurvey and Temper took off were the reason he created Baremetrics. Currently, he's dedicated to Maybe, the OS for your personal finances.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#our-free-plan-setup">Our free plan setup</a></li><li><a href="#the-results">The results</a></li><li><a href="#when-free-started-breaking-down">When free started breaking down</a></li><li><a href="#calling-it-what-it-was-failure">Calling it what it was: failure</a></li><li><a href="#when-free-doesn-t-make-sense">When free doesn’t make sense</a></li><li><a href="#things-we-could-have-done-differently">Things we could have done differently</a></li><li><a href="#what-we-re-doing-now">What we’re doing now</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Josh Pigford</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

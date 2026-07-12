@@ -1,0 +1,98 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>What Happens When You Launch a Product That Earns Nothing</div></div>
+      <div><div>Description</div><div>Intros, a product we launched to great fanfare three months ago, is being shutdown, having never made a single penny and costing our team months of work.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Sunsetting Intros: A post-mortem on shutting down a product we just launched</h1></div></div>
+      <div><div><p>By Josh Pigford on February 28, 2019 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/photo-1515497957908-4d6377430754.jpeg" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Intros, a product we <a href="https://www.producthunt.com/posts/baremetrics-intros">launched to great fanfare</a> three months ago, is being shutdown, having never made a single penny and costing our team months of work.</p>
+    <p>But I’m getting ahead of myself…</p>
+    <h2 id="playing-the-middleman">Playing the middleman</h2>
+    <p>Since starting Baremetrics, we’ve always been a bit of a middleman between companies and people interested in those companies. Many of the people who log in to a Baremetrics account aren’t just the employees or the founder of a company, but also people who’ve got a stake in the company.</p>
+    <p>Investors, potential investors, potential acquirers…there’s a whole world of people that someone may add to their account to give them insight in to how their company is doing. In addition, I personally get emails quite regularly from investors and buyers looking for companies.</p>
+    <p>So middle of last year we started playing around with an idea: what if we created a marketplace of companies looking for investment or acquisition and gave investors and buyers access to that?</p>
+    <p>Companies of all stages could get in front of interested parties, and investors/buyers could quickly filter down to the exact companies they were interested in based on live, accurate, financial data. Nobody else offered anything like that.</p>
+    <p>Yes, there are places like AngelList where companies can manually enter snapshots of their data, but that becomes quickly outdated and it’s easy to fudge the numbers a bit…not in a malicious way but in a “let’s put some spin on what these numbers mean” kind of way.</p>
+    <p>We would effectively cut out a significant portion of due diligence while giving investors and buyers dealflow that they’d have to work incredibly hard to get (or that would be nearly impossible, from a data perspective) otherwise.</p>
+    <p>Sounds like a really great match, right? So, we pushed ahead!</p>
+    <h2 id="validating-the-idea">Validating the idea</h2>
+    <p>We didn’t want to go in to building this with only a premise. We wanted to validate the idea as much as possible before we wrote a single line of code.</p>
+    <p>As a team we talked through the problems we were trying to solve and our lead designer, Martin, put together a functional mockup.</p>
+    <p>I then scheduled video chats with about a dozen investors and buyers and walked them through the idea, showed them how it would work and gathered all their feedback on it.</p>
+    <p><img src="https://baremetrics.com/hs-fs/hubfs/Imported_Blog_Media/Screen-Shot-2019-02-27-at-2_20_38-PM-1024x960.png?width=1024&amp;height=960&amp;name=Screen-Shot-2019-02-27-at-2_20_38-PM-1024x960.png" alt="" loading="lazy" decoding="async"></p>
+    <p>The response was universally positive.</p>
+    <p>“This solves a huge problem for me!”, “I’d definitely pay for this.”, “Please tell me this will be available soon!”</p>
+    <p>It was comment after comment of how great it would be to have a tool and marketplace like this.</p>
+    <p>After all of that positive feedback, it felt like validation enough to keep moving forward with actually building out the product.</p>
+    <h2 id="onboarding-and-a-faux-launch">Onboarding and a faux launch</h2>
+    <p>To get any kind of market off the ground, you have to “stock” it with product. In this case, companies were the “product” we needed to get in to the market so that investors and buyers would have any interest in shopping.</p>
+    <p>Since this was based around Baremetrics as a product, we started with our existing customers.</p>
+    <p>The whole system was 100% opt-in, meaning companies would have to explicitly toggle the feature on and agree to have their data anonymously included in the marketplace.</p>
+    <p>That got the ball rolling, but we really needed a lot more companies, so we did a <a href="https://www.producthunt.com/posts/baremetrics-intros">faux launch on Product Hunt</a>. This let us get a lot more companies opted-in and it also set in motion conversations with investors.</p>
+    <p>I put all interested investors in to a sales funnel and started a pretty typical sales cycle with each of them. This was great because I could get more information about exactly how they’d want to filter the companies, thus giving some insight in to if we’d have enough companies that actually met their criteria.</p>
+    <p>Those conversations went on for about 6-8 weeks while we put the finishing touches on the investor-facing side of things and by mid-January we were ready to start letting some investors in to try things out.</p>
+    <h2 id="rumblings-of-trouble">Rumblings of trouble</h2>
+    <p>As we let in investors, we decided to include the paywall from day one…meaning nobody got “free” access just for being a beta tester. We didn’t need help validating functionality…we needed help validating the economics of this.</p>
+    <p>The way we set up pricing on this was to give access to anonymized company data to a curated list of investors. But if they wanted to get an intro to a given profile, they’d have to be on a monthly plan of $500/mo, which would let them request non-anonymized data and an intro to up to 25 companies each month.</p>
+    <p><img src="https://baremetrics.com/hs-fs/hubfs/Imported_Blog_Media/Screen-Shot-2019-02-27-at-2_21_37-PM-1024x704.png?width=1024&amp;height=704&amp;name=Screen-Shot-2019-02-27-at-2_21_37-PM-1024x704.png" alt="" loading="lazy" decoding="async"></p>
+    <p><img src="https://baremetrics.com/hs-fs/hubfs/Imported_Blog_Media/Screen-Shot-2019-02-27-at-2_21_52-PM-1024x729.png?width=1024&amp;height=729&amp;name=Screen-Shot-2019-02-27-at-2_21_52-PM-1024x729.png" alt="" loading="lazy" decoding="async"></p>
+    <p>Remember, they’re getting a filterable, live data set that lets them narrow down to exactly the types of companies they’d be interested in. No back-and-forth trying to figure out what their real growth has been, what their current revenue is, how many users, etc. It’s all there right out of the gate.</p>
+    <p>But the feedback we started getting, even on day one, hinted at a deeper problem.</p>
+    <p>“If you could just make this one data point part of the anonymized data”, “100 companies that meet my criteria just isn’t enough”, “We don’t pay for data”, “I prefer to do this the way I’ve always done it”.</p>
+    <p>When it came down to actually acting on their feedback from those early mockups and fork over some cash, we hit a wall. And I mean really hit a wall. As in, not a single investor was willing to pay.</p>
+    <h2 id="stumped">Stumped</h2>
+    <p>I heard dozens upon dozens of reasons why it was “a bad fit” for them. As a team, we were stumped.</p>
+    <p>How were we so off on this? How did we go from all the investor excitement (I had lots of investors checking in almost weekly on progress as we built this out), to something that’s a “bad fit” that we can’t charge for at all?</p>
+    <p>Maybe we were blinded by optimism. Maybe we were blinded by dollar signs. Maybe investors are just a really tough market to sell to. I’m really not sure.</p>
+    <h2 id="making-the-call">Making the call</h2>
+    <p>After about a month of trying to get investors to pay for it, I decided we needed to pull the plug. We’d spent months working on this, conversing with hundreds of investors and companies to figure out the right balance for the marketplace, but it just didn’t make sense to keep forcing it when there was zero monetary traction.</p>
+    <p>Yes, we could have kept pushing forward and tried out some different pricing models, but honestly the prospect felt very uninteresting.</p>
+    <p>We’ve always built products for companies and this was going after a completely different customer (investors)…which we have really no connection to from a marketing/sales perspective. We also had no desire to turn this in to an enterprise play. That’s just not part of our culture.</p>
+    <h2 id="theories">Theories</h2>
+    <p>I have a few theories on why some of this didn’t work, but they’re just that…theories. None are exactly provable but I find it therapeutic to write them out.</p>
+    <ul><li>Investors don’t actually have much money to spend on external tools. Yes, they’re dumping 5-8 figures in to companies, but that money isn’t just sitting there for them to spend on tools like this.</li><li>This tool could actually have replaced junior associates in some VC firms…so convincing them to use it would never have worked. We’d have to go farther up the chain to sell to more senior folks, but doing that dance just wasn’t interesting to us.</li><li>Changing someone’s workflow is really difficult. This type of workflow just isn’t how most VC’s work. They’ve got their existing sources and workflows and little things they’ve picked up over the years, and that’s hard to change.</li><li>Part of me wonders if our product gave companies more of an upper hand than some VCs were comfortable with as companies were the ones deciding if the VCs reaching out to them were worth their time. But I don’t have empirical data there.</li><li>Our pricing model may have worked better as some sort of percentage -of-deal type of thing, but the runway on that would be too long from a cashflow perspective and we don’t really have the manpower to deal with all the overhead of following and managing the actual deals. Also, see above re: this sort of thing not being interesting to us.</li></ul>
+    <p>All of that may be off base, and really a lot of it points to my ignorance on the deep workings of the VC world…which, if anything, is another reason why we weren’t the right company to tackle this.</p>
+    <h2 id="what-now">What now?</h2>
+    <p>So, what happens to all this now?</p>
+    <p>Technically, we’ve removed the product from the marketing site and the app and we’re in the middle of purging all the associated data.</p>
+    <p>Functionally, we have this product that works beautifully and part of me wishes we could partner with someone who’s got deep ties to the investor world who could really make it work.</p>
+    <p>One of the parts of this that really excited me was that it put companies in front of investors of all types and put them in the driver’s seat. They got to decide who they wanted to talk to, giving them a bit more of an upper hand.</p>
+    <p>I hate to see that go, but at the same time, it’s just not something we’re equipped to put all our energy in to at the moment.</p>
+    <p>I appreciate all the feedback everyone gave over the past few months with this and my pride hates shutting down a product that barely saw the light of day, but the alternative just doesn’t make sense for us at this stage.</p>
+    <p><img src="https://baremetrics.com/hubfs/Josh%20Pigford.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="josh-pigford">Josh Pigford</h3>
+    <p>Josh is most famous as the founder of Baremetrics. However, long before Baremetrics and until today, Josh has been a maker, builder, and entrepreneur. His career set off in 2003 building a pair of link directories, ReallyDumbStuff and ReallyFunArcade. Before he sold those for profits, he had already started his next set of projects. As a design major, he began consulting on web design projects. That company eventually morphed into Sabotage Media, which has been the shell company for many of his projects since. Some of his biggest projects before Baremetrics were TrackThePack, Deck Foundry, PopSurvey, and Temper. The pain points he experienced as PopSurvey and Temper took off were the reason he created Baremetrics. Currently, he's dedicated to Maybe, the OS for your personal finances.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#playing-the-middleman">Playing the middleman</a></li><li><a href="#validating-the-idea">Validating the idea</a></li><li><a href="#onboarding-and-a-faux-launch">Onboarding and a faux launch</a></li><li><a href="#rumblings-of-trouble">Rumblings of trouble</a></li><li><a href="#stumped">Stumped</a></li><li><a href="#making-the-call">Making the call</a></li><li><a href="#theories">Theories</a></li><li><a href="#what-now">What now?</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Josh Pigford</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

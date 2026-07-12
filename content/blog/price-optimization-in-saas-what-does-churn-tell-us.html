@@ -1,0 +1,100 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How Churn Can Mislead Your SaaS Pricing Strategy</div></div>
+      <div><div>Description</div><div>Churn is everywhere in the SaaS world. It’s an essential metric to follow. Learn what how to read churn and what does it tell us.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Price Optimization in SaaS: What Does Churn Tell Us?</h1></div></div>
+      <div><div><p>By David Noonan on June 28, 2021 Last updated on April 23, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Untitled-design-3-1-1.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p><a href="https://baremetrics.com/academy/churn">Churn</a> is everywhere in the SaaS world. It’s so popular it makes us believe it’s an essential metric to follow. Maybe it is the most important metric.</p>
+    <p>But not everyone is on board with churn. We were inspired by an <a href="https://catchjs.com/Blog/Churn">article</a> written for catch.js about the topic. They demonstrate through simulation experiments that churn, under certain circumstances, will show the opposite of what it should. They argue that churn is useless.</p>
+    <p>We thought we would similarly look at churn. In this article (part four of our <a href="https://baremetrics.com/blog/price-optimization-in-saas-an-introduction">Price Optimization series</a>), we will test the churn metric out on simulations to demonstrate when it gives us misleading results.</p>
+    <p>To begin, let’s start with a situation similar to the one in the article mentioned above. The article uses a <a href="https://en.wikipedia.org/wiki/Lomax_distribution">Lomax distribution</a> to model how long a subscription lasts because it most closely resembles their own customers.</p>
+    <p>They have lots of customers who try their service for a short time, like a few months. They also get a few who stay for much longer. We’ll simulate our subscriptions with the Weibull distribution, with parameters that make it similar to their Lomax model.</p>
+    <h2 id="all-the-data-your-startup-needs">All the data your startup needs</h2>
+    <p>Get deep insights into your company’s MRR, churn and other vital metrics for your SaaS business.</p>
+    <p>While many of our <a href="https://baremetrics.com/">Baremetrics</a> customers share a customer base like theirs, some do not. We will also test churn on other kinds of customer bases, modeled from the experiences of our Baremetrics customers.</p>
+    <p>Will churn mislead us in those cases too?</p>
+    <p>Let’s review churn. Here is a formula for <a href="https://baremetrics.com/blog/customer-churn">customer churn</a> for each period:</p>
+    <p>Churn = customers lost / customers at the beginning</p>
+    <p>The formula above gives the fraction of customers lost in each time period. If we lose a lot of customers, the fraction increases. If we gain a lot of customers, the fraction decreases, ideally going to zero. Low churn is good, and high churn is bad.</p>
+    <p>It seems simple enough, but if we look closer, we’ll run into problems. Churn doesn’t behave the way we expect.</p>
+    <h2 id="scenario-what-happens-when-nothing-changes">Scenario: What happens when nothing changes?</h2>
+    <p>Let’s start with a scenario in which nothing changes: a business where nothing is improving, and nothing is worsening. Sign-ups stay the same. Subscription lifetimes are constant. Revenue is stable as well.</p>
+    <p>This gives us a baseline for comparison later on when something does change. So how does churn behave in a stagnant business?</p>
+    <p>We begin by simulating sign-ups with a <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson distribution</a> with an average rate of 30 sign-ups per month. We also simulate subscription lengths using a Weibull distribution, with parameters such that the average subscriber subscribes for about 2 months.</p>
+    <p>Let’s watch what happens to the customer base over time in this simulation:</p>
+    <p>The chart above shows the active customer population over time. Notice how our customer base increases at the beginning even though I said “nothing changes.”</p>
+    <p>That’s because we started with zero customers. After about 12 months, we reach a plateau, where sign-ups are in balance with drop-outs.</p>
+    <p>The subscriber population fluctuates but stays near a constant number indicated by the red line. It will continue orbiting this red line forever. This applies to revenue too: we should expect roughly the same revenue, forever. It’s genuinely a stagnant business, neither improving nor deteriorating.</p>
+    <p>Now let’s look at what customer churn does in this scenario. What does stagnant churn look like?</p>
+    <p>Much like the customer population, churn stays constant after sign-ups and drop-outs reach equilibrium. As our customer population grows initially, we notice churn goes down like we would expect, as the proportion of drop-outs decreases relative to the subscribing population.</p>
+    <p>The chart above is what churn looks like when “nothing is happening.” In a stagnant business, there are ups and downs month-to-month because of natural variation.</p>
+    <p>Despite this variation, the average churn is constant, forever. That variation should be a reminder not to freak out when your churn changes month-to-month. Instead, it’s the trend that matters, indicated by the red line in this chart. In this case, it is flat.</p>
+    <p>Now let’s mess it up!</p>
+    <h2 id="scenario-what-happens-when-sign-ups-stop">Scenario: What happens when sign-ups stop?</h2>
+    <p>What if we shut off sign-ups halfway through this simulation? If we stop getting new subscribers, we would expect churn to increase. Churn is bad, and losing sign-ups is bad, so we hope the two correspond to each other. We expect churn to grow when we fail to retain customers. Does it?</p>
+    <p>Here is what happens to our customer population:</p>
+    <p>Our simulated business grows and is reaching the plateau, just like in the previous example. After that, we stop getting sign-ups (red line).</p>
+    <p>Notice how our subscriber population drops. The drop is steep at the beginning, then becomes flatter as time goes on. This effect comes from an increasing proportion of more loyal customers who remain, who are less likely to churn out. The last customers to unsubscribe are the ones least likely to leave.</p>
+    <p>So does churn ring the alarm bells in this situation? Let’s look at the churn:</p>
+    <p>Now we see something surprising: churn is going down while our business is crashing. It’s the opposite of what we’d expect. We also see the same result in <a href="https://catchjs.com/Blog/Churn">catch.js article</a> even though we used a different distribution to model subscriptions.</p>
+    <p>Why is this happening? It’s because of how subscription lengths are distributed. Not all customers are the same. Some customers will test our services for a month, decide they don’t like them, and unsubscribe.</p>
+    <p>Others will be happy with your product and stay for a long time. Here is a histogram of subscription lengths in the simulation we just did to illustrate:</p>
+    <p>Above is a histogram showing the frequency of various subscription lengths of customers.  Notice it is huge on the left. It means that most of the customers subscribe for a short time. These customers are more likely to unsubscribe at any given time.</p>
+    <p>But on the other hand, there are a smaller number of customers who subscribe for a long time. Those longer subscribers are less likely to unsubscribe, and they stay for a long time.</p>
+    <p>When we shut off sign-ups, mostly the longer subscribers are left. And since they are less likely to leave our business, they are less likely to raise our churn metric. Therefore churn appears to go down while our company is failing. It’s the opposite of what we want.</p>
+    <p>While this may be alarming, this scenario may not apply to all <a href="https://baremetrics.com/">Baremetrics</a> customers. What if we tried this scenario in a different kind of business, with more loyal subscribers?</p>
+    <h2 id="is-churn-bad-in-all-circumstances">Is churn bad in all circumstances?</h2>
+    <p>You may notice that the histogram of subscription lengths above does not reflect your own business. It’s an extreme distribution, where the bulk of customers subscribe for a short time. What if your business has fewer short-term customers?</p>
+    <p>Suppose your business attracts customers through sales teams. Your typical customers don’t subscribe for just a month. They subscribe for longer. What does churn look like in that situation when we shut off sign-ups?</p>
+    <p>Now we will simulate based on a real Baremetrics customer. In this business, the average customer subscribes for five years instead of two months. Here is how the subscription lengths are distributed:</p>
+    <p>This scenario has more loyal subscribers.  The typical subscriber will subscribe for three years instead of one month, as in the previous scenario.</p>
+    <p>Now let’s redo the simulation where we shut off subscriptions, but with the new distribution of subscriptions. Here is the chart of active subscribers:</p>
+    <p>It already looks different. The growth of the customer base is steadier. We don’t even reach the plateau before we shut off sign-ups.</p>
+    <p>Now let’s look at the churn:</p>
+    <p>Surprise!  Churn acts more like we should expect: increasing when we are failing to retain our customers. Why is this? It’s because we have fewer customers who churn out quickly and fewer extreme customers who stay longer.</p>
+    <p>This tells us something disturbing about the churn metric. The reliability of the churn metric depends on the kinds of customers you have.</p>
+    <p>Hopefully, these examples will inspire our readers to be more suspicious about the meaning of their churn metrics.</p>
+    <h2 id="conclusion-a-call-for-better-metrics">Conclusion: A call for better metrics</h2>
+    <p>Given the strange behavior of the churn metric, it would make more sense to look for better metrics to understand our customer retention. By focusing on churn, we are likely bundling too many processes at once: sign-ups, drop-outs, and the types of subscribers we have. A change in each of these will alter the behavior of churn, but we won’t know what the problem is because the metric bundles these processes.</p>
+    <p>Perhaps it would be better to focus on these processes separately. It is entirely possible to build metrics for sign-ups, drop-outs, and subscription lengths separately.</p>
+    <p>In future posts, we will build these metrics and test them out. We will show how they behave compared to churn. Will the new metrics out-perform churn for customer retention, lifetime value, and revenue calculations? Stay tuned to find out!</p>
+    <p>Thanks for reading! If you have any questions, feel free to send them to to david@baremetrics.com.</p>
+    <p>Join 900+ SaaS and subscription companies using Baremetrics for smarter data insights, automated dunning, customer engagement, and more. <a href="https://baremetrics.com/pricing">Start a free trial today!</a></p>
+    <p><img src="https://baremetrics.com/hubfs/David.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="david-noonan">David Noonan</h3>
+    <p>David is a data professional in the Bay Area with a background in molecular biology. When he's not exploring Bayesian inference and statistical modeling for price optimization, David is in the kitchen, using way too much garlic.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#scenario-what-happens-when-nothing-changes">Scenario: What happens when nothing changes?</a></li><li><a href="#scenario-what-happens-when-sign-ups-stop">Scenario: What happens when sign-ups stop?</a></li><li><a href="#is-churn-bad-in-all-circumstances">Is churn bad in all circumstances?</a></li><li><a href="#conclusion-a-call-for-better-metrics">Conclusion: A call for better metrics</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>David Noonan</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

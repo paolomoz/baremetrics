@@ -1,0 +1,96 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Manage and Segment Customer Data in Baremetrics</div></div>
+      <div><div>Description</div><div>Baremetrics makes it easy to understand customer data and make data-driven decisions. This article will walk you through the process of importing,</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to Import, Augment, and Segment Customers in Baremetrics</h1></div></div>
+      <div><div><p>By Lea LeBlanc on August 17, 2021 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/how-to-import-augment-segment-1.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Baremetrics makes it easy to understand customer data and make data-driven decisions.</p>
+    <p>This article will walk you through the process of importing, augmenting, and <a href="https://baremetrics.com/blog/what-is-customer-segmentation">segmenting customer data</a> to get the insights you’re looking for.</p>
+    <p>SaaS and subscription businesses rely on Baremetrics for metrics, dunning, customer engagement, and more. Start a <a href="https://app.baremetrics.com/users/sign_up?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=brand&amp;utm_term=baremetrics&amp;gclid=EAIaIQobChMIn-aLgs-38gIVOdxMAh2ohgSaEAAYASAAEgKONPD_BwE#v2">free trial</a> today.</p>
+    <h2 id="import-your-data-into-baremetrics">Import your data into Baremetrics</h2>
+    <p>If you haven’t already, you’ll need to import data from sources like Stripe, Braintree, and Recurly. If you use multiple data sources, we encourage you to import from those sources, as well. Doing so enriches your data and makes it possible to run complex analyses and get more detailed insights.</p>
+    <p>It’s important to keep in mind that multiple data sources will combine for some metrics in Baremetrics. This means you won’t be able to break out metrics by individual data source in all graphs.</p>
+    <h3 id="connect-your-first-data-source">Connect your first data source</h3>
+    <p>If you haven’t yet, connect your first data source. Allow the import and calculations to finish, and then your dashboard will be displayed.</p>
+    <p>We have articles that walk you through the steps to connect <a href="https://help.baremetrics.com/en/articles/5380456-stripe">Stripe</a>, Braintree, Recurly, and for other data sources, you can use our API.</p>
+    <h3 id="connect-additional-data-sources">Connect additional data sources</h3>
+    <p>Once you have your first data source in place, head to the Data Connections page in Settings.</p>
+    <p>Click on “Add Connection” for the data source you wish to add. You can refer to the platform-specific guides we shared above for additional details.</p>
+    <h2 id="augment-data">Augment data</h2>
+    <p>Now that you have a data source in place, you can think about augmenting your data even further. Augmenting your data from external sources via Zapier, CSV files, and our API allows you to enrich your existing data with even more information.</p>
+    <p>For example, maybe you’re wondering which of your marketing channels is driving more <a href="https://app.baremetrics.com/stats/mrr">MRR</a>. Or how do the churn rates compare of customers that rated you a 5 NPS score versus a 10.</p>
+    <p>With Augmentation, you can add those fields to your customer profiles and then segment by those new attributes (we’ll cover segmenting later in the article!)</p>
+    <p>To start augmenting, head to the Customers tab, right under the filters for Segments.</p>
+    <p>Connecting via Zapier is super simple. For more information, check our guide on <a href="https://help.baremetrics.com/en/articles/5380613-zapier-integration">integrating with Zapier.</a></p>
+    <p>Similarly, connecting with our <a href="https://developers.baremetrics.com/reference#introduction">API</a> is also fairly easy if you have some coding experience.</p>
+    <p>If you’re looking to connect via .csv, however, there are three things you should keep in mind:</p>
+    <ol><li>The file must be in .csv format</li><li>There must be an email address column. We will tie the attribute to the Baremetrics profile based on the email address provided in this column – so it must match the email Baremetrics has for the customer.</li><li>The new attribute can’t share the name of any of the currently existing attributes. You can see your existing attributes on this management page, or by scrolling through the filters on the Customers tab:</li></ol>
+    <p>You’ll also have to format your .csv a certain way in order to follow formatting rules.</p>
+    <p>For example, Date: YYYY-MM-DD</p>
+    <p>Here’s what a .csv file might look like:</p>
+    <h2 id="segment-customer-data">Segment customer data</h2>
+    <p>Now here’s where the fun really begins.</p>
+    <p>Customer segmentation breaks down metrics into smaller subsets of data. Instead of looking at broad averages, segmented metrics get really specific in dissecting customer behavior.</p>
+    <p>In other words, segmenting customers in Baremetrics helps you simplify big problems and find data-driven solutions.</p>
+    <p>With 25+ different attributes, there is a near limitless number of ways you can group your customers to get the information you’re looking for.</p>
+    <h3 id="create-a-segment">Create a segment</h3>
+    <p>Begin in the <a href="https://app.baremetrics.com/customers">Customers</a> area of Baremetrics. Then click “Add Filter” on the left hand side and you’ll be able to search or scroll through every attribute available.</p>
+    <p>Once you save a segment, you’ll get instant access to the MRR, ARPU, and Active Customers of the segment.</p>
+    <p>If you want to refer to this segment often, or see its historical data, you can save it.</p>
+    <h3 id="comparing-segments">Comparing Segments</h3>
+    <p>You can compare up to 5 segments at a time across most metrics, including MRR, ARR, User and Revenue Churn, and LTV.</p>
+    <p>To learn how the Baremetrics team segmented our customer base by:</p>
+    <ul><li>MRR by Plan Size</li><li>Revenue Churn by Product Use</li><li>Upgrades by Customer Type</li></ul>
+    <p>Definitely check out our article <a href="https://baremetrics.com/blog/customer-segmentation-examples-how-to-do-customer-segmentation-with-baremetrics">Customer Segmentation Examples</a>.</p>
+    <h3 id="cohort-retention-table-by-segment">Cohort/retention table by segment</h3>
+    <p>The ever powerful cohort table can be broken down by a segment. Use this to dive into when in the customer lifecycle a particular group of customers tends to churn.</p>
+    <p>Cohorts are a special segment we use for measuring User Churn and Revenue Churn. <a href="https://help.baremetrics.com/en/articles/5380031-cohorts">Learn more about them!</a></p>
+    <h3 id="mrr-growth-chart">MRR Growth Chart</h3>
+    <p>This graph is super helpful to see the relationship between new revenue and churned revenue month over month.</p>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>Baremetrics allows you to organize your customers by attributes that make sense for your business. Track growth, make comparisons, and ultimately make more informed decisions powered by the Baremetrics toolkit.</p>
+    <h2 id="faq">FAQ</h2>
+    <ul><li>How do I import and segment customer data in Baremetrics?
+              To import and segment customer data in Baremetrics, connect your payment processor first, then use the segmentation tools to slice your subscriber base by the attributes that matter to your business. Start by connecting Stripe, Braintree, or Recurly from the Data Connections page in Settings, and allow the initial import and calculations to finish before building any segments. Once your billing data is live, head to the Customers tab and use the Add Filter option to group user segments by over 25 available attributes, including plan tier, MRR, billing interval, and LTV. You can compare up to five customer groups simultaneously across metrics like ARR, revenue churn, and expansion revenue, which makes it straightforward to spot patterns across your subscriber base without exporting anything manually.</li><li>What is data augmentation for customer segmentation in a SaaS business?
+              Data augmentation for customer segmentation means enriching your existing billing and subscriber records with additional attributes from external sources, so you can segment customers by dimensions your payment processor alone cannot provide. For a SaaS operator, this might mean adding NPS scores, acquisition channel, company size, or product usage data to each customer profile, then filtering your subscriber base by those new fields to uncover patterns in churn rate, LTV, or expansion revenue. In Baremetrics, you can augment customer data by importing a CSV file, connecting via Zapier, or using the API, then immediately segment by the new attributes alongside your core subscription metrics.</li><li>How can I use customer segmentation to reduce churn in a subscription business?
+              Reducing churn with customer segmentation means identifying which specific user segments cancel most often and then acting on those revenue signals before subscriptions lapse. Start by filtering your subscriber base in Baremetrics by attributes like pricing tier, billing interval, or acquisition channel to see which cohorts carry the highest churn rate, then cross-reference those groups using the cohort retention table to pinpoint exactly when in the customer lifecycle a particular segment tends to drop off. From there, you can build targeted retention workflows for high-risk groups, whether that is a proactive outreach sequence for low-engagement trial users or a renewal campaign timed to the billing cycle of a specific plan. Acting on segmented churn data rather than broad averages is what turns a general retention problem into a solvable one.</li><li>What platforms offer automated failed payment recovery for subscription businesses?
+              Baremetrics offers automated failed payment recovery through its Recover feature, which is built directly into the same platform where you track MRR, churn, and LTV. Recover automatically retries failed charges on an optimized schedule and sends customer-facing email sequences to prompt subscribers to update their payment details, which addresses involuntary churn before it registers as permanent revenue loss. Because Recover sits alongside your subscription analytics rather than as a separate tool, you can track recovered MRR in real time and see exactly how much revenue your dunning process is saving, then use cohort analysis to identify which customer segments or billing intervals are most exposed to payment failure in the first place.</li><li>How do I compare churn drivers across different customer segments in Baremetrics?
+              Comparing churn drivers across customer segments in Baremetrics means using the segment comparison feature to measure user churn and revenue churn side by side for up to five distinct groups at once. Begin in the Customers area, apply filters to define each segment by attributes such as plan size, acquisition channel, or product usage, then save those segments so their historical data becomes available for trend analysis. From there, use the cohort retention table broken down by segment to see when in the customer lifecycle each group tends to cancel, which surfaces the underlying churn drivers for each subset rather than burying them in a single blended rate. This level of granularity is especially useful for SaaS teams trying to distinguish between SMB and mid-market churn patterns, or between customers acquired through different marketing channels.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/febcbd14d0c94d6691a3a23b5bdc969a.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="lea-leblanc">Lea LeBlanc</h3>
+    <p>Lea is passionate about impactful businesses, good writing, and the stories founders have to tell. When she’s not writing about SaaS topics, you can find her trying new recipes in her tiny Tokyo kitchen.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#import-your-data-into-baremetrics">Import your data into Baremetrics</a></li><li><a href="#augment-data">Augment data</a></li><li><a href="#segment-customer-data">Segment customer data</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Lea LeBlanc</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

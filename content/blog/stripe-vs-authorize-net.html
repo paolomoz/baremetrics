@@ -1,0 +1,76 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Stripe vs. Authorize.net: Which Payment Processor Wins 2024?</div></div>
+      <div><div>Description</div><div>Stripe vs. Authorize.net compared on real 2026 fees, subscriptions, and lock-in — including the scenarios where Authorize.net genuinely beats Stripe on cost.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Stripe vs. Authorize.net: Fees, Features, and Which to Choose</h1></div></div>
+      <div><div><p>By Lea LeBlanc on February 16, 2021 Last updated on July 10, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/stripe-vs_-authorize_net_.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Stripe vs. Authorize.net is a comparison between two different generations of payment infrastructure — and it's more lopsided than most matchups, though not always in the direction people expect. Stripe wins decisively on developer experience, subscriptions, and modern features. But Authorize.net, founded in 1996 and owned by Visa since 2010, persists for reasons that are perfectly rational. And in a couple of specific scenarios, it can actually cost you less than Stripe. Here's the honest breakdown.</p>
+    <h2 id="two-different-architectures">Two different architectures</h2>
+    <p>Stripe is a payment facilitator. Processing, gateway, and merchant account rolled into one. You sign up in minutes, pay one blended rate, and never think about the layers underneath.</p>
+    <p>Authorize.net is a payment gateway — historically the connective layer between your website and a separate merchant account you get from a bank or processor. It now offers an all-in-one option too. But the gateway-only architecture is still its defining feature, and it's the key to the main scenario where it wins on price.</p>
+    <h2 id="pricing-the-real-numbers">Pricing: the real numbers</h2>
+    <p>At low volume, Stripe wins easily. Identical headline rate, no $25/month floor, no batch fees. Disputes cost less too: Stripe's chargeback fee is $15 (refunded if you win the dispute); Authorize.net's runs $25.</p>
+    <p>At high volume, the picture can flip. If you have a merchant account from your bank at negotiated interchange-plus pricing (say an effective ~2.3%) and run Authorize.net as a 10¢-per-transaction gateway on top, your total cost can undercut Stripe's flat 2.9% by a wide margin. A business processing $200,000/month saves roughly $1,200/month in that configuration versus Stripe's blended rate. That's the honest reason Authorize.net still processes billions: thousands of banks and ISOs bundle it with merchant accounts at rates flat-rate processors don't match. (Worth knowing: at serious volume, Stripe will also quote custom interchange-plus pricing, but only if you ask.)</p>
+    <p>There's a second, quieter flip: recurring billing fees. Authorize.net includes ARB and invoicing in its $25/month. Stripe prices them as add-ons — Billing at 0.7% of volume, Invoicing at 0.4% per paid invoice. Past roughly $3,600/month in recurring volume, the Billing add-on alone exceeds Authorize.net's entire monthly fee. Capability is a different story. On features, the next section isn't close.</p>
+    <h2 id="where-stripe-is-a-generation-ahead">Where Stripe is a generation ahead</h2>
+    <p>Subscriptions. This is the widest gap. Authorize.net's ARB (Automated Recurring Billing) reliably handles simple fixed-amount recurring charges — and that's about it. No usage-based pricing, weak retry logic, dated management tooling. Stripe Billing offers trials, proration, smart retries, usage-based and hybrid pricing, and revenue recognition, at 0.7% of billing volume pay-as-you-go (or discounted annual tiers from $620/month). If subscriptions are your business model, this section is the whole decision.</p>
+    <p>Developer experience. Stripe's API and docs remain the benchmark. Authorize.net integration in 2026 still means XML-era endpoints, inconsistent error handling, and a sandbox that doesn't always match production. Its interface (recently refreshed under Visa) draws consistent criticism in user reviews.</p>
+    <p>Feature velocity. Stripe ships payment methods, fraud tooling (Radar), tax, and analytics products continuously. Authorize.net ships stability.</p>
+    <p>International reach. Stripe supports merchants in ~46 countries and 135+ currencies, with local payment methods built in. Authorize.net centers on the US, with support in a handful of markets (Canada, the UK, parts of Europe, Australia) and a narrower currency set. Selling internationally? The gap is decisive.</p>
+    <p>In person. Stripe Terminal runs 2.7% + 5¢ with card readers from $59. Authorize.net handles card-present transactions, but hardware and rates depend on your merchant account's terms.</p>
+    <h2 id="where-authorize-net-genuinely-holds-up">Where Authorize.net genuinely holds up</h2>
+    <p>Reliability and reach. Thirty years of uptime reputation, and certified pre-built integrations with the legacy ERP and accounting systems (QuickBooks, Sage, and dozens more) that established businesses actually run.</p>
+    <p>Gateway portability — with a catch. Because Authorize.net is processor-independent, you can switch merchant accounts without rebuilding your payment stack. That's real anti-lock-in value. The catch cuts the other way: card data stored in its CIM vault, and customer payment profiles built on top of it, are genuinely painful to migrate off the platform. Portability between processors; stickiness to the gateway itself.</p>
+    <p>Fraud tooling included. The Advanced Fraud Detection Suite ships free with filters for velocity limits, IP blocking, and more — table stakes now, but included rather than upsold.</p>
+    <p>Fewer industry restrictions. Stripe's prohibited-business list is long, and its aggregated accounts are quick to hold funds when risk models get nervous. Authorize.net, sitting on top of a dedicated merchant account, serves categories Stripe won't touch — it's the default gateway many high-risk processors hand out. For edge-case industries, that stability is the whole decision.</p>
+    <h2 id="the-verdict-by-reader">The verdict, by reader</h2>
+    <ul><li>New build, SaaS, or subscription business: Stripe, and it isn't close — Billing, modern APIs, no monthly fee.</li><li>Established merchant with a bank-negotiated merchant account: Authorize.net gateway-only pricing may genuinely beat Stripe. Do the interchange-plus math before switching — and ask Stripe for custom pricing before assuming flat-rate is their only offer.</li><li>Deep in CIM or legacy ERP integrations: switching costs are real. Migrate for a reason (usually subscriptions), not for novelty.</li></ul>
+    <h2 id="switching-to-stripe-for-subscriptions-here-s-what-changes-for-your-metrics">Switching to Stripe for subscriptions? Here's what changes for your metrics</h2>
+    <p>Most businesses that leave Authorize.net do it for one reason: they're becoming a subscription business. ARB can't keep up. That migration moment is exactly when revenue visibility questions surface — because neither platform, old or new, answers them.</p>
+    <p>Stripe reports transactions, not subscription health. It won't tell you how much MRR came from new customers versus expansion, how your churn compares to benchmarks, or which segments are contracting. <a href="https://baremetrics.com/">Baremetrics</a> connects natively to Stripe and calculates all of it automatically — MRR broken into new, expansion, contraction, and churned; LTV by plan; open benchmarks against hundreds of SaaS companies at your stage. And Recover automatically retries failed payments and prompts card updates. Involuntary churn is the most avoidable MRR leak in subscription businesses, and the median Recover customer earns back roughly 8× its cost in a month, per our May 2026 recovery benchmark. Try it free.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>Is Stripe cheaper than Authorize.net?
+              For most small and mid-sized businesses, yes — same 2.9% + 30¢ rate without the $25/month fee. Two exceptions: high volume with a bank-negotiated merchant account (where the 10¢ gateway-only pricing beats Stripe's flat rate), and simple fixed recurring billing past roughly $3,600/month (where included ARB undercuts Stripe Billing's 0.7% add-on).</li><li>Does Authorize.net support subscriptions?
+              Its ARB tool handles simple fixed recurring charges reliably, but it's a generation behind Stripe Billing — no usage-based pricing, limited retry logic.</li><li>Who owns Authorize.net?
+              Visa, since 2010, via its CyberSource acquisition. It's now branded "Authorize.net, a Visa solution."</li><li>Can I keep my merchant account and use Stripe?
+              No — Stripe is a payment facilitator that replaces the merchant account entirely. That's the core architectural difference between the two.</li><li>How hard is migrating from Authorize.net to Stripe?
+              The main friction is stored customer card data in Authorize.net's CIM vault. Exports are possible but involve a formal process; plan the migration around it rather than discovering it mid-switch.</li><li>How do I track MRR and churn after moving to Stripe?
+              Connect Stripe to a subscription analytics platform. Baremetrics is native to Stripe and calculates MRR movements, churn, LTV, and benchmarks automatically — no spreadsheet reconciliation.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/febcbd14d0c94d6691a3a23b5bdc969a.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="lea-leblanc">Lea LeBlanc</h3>
+    <p>Lea is passionate about impactful businesses, good writing, and the stories founders have to tell. When she’s not writing about SaaS topics, you can find her trying new recipes in her tiny Tokyo kitchen.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#two-different-architectures">Two different architectures</a></li><li><a href="#pricing-the-real-numbers">Pricing: the real numbers</a></li><li><a href="#where-stripe-is-a-generation-ahead">Where Stripe is a generation ahead</a></li><li><a href="#where-authorize-net-genuinely-holds-up">Where Authorize.net genuinely holds up</a></li><li><a href="#the-verdict-by-reader">The verdict, by reader</a></li><li><a href="#switching-to-stripe-for-subscriptions-here-s-what-changes-for-your-metrics">Switching to Stripe for subscriptions? Here's what changes for your metrics</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Lea LeBlanc</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

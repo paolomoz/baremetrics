@@ -1,0 +1,264 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Improve Your Dunning Recovery Rate (2026)</div></div>
+      <div><div>Description</div><div>Most published dunning recovery rates are wrong. Learn how to measure it correctly — plus 9 tips that lifted Baremetrics customers to 410% median ROI.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>9 Proven Tips to Improve Your Dunning Email Recovery Rate</h1></div></div>
+      <div><div><p>By Dominique Jackson on August 30, 2024 Last updated on May 28, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/dunning-emails.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Dunning recovery rate is the percentage of failed subscription payments that a dunning system successfully recovers. Most published versions of this metric are misleading — they treat "recovered ÷ all failed charges" as recovery rate, contaminating the denominator with failures the dunning system never attempted to recover. The honest metric is attempted recovery rate (recovered ÷ recovery attempts) — which Baremetrics introduced as standard in <a href="https://changelog.baremetrics.com/">June 2025</a>.</p>
+    <p>Across the 148 customers using <a href="https://baremetrics.com/features/recover">Baremetrics Recover</a> for dunning automation in December 2024, the median customer earned 410% ROI on their Baremetrics subscription in a single month, and 82% of customers saw Recover pay for itself within month one. Below are 9 tactical tips for getting your own dunning recovery rate to that level — covering cadence, timing, copy, smart retries, and the customer-experience tone that separates working dunning from collections-notice dunning.</p>
+    <h2 id="a-note-on-measuring-recovery-rate">A note on measuring recovery rate</h2>
+    <p>Before the 9 tips, a word on what "recovery rate" actually means in practice. The naive definition — recovered charges divided by all failed charges — produces a number that's easy to game and easy to misread.</p>
+    <p>If a customer is excluded from your dunning flow (because they're a VIP, on manual billing, or in an active hardship negotiation), their failed payment still appears in the denominator. So does a payment that resolved itself via your processor's automatic retry before any dunning email fired. Naive recovery rate blames your dunning system for failures it never attempted to recover, and credits it for resolutions it had nothing to do with.</p>
+    <p>The honest metric is attempted recovery rate: of the failed payments your system actively tried to recover, what percentage succeeded? Baremetrics built this into Recover as standard in June 2025, alongside two supporting metrics:</p>
+    <ul><li>Attempted recovery charges — the count of failed payments your dunning system engaged with</li><li>Attempted recovery amount — the dollar value of those attempts</li><li>Attempted recovery rate — the percentage that recovered successfully</li></ul>
+    <p>If you're benchmarking your dunning performance against an external "industry average" recovery rate that doesn't specify whether it's attempted or naive, the number is meaningless. Ask the source. If they can't answer, don't use it.</p>
+    <p>Now — to the 9 tips.</p>
+    <p>If your dunning emails haven’t been as effective as you’d like, or you just want to experiment to see if you can recover more revenue, give these tips a try.</p>
+    <h2 id="1-send-multiple-emails">1. Send Multiple Emails</h2>
+    <p>One of the biggest mistakes you can make with your dunning emails is to just send a single email and hope for the best.</p>
+    <p>People put things off, emails get overlooked, and life happens. If you want to recover more revenue from failed payments, you have to be persistent.</p>
+    <p>Failed payments are a bigger revenue threat than most founders realize. <a href="https://www.pymnts.com/wp-content/uploads/2023/05/PYMNTS-Adopting-Subscription-Companies-Top-Performing-Payment-Recover-Strategies-May-2023.pdf">Research from PYMNTS</a> found that declined card payments account for roughly 50% of all customer churn, meaning customers who never intended to leave are slipping out the back door. That's exactly why a disciplined dunning sequence isn't a nice-to-have; it's one of the highest-ROI retention levers you have.</p>
+    <p>So just how many emails should you send?</p>
+    <p>Well, we analyzed over 1 million dunning emails sent by our customers with <a href="https://baremetrics.com/features/recover">Recover</a>, and here’s what we found:</p>
+    <p>Average Dunning Email Performance</p>
+    <p># of days delinquent</p>
+    <p>Open rate</p>
+    <p>Click rate</p>
+    <p>Recovery rate</p>
+    <p>0 days</p>
+    <p>41.29%</p>
+    <p>11.21%</p>
+    <p>13.25%</p>
+    <p>3 days</p>
+    <p>34.1%</p>
+    <p>7.64%</p>
+    <p>11.46%</p>
+    <p>7 days</p>
+    <p>32.7%</p>
+    <p>6.72%</p>
+    <p>11.51%</p>
+    <p>15 days</p>
+    <p>28.17%</p>
+    <p>4.11%</p>
+    <p>4.22%</p>
+    <p>20 days</p>
+    <p>25.71%</p>
+    <p>3.43%</p>
+    <p>3.83%</p>
+    <p>30 days</p>
+    <p>26.83%</p>
+    <p>3.93%</p>
+    <p>4.2%</p>
+    <p>As you can see, the first email sent is the most effective (0 days = the email sent the day of the failed payment). But look at the following emails sent after that.</p>
+    <p>Imagine if you only sent the one initial email. All the customers who didn’t open or click your email or update their billing info would go unpaid until who knows when.</p>
+    <p>This is one of the reasons we don’t recommend relying on out-of-the-box dunning emails from your payment processors.</p>
+    <p>With most of them, your emails are sent over the course of 7-14 days. And as you can see from our data above, expanding to 30 days allows you to recover A LOT more revenue.</p>
+    <p>If you’re concerned about coming off as too pushy by sending multiple dunning emails, don’t be. Here are some examples of companies that send a series of dunning emails without coming off as annoying.</p>
+    <p>First, here’s an example from <a href="https://snappa.com/">Snappa</a>.</p>
+    <p>0 days after delinquent</p>
+    <p>Subject: Uh-oh! Your payment for Snappa failed</p>
+    <p>Hi there,</p>
+    <p>It looks like your subscription payment for Snappa didn’t go through. Please update your billing information and we’ll give it another try!</p>
+    <p>{BillingLink}</p>
+    <p>Let us know if you have any questions.</p>
+    <p>– Jonny</p>
+    <p>3 days after delinquent:</p>
+    <p>Subject: 2nd notice: Another unsuccessful payment for your Snappa account</p>
+    <p>Hi there,</p>
+    <p>We just tried to process your subscription payment again but unfortunately it didn’t go through. To keep your Snappa subscription active, please update your information in your billing settings here:</p>
+    <p>{BillingLink}</p>
+    <p>Let us know if you have any questions.</p>
+    <p>– Jonny</p>
+    <p>7 days after delinquent:</p>
+    <p>Subject: Final notice: Need updated Snappa billing information</p>
+    <p>Hi there,</p>
+    <p>We just tried to process your Snappa subscription payment for the third time, but unfortunately, it failed once again.</p>
+    <p>You can update your information in your billing settings here:</p>
+    <p>{BillingLink}</p>
+    <p>If the next charge fails, your account will be cancelled automatically 🙁</p>
+    <p>Let us know if you have any questions.</p>
+    <p>– Jonny</p>
+    <p>Notice how they customize the subject line and text of each email. And the wording gets increasingly urgent with each email. The first email is a gentle reminder, and the last one is a final warning.</p>
+    <p>If you’re sending a sequence of dunning emails, make sure you’re measuring the success of each one. That way, you know what’s working and what’s not.</p>
+    <p>Knowing where your own recovery rate stands relative to peers matters. According to <a href="https://www.slickerhq.com/blog/2025-failed-payment-benchmarks-ai-beats-industry-averages">2025 failed payment recovery benchmarks</a>, the industry median sits at 47.6%, but top-performing subscription businesses reach recovery rates of 70–85% by layering multiple tactics, including smart retry logic and sequenced emails. Use those numbers as your baseline when measuring whether your current dunning setup is leaving revenue on the table.</p>
+    <p>For instance, we track the performance of each dunning email we send, which makes it easy to see where we can make improvements.</p>
+    <p>Plus, it allows us to quantify the impact of each email in the series.</p>
+    <h2 id="2-change-your-email-copy-periodically">2. Change Your Email Copy Periodically</h2>
+    <p>If things are going good and you’re recovering revenue with your current dunning emails, it’s easy to get complacent. As the saying goes, “if it ain’t broke, don’t fix it.”</p>
+    <p>Unfortunately, that doesn’t always hold true.</p>
+    <p>Your emails might not be broken, but they could be worn down. And you’ll never know unless you change them up.</p>
+    <p>Another time when it makes sense to change your dunning emails is to adjust for major events.</p>
+    <p>Take this email from <a href="https://www.emailmeter.com/">Email Meter</a> for example (they change their template every few months):</p>
+    <p>“Hi!</p>
+    <p>This is (…) from the Email Meter team! We understand that the current situation has shifted all of our focus, making it a bit difficult to deal with our daily tasks. I’m reaching out because unfortunately, we weren’t able to process your most recent Email Meter payment.</p>
+    <p>This typically happens to our customers when the card associated with your account has expired, there has been a change in your billing address, or your bank needs your authorization. We are here to make your life easier and if you would be interested in chatting with us we can guide you through the next steps.</p>
+    <p>Or if you prefer to go solo (it doesn’t hurt our feelings) you can log into your Email Meter account and review your account details.</p>
+    <p>Update your account in 3 easy steps!</p>
+    <ol><li>Log into your Email Meter account</li><li>Go to the “my account” icon in the left sidebar</li><li>From here you can edit your payment method and billing information</li></ol>
+    <p>Talk soon!”</p>
+    <p>Notice how the beginning of the email is customized to acknowledge what’s going on in the world at the time.</p>
+    <p>There’s no rule that every dunning email you send needs to be the same. Test and analyze!</p>
+    <h2 id="3-show-them-what-they-re-losing-aka-loss-aversion">3. Show Them What They’re Losing (AKA Loss Aversion)</h2>
+    <p>Telling someone they have a bill due isn’t always enough to motivate them to take action. If they don’t feel like it’s urgent, they’ll take their time and eventually forget about it.</p>
+    <p>In order to get around that, you can use a little psychology to light a fire underneath them. Specifically, loss aversion.</p>
+    <p>Loss aversion is the idea that the fear of losing something is greater than the joy of gaining the same thing. So let’s say you lost $100. Loss aversion suggests that your reaction to losing that $100 <a href="https://thedecisionlab.com/biases/loss-aversion/">would be twice as strong</a> as the reaction you’d have to gaining $100.</p>
+    <p>Here’s how to translate that to your dunning emails: Instead of telling your customers that their payment didn’t go through and asking them to update their billing info, let them know exactly what they stand to lose if they don’t act.</p>
+    <p>Here’s an example of loss aversion in a dunning email from <a href="https://wpbuffs.com/">WP Buffs</a>.</p>
+    <p>They were also kind enough to share some success metrics around how well their dunning emails are performing, with data captured by Baremetrics. You can learn more about <a href="https://baremetrics.com/blog/dunning-solutions-for-enterprise">enterprise dunning solutions</a> to see how these platforms work.</p>
+    <p>In order to make loss aversion particularly powerful, you can include the worst-case scenario like Kinsta does in this dunning email:</p>
+    <p>“Hello {First Name},</p>
+    <p>We’ve been unable to process your company’s (Company Name) payment for Kinsta services. We received the following information from your card issuer: {Card Error}</p>
+    <p>Please note that we will attempt to charge your payment method three more times in the next 15 days. If the third attempt fails, we will stop all services associated with your account which will result in your websites appearing offline and your content deleted from our platform.</p>
+    <p>For more information about outstanding invoices, please see this knowledge base article: What Happens if I Don’t Pay My Invoice?.</p>
+    <p>Thanks so much for your immediate attention to this issue! If you need assistance, feel free to contact our team from within MyKinsta. We’re here to help!”</p>
+    <p>The fear of having your website taken down and losing all your content is more than enough motivation to login and update your billing information as soon as possible.</p>
+    <p>If you want a more subtle approach for using loss aversion in your dunning emails, check out this example from <a href="https://storerocket.io/">StoreRocket Store Locator</a>:</p>
+    <p>They politely warn customers that if they don’t make their payment soon, their service is at risk of getting canceled.</p>
+    <h3 id="using-loss-aversion-in-dunning-emails">Using Loss Aversion in Dunning Emails</h3>
+    <p>Here are a few tips to get you started:</p>
+    <ul><li>Be specific: Saying “your account is at risk” is a good start. But to make your dunning emails more impactful, get specific. Exactly what will the customer lose if they don’t update their billing information?</li><li>Show empathy: You don’t want to sound threatening. Make it clear that the reason you’re sending the email is that you don’t want them to lose anything.</li><li>Give fair warning: Notice how companies gave clients an ample heads up in the examples above . The emails weren’t notifying them that they had already lost something, but rather, what they awere going to lose soon if they don’t take action.</li></ul>
+    <h2 id="4-personalize-your-emails">4. Personalize Your Emails</h2>
+    <p>By now, most SaaS companies are aware of the <a href="https://www.campaignmonitor.com/blog/email-marketing/2019/07/15-email-personalization-stats-might-surprise-you/">benefit of personalizing emails</a>. But sometimes, that knowledge starts and ends with email marketing.</p>
+    <p>Your dunning emails should be personalized too!</p>
+    <p>Not only will it <a href="https://woodpecker.co/blog/personalization-deliverability/">help with email deliverability</a>, but people are more apt to respond to an email that seems like it was sent specifically for them.In fact, one report showed 62% of consumers were more excited to respond to a personalized message than a generic one.</p>
+    <p>Your personalization can go beyond just including the person’s name. Here are some other ideas.</p>
+    <p>You can, for example, try sending your email addresses from a person instead of a company email name. Most people prefer dealing with people over no-name bots in terms of customer service, andthe Sent-from name in your emails has a major impact on whether or not people open them.</p>
+    <p>To take things a step further, research shows that using a person’s name instead of a company name can <a href="https://www.pinpointe.com/blog/best-email-send-from-address-name-or-company">increase your open rate by up to 35%</a>.</p>
+    <p>Whatever you do, please DON’T send your dunning emails to “donotreply@domain.com.” It puts up a wall between you and customers and makes it seem like you don’t want to talk to them.</p>
+    <p>And like I mentioned earlier, sometimes the reason your customer’s payment didn’t go through isn’t as simple as updating their billing information. So you need to make it easy for them to get in touch with you.</p>
+    <p>Even if the emails are automated, having them sent from a person makes them feel a little more human like this example from <a href="https://wiza.co/">Wiza</a>.</p>
+    <p>Another subtle way to personalize your dunning emails is to include a piece of info specific to the customer’s account. For instance, <a href="https://kapa99.com/en">Kapa99</a> includes the amount of the charge that failed.</p>
+    <p>Hey {Name},</p>
+    <p>Your friends at Kapa99 here.</p>
+    <p>I am writing because it looks like your subscription payment of {Amount} didn’t go through.</p>
+    <p>Please update your information here and we’ll give it another try.</p>
+    <p>Let us know if you have any questions,</p>
+    <p>Ka Kei Ho at Kapa99</p>
+    <p>Founder, Kapa99</p>
+    <p>The team at <a href="https://desktime.com/">DeskTime</a> includes the billing period the failed payment was for.</p>
+    <p>Creating personalized dunning emails like these is pretty simple. Here’s an example of how we put ours together. We use tags to personalize each email we send.</p>
+    <p>If you’re starting from scratch, or don’t currently do any personalization, here are some things to start with:</p>
+    <ul><li>Include your customer’s name</li><li>Mention their company name (if you sell B2B)</li><li>Last four numbers of their card</li><li>Amount of the charge</li><li>Use a real person for your “From” name</li><li>Send it from an email that’s actively monitored (do not use donotreply@whatever.com)</li></ul>
+    <h2 id="5-don-t-be-afraid-to-add-personality">5. Don’t Be Afraid to Add Personality</h2>
+    <p>Yes, you’re essentially sending out a collections email. But that doesn’t mean it has to be dull and boring.</p>
+    <p>Using a more “cheerful” and upbeat tone in your dunning emails can be a good way to grab your customer’s attention.</p>
+    <p>Check out this example from <a href="https://zalster.com/">Zalster</a>, who mixes emojis and casual language into their dunning emails to add a little flavor.</p>
+    <p>“Subject line: Failed payment to Zalster, uh oh.</p>
+    <p>👋 there,</p>
+    <p>I just got a notification of your payment failing with Zalster. How unfortunate! Luckily, this happens to a lot more users than you’d think so don’t beat yourself up about it. The bad thing is that your optimizations aren’t running if your payment fails.</p>
+    <p>Usually, it has something to do with one of the events below:</p>
+    <ol><li>Your card has expired 📅
+You’ve got insufficient funds or you’ve reached your limit 💸
+Your card has been stolen, disappeared, eaten by your dog or something like that and you haven’t updated your account with the new one 💳</li></ol>
+    <p>Have a quick check of what’s up and get it fixed so we can get back to growing your business by automating and optimizing your Facebook and Instagram Ads 🚀 💰!</p>
+    <p>Kind regards,</p>
+    <p>Emma</p>
+    <p>Head of Client Success”</p>
+    <p>This email is getting them a 60% open rate, so they’re doing something right.</p>
+    <p>It’s easy to sound robotic and vanilla with your dunning emails. Using a lighter and empathetic tone is a simple way to make your emails sound more natural.</p>
+    <h2 id="6-offer-an-alternative-to-cancellation">6. Offer an Alternative to Cancellation</h2>
+    <p>If a customer’s payment doesn’t go through, it doesn’t need to be an “all or nothing” situation. Depending on <a href="https://baremetrics.com/blog/saas-pricing-models">your pricing model</a>, you can offer customers an alternative to canceling their account due to a failed payment.</p>
+    <p>This is particularly helpful if the reason for the failed charge was insufficient funds.</p>
+    <p>Here are some dunning email examples from other SaaS companies who offer customers alternative solutions to closing their accounts.</p>
+    <p><a href="https://www.socialstatus.io/">Social Status</a> downgrades customers to a free plan until they update their billing information.</p>
+    <p>If you don’t offer a free plan for your software, you can take a page from <a href="https://www.historyhit.com/">History Hit’s</a> book and offer your customer a special deal to continue using your service. They used this email as part of a larger campaign to bounce back after a 66% increase in cancellations.</p>
+    <p>I’d only recommend offering a deal like this in certain scenarios though.</p>
+    <p>If the payment failed because the card was expired or they just needed to update their billing address, cost isn’t the issue. They have the ability to pay in full, they just need to update their info. So you’d be better off pushing to get them to update their billing information.</p>
+    <p>Not all failed payments call for the same response. A useful framework for thinking about this: voluntary churn (a customer choosing to leave) and involuntary churn (a payment failure the customer didn't intend) require different playbooks. Understanding <a href="https://flexpay.io/wp-content/uploads/2024/05/Failed_Payment_Solution_Evaluation_Guide.pdf">how voluntary vs. involuntary churn differ in recovery approach</a> helps you tailor both your email copy and your offer. For example, a discount makes sense for someone with insufficient funds but wastes margin on someone who simply has an expired card.</p>
+    <p>On the other hand, if the charge failed because they had insufficient funds, then offering a discount to <a href="https://baremetrics.com/blog/reduce-churn">prevent them from churning</a> could be a good compromise.</p>
+    <h2 id="7-send-in-app-reminders">7. Send In-App Reminders</h2>
+    <p>Not everyone checks their email regularly. Plus, like I mentioned earlier, most people get so many emails it’s easy to get overlooked.</p>
+    <p>That’s why instead of just sending dunning emails, you should also set up in-app reminders when a payment hasn’t gone through. You can see an example created with Baremetrics below.</p>
+    <p>If you sell a product that customers log into regularly, this might be even more effective than your emails.</p>
+    <p><a href="https://www.appointedd.com/">Appointedd</a> sends this in-app message to customers when their payments fail. They also make it easy to ask questions or get more info by using chat.</p>
+    <p>The more communication you have with customers when their payments fail, the better. In-app reminders give you another channel to connect outside of their inbox.</p>
+    <h2 id="8-send-your-emails-to-the-right-person">8. Send Your Emails to The Right Person</h2>
+    <p>Depending on how your product and billing are set up, the primary user might not be the person in charge of paying the bill. This is particularly common with B2B SaaS products.</p>
+    <p>If your software allows for multiple users, it can be helpful to send your dunning emails to all the emails under the account. That way, you have a higher chance of getting a response and don’t have to wait for one person to forward your email to the right person.</p>
+    <p>That’s exactly what <a href="https://www.siteswan.com/">SiteSwan</a> does. They send their dunning emails to all users on the account who have Billing permissions (also notice the loss aversion!):</p>
+    <p>“Subject: Urgent! Your account is past due</p>
+    <p>Hi {Account Name},</p>
+    <p>It appears your credit card ending in 7570 has failed to go through. We will automatically try processing the card again in 24 hours. If this card is no longer valid or there are insufficient funds, please update your payment information by logging into your account immediately. Your accounts and sites are at risk of coming offline if your payment does not go through successfully.</p>
+    <p>Update your account here: http://manage.multisiteadmin.com/billing</p>
+    <p>If you have any questions, please let us know.</p>
+    <p>Thank you,</p>
+    <p>SiteSwan</p>
+    <p>http://siteswan.com/</p>
+    <p>1-800-462-9814”</p>
+    <p>Don’t miss out on revenue just because you sent your dunning emails to the wrong person.</p>
+    <h2 id="9-use-pre-dunning-tactics-to-warn-customers-in-advance">9. Use Pre-Dunning Tactics to Warn Customers in Advance</h2>
+    <p>You don’t have to wait for your customer’s payment to fail in order to contact them. To prevent failed payments for expired credit cards, you can be proactive by sending a pre-dunning email.</p>
+    <p>According to our analysis of almost 300,000 pre-dunning emails, they have a higher success rate than some dunning emails sent after a payment fails.</p>
+    <p>Average Pre-Dunning Email Performance</p>
+    <p># of days before expiration</p>
+    <p>Open rate</p>
+    <p>Click rate</p>
+    <p>Recovery rate</p>
+    <p>41.39%</p>
+    <p>10.74%</p>
+    <p>13.84%</p>
+    <p>30 days</p>
+    <p>47.41%</p>
+    <p>12.97%</p>
+    <p>14.37%</p>
+    <p>What exactly should you include in your pre-dunning email?</p>
+    <p>And here are the pre-dunning emails we send to our customers at Baremetrics.</p>
+    <p>We send this one 30 days before the credit card expiration date.</p>
+    <p>And this is what we send seven days before the card expires.</p>
+    <p>In most cases, it’s better to be proactive than reactive when it comes to dunning emails. You can use Recover to create your pre-dunning emails up and track their performance.</p>
+    <h2 id="10-use-ai-to-time-retries-and-personalize-at-scale">10. Use AI to Time Retries and Personalize at Scale</h2>
+    <p>Everything covered above assumes you're manually configuring your dunning sequence: writing the copy, setting the days, and choosing the tone. That still works, and you should absolutely do it. But there's a meaningful upgrade available now that wasn't practical a few years ago: using AI to optimize the when and the what of your dunning automatically, based on individual customer signals.</p>
+    <p>Here's what AI-assisted dunning actually looks like in practice. Instead of retrying every failed payment on a fixed schedule (say, days 3, 7, 15, and 30), a machine-learning model analyzes patterns across thousands of payment attempts (such as card type, failure reason, customer tenure, plan tier, day of week, time of day) and predicts the window when a specific customer is most likely to update their billing or when a retry is most likely to succeed. <a href="https://www.slickerhq.com/blog/2025-failed-payment-benchmarks-ai-beats-industry-averages">According to 2025 benchmarks</a>, AI-optimized retry logic is recovering payments at rates measurably above the 47.6% industry median, with top performers reaching 70–85% recovery. That gap is largely explained by timing: retrying a card at 11 p.m. on a Friday behaves very differently from retrying it Tuesday morning.</p>
+    <p>On the email side, AI can help you go beyond simple name-and-amount personalization. If your dunning tool (or your connected CRM) has enough account-level data, you can dynamically adjust the subject line tone, the specific loss-aversion detail, and even the call-to-action based on whether the customer is a long-tenured power user, a recent signup who hasn't fully onboarded, or someone who's contacted support in the last 30 days. You don't need to write 20 different templates: a few well-structured variables and a clear set of rules can produce emails that feel genuinely tailored without a ton of manual effort. If you're already using <a href="https://baremetrics.com/features/recover">Baremetrics Recover</a>, pairing it with your payment processor's smart retry logic is the fastest way to close the gap between where your recovery rate is today and where it could be.</p>
+    <h2 id="give-your-payment-failed-emails-a-makeover">Give Your Payment Failed Emails a Makeover</h2>
+    <p>“Perfect” dunning emails don’t exist. There are always things you can adjust. And what works for one company might not work for another.</p>
+    <p>The important thing is to experiment and always try to make improvements. When it comes to lost revenue from failed payments, even a slight improvement in your recovery rate can make a huge impact on your MRR.</p>
+    <p>The Baremetrics Messenger tool can help you understand the performance of your payment failed emails so you can continuously improve.</p>
+    <p>Tired of wasting time on spreadsheets? Get a <a href="https://app.baremetrics.com/users/sign_up">free trial of Baremetrics</a> today.</p>
+    <h2 id="faq">FAQ</h2>
+    <ul><li>What is a dunning email?
+              A dunning email is an automated message sent to a subscriber after a payment fails, asking them to update their billing information before their account is cancelled. In subscription businesses, failed payments are one of the leading causes of involuntary churn, meaning customers who did not intend to cancel but lose access simply because a card expired or a charge was declined. A dunning email is distinct from a standard payment reminder in that it is triggered by an actual failed transaction, not an upcoming renewal. For SaaS operators, an effective dunning process can recover a meaningful percentage of MRR that would otherwise be written off as lost revenue.</li><li>What is the difference between dunning emails and payment reminder emails?
+              A dunning email is sent after a payment has already failed, while a payment reminder is sent before a charge is attempted to prompt the customer to verify their billing details are current. Both serve a similar goal of reducing revenue loss in subscription businesses, but they operate at different points in the billing cycle. Dunning notices are reactive and typically form a multi-email sequence with escalating urgency, whereas payment reminders are proactive and generally a single touchpoint. For SaaS teams managing recurring billing, both belong in a complete dunning strategy, but the dunning sequence is where most recoverable MRR is actually won back.</li><li>How many dunning emails should a SaaS company send after a failed payment?
+              Most SaaS companies should send a sequence of at least four to six dunning emails spread across thirty days after a payment fails, rather than relying on a single notification. Data from over one million dunning emails analyzed through Baremetrics Recover shows that the first email sent on the day of the failed charge achieves an average recovery rate of 13.25 percent, but subsequent emails sent at three, seven, fifteen, and thirty days continue to recover additional revenue that would otherwise be lost. Sending only one email and waiting leaves a large portion of recoverable MRR on the table, because subscribers often miss the first notice due to inbox volume or competing priorities. The key is to escalate the urgency and specificity of each message as the sequence progresses, giving customers a clear picture of what they stand to lose if they do not act.</li><li>What are dunning email best practices for subscription businesses?
+              The most effective dunning emails for subscription businesses are personalized, sequenced across thirty days, and use loss aversion to communicate what the customer will lose if they do not act. Personalization should go beyond the customer's first name and include account-specific details like the charge amount, the billing period, and the last four digits of the card on file, since subscribers respond better to messages that feel specific to their account rather than generic notices. Subject lines should escalate in urgency across the sequence, and each email should be sent from a real person rather than a no-reply address, so customers can respond if they have a billing question. Testing copy, timing, and tone regularly matters too, since what recovers revenue for one SaaS product may not work for another. Baremetrics Recover lets you track open rates, click rates, and recovered MRR per email in the sequence, so you can see exactly where the process is breaking down.</li><li>How can I measure and reduce involuntary churn caused by failed payments?
+              Reducing involuntary churn caused by failed payments starts with separating it from voluntary cancellations in your churn analytics, because the two problems require completely different responses. Connect your payment processor to Baremetrics to see your failed charge rate and the MRR at risk in real time, then activate Baremetrics Recover to automatically retry failed payments and trigger a timed dunning email sequence that escalates over thirty days. Once the sequence is running, track recovered MRR over time to calculate the direct revenue impact of your dunning process and identify which customer segments or billing intervals see the highest failure rates. Involuntary churn is largely preventable, but fixing it requires both automated retry logic and a well-structured dunning notice sequence working together, not just one or the other.</li><li>How does loss aversion improve dunning email recovery rates?
+              Loss aversion works in dunning emails because the fear of losing something a subscriber already has is a stronger motivator than the abstract benefit of keeping their account active. Rather than framing the message as a generic billing notice, you show the customer exactly what they stand to lose if they do not update their payment information, whether that is access to their data, continuity of service, or content that will be deleted on cancellation. The more specific the consequence, the more effective the message. A dunning notice that says your account will be cancelled is less compelling than one that names the exact features, integrations, or stored work that will be permanently removed. For B2B SaaS products where the subscriber relies on the tool for daily operations, this approach can significantly increase click rates on recovery emails sent later in the dunning sequence.</li><li>What platforms offer automated failed payment recovery for subscription businesses?
+              Baremetrics Recover is a purpose-built automated dunning solution for B2B SaaS and subscription businesses running on Stripe, Braintree, or Recurly. It automatically retries failed payments on a configurable schedule, sends a personalized dunning email sequence over up to thirty days, and tracks open rates, click rates, and recovered MRR for each message in the series so you can measure the full impact of your dunning process. Because it sits on top of your existing payment processor rather than replacing it, there is no migration required. For SaaS teams that want to reduce involuntary churn without building a custom dunning workflow from scratch, Recover connects directly to your billing data and surfaces the revenue at risk in the same dashboard where you track MRR, LTV, and churn rate.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Dominique%20Jackson.jpg" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="dominique-jackson">Dominique Jackson</h3>
+    <p>Former Content Marketer at Baremetrics</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#a-note-on-measuring-recovery-rate">A note on measuring recovery rate</a></li><li><a href="#1-send-multiple-emails">1. Send Multiple Emails</a></li><li><a href="#2-change-your-email-copy-periodically">2. Change Your Email Copy Periodically</a></li><li><a href="#3-show-them-what-they-re-losing-aka-loss-aversion">3. Show Them What They’re Losing (AKA Loss Aversion)</a></li><li><a href="#4-personalize-your-emails">4. Personalize Your Emails</a></li><li><a href="#5-don-t-be-afraid-to-add-personality">5. Don’t Be Afraid to Add Personality</a></li><li><a href="#6-offer-an-alternative-to-cancellation">6. Offer an Alternative to Cancellation</a></li><li><a href="#7-send-in-app-reminders">7. Send In-App Reminders</a></li><li><a href="#8-send-your-emails-to-the-right-person">8. Send Your Emails to The Right Person</a></li><li><a href="#9-use-pre-dunning-tactics-to-warn-customers-in-advance">9. Use Pre-Dunning Tactics to Warn Customers in Advance</a></li><li><a href="#10-use-ai-to-time-retries-and-personalize-at-scale">10. Use AI to Time Retries and Personalize at Scale</a></li><li><a href="#give-your-payment-failed-emails-a-makeover">Give Your Payment Failed Emails a Makeover</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Dominique Jackson</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

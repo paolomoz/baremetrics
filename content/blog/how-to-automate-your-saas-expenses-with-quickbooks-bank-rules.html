@@ -1,0 +1,79 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>How to Close Your Books Faster with QuickBooks Bank Rules</div></div>
+      <div><div>Description</div><div>Automating the categorization of your recurring expenses will enable more accurate financial projections and faster closing of the books.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>How to Automate your SaaS Expenses with Quickbooks Bank Rules</h1></div></div>
+      <div><div><p>By Swapnil Jain on December 07, 2023 Last updated on April 28, 2026</p></div></div>
+      <div><div><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a5164e4a6b75ccf6409_5985wide1-1024x768.jpeg" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Automating the categorization of your recurring expenses will enable more accurate financial projections and faster closing of the books. It will also save time for your accountant that can be used for more value-adding work.</p>
+    <p>This post is part of a series for SaaS CEOs and Founders on organizing SaaS Chart of Accounts. The goal of the series is to provide practical advice on organizing and automating your financial backend, which results in more accurate forecasts and a faster feedback loop through a quicker closing of the books.</p>
+    <h2 id="bank-rules-the-basics">Bank Rules – The Basics</h2>
+    <p>Bank rules pick up an expense description provided by your bank and use the fixed instructions you set to always categorize the expense under the same account. This helps you to:</p>
+    <ul><li>Reduce human error</li><li>Override Quickbooks suggestion engine</li></ul>
+    <p>Human error is particularly prevalent with outsourced accountants without a bookkeeper dedicated to your company. You might have noticed this if you ever see expenses ending up in one category in one month, and a different category in another.Quickbooks suggestion engine can get things right once you have “trained” it a little. What remains a problem is the engine grouping all expenses from the same vendor under one account.</p>
+    <p>One of the most common mistakes that we see with SaaS Financials can be fixed with bank rules. This is, overstated hosting costs. The inaccuracy leads to lower gross profit margins, and thus lower LTVs and longer CAC Payback times. The reason for the error is often very simple – their bookkeeper lumps all expenses from Amazon under hosting (or worse, software). If the company buys their computer equipment, office supplies, and say, referral gift cards all from Amazon, suddenly this discrepancy becomes material.</p>
+    <p>If we use the bank rules, this error won’t occur as we can tell the rule to categorize anything with a bank description of Amazon Web Services to Hosting, but anything with Amazon.com or Amazon MKTPLACE to Office Expenses.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a5164e4a6b75ccf6409_5985wide1-1024x768.jpeg" alt="" loading="lazy" decoding="async"></p>
+    <h2 id="how-to-use-bank-rules-example">How to Use Bank Rules – Example</h2>
+    <p>Let’s look at another common mistake where all expenses from Google have been applied to one expense category.</p>
+    <p>Your forecasting needs for Adwords, GSuite and Google Cloud are all very different, which is why you should also categorize them separately: Google Cloud is a hosting cost that increases alongside your revenue, whereas GSuite is an overhead software cost that grows as your team grows. Adwords, on the other hand, is a driver for your business, and grouping it with other expenses will make it impossible to accurately project your future revenue using advertising as a driver for growth.</p>
+    <p>For simplicity, we’re going to leave out Google Cloud from the example below.</p>
+    <p>Here is a view from the Quickbooks Online Banking section, which pulls your company transactions from your bank accounts and credit cards. We have two transactions – one for Adwords spend and one for GSuite subscription. Quickbooks suggestion engine thinks both of these should go to Software &amp; Tools – G&amp;A. While true for GSuite, this is inaccurate for Adwords.</p>
+    <p>To improve this, let’s look one level deeper. If we click on the first transaction, we can see something like this:</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a51751bb184b5c036ff_Adwords-Banking-Detail-1024x296.png" alt="" loading="lazy" decoding="async"></p>
+    <p>The Bank Detail (highlighted) displays a long line of text and numbers, but the first part – GOOGLE*ADS – is what we care about. Let’s use this information to create our first bank rule.</p>
+    <p>Navigate on the Rules tab on the top left, and select New rule. Here’s how we fill it in.Rule name: Advertising – Google Adwords. I like to include the account, in this case advertising, in the rule name along with the company name as it makes the rules more searchable inside QBO.For: Money out.In: All bank accounts. (This will also include your credit cards by default).Conditions: Select all, and use Bank Text from the available options. Now, take the same GOOGLE*ADS and write it to the empty field next to Contains.Transaction type: Expense.Payee: Google Adwords. Here you add the vendor. I prefer separating Google GSuite, Cloud and Adwords, as it gives me the ability to run more accurate vendor-level reports. I don’t really care how much I pay Google as a whole, but I do care how much our hosting costs are on Google vs AWS.Category: Marketing: Advertising. Selecting the category means selecting the account to add this transaction into, every time. In this example, we would select the parent-category Marketing, and its’ subaccount Advertising. (You could even go a layer deeper, and select Google Adwords as a sub-subaccount.)How do you want to apply this rule: Auto-categorize and manually review.I don’t recommend using the auto-add, since it’s useful to have actual human eyes on each transaction. For example, you’d want to know as soon as possible if there appears to be a $10,000 transaction you expected to be just $10. With auto-add, it would take at least until the month-end review before noticing something is off.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a513dc8f2ab3f83e5ed_Adwords-Bank-Rule.png" alt="" loading="lazy" decoding="async"></p>
+    <p>After applying the rule, this is what we would expect to see.</p>
+    <p>The first transaction has a green RULE tag before the Category, indicating that a bank rule determines the destination account. Let’s repeat the rule for the GSuite expenses. Navigate back to the bank rules, and fill in the following for the rule:</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a5128a747229c73983d_GSuIte-Bank-Rule-2.png" alt="" loading="lazy" decoding="async"></p>
+    <p>As a result, both of our transactions in the bank feed have been categorized with rules:</p>
+    <p>Now, select both transactions using the check boxes on the left, and use the Batch Actions tool to categorize both to their respective categories. This is a handy tool for selecting and accepting multiple transactions at once.</p>
+    <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5ddf2a5128a74778f973983e_Accept-Selected.png" alt="" loading="lazy" decoding="async"></p>
+    <h2 id="additional-uses-split">Additional Uses – Split</h2>
+    <p>You could also use the bank rules to split given transactions. Say you have a loan payment of $1,000 per month but a variable interest which, per its’ name, changes each month . You could use the split tool to move the even $1,000 towards the loan balance on the balance sheet, and leave the remainder to go to the interest expense on Profit and Loss. You can also use %-based splits if you need to approximate certain transactions, say, across R&amp;D, Sales and Cost of Revenue.</p>
+    <h2 id="takeaway">Takeaway</h2>
+    <p>In this post we went through automating your SaaS expenses by using Quickbooks bank rules. The rules only apply going forward, so for any cleanup you’ll have to go to the Reviewed section under the Banking tab and select Undo for any transactions you want to categorize with bank rules. Just make sure not to undo anything that’s been already closed and reconciled by your accountant.</p>
+    <h2 id="faq">FAQ</h2>
+    <ul><li>What are bank rules in QuickBooks Online?
+              Bank rules in QuickBooks Online are fixed instructions you set that automatically categorize transactions based on text that appears in your bank feed, so the same expense always lands in the same account. Instead of relying on QuickBooks' suggestion engine or a bookkeeper to manually categorize each line item, a bank rule reads the bank description and routes the transaction to the correct account every time. For SaaS companies this matters because a single vendor like Amazon or Google can generate multiple transaction types that belong in entirely different expense categories, and without rules those distinctions tend to collapse into one account, distorting your gross margin, LTV, and CAC payback calculations.</li><li>How do I create a bank rule in QuickBooks Online to categorize SaaS expenses accurately?
+              To create a bank rule in QuickBooks Online, navigate to the Banking tab, open the Rules section, and select New Rule, then build the rule around the exact bank text that appears in your transaction feed. Give the rule a descriptive name that includes both the vendor and the destination account, such as Advertising - Google Ads, so your rules stay searchable as the list grows. Set the condition to Bank Text Contains and paste in the specific string from the transaction detail, then assign the correct payee and expense category before saving. Once active, every matching transaction will receive a green Rule tag in your bank feed, which lets you review and batch-accept categorized expenses rather than touching each one individually. Keeping vendors like Google Ads, Google Workspace, and Google Cloud in separate rules gives you cleaner vendor-level reporting and more accurate cost-of-revenue figures.</li><li>Can bank rules automatically split transactions in QuickBooks Online?
+              Yes, bank rules in QuickBooks Online can split a single transaction across multiple accounts, either by fixed dollar amount or by percentage. A common use case for SaaS companies is a monthly loan payment where the principal reduces a balance sheet liability while the variable interest portion flows to an income statement expense. The same split logic applies when you need to approximate shared costs across departments, such as allocating a single infrastructure bill across R&amp;D, cost of revenue, and sales. Splitting at the rule level removes the manual work each month and keeps your financial statements consistent, which matters when you are closing the books quickly or feeding expense data into a revenue forecast.</li><li>How do bank rules in QuickBooks reduce errors in SaaS financial reporting?
+              Bank rules eliminate the two most common categorization errors in SaaS bookkeeping: human inconsistency and the QuickBooks suggestion engine grouping all transactions from one vendor into a single account. When a bookkeeper without deep familiarity with your chart of accounts manually categorizes expenses, the same transaction type can end up in different accounts from month to month, which introduces noise into your gross margin and unit economics. The most damaging version of this error is inflated hosting costs, where equipment purchases, office supplies, and cloud infrastructure all get lumped under one Amazon or Google account. Overstated hosting costs reduce your reported gross profit, which in turn understates LTV and extends your apparent CAC payback period, two metrics that carry real weight in fundraising conversations and board reporting. Bank rules prevent this by enforcing consistent categorization at the source.</li><li>How can accurate SaaS expense categorization improve revenue forecasting and unit economics?
+              Accurate expense categorization is the foundation of reliable SaaS revenue forecasting because different cost types scale in fundamentally different ways. Hosting costs tied to infrastructure like AWS or Google Cloud scale with revenue and customer volume, while overhead software like Google Workspace scales with headcount, and paid advertising like Google Ads is a direct driver of new MRR. When these three types of spend are collapsed into a single account, it becomes impossible to model future costs against the variables that actually drive them. Clean, separated expense data lets your finance team project each cost line independently, which produces tighter gross margin forecasts and more defensible unit economics. Connecting that categorized expense data to subscription metrics from a platform like Baremetrics, where you can track MRR, LTV, and CAC payback in real time, gives you a complete picture of both what revenue is doing and what it costs to generate it.</li></ul>
+    <h3 id="swapnil-jain">Swapnil Jain</h3>
+    <p>Swapnil is a seasoned Chartered Accountant with a decade of experience across both budding startups and large international companies. He has always been at the heart of financial strategy, bringing a touch of personal commitment and passion.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#bank-rules-the-basics">Bank Rules – The Basics</a></li><li><a href="#how-to-use-bank-rules-example">How to Use Bank Rules – Example</a></li><li><a href="#additional-uses-split">Additional Uses – Split</a></li><li><a href="#takeaway">Takeaway</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Swapnil Jain</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>

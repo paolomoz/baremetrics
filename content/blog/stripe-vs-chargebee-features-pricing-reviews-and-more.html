@@ -1,0 +1,78 @@
+<body>
+<header></header>
+<main>
+  <div>
+    <div class="metadata">
+      <div><div>Title</div><div>Stripe vs. Chargebee: Which Is Right for Your SaaS?</div></div>
+      <div><div>Description</div><div>Stripe Billing vs. Chargebee compared with 2026 pricing — including the $620 vs. $599 tier face-off — plus when to use both together.</div></div>
+      <div><div>Template</div><div>article</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="article-head article">
+      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><h1>Stripe vs. Chargebee: Pricing, Features, and How to Choose in 2026</h1></div></div>
+      <div><div><p>By Lea LeBlanc on February 08, 2021 Last updated on July 10, 2026</p></div></div>
+      <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/net-revenue-churn.png" alt="" fetchpriority="high" decoding="async"></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-metadata">
+      <div><div>style</div><div>article-body</div></div>
+    </div>
+    <p>Stripe vs. Chargebee looks like a head-to-head. It's really an architecture question. Stripe is a payment processor with a billing product built in; Chargebee is a subscription management layer that sits on top of payment processors — including Stripe itself. That means Chargebee's fees are additive to processing fees, it means you can absolutely use both together (many companies do), and it means the right comparison is Stripe Billing vs. Chargebee, not Stripe vs. Chargebee.</p>
+    <p>The short version:</p>
+    <ul><li>Under ~$50K MRR: Stripe Billing usually wins on cost — a small percentage, no platform fee, no contract.</li><li>Around $100K MRR: it's almost exactly a wash — Stripe's $620/month Billing tier and Chargebee's $599/month Performance plan cover the same volume with near-identical overage rates.</li><li>At $200K+ MRR or with complex pricing models: Chargebee's flat-rate structure and mature catalog tooling tend to win — especially if you want multi-gateway flexibility.</li></ul>
+    <h2 id="what-each-one-actually-is">What each one actually is</h2>
+    <p>Stripe Billing is the subscription layer inside Stripe: trials, proration, smart retries, invoicing, usage-based pricing, revenue recognition — all running on Stripe's processing rails (2.9% + 30¢ for US cards). Already on Stripe? It's the fastest path to recurring billing. And the ~$1B Metronome acquisition (January 2026) signals serious investment in usage-based and hybrid pricing, historically its weak spot.</p>
+    <p>Chargebee is gateway-agnostic billing orchestration: it connects to 30+ payment gateways (Stripe, Braintree, PayPal, Adyen and more) and handles the subscription logic — flexible plan catalogs, dunning, self-serve customer portals, multi-jurisdiction tax, consolidated invoicing. Because it isn't a processor, you pay your gateway's fees plus Chargebee's platform fee. In exchange you get processor independence. Route European transactions through one gateway and US through another, or switch processors without rebuilding billing.</p>
+    <h2 id="pricing-in-2026-the-real-numbers">Pricing in 2026: the real numbers</h2>
+    <p>Chargebee:</p>
+    <ul><li>Starter — free until you cross $250,000 in cumulative lifetime billing, then 0.75% on all billing. Note the word cumulative. The threshold never resets. It's a genuinely generous runway for early-stage companies, and a common surprise later.</li><li>Performance — $599/month ($7,188/year, annual commitment), covering up to $100K in monthly billing, with 0.75% on overage. Includes Smart Dunning and consolidated invoicing.</li><li>Enterprise — custom. Add-ons: Chargebee Retention from $250/month (50 dunning sessions), RevRec custom-priced.</li></ul>
+    <p>Stripe Billing (confirmed from Stripe's pricing page, July 2026):</p>
+    <ul><li>Pay-as-you-go — 0.7% of Billing volume, on top of standard processing.</li><li>Annual subscription tiers — from $620/month covering up to $100K in monthly Billing volume, with 0.67% on overage (higher tiers at $1,500, $2,950, and $5,750/month, saving 11–18% versus pay-as-you-go).</li></ul>
+    <p>Look at those two growth tiers side by side:</p>
+    <p>Twenty-one dollars a month apart, same volume allowance, same contract shape. You're not choosing on price here. You're choosing between Stripe's all-in-one convenience (and Stripe-only lock-in) versus Chargebee's gateway flexibility (and a separate processing bill). That's the honest verdict most comparisons won't give you.</p>
+    <h2 id="where-they-genuinely-differ">Where they genuinely differ</h2>
+    <p>Pricing model complexity. If your catalog is two or three flat plans, Stripe Billing handles it cleanly. If you run plan families, add-ons, ramps, hybrid usage models, or frequent pricing experiments, Chargebee gets you there without custom code. Stripe is closing this gap (that's what Metronome is for), but Chargebee is ahead today.</p>
+    <p>Finance-stack depth. Both sell revenue-recognition add-ons (Chargebee RevRec, Stripe Revenue Recognition), but Chargebee's finance tooling runs deeper: consolidated and advance invoicing, quote-based workflows for negotiated deals, multi-entity support on Enterprise. Sales-led B2B with custom terms? That's Chargebee territory.</p>
+    <p>Gateway strategy. Chargebee's multi-gateway routing matters once you're optimizing authorization rates by region, or when you simply refuse to be single-processor dependent. Stripe Billing works with Stripe, full stop.</p>
+    <p>Dunning and recovery. Stripe offers Smart Retries; Chargebee offers Smart Dunning on Performance and a dedicated Retention product from $250/month. Both gate their best recovery tooling behind higher spend — worth knowing before you assume it's included.</p>
+    <p>Setup. Stripe Billing activates in days if you're on Stripe. Chargebee is an implementation project (mid-market migrations commonly run $10–30K in effort), which is fine if you're buying it for the long haul, painful if you're experimenting.</p>
+    <p>Who owns billing. The cleanest tiebreaker in this comparison is organizational, not technical. Chargebee lets product and finance teams change catalogs, coupons, and pricing from the UI without an engineering ticket; Stripe Billing changes mostly route through developers. If engineering owns billing, pick Stripe. If finance or RevOps owns it, Chargebee earns its platform fee.</p>
+    <p>What reviewers actually say. G2 reviewers score Chargebee higher on overall satisfaction and support quality; the recurring complaints are UI complexity and surprise fees. Stripe Billing reviews praise its flexible pricing models and ecosystem fit. The gripe there is engineering dependency.</p>
+    <p>Analytics — where both fall short. Stripe's dashboards report transactions, not subscription health. Chargebee's reporting is better, but cohort analysis requires manual exports and forecasting needs a BI tool (a recurring theme in 2025–26 user reviews). Neither tells you MRR movements by type, churn against benchmarks, or LTV by plan.</p>
+    <h2 id="using-chargebee-and-stripe-together-and-seeing-it-all-in-one-place">Using Chargebee and Stripe together — and seeing it all in one place</h2>
+    <p>The standard architecture for many SaaS companies is exactly this: Stripe processes payments, Chargebee orchestrates subscriptions on top. It works well. And it doubles your dashboard problem: revenue truth is now split across two systems.</p>
+    <p>Comparing segments in Baremetrics</p>
+    <p><a href="https://baremetrics.com/">Baremetrics</a> connects natively to both Stripe and Chargebee, so whichever you choose (or if you run the combined stack), your MRR, churn, LTV, cohorts, and expansion revenue land in one dashboard, segmentable by source. If Stripe is your processor, Recover chases failed payments at a flat $129/month with no session caps (compare Chargebee Retention's $250/month for 50 sessions), and the median customer earns back roughly 8× its cost in a month, per our May 2026 recovery benchmark. Try it free.</p>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+    <ul><li>Is Chargebee cheaper than Stripe Billing?
+              Below ~$50K MRR, no — Stripe's percentage stays small with no platform fee. Around $100K MRR they're nearly identical ($620/mo vs. $599/mo tiers). At $200K+ MRR, Chargebee's flat-rate model usually wins.</li><li>Can I use Chargebee with Stripe?
+              Yes — it's a standard architecture. Stripe processes the payments; Chargebee manages the subscription logic on top.</li><li>Does Chargebee process payments?
+              No. Chargebee connects to 30+ gateways and orchestrates billing; you pay gateway processing fees separately, on top of Chargebee's platform fee.</li><li>What does Chargebee's free plan actually cover?
+              Everything until you cross $250,000 in cumulative lifetime billing — not annual, and it never resets. After that, 0.75% applies to all billing.</li><li>Which is better for usage-based pricing?
+              Chargebee today. Stripe is investing heavily to catch up — its ~$1B Metronome acquisition (January 2026) is aimed squarely at usage and hybrid billing.</li><li>How do I get MRR, churn, and cohort analysis from Chargebee or Stripe?
+              Neither provides deep subscription analytics natively. Baremetrics connects natively to both and calculates 26 subscription metrics automatically.</li></ul>
+    <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/febcbd14d0c94d6691a3a23b5bdc969a.png" alt="" loading="lazy" decoding="async"></p>
+    <h3 id="lea-leblanc">Lea LeBlanc</h3>
+    <p>Lea is passionate about impactful businesses, good writing, and the stories founders have to tell. When she’s not writing about SaaS topics, you can find her trying new recipes in her tiny Tokyo kitchen.</p>
+    <div class="toc">
+      <div><div>Table of Contents</div><div><ul><li><a href="#what-each-one-actually-is">What each one actually is</a></li><li><a href="#pricing-in-2026-the-real-numbers">Pricing in 2026: the real numbers</a></li><li><a href="#where-they-genuinely-differ">Where they genuinely differ</a></li><li><a href="#using-chargebee-and-stripe-together-and-seeing-it-all-in-one-place">Using Chargebee and Stripe together — and seeing it all in one place</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band ink author">
+      <div><div><p>Written by</p></div></div>
+      <div><div><h2>Lea LeBlanc</h2></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="band tint form">
+      <div><div><p>Subscribe for Updates</p></div></div>
+      <div><div>Email address</div><div>Subscribe for Updates</div></div>
+    </div>
+  </div>
+</main>
+<footer></footer>
+</body>
