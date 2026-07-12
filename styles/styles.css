@@ -89,6 +89,16 @@
   /* form-field border — the prototypes' .ds-input literal (full-alpha ruling),
      tokenised for the block library (added by Wave A, foundation extension) */
   --color-input-border: oklch(85% 0.02 285);
+
+  /* vendored section-metadata.css (ported AuthorKit boilerplate) references
+     these boilerplate token names — alias to the Ledger scale so #91 passes */
+  --color-dark: var(--color-fg);
+  --color-light: var(--color-mist);
+  --spacing-s: var(--spacing-sm);
+  --spacing-m: var(--spacing-md);
+  --spacing-l: var(--spacing-lg);
+  --spacing-xxl: var(--spacing-2xl);
+  --grid-column-width: 80px;
 }
 
 /* === reset === */
