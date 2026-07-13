@@ -234,3 +234,9 @@ Reconciled 3 deploy failures:
 Post-deploy computed-layout gate on 25 live URLs across every template: all render correctly (200, one h1, sections>0, grids/flex compute, 0 broken images, 0 pageerrors). Legal-prose pages (gdpr, ja/privacy) are single-masthead + article prose by design (no grid block) — correct, not a failure.
 
 **Live:** https://stardust-conversion--baremetrics--paolomoz.aem.live/ (branch; merge → main to promote to production). Full stardust pipeline complete: extract → audit → direct → prototype → migrate → deploy, scaled to the full 1,030-URL inventory.
+
+## MERGED TO PRODUCTION (main) — 2026-07-13
+
+Merged stardust-conversion → main (fast-forward, pushed), Code Sync built main, published all pages to the main branch. **Result: 1,022/1,024 live on main** (same 2 CJK-slug jp/blog pages skipped — non-ASCII path platform limit). Production verified: 15-page cross-template sample on main--baremetrics--paolomoz.aem.live all 200, one h1, no broken images, no pageerrors, redacted Stripe example key confirmed (no leaked secret). Main-branch ledger: content-staged/.deploy-ledger-main.json.
+
+Production: https://main--baremetrics--paolomoz.aem.live/ (+ any custom domain configured on the site). Full stardust pipeline shipped end to end across the 1,030-URL inventory.
