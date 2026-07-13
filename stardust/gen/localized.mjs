@@ -245,11 +245,19 @@ function buildLocalizedOpenStartups(d) {
     row([`<h1>${esc(norm(s.h1))}</h1>`]),
     row([`<p>${esc(norm(s.lede))}</p>`]),
   ];
+  /* strip the GA cross-domain linker query (`?_gl=1*…*_gcl_au*…`): the `*`/`_`
+     tokens are ephemeral tracking junk AND break the DA html↔md round-trip
+     (asterisks read as markdown emphasis → preview 409 from content-bus). */
+  const cleanHref = (h) => (h || '').replace(/\?_gl=[^"'\s]*/i, '');
+  /* EDS media validation rejects SVGs > 40KB (preview 409 from content-bus).
+     routeshuffle's logo is 174KB — drop just that logo; the row still renders
+     name/desc/revenue/link. Others are all well under the limit. */
+  const OVERSIZE_LOGO = /logo-routeshuffle\.svg/i;
   const ledgerRows = s.rows.map((r) => row([
-    r.img ? imgTag(r.img) : '',
+    r.img && !OVERSIZE_LOGO.test(r.img.src || '') ? imgTag(r.img) : '',
     `<h3>${esc(norm(r.name))}</h3><p>${esc(norm(r.desc))}</p>`,
     `<p>${esc(norm(r.revLabel))}</p><p>${esc(norm(r.revFigure))}</p>`,
-    `<a href="${esc(r.href)}">${esc(norm(r.name))}</a>`,
+    `<a href="${esc(cleanHref(r.href))}">${esc(norm(r.name))}</a>`,
   ]));
   // subscribe-band lede = the capture's secondary line ("learn how to grow your
   // startup"), not a repeat of the hero lede.
