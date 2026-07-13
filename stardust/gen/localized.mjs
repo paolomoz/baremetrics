@@ -652,9 +652,12 @@ function route(d) {
     if (seg0 === 'affiliate') {
       return { out: `${outBase}.html`, html: buildLocalizedAffiliate(d), template: 'static:affiliate' };
     }
-    if (seg0 === 'pricing') {
-      return { out: `${outBase}.html`, html: buildLocalizedPricing(d), template: 'static:pricing' };
-    }
+    // ja/pricing is PARKED: buildLocalizedPricing (below) renders only the plan
+    // tiers as a static rate-card, but the live source is an interactive
+    // MRR-slider flow (tool-selector + logo strip + scaling prices + comparison
+    // sections). Shipping fixed tiers misrepresents the scaling model, so it
+    // stays on the generic fallback pending a dedicated pass. The WIP builder +
+    // _ja-pricing.json sidecar are kept as a starting point. (see project todo)
     if (LEGAL.has(seg0)) {
       // empty-body legal (e.g. ja/privacy) → mirror the identical English policy
       // (full content); legal WITH captured prose → crafted article template.
