@@ -146,6 +146,32 @@ function mirrorEnglishLegal(slug, d) {
   return html;
 }
 
+/* legal (security/terms/gdpr/privacy) whose localized capture HAS prose →
+   reuse the English legal() DESIGN (article template): metadata[Template:article]
+   + masthead h1 + captured body as prose. The JA legal captures serve the
+   identical English policy text (byte-match EN); heading↔prose interleave is not
+   preserved by the flat capture, so it renders outline (headings, clamped ≥h2)
+   then body paragraphs — same graceful degradation as buildStaticGeneric but
+   carrying the crafted article template. */
+function buildLocalizedLegal(d) {
+  const headings = d.headings || [];
+  const h1 = norm((headings[0] || {}).text) || clampTitle(d.title);
+  const bodies = (d.body || []).map(norm).filter(Boolean);
+  const prose = [];
+  headings.slice(1).filter((hh) => norm(hh.text)).forEach((hh) => {
+    const orig = parseInt((hh.tag || 'h2').replace(/\D/g, ''), 10) || 2;
+    const lvl = Math.min(6, Math.max(2, orig));
+    prose.push(`    <h${lvl}>${esc(norm(hh.text))}</h${lvl}>`);
+  });
+  bodies.forEach((b) => prose.push(`    <p>${esc(b)}</p>`));
+  const sections = [
+    metadata({ Title: clampTitle(d.title), Description: d.description, Template: 'article' }),
+    section([block('masthead', [row([`<h1>${esc(h1)}</h1>`])])]),
+  ];
+  if (prose.length) sections.push(section(prose));
+  return page(sections);
+}
+
 /* customers index: masthead + cards listing of captured story links */
 function buildCustomersIndex(d, loc) {
   const h1 = norm((d.headings[0] || {}).text) || clampTitle(d.title);
@@ -182,6 +208,13 @@ const readSidecar = (name) => {
   const p = path.join(PAGES, name);
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : null;
 };
+
+/* strip the GA cross-domain linker query (`?_gl=1*…`): the `*`/`_` tokens are
+   ephemeral tracking junk AND break the DA html↔md round-trip (asterisks read as
+   markdown emphasis). Shared across the crafted localized builders. */
+const cleanHref = (h) => (h || '').replace(/\?_gl=[^"'\s]*/i, '');
+/* plain <img> from a bare URL string (sidecar cards carry URLs, not records) */
+const imgUrl = (src, alt) => (src ? `<img src="${esc(src)}" alt="${esc(alt || '')}" loading="lazy" decoding="async">` : '');
 
 /* about → English about design: masthead centered + cards roster + band ink
    stats. (The JA page has NO careers section, so the English `band tint cta`
@@ -364,6 +397,157 @@ function buildLocalizedBlogIndex(d) {
   ]);
 }
 
+/* wall-of-love → English wall-of-love DESIGN: masthead + `cards cases` grid of
+   testimonials + `band tint cta` trial band. Testimonials re-extracted from the
+   live JA page (_ja-wall-of-love sidecar) with the same 4-state logo→quote→
+   avatar→name machine the English wallOfLove() scrape uses. Each card carries
+   the captured avatar (or logo), name, company and quote — verbatim. The trial
+   band reuses the JA page's own sign-up CTA; no band heading exists on the JA
+   page, so none is invented. */
+function buildLocalizedWallOfLove(d) {
+  const s = readSidecar('_ja-wall-of-love.json');
+  if (!s || !(s.testimonials || []).length) return buildStaticGeneric(d);
+  const h1 = norm(s.h1) || clampTitle(d.title);
+  const lede = norm(d.description || s.desc || '');
+  const cardRows = s.testimonials.map((c) => {
+    const cells = [];
+    const src = c.avatar || c.logo;
+    if (src) cells.push(imgUrl(src, c.name || c.company || ''));
+    cells.push(c.name ? `<h3>${esc(norm(c.name))}</h3>` : '');
+    if (norm(c.company)) cells.push(esc(norm(c.company)));
+    cells.push(`<p>${esc(norm(c.quote))}</p>`);
+    return row(cells);
+  });
+  const sections = [
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead', [
+      row([`<h1>${esc(h1)}</h1>`]),
+      lede ? row([`<p>${esc(lede)}</p>`]) : null,
+    ].filter(Boolean))]),
+    section([block('cards cases', cardRows)]),
+  ];
+  if (s.trial && s.trial.href) {
+    sections.push(section([block('band tint cta', [
+      row([`<p><strong><a href="${esc(cleanHref(s.trial.href))}">${esc(norm(s.trial.label))}</a></strong></p>`]),
+    ])]));
+  }
+  return page(sections);
+}
+
+/* affiliate → English affiliate DESIGN: masthead + `steps` + 3× `feature-hero
+   case` + `band tint cta` + `accordion`. Re-extracted from the live JA page
+   (_ja-affiliate sidecar) with the same scrape as extract-affiliate.mjs — the
+   JA page is the identical HubSpot template. Section heads ("Here's how our
+   affiliate…", "Here's what the customers you refer…") come from the ja-affiliate
+   capture headings; step ordinals ("Step N") are the only authored labels, as in
+   the English builder. Everything else is verbatim. */
+function buildLocalizedAffiliate(d) {
+  const a = readSidecar('_ja-affiliate.json');
+  if (!a || !a.masthead) return buildStaticGeneric(d);
+  const H = d.headings || [];
+  const headText = (re) => norm((H.find((h) => re.test(norm(h.text))) || {}).text);
+  const img = (m) => (m && m.src ? imgTag(m) : '');
+
+  const mastRows = [
+    row([`<h1>${esc(norm(a.masthead.h1))}</h1>`]),
+    a.masthead.lede ? row([`<p>${esc(norm(a.masthead.lede))}</p>`]) : null,
+    a.masthead.cta && a.masthead.cta.href
+      ? row([`<p><strong><a href="${esc(cleanHref(a.masthead.cta.href))}">${esc(norm(a.masthead.cta.label))}</a></strong></p>`]) : null,
+  ].filter(Boolean);
+
+  const stepRows = a.steps.map((s, i) => {
+    const copy = [
+      `<p>Step ${i + 1}</p>`,
+      `<h3>${esc(norm(s.h2))}</h3>`,
+      ...s.paras.map((p) => `<p>${esc(norm(p))}</p>`),
+      s.bullets.length ? `<ul>${s.bullets.map((b) => `<li>${esc(norm(b))}</li>`).join('')}</ul>` : '',
+    ].filter(Boolean).join('');
+    return row(s.image ? [copy, img(s.image)] : [copy]);
+  });
+
+  const promoBlocks = a.promos.map((p, i) => section([block(i === 1 ? 'feature-hero case mirror mist' : 'feature-hero case', [
+    row([`<p>${esc(norm(p.category))}</p>`]),
+    row([`<h2>${esc(norm(p.h2))}</h2><p>${esc(norm(p.body))}</p>`]),
+    p.link && p.link.href ? row([`<p><em><a href="${esc(cleanHref(p.link.href))}">${esc(norm(p.link.label))}</a></em></p>`]) : null,
+    p.quote ? row([`<p>${esc(norm(p.quote))}</p>`]) : null,
+    (p.avatar || p.citeName) ? row([img(p.avatar), `${esc(norm(p.citeName))}${p.citeRole ? `, ${esc(norm(p.citeRole))}` : ''}`]) : null,
+    p.shot ? row([img(p.shot)]) : null,
+  ].filter(Boolean))]));
+
+  const sections = [
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead', mastRows)]),
+    section([`    <h2>${esc(headText(/how our affiliate/i))}</h2>`, block('steps', stepRows)]),
+    section([`    <h2>${esc(headText(/customers you refer/i))}</h2>`]),
+    ...promoBlocks,
+  ];
+  if (a.cta && a.cta.href) {
+    sections.push(section([block('band tint cta', [
+      row([`<h2>${esc(norm(a.cta.h2))}</h2>`]),
+      row([`<p><strong><a href="${esc(cleanHref(a.cta.href))}">${esc(norm(a.cta.label))}</a></strong></p>`]),
+    ])]));
+  }
+  if (a.faq && a.faq.length) {
+    sections.push(section([
+      '    <h2>FAQ</h2>',
+      block('accordion', a.faq.map((f) => row([`<h3>${esc(norm(f.q))}</h3>`, `<p>${f.a}</p>`]))),
+    ]));
+  }
+  return page(sections);
+}
+
+/* customers index → English customers DESIGN: masthead + `cards cases` story
+   grid. Re-extracted from the live JA page (_ja-customers sidecar): each story
+   card carries its banner image (from the tile background), JA title, teaser
+   (only where the page has real prose — placeholder "…" teasers dropped) and the
+   story link. The English page's `logos table` + `quote band` have no faithful
+   JA source, so they are omitted rather than invented. */
+function buildLocalizedCustomers(d, loc) {
+  const s = readSidecar('_ja-customers.json');
+  if (!s || !(s.cards || []).length) return buildCustomersIndex(d, loc);
+  const h1 = norm(s.h1) || clampTitle(d.title);
+  const mastRows = [row([`<h1>${esc(h1)}</h1>`])];
+  if (norm(s.lede)) mastRows.push(row([`<p>${esc(norm(s.lede))}</p>`]));
+  if (norm(s.subLine)) mastRows.push(row([`<p>${esc(norm(s.subLine))}</p>`]));
+  const caseRows = s.cards.map((c) => {
+    const cells = [];
+    if (c.img) cells.push(imgUrl(c.img, c.title));
+    cells.push(`<h3>${esc(norm(c.title))}</h3>${norm(c.desc) ? `<p>${esc(norm(c.desc))}</p>` : ''}`);
+    cells.push(`<a href="${esc(cleanHref(c.href))}">${esc(norm(c.title))}</a>`);
+    return row(cells);
+  });
+  return page([
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead', mastRows)]),
+    section([block('cards cases', caseRows)]),
+  ]);
+}
+
+/* pricing → English pricing DESIGN (`rate-card`). Re-extracted from the live JA
+   pricing widget (_ja-pricing sidecar): 4 MRR-based plans, each with product +
+   variant name, description, the page's OWN "スタート価格" (starting-price) label +
+   figure + "/月額", trial CTA and feature list — all verbatim. Prices are the
+   starting prices the page itself displays; nothing is invented. The English
+   page's `sheets addons`, trust logos and quote bands have no faithful JA source
+   (the JA page has no add-on/quote sections), so they are omitted. */
+function buildLocalizedPricing(d) {
+  const s = readSidecar('_ja-pricing.json');
+  if (!s || !(s.plans || []).length) return buildStaticGeneric(d);
+  const h1 = norm(s.h1) || clampTitle(d.title);
+  const rateRows = s.plans.map((p) => row([
+    `${p.badge ? `<p>${esc(norm(p.badge))}</p>` : ''}<p>${esc(norm(p.product))}</p><h2>${esc(norm(p.name))}</h2>`,
+    `<p>${esc(norm(p.desc))}</p>`,
+    `<p>${esc(norm(p.priceLabel))}</p><p>${esc(norm(`${p.fig} ${p.per}`))}</p>`,
+    p.cta && p.cta.href ? `<p><strong><a href="${esc(cleanHref(p.cta.href))}">${esc(norm(p.cta.label))}</a></strong></p>` : '',
+    `<ul>${p.features.map((f) => `<li>${esc(norm(f))}</li>`).join('')}</ul>`,
+  ]));
+  return page([
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead center', [row([`<h1>${esc(h1)}</h1>`])])]),
+    section([block('rate-card', rateRows)]),
+  ]);
+}
+
 /* ── router ────────────────────────────────────────────────────────────── */
 function route(d) {
   const { path: urlPath, loc, rest } = parseUrl(d.url);
@@ -431,7 +615,7 @@ function route(d) {
       const { html } = buildStory(d, { backHref: `https://baremetrics.com/${loc}/customers` });
       return { out: `${outBase}.html`, html, template: 'story' };
     }
-    return { out: `${loc}/customers.html`, html: buildCustomersIndex(d, loc), template: 'index:customers' };
+    return { out: `${loc}/customers.html`, html: buildLocalizedCustomers(d, loc), template: 'index:customers' };
   }
 
   // experts (index or category)
@@ -462,13 +646,27 @@ function route(d) {
     if (seg0 === 'benchmarks') {
       return { out: `${outBase}.html`, html: buildLocalizedBenchmarks(d), template: 'static:benchmarks' };
     }
-    if (LEGAL.has(seg0) && bodyEmpty) {
-      const html = mirrorEnglishLegal(seg0, d);
-      if (html) {
-        return {
-          out: `${outBase}.html`, html, template: 'static:legal', degraded: 'legal-empty-body→mirrored-english-policy',
-        };
+    if (seg0 === 'wall-of-love') {
+      return { out: `${outBase}.html`, html: buildLocalizedWallOfLove(d), template: 'static:wall-of-love' };
+    }
+    if (seg0 === 'affiliate') {
+      return { out: `${outBase}.html`, html: buildLocalizedAffiliate(d), template: 'static:affiliate' };
+    }
+    if (seg0 === 'pricing') {
+      return { out: `${outBase}.html`, html: buildLocalizedPricing(d), template: 'static:pricing' };
+    }
+    if (LEGAL.has(seg0)) {
+      // empty-body legal (e.g. ja/privacy) → mirror the identical English policy
+      // (full content); legal WITH captured prose → crafted article template.
+      if (bodyEmpty) {
+        const html = mirrorEnglishLegal(seg0, d);
+        if (html) {
+          return {
+            out: `${outBase}.html`, html, template: 'static:legal', degraded: 'legal-empty-body→mirrored-english-policy',
+          };
+        }
       }
+      return { out: `${outBase}.html`, html: buildLocalizedLegal(d), template: 'static:legal' };
     }
     return {
       out: `${outBase}.html`, html: buildStaticGeneric(d), template: `static:${seg0}`, degraded: 'flattened-order',
