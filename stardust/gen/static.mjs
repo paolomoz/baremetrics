@@ -14,9 +14,11 @@
  * invented. Run from the repo root: node stardust/gen/static.mjs
  */
 /* eslint-disable no-console */
+import fs from 'node:fs';
+import path from 'node:path';
 import {
   readJson, write, page, metadata, section, block, row, prose, esc, escAttr, T,
-  extract, orderByRaw, withBrowser, ctaBand, HUB,
+  extract, orderByRaw, withBrowser, ctaBand, HUB, PAGES,
 } from './lib.mjs';
 
 const TRIAL = ['Get Baremetrics for your company', 'Start your free trial', 'https://app.baremetrics.com/users/sign_up'];
@@ -66,6 +68,46 @@ async function marketing(pg, slug, { fromRaw = false } = {}) {
     ctaBand(...TRIAL),
   ];
   write(`${slug}.html`, page(sections));
+}
+
+/* ── accelerator (SaaS cohort → cards cohort grid) ───────────────────── */
+/* Content re-extracted per-card (logo, industry tag, blurb, external link) by
+   stardust/scripts/extract-accelerator.mjs → _accelerator-cards.json; the flat
+   marketing-prose path flattened the grid, so this composes the crafted cards
+   `cohort` variant instead. Nothing invented — all fields captured. */
+function accelerator() {
+  const j = readJson('accelerator');
+  const cards = JSON.parse(fs.readFileSync(path.join(PAGES, '_accelerator-cards.json'), 'utf8'));
+  /* near-white captured tiles are the default mist tile; only carry a <code>
+     background for logos designed on a distinct/dark ground (keeps light marks
+     legible — e.g. Growth Forum on black, SymphonyOS on purple) */
+  const isDefaultTile = (bg) => !bg || /rgba\(2(?:55|50), 2(?:55|50), 2(?:55|50)/.test(bg);
+  const rows = cards.map((c) => {
+    const bg = isDefaultTile(c.logoBg) ? '' : `<code>${esc(c.logoBg)}</code>`;
+    const logo = c.logo ? `<img src="${escAttr(c.logo)}" alt="${escAttr(c.name)} logo">${bg}` : bg;
+    const copy = [
+      c.tag ? `<p>${esc(c.tag)}</p>` : '',
+      `<h3>${esc(c.name)}</h3>`,
+      c.blurb ? `<p>${esc(c.blurb)}</p>` : '',
+    ].join('');
+    const link = c.href ? `<a href="${escAttr(c.href)}">Click to learn more</a>` : '';
+    return row([logo, copy, link]);
+  });
+  const h1 = j.headings[0]?.text || j.title;
+  const sections = [
+    metadata(j.title, j.description),
+    block('masthead', [row([`<h1>${esc(h1)}</h1>`]), row([`<p>${esc(j.description)}</p>`])]),
+    `  <div>
+    <p>${cards.length} companies</p>
+    <h2>Accelerator companies</h2>
+    <div class="cards cohort">
+${rows.join('\n')}
+    </div>
+  </div>`,
+    ctaBand(...TRIAL),
+  ];
+  write('accelerator.html', page(sections));
+  console.log(`  accelerator: cards cohort (${cards.length} companies)`);
 }
 
 /* ── subscribe (masthead form + trial band) ──────────────────────────── */
@@ -168,6 +210,14 @@ ${cards.join('\n')}
   write('wall-of-love.html', page(sections));
 }
 
+/* selective run: `node stardust/gen/static.mjs accelerator` regenerates only
+   the accelerator page (no browser / network) */
+if (process.argv.includes('accelerator')) {
+  accelerator();
+  console.log('static.mjs done (accelerator only)');
+  process.exit(0);
+}
+
 await withBrowser(async (pg) => {
   console.log('legal / prose (article template):');
   for (const slug of ['security', 'privacy', 'gdpr', 'terms', 'privacy-shield']) {
@@ -175,7 +225,7 @@ await withBrowser(async (pg) => {
   }
   console.log('marketing:');
   await marketing(pg, 'affiliate');
-  await marketing(pg, 'accelerator', { fromRaw: true });
+  accelerator();
   console.log('forms / demo / wall:');
   subscribe();
   bookADemo();

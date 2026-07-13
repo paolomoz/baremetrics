@@ -8,6 +8,10 @@
  *   mosaic     home/stripe — ONE hairline canvas, dotted partitions (a b / a c)
  *   roster     about — team list rows (photo/monogram | name | role | mailto)
  *   filmstrip  home — scroll-snap tile rail (no JS)
+ *   cohort     accelerator — hairline-ruled company grid (logo tile | industry
+ *              chip + name + blurb | external "learn more" link). The logo
+ *              tile's captured background rides a <code> color in the logo cell
+ *              (DA preserves <code>) so light-on-dark marks stay legible.
  *
  * ENCODE/DECODE contract (#93): ../baremetrics/stardust/eds-schema/
  *   customers.json (lead-story + case-ledger), stripe.json (growth-triptych +
@@ -85,9 +89,11 @@ function win(img) {
 
 function parseUnit(cells) {
   const u = {
-    imgs: [], heading: null, metas: [], paras: [], link: null, linkText: '', lists: [],
+    imgs: [], heading: null, metas: [], paras: [], link: null, linkText: '', lists: [], code: '',
   };
   cells.forEach((cell) => {
+    const codeEl = cell.querySelector && cell.querySelector('code');
+    if (codeEl) u.code = text(codeEl);
     if (MEDIA(cell)) {
       u.imgs.push(...cell.querySelectorAll('img'));
       return;
@@ -220,8 +226,36 @@ function buildPerson(u) {
   return li;
 }
 
+function buildCohort(u) {
+  const article = el('article', 'cohort-card');
+  const a = el('a', 'surface-link cohort-link');
+  if (u.link) {
+    a.href = u.link.getAttribute('href') || '#';
+    a.target = '_blank';
+    a.rel = 'noopener';
+  }
+  if (u.heading) a.setAttribute('aria-label', `Learn more about ${text(u.heading)}`);
+  if (u.imgs[0]) {
+    const tile = el('span', 'cohort-logo');
+    if (u.code) tile.style.background = u.code;
+    u.imgs[0].loading = 'lazy';
+    tile.append(u.imgs[0]);
+    a.append(tile);
+  }
+  const copy = el('div', 'cohort-copy');
+  u.metas.forEach((m) => { m.className = 'cohort-tag meta-label'; appendSpaced(copy, m); });
+  if (u.heading) appendSpaced(copy, u.heading);
+  u.paras.forEach((p) => { p.className = 'cohort-blurb'; appendSpaced(copy, p); });
+  a.append(copy);
+  const arrow = el('span', 'cohort-arrow', '→');
+  arrow.setAttribute('aria-hidden', 'true');
+  a.append(arrow);
+  article.append(a);
+  return article;
+}
+
 export default async function decorate(block) {
-  const variant = ['cases', 'triptych', 'mosaic', 'roster', 'filmstrip']
+  const variant = ['cases', 'triptych', 'mosaic', 'roster', 'filmstrip', 'cohort']
     .find((v) => block.classList.contains(v)) || 'cases';
 
   const headEls = absorbedHead(block);
@@ -269,6 +303,10 @@ export default async function decorate(block) {
   } else if (variant === 'mosaic') {
     const grid = el('div', 'mosaic');
     units.forEach((u, i) => grid.append(buildPanel(u, i)));
+    wrap.append(grid);
+  } else if (variant === 'cohort') {
+    const grid = el('div', 'cohort-grid');
+    units.forEach((u) => grid.append(buildCohort(u)));
     wrap.append(grid);
   } else if (variant === 'filmstrip') {
     const rail = el('div', 'film-rail');

@@ -34,6 +34,7 @@ const CASES = {
   'cards|cards mosaic': row('<h3>A</h3><p>Body</p>', '<a href="/a">See how you compare</a>', IMG) + row('<h3>B</h3><p>Body</p>', IMG) + row('<h3>C</h3><p>Body</p>', '<a href="/c">Watch</a>', IMG),
   'cards|cards roster': row(IMG, '<h3>Jane Doe</h3><p>CEO</p><p><a href="mailto:j@x.y">j@x.y</a></p>') + row('FM', '<h3>Felipe Maier</h3><p>Engineer</p><p><a href="mailto:f@x.y">f@x.y</a></p>'),
   'cards|cards filmstrip': row(IMG + IMG + IMG),
+  'cards|cards cohort': row(`${IMG}<code>rgba(0, 0, 0,1.0)</code>`, '<p>Developer Tools</p><h3>Acme</h3><p>A blurb that is long enough to read as one.</p>', '<a href="https://acme.io/">Click to learn more</a>') + row(IMG, '<h3>Beta Co</h3><p>Another blurb long enough to read here.</p>', '<a href="https://beta.io/">Click to learn more</a>'),
   'quote|quote sheet': row('Customer record · Later') + row('<p>A long enough quote to be the blockquote text of the sheet.</p>') + row(IMG, 'Matt Smith', 'COO and Founder'),
   'quote|quote sheet mist': row('Customer record') + row('<p>A long enough quote to be the blockquote text of it all.</p>') + row(IMG, 'Name', 'Role') + row(`<a href="/g2">${IMG}</a>`),
   'quote|quote band ink': row(IMG) + row('<p>A long enough quote to be the blockquote text right here.</p>') + row(IMG),
