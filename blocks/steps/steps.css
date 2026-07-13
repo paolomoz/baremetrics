@@ -66,6 +66,15 @@
   margin-top: var(--spacing-md);
 }
 
+.steps .step-bullets {
+  color: var(--color-slate);
+  max-width: 52ch;
+  margin: var(--spacing-md) 0 0;
+  padding-left: 1.25em;
+}
+
+.steps .step-bullets li { margin-top: 6px; }
+
 .steps .step-media {
   display: block;
   margin-top: var(--spacing-lg);

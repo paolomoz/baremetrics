@@ -17,8 +17,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  readJson, write, page, metadata, section, block, row, prose, esc, escAttr, T,
-  extract, orderByRaw, withBrowser, ctaBand, HUB, PAGES,
+  readJson, write, page, metadata, section, block, row, blockWithHead, prose, esc, escAttr, T,
+  extract, withBrowser, ctaBand, HUB, PAGES,
 } from './lib.mjs';
 
 const TRIAL = ['Get Baremetrics for your company', 'Start your free trial', 'https://app.baremetrics.com/users/sign_up'];
@@ -43,31 +43,77 @@ async function legal(pg, slug) {
   write(`${slug}.html`, page(sections));
 }
 
-/* ── marketing prose page (affiliate) ────────────────────────────────── */
-async function marketing(pg, slug, { fromRaw = false } = {}) {
-  const j = readJson(slug);
-  const h1 = j.headings[0]?.text || j.title;
-  let items;
-  if (fromRaw) {
-    const heads = j.headings.slice(1); // drop the h1 (masthead)
-    items = await orderByRaw(slug, heads, j.body);
-  } else {
-    items = await extract(pg, `${HUB}/${slug}`, { waitMs: 1800, scroll: true });
-    items = items.filter((it) => !(it.type === 'heading' && it.level === 1));
-    /* drop chrome logos (baremetrics-logo / stripe-verified) */
-    items = items.filter((it) => !(it.type === 'img' && /baremetrics-logo|stripe-verified|logo\.svg$/.test(it.src)));
-  }
-  const lede = j.description;
-  /* drop a leading body paragraph that merely repeats the masthead lede */
-  if (items[0] && items[0].type === 'p' && T(items[0].html.replace(/<[^>]+>/g, '')) === T(lede)) items = items.slice(1);
-  console.log(`  ${slug}: h1=${JSON.stringify(h1)} items=${items.length}`);
+/* ── affiliate (masthead + steps walkthrough + 3 feature promos + FAQ) ──── */
+/* Content re-extracted by stardust/scripts/extract-affiliate.mjs →
+   _affiliate.json (masthead h1/lede/CTA; 3 steps with intro paras + bullet
+   lists + side graphics; 3 feature promos with category, screenshot, record
+   quote + avatar attribution, "Learn More" link; closing CTA; 4-Q FAQ). The
+   flat marketing-prose path lost all of this structure. Nothing invented —
+   every string, href and image URL is captured; the only added labels are the
+   "Step N" ordinal eyebrows for the walkthrough sequence. */
+function affiliate() {
+  const j = readJson('affiliate');
+  const a = JSON.parse(fs.readFileSync(path.join(PAGES, '_affiliate.json'), 'utf8'));
+  const img = (m) => (m && m.src
+    ? `<img src="${escAttr(m.src)}" alt="${escAttr(m.alt)}"${m.w ? ` width="${m.w}"` : ''}${m.h ? ` height="${m.h}"` : ''}>`
+    : '');
+  const headText = (re, fallback) => j.headings.find((h) => re.test(h.text))?.text || fallback;
+
+  /* masthead — h1 + lede + primary CTA (strong>a → primary btn via ak.js) */
+  const masthead = block('masthead', [
+    row([`<h1>${esc(a.masthead.h1)}</h1>`]),
+    row([`<p>${esc(a.masthead.lede)}</p>`]),
+    row([`<p><strong><a href="${escAttr(a.masthead.cta.href)}">${esc(a.masthead.cta.label)}</a></strong></p>`]),
+  ]);
+
+  /* steps — one authored row per step: "Step N" eyebrow (pre-heading meta),
+     h3, intro paragraph(s), bullet list, side graphic. Section head carried as
+     an absorbed <h2>. Step 3 ("Earn every month") is a live slider on the
+     source with no static image/bullets — only its two paragraphs are kept. */
+  const stepRows = a.steps.map((s, i) => {
+    const copy = [
+      `<p>Step ${i + 1}</p>`,
+      `<h3>${esc(s.h2)}</h3>`,
+      ...s.paras.map((p) => `<p>${esc(p)}</p>`),
+      s.bullets.length ? `<ul>${s.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>` : '',
+    ].filter(Boolean).join('');
+    return row(s.image ? [copy, img(s.image)] : [copy]);
+  });
+  const steps = blockWithHead(
+    `    <h2>${esc(headText(/how our affiliate/i, "Here's how our affiliate partner program works:"))}</h2>`,
+    'steps', stepRows,
+  );
+
+  /* feature promos — chip category, h2 + in-cell lede, "Learn More" secondary
+     CTA (em>a), record quote (long text after the CTA), avatar + attribution,
+     window-chromed screenshot exhibit. mirror+mist alternates the media dock
+     and ground on the 2nd promo (source alternates its grounds). */
+  const promoHead = section(`    <h2>${esc(headText(/customers you refer/i, "Here's what the customers you refer get with Baremetrics:"))}</h2>`);
+  const promoBlocks = a.promos.map((p, i) => block(i === 1 ? 'feature-hero case mirror mist' : 'feature-hero case', [
+    row([`<p>${esc(p.category)}</p>`]),
+    row([`<h2>${esc(p.h2)}</h2><p>${esc(p.body)}</p>`]),
+    row([`<p><em><a href="${escAttr(p.link.href)}">${esc(p.link.label)}</a></em></p>`]),
+    row([`<p>${esc(p.quote)}</p>`]),
+    row([img(p.avatar), `${esc(p.citeName)}${p.citeRole ? `, ${esc(p.citeRole)}` : ''}`]),
+    row([img(p.shot)]),
+  ]));
+
+  /* FAQ — head <h2>FAQ</h2> absorbed; one row per Q/A (answer HTML preserves
+     the inline Rewardful link). */
+  const faq = blockWithHead('    <h2>FAQ</h2>', 'accordion',
+    a.faq.map((f) => row([`<h3>${esc(f.q)}</h3>`, `<p>${f.a}</p>`])));
+
   const sections = [
     metadata(j.title, j.description),
-    block('masthead', [row([`<h1>${esc(h1)}</h1>`]), row([`<p>${esc(lede)}</p>`])]),
-    section(prose(items, { minHeading: 2 })),
-    ctaBand(...TRIAL),
+    masthead,
+    steps,
+    promoHead,
+    ...promoBlocks,
+    ctaBand(a.cta.h2, a.cta.label, a.cta.href),
+    faq,
   ];
-  write(`${slug}.html`, page(sections));
+  write('affiliate.html', page(sections));
+  console.log(`  affiliate: masthead + ${a.steps.length} steps + ${a.promos.length} feature promos + closing band + FAQ (${a.faq.length} Q)`);
 }
 
 /* ── accelerator (SaaS cohort → cards cohort grid) ───────────────────── */
@@ -218,13 +264,21 @@ if (process.argv.includes('accelerator')) {
   process.exit(0);
 }
 
+/* selective run: `node stardust/gen/static.mjs affiliate` regenerates only the
+   affiliate page (no browser / network) */
+if (process.argv.includes('affiliate')) {
+  affiliate();
+  console.log('static.mjs done (affiliate only)');
+  process.exit(0);
+}
+
 await withBrowser(async (pg) => {
   console.log('legal / prose (article template):');
   for (const slug of ['security', 'privacy', 'gdpr', 'terms', 'privacy-shield']) {
     await legal(pg, slug);
   }
   console.log('marketing:');
-  await marketing(pg, 'affiliate');
+  affiliate();
   accelerator();
   console.log('forms / demo / wall:');
   subscribe();

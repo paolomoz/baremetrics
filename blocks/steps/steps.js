@@ -157,7 +157,12 @@ export default async function decorate(block) {
       const copy = el('div', 'step-copy');
       if (u.meta) { u.meta.className = 'meta-label'; appendSpaced(copy, u.meta); }
       if (u.heading) appendSpaced(copy, u.heading);
-      u.paras.forEach((p) => { p.className = 'step-body'; appendSpaced(copy, p); });
+      u.paras.forEach((p) => {
+        /* a copy-cell list (affiliate step bullets) keeps list styling, not the
+           prose .step-body class (#93 — u.lists retained alongside paras) */
+        p.className = (p.tagName === 'UL' || p.tagName === 'OL') ? 'step-bullets' : 'step-body';
+        appendSpaced(copy, p);
+      });
       li.append(copy);
       if (u.img) {
         const media = win(u.img);
