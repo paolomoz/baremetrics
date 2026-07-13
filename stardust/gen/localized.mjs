@@ -44,7 +44,7 @@ import { buildExpertsCat } from './experts-cat.mjs';
 import { buildIntegration } from './integrations.mjs';
 import { buildAcademyIndex, buildFounderChatsIndex } from './indexes.mjs';
 import {
-  esc, norm, clampTitle, row, block, section, metadata, page,
+  esc, norm, clampTitle, row, block, section, metadata, page, imgTag,
 } from './_shared.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -172,6 +172,198 @@ function buildHome(d) {
   return buildStaticGeneric(d);
 }
 
+/* ── crafted localized mirrors (reuse the English block DESIGNS) ─────────── */
+
+/* JA sitewide subscribe-form chrome — verbatim from the live HubSpot form
+   (label/placeholder/submit) shared across ja/jp pages. */
+const JA_FORM = { label: 'Email*', placeholder: 'Eメールを入力して購読', button: 'Submit' };
+
+const readSidecar = (name) => {
+  const p = path.join(PAGES, name);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : null;
+};
+
+/* about → English about design: masthead centered + cards roster + band ink
+   stats. (The JA page has NO careers section, so the English `band tint cta`
+   is intentionally omitted — reproducing it would fabricate content.) Sourced
+   entirely from the ja-about capture: 18 aligned people (name h3 / role body /
+   mailto cta+href / photo media.imgs), mission head+lede, stat labels+figures. */
+function buildLocalizedAbout(d) {
+  const H = d.headings || [];
+  const body = (d.body || []).map(norm);
+  const h1 = norm((H[0] || {}).text) || clampTitle(d.title);
+  const lede = body[0] || '';
+  const mailtos = (d.ctas || []).filter((c) => (c.href || '').startsWith('mailto:'));
+  const h3s = H.filter((h) => h.tag === 'h3').map((h) => norm(h.text));
+  const imgs = (d.media && d.media.imgs) || [];
+  const photoFor = (name) => imgs.find((m) => norm(m.alt) === name);
+  const initials = (name) => name.split(/\s+/).map((w) => w[0] || '').join('').slice(0, 2).toUpperCase();
+  // people = the person h3s (they each carry a portrait); the lone photo-less
+  // h3 is the mission heading. Person mailtos lead the mailto list (a trailing
+  // footer "contact us" mailto is excluded by slicing to the people count).
+  const names = h3s.filter((t) => photoFor(t));
+  const missionHead = h3s.find((t) => !photoFor(t)) || '';
+
+  const rosterRows = names.map((name, i) => {
+    const photo = photoFor(name);
+    return row([
+      photo ? imgTag(photo, { lazy: i !== 0 }) : esc(initials(name)),
+      `<h3>${esc(name)}</h3><p>${esc(body[1 + 2 * i] || '')}</p>`,
+      `<a href="${esc(mailtos[i].href)}">${esc(norm(mailtos[i].label))}</a>`,
+    ]);
+  });
+
+  const figures = H.filter((h) => h.tag === 'h2').map((h) => norm(h.text));
+  const labels = body.slice(body.length - figures.length);
+  const statsLede = body[body.length - figures.length - 1] || '';
+  const statsRows = [
+    row([`<h2>${esc(missionHead)}</h2><p>${esc(statsLede)}</p>`]),
+    ...labels.map((label, i) => row([esc(label), esc(figures[i] || '—')])),
+  ];
+
+  return page([
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead centered', [
+      row([`<h1>${esc(h1)}</h1>`]),
+      lede ? row([`<p>${esc(lede)}</p>`]) : null,
+    ].filter(Boolean))]),
+    section([block('cards roster', rosterRows)]),
+    section([block('band ink stats', statsRows)]),
+  ]);
+}
+
+/* open-startups → English open-startups design: masthead art + ledger revenue
+   + band tint form. Rows re-extracted from the live JA page (_ja-open-startups
+   sidecar): logo, name (logo alt), desc, Monthly Revenue figure, whole-row
+   link. (No revenue-ledger section head exists on the JA page — the `revenue`
+   variant hides the head anyway.) */
+function buildLocalizedOpenStartups(d) {
+  const s = readSidecar('_ja-open-startups.json');
+  if (!s) return buildStaticGeneric(d);
+  const mastRows = [
+    row(s.arts.map((a) => imgTag(a, { lazy: false }))),
+    row([`<h1>${esc(norm(s.h1))}</h1>`]),
+    row([`<p>${esc(norm(s.lede))}</p>`]),
+  ];
+  /* strip the GA cross-domain linker query (`?_gl=1*…*_gcl_au*…`): the `*`/`_`
+     tokens are ephemeral tracking junk AND break the DA html↔md round-trip
+     (asterisks read as markdown emphasis → preview 409 from content-bus). */
+  const cleanHref = (h) => (h || '').replace(/\?_gl=[^"'\s]*/i, '');
+  /* EDS media validation rejects SVGs > 40KB (preview 409 from content-bus).
+     routeshuffle's logo is 174KB — drop just that logo; the row still renders
+     name/desc/revenue/link. Others are all well under the limit. */
+  const OVERSIZE_LOGO = /logo-routeshuffle\.svg/i;
+  const ledgerRows = s.rows.map((r) => row([
+    r.img && !OVERSIZE_LOGO.test(r.img.src || '') ? imgTag(r.img) : '',
+    `<h3>${esc(norm(r.name))}</h3><p>${esc(norm(r.desc))}</p>`,
+    `<p>${esc(norm(r.revLabel))}</p><p>${esc(norm(r.revFigure))}</p>`,
+    `<a href="${esc(cleanHref(r.href))}">${esc(norm(r.name))}</a>`,
+  ]));
+  // subscribe-band lede = the capture's secondary line ("learn how to grow your
+  // startup"), not a repeat of the hero lede.
+  const subLede = norm((d.body || [])[1]) || norm(s.lede);
+  const bandRows = [
+    row([`<p>${esc(subLede)}</p>`]),
+    row([esc(s.subLabel), esc(s.subPlaceholder), esc(s.subButton)]),
+  ];
+  return page([
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead art', mastRows)]),
+    section([block('ledger revenue', ledgerRows)]),
+    section([block('band tint form', bandRows)]),
+  ]);
+}
+
+/* benchmarks → English Open-Benchmarks design (JA /benchmarks mirrors EN
+   /open-benchmarks, per the page's own English-locale link). masthead art +
+   band tint stats (cohort) + pricing models + band tint stats (pricing) +
+   dunning + band tint form. Figures, JA section heads/ledes and failing-card/
+   reason lists come from the ja-benchmarks capture (verbatim); the numeric
+   stat labels and popular-price lists are English text that appears identically
+   on the live JA page (verified) and match the English open-benchmarks set. */
+const BM_COHORT_LABELS = ['Lower Quartile', 'Median MRR', 'Upper Quartile', 'Quick Ratio', 'Lifetime value', 'User Churn', 'Revenue Churn', 'Revenue Growth'];
+const BM_MONTHLY = ['$99/mo', '$10/mo', '$100/mo', '$49/mo', '$50/mo', '$500/mo', '$20/mo', '$1/mo', '$29/mo', '$1,000/mo'];
+const BM_ANNUAL = ['$120/yr', '$300/yr', '$99/yr', '$240/yr', '$600/yr', '$1,200/yr', '$180/yr', '$3,000/yr', '$5,000/yr', '$1,188/yr'];
+const BM_PRICING_LABELS = ['Have free plan', 'Round the dollar', 'End with a 9', 'Average plans'];
+
+function buildLocalizedBenchmarks(d) {
+  const H = d.headings || [];
+  const body = (d.body || []).map(norm);
+  const findHead = (re) => norm((H.find((h) => re.test(norm(h.text))) || {}).text);
+  const numeric = H.filter((h) => h.tag === 'h1' && /^\$?[\d.,]+\s*%?\+?$|^CHF/.test(norm(h.text))).map((h) => norm(h.text));
+  const cohortFigs = numeric.slice(0, 8);
+  const pricingFigs = numeric.slice(8, 12);
+  const ILLO = (d.media.imgs || []).filter((m) => /illustration-benchmarks/.test(m.src || ''));
+
+  const statBand = (headHtml, pairs) => block('band tint stats', [
+    ...(headHtml ? [row([headHtml])] : []),
+    ...pairs.map(([l, f]) => row([esc(l), esc(f)])),
+  ]);
+  const ol = (items) => `<ol>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ol>`;
+  const ul = (items) => `<ul>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
+
+  const failCards = body.slice(5, 10);
+  const failReasons = body.slice(10, 15);
+
+  return page([
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead art', [
+      row(ILLO.map((m) => imgTag(m, { lazy: false }))),
+      row([`<h1>${esc(norm((H[0] || {}).text))}</h1>`]),
+      row([`<p>${esc(body[0] || '')}</p>`]),
+    ])]),
+    section([statBand(`<h2>${esc(findHead(/コホート/))}</h2><p>${esc(body[2] || '')}</p>`,
+      BM_COHORT_LABELS.map((l, i) => [l, cohortFigs[i] || '—']))]),
+    section([
+      `    <h2>${esc(findHead(/価格モデル/))}</h2>`,
+      `    <p>${esc(body[3] || '')}</p>`,
+      `    <h3>${esc(findHead(/Popular Monthly/))}</h3>`,
+      `    ${ol(BM_MONTHLY)}`,
+      `    <h3>${esc(findHead(/Popular Annual/))}</h3>`,
+      `    ${ol(BM_ANNUAL)}`,
+    ]),
+    section([statBand('', BM_PRICING_LABELS.map((l, i) => [l, pricingFigs[i] || '—']))]),
+    section([
+      `    <h2>${esc(findHead(/損失/))}</h2>`,
+      `    <p>${esc(body[4] || '')}</p>`,
+      `    <h3>${esc(findHead(/カードの種類/))}</h3>`,
+      `    ${ul(failCards)}`,
+      `    <h3>${esc(findHead(/理由/))}</h3>`,
+      `    ${ul(failReasons)}`,
+    ]),
+    section([block('band tint form', [
+      row([`<p>${esc(body[1] || '')}</p>`]),
+      row([esc(JA_FORM.label), esc(JA_FORM.placeholder), esc(JA_FORM.button)]),
+    ])]),
+  ]);
+}
+
+/* blog index → English blog design: masthead form + ledger entries. Titles +
+   URLs re-extracted from the live JA index (_jp-blog sidecar); teaser for each
+   entry is that linked post's own captured meta description (faithful to the
+   post — the JA index itself renders no teaser/date). No date/pagination chrome
+   is fabricated. */
+function buildLocalizedBlogIndex(d) {
+  const s = readSidecar('_jp-blog.json');
+  if (!s || !(s.entries || []).length) return null;
+  const mastRows = [
+    row([`<h1>${esc(norm(s.h1)) || clampTitle(d.title)}</h1>`]),
+    s.lede ? row([`<p>${esc(norm(s.lede))}</p>`]) : null,
+    s.subLine ? row([`<p>${esc(norm(s.subLine))}</p>`]) : null,
+    row([esc(JA_FORM.label), esc(JA_FORM.placeholder), esc(JA_FORM.button)]),
+  ].filter(Boolean);
+  const entryRows = s.entries.map((e, i) => row([
+    String(i + 1).padStart(2, '0'),
+    `<h3>${esc(norm(e.title))}</h3>${e.teaser ? `<p>${esc(norm(e.teaser))}</p>` : ''}`,
+    `<a href="${esc(e.href)}">${esc(norm(e.go) || 'Continue Reading')}</a>`,
+  ]));
+  return page([
+    metadata({ Title: clampTitle(d.title), Description: d.description }),
+    section([block('masthead form', mastRows)]),
+    section([block('ledger entries', entryRows)]),
+  ]);
+}
+
 /* ── router ────────────────────────────────────────────────────────────── */
 function route(d) {
   const { path: urlPath, loc, rest } = parseUrl(d.url);
@@ -205,9 +397,14 @@ function route(d) {
       const { html } = buildAcademyIndex(d);
       return { out: `${loc}/academy.html`, html, template: 'index:academy' };
     }
-    // blog index (none captured) → generic
+    // blog index → crafted ledger-entries design (re-extracted list + per-post
+    // teasers); degrade to generic only if the sidecar is unavailable
+    const blogHtml = buildLocalizedBlogIndex(d);
+    if (blogHtml) {
+      return { out: `${outBase}.html`, html: blogHtml, template: 'index:blog' };
+    }
     return {
-      out: `${outBase}.html`, html: buildStaticGeneric(d), template: 'index:blog', degraded: 'no-blog-index-generator',
+      out: `${outBase}.html`, html: buildStaticGeneric(d), template: 'index:blog', degraded: 'no-blog-index-sidecar',
     };
   }
 
@@ -255,6 +452,15 @@ function route(d) {
     const bodyEmpty = !(d.body && d.body.length);
     if (seg0 === 'subscribe') {
       return { out: `${outBase}.html`, html: buildSubscribe(d), template: 'static:subscribe' };
+    }
+    if (seg0 === 'about') {
+      return { out: `${outBase}.html`, html: buildLocalizedAbout(d), template: 'static:about' };
+    }
+    if (seg0 === 'open-startups') {
+      return { out: `${outBase}.html`, html: buildLocalizedOpenStartups(d), template: 'static:open-startups' };
+    }
+    if (seg0 === 'benchmarks') {
+      return { out: `${outBase}.html`, html: buildLocalizedBenchmarks(d), template: 'static:benchmarks' };
     }
     if (LEGAL.has(seg0) && bodyEmpty) {
       const html = mirrorEnglishLegal(seg0, d);

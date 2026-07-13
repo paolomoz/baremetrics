@@ -410,8 +410,92 @@
   top: -240.909%;
 }
 
+/* === cohort (accelerator) — hairline-ruled company grid, logo tile + chip === */
+.cards.cohort .cards-head { max-width: none; }
+
+.cards.cohort .cards-head .meta-label { margin-bottom: 0; }
+
+/* the section head is an sr-only topic heading (visible head is the count
+   meta-label) — same device as the roster's "The team" (#a11y heading order) */
+.cards.cohort .cards-head h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cards.cohort .cohort-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--color-hairline);
+  border-left: 1px solid var(--color-hairline);
+  margin-top: var(--spacing-lg);
+}
+
+.cards.cohort .cohort-card { display: flex; }
+
+.cards.cohort .cohort-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 2.4vw, 32px);
+  border-right: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.cards.cohort .cohort-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: var(--color-mist);
+}
+
+.cards.cohort .cohort-logo img {
+  max-height: 52px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.cards.cohort .cohort-tag { display: block; }
+
+.cards.cohort .cohort-copy h3 {
+  font-size: clamp(19px, 1.8vw, 22px);
+  margin-top: var(--spacing-sm);
+}
+
+.cards.cohort .cohort-blurb {
+  margin-top: var(--spacing-sm);
+  color: var(--color-slate);
+  font-size: 15px;
+  line-height: var(--line-height-body);
+}
+
+.cards.cohort .cohort-arrow {
+  margin-top: auto;
+  padding-top: var(--spacing-lg);
+  color: var(--color-action);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.cards.cohort .cohort-link:hover .cohort-arrow { color: var(--color-action-hover); }
+
 /* === responsive === */
 @media (width <= 900px) {
+  .cards.cohort .cohort-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
   .cards.cases .lead-wrap { grid-template-columns: minmax(0, 1fr); }
 
   .cards.cases .case-grid { grid-template-columns: minmax(0, 1fr); }
@@ -437,6 +521,8 @@
 }
 
 @media (width <= 640px) {
+  .cards.cohort .cohort-grid { grid-template-columns: minmax(0, 1fr); }
+
   .cards.roster .person {
     align-items: flex-start;
     gap: var(--spacing-md);
