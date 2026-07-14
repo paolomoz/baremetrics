@@ -32,9 +32,9 @@
     <p>Because of this, Sync with Connex completed the migration by the following process:</p>
     <ol><li>First, Sync with Connex worked with Stripe’s migration team to import PayPal customer data into Stripe using a spreadsheet prepared by PayPal. PayPal sent Stripe the customer information and Stripe imported the data. The spreadsheet included customer name, email, and credit card information.</li><li>Some user accounts were marked as active, instead of cancelled.</li><li>Some users had incorrect plan levels associated with their account.</li><li>Some Sync with Connex accounts were incorrectly associated with their PayPal accounts.</li></ol>
     <p>This article will explain exactly how Sync with Connex accomplished these steps, starting with important learnings to be aware of before getting started.</p>
-    <h2 id="5-key-points-to-know-before-migrating-from-paypal-to-stripe">5 Key Points to Know before Migrating from PayPal to Stripe</h2>
+    <h2 id="key-points-to-know-before-migrating-from-paypal-to-stripe">5 Key Points to Know before Migrating from PayPal to Stripe</h2>
     <p>As Sync with Connex migrated from PayPal to Stripe, they overcame a number of challenges to get their existing customer data to fit into Stripe’s environment.</p>
-    <h3 id="1-you-must-use-the-stripe-api-to-import-subscription-information-legacy-pricing-and-contact-info">1. You must use the Stripe API to import subscription information, legacy pricing, and contact info.</h3>
+    <h3 id="you-must-use-the-stripe-api-to-import-subscription-information-legacy-pricing-and-contact-info">1. You must use the Stripe API to import subscription information, legacy pricing, and contact info.</h3>
     <p>Joseph recommends creating a spreadsheet, then writing code to import the spreadsheet to Stripe.</p>
     <p>Subscription Information</p>
     <p>If your business offers different products with different subscription tiers, you will be able to see which product each customer is signed up for, but not the subscription tier.</p>
@@ -44,18 +44,18 @@
     <p>Billing and Shipping Addresses</p>
     <p>To add billing details, you must manually import them using a spreadsheet of RP numbers, phone, email and billing address.</p>
     <p>To create this spreadsheet, head to PayPal Manager. Go to Reports and generate a Custom Report. Make sure to include all of the fields you need. The “Comment 2” field contains the RP number.</p>
-    <h3 id="2-you-will-need-to-create-stripe-price-ids">2. You will need to create Stripe Price IDs.</h3>
+    <h3 id="you-will-need-to-create-stripe-price-ids">2. You will need to create Stripe Price IDs.</h3>
     <p>If you don’t have Price IDs in Stripe, you will need to create them. This means creating new Price IDs that match with your existing PayPal products.</p>
     <p>Sync with Connex did this by creating specific codes, which they call SKUs, for each product. Using SKUs made it easier to map these products to Stripe Price IDs, as Connex’s product names have changed over the years. Then, they wrote code to match these SKUs to a list in Stripe.</p>
     <p>After exporting the SKUs from PayPal into a spreadsheet, Sync with Connex created a Meta field called SKU. Then, their custom code mapped the PayPal SKU information into new Stripe Price IDs via the Stripe Price ID SKU meta field.</p>
     <p>For more information on how to map PayPal fields to Stripe, keep reading. To see their code, you can find it towards the end of this article.</p>
-    <h3 id="3-paypal-can-export-a-customer-s-credit-card-information-but-miscommunications-can-have-major-consequences">3. PayPal can export a customer’s credit card information, but miscommunications can have major consequences.</h3>
+    <h3 id="paypal-can-export-a-customers-credit-card-information-but-miscommunications-can-have-major-consequences">3. PayPal can export a customer’s credit card information, but miscommunications can have major consequences.</h3>
     <p>To import credit card information from PayPal to Stripe, you can easily export to Stripe via customers’ PayPal profile ID. However, this can be difficult to do accurately at scale.</p>
     <p>In Sync with Connex’s experience, during the migration a miscommunication caused Stripe to receive transaction IDs when they should have received PayPal Profile IDs. This was a problem because transaction IDs would not have properly recognized the differences in payment schedules for Sync with Connex customers; some customers pay monthly, whereas others pay annually.</p>
     <p>This miscommunication resulted in a 2-week delay.</p>
-    <h3 id="4-deactivating-a-customer-pre-migration-will-erase-their-customer-history">4. Deactivating a customer pre-migration will erase their customer history.</h3>
+    <h3 id="deactivating-a-customer-pre-migration-will-erase-their-customer-history">4. Deactivating a customer pre-migration will erase their customer history.</h3>
     <p>If you deactivate a customer in PayPal before migrating everything to Stripe, not only will their information not appear in Stripe, you won’t be able to reactivate their profile in the future.</p>
-    <h3 id="5-stripe-allows-you-to-import-subscriptions-and-customer-data-one-at-a-time">5. Stripe allows you to import subscriptions and customer data one at a time.</h3>
+    <h3 id="stripe-allows-you-to-import-subscriptions-and-customer-data-one-at-a-time">5. Stripe allows you to import subscriptions and customer data one at a time.</h3>
     <p>As a workaround, you can use parallel programming to import them in batches.</p>
     <h2 id="how-do-the-paypal-fields-map-to-the-stripe-fields">How do the PayPal fields map to the Stripe fields?</h2>
     <p>Before we migrate the custom data, let’s take a look at how the fields map from PayPal to Stripe.</p>
@@ -109,7 +109,7 @@
     <h3 id="lea-leblanc">Lea LeBlanc</h3>
     <p>Lea is passionate about impactful businesses, good writing, and the stories founders have to tell. When she’s not writing about SaaS topics, you can find her trying new recipes in her tiny Tokyo kitchen.</p>
     <div class="toc">
-      <div><div>Table of Contents</div><div><ul><li><a href="#overview-how-did-sync-with-connex-do-it">Overview: How did Sync with Connex do it?</a></li><li><a href="#5-key-points-to-know-before-migrating-from-paypal-to-stripe">5 Key Points to Know before Migrating from PayPal to Stripe</a></li><li><a href="#how-do-the-paypal-fields-map-to-the-stripe-fields">How do the PayPal fields map to the Stripe fields?</a></li><li><a href="#post-migration-what-does-customer-data-in-stripe-look-like">Post-Migration: What does Customer Data in Stripe look like?</a></li><li><a href="#post-migration-using-apis-to-edit-and-add-additional-information">Post-Migration: Using APIs to Edit and Add Additional Information</a></li><li><a href="#matching-paypal-and-stripe-products-using-sku-labels">Matching PayPal and Stripe Products using SKU labels</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
+      <div><div>Table of Contents</div><div><ul><li><a href="#overview-how-did-sync-with-connex-do-it">Overview: How did Sync with Connex do it?</a></li><li><a href="#key-points-to-know-before-migrating-from-paypal-to-stripe">5 Key Points to Know before Migrating from PayPal to Stripe</a></li><li><a href="#how-do-the-paypal-fields-map-to-the-stripe-fields">How do the PayPal fields map to the Stripe fields?</a></li><li><a href="#post-migration-what-does-customer-data-in-stripe-look-like">Post-Migration: What does Customer Data in Stripe look like?</a></li><li><a href="#post-migration-using-apis-to-edit-and-add-additional-information">Post-Migration: Using APIs to Edit and Add Additional Information</a></li><li><a href="#matching-paypal-and-stripe-products-using-sku-labels">Matching PayPal and Stripe Products using SKU labels</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></div></div>
     </div>
   </div>
   <div>

@@ -55,9 +55,42 @@ const SUBSCRIBE = { text: 'Subscribe for Updates', href: 'https://baremetrics.co
 const NL = { title: 'Subscribe for Updates', label: 'Email address', button: 'Subscribe for Updates' };
 
 /* ── tiny html/text helpers ──────────────────────────────────────────── */
-const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/* redact Stripe key literals in captured prose (a blog post quotes Stripe's
+   public test key as a curl example — harmless, but GitHub push protection
+   blocks it, and it must never carry a real sk_live_). Durable so regen can't
+   reintroduce it. */
+const redactSecret = (s) => (s || '').replace(/sk_(test|live)_[A-Za-z0-9]{8,}/g, 'sk_$1_EXAMPLE_KEY');
+const esc = (s) => redactSecret(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const ws = (s) => (s || '').replace(/\s+/g, ' ').trim();
-const slug = (s) => ws(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'section';
+
+/* Heading-id slug that reproduces the helix delivery pipeline EXACTLY, so TOC
+   anchor hrefs match the ids the pipeline generates (the old ascii-only slug
+   mismatched: it collapsed punctuation to single "-" where helix keeps double,
+   and it stripped ALL CJK — turning every Japanese heading into "section").
+   Algorithm (validated 166/166 against live served ids): github-slugger
+   (lowercase; remove everything that is not a letter/number/mark/space/hyphen —
+   keeps CJK; each space → "-", no collapse) + strip a leading all-digit segment
+   (helix drops ordinal list prefixes: "1-boats…" → "boats…", but "1価格…" with
+   no hyphen stays), then per-page occurrence de-dup (foo, foo-1, foo-2 …). */
+const baseSlug = (s) => ws(s).toLowerCase()
+  .replace(/[^\p{L}\p{N}\p{M}\s-]/gu, '')
+  .replace(/ /g, '-')
+  .replace(/^\d+-/, '') || 'section';
+
+/* github-slugger occurrence de-dup, one instance per page (document order) */
+function makeSlugger() {
+  const occ = new Map();
+  return (text) => {
+    const base = baseSlug(text);
+    let result = base;
+    while (occ.has(result)) {
+      occ.set(base, (occ.get(base) || 0) + 1);
+      result = `${base}-${occ.get(base)}`;
+    }
+    occ.set(result, 0);
+    return result;
+  };
+}
 
 /* SEO title ≤60, truncated at a word boundary (no ellipsis) */
 function seoTitle(raw) {
@@ -163,12 +196,16 @@ function parseOrdered(oc) {
    downward skips), shallower tracks the original delta but never below 2.
    Returns { html, toc } where toc = the top-level (min original level)
    section headings with resolvable ids. */
-function renderBody(bodyItems, ctaMap) {
+function renderBody(bodyItems, ctaMap, titleText) {
   const headings = bodyItems.filter((it) => /^h[1-6]$/.test(it.t));
   const minOrig = headings.length
     ? Math.min(...headings.map((h) => Number(h.t.slice(1))))
     : 2;
-  const usedIds = new Set();
+  /* seed the slugger with the article's h1 title — the pipeline ids it first
+     (document order), so a body heading repeating the title text collides to
+     "…-1". Matching that keeps the TOC href correct. */
+  const nextId = makeSlugger();
+  if (ws(titleText)) nextId(titleText);
   const html = [];
   const toc = [];
   let prevOrig = 1;
@@ -183,10 +220,7 @@ function renderBody(bodyItems, ctaMap) {
       else assigned = Math.max(2, prevAssigned - (prevOrig - L));
       prevOrig = L;
       prevAssigned = assigned;
-      let id = slug(it.x);
-      let n = 2;
-      while (usedIds.has(id)) { id = `${slug(it.x)}-${n}`; n += 1; }
-      usedIds.add(id);
+      const id = nextId(it.x);
       html.push(`    <h${assigned} id="${id}">${esc(ws(it.x))}</h${assigned}>`);
       if (L === minOrig && ws(it.x)) toc.push({ text: ws(it.x), id });
       return;
@@ -265,7 +299,7 @@ export function buildArticle(j, { section = 'blog', defaultBacklink, titleFallba
     else info.noBacklink = true;
     if (p.byline) { byline = ws(p.byline.x); } else info.noByline = true;
     if (p.hero) hero = { src: p.hero.src, alt: p.hero.alt };
-    const rb = renderBody(p.body, ctaMap);
+    const rb = renderBody(p.body, ctaMap, titleText);
     bodyHtml = rb.html;
     toc = rb.toc;
     if (byline) { const m = byline.match(/^by\s+(.+?)\s+on\b/i); if (m) authorName = m[1].trim(); }

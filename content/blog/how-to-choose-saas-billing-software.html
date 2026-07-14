@@ -31,7 +31,7 @@
     <h2 id="things-you-need-to-get-right">Things You Need to Get Right</h2>
     <p>So what is it specifically that you need to get right? You can divide these into three buckets.</p>
     <ol><li>Revenue Recognition</li><li>Accounts Receivable</li><li>MRR Metrics</li></ol>
-    <h3 id="1-revenue-recognition">1. Revenue Recognition</h3>
+    <h3 id="revenue-recognition">1. Revenue Recognition</h3>
     <p>Having accurate revenue figures is the first step to understanding your company’s performance. you should be doing accrual-based accounting. <a href="https://baremetrics.com/academy/need-know-saas-revenue-recognition">Revenue recognition</a> gives you far greater visibility into how your business is actually doing—especially regarding understanding and forecasting your cash.</p>
     <p>Revenue recognition for SaaS isn't just a bookkeeping preference: it's governed by specific accounting standards that carry real compliance weight as you scale. <a href="https://viewpoint.pwc.com/content/dam/pwc-madison/ditaroot/us/en/pwc/accounting_guides/software-saas/assets/pwcrevrecguisoftsaas.pdf">PwC's revenue recognition guide for SaaS entities</a> walks through how straight-line recognition applies to subscription contracts, including how to handle multi-element arrangements and deferred revenue correctly. Getting this right early saves painful restatements later.</p>
     <p>Take a look at your company’s revenue. If you are a growing company, the monthly revenue should be a smooth figure growing up and to the right.</p>
@@ -43,11 +43,11 @@
     <p>Interestingly, none of the platforms offer a native accounting integration for handling the end-to-end revenue recognition process. This is not a deal-breaker. The month-end process is trivial for a good accountant, as they will look at the recognized revenue number provided by your billing tool / integration and adjust your books through a journal entry.</p>
     <h4 id="bonus-recognized-revenue-per-product">Bonus: Recognized Revenue per Product</h4>
     <p>If your company sells both enterprise and self-service plans, chances are you’ll want to separate your revenue by product. Your metrics will look very different for a $100,000/year product vs $19/month one. In contrast, splitting the revenue between $19/mo and $29/mo pricing plans is going to be a lot less useful, since you’ll be selling to each customer the same way and have no noticeable difference in the costs of servicing them. Chargebee, Maxio, and Stripe through the ChartMogul Revenue Recognition integration will all let you split the revenue by product.</p>
-    <h3 id="2-accounts-receivable">2. Accounts Receivable</h3>
+    <h3 id="accounts-receivable">2. Accounts Receivable</h3>
     <p>A growing company shouldn’t be tight on cash, right? And yet this is something that happens surprisingly often. One common reason for this is poorly managed Accounts Receivable (A/R). This could mean that there is an increasing number of customers who haven’t paid their invoices on time, and that the company lacks a process to review these balances on a regular basis.</p>
     <p>Here’s what you need to consider:</p>
     <ol><li>Is the A/R noticed by the right people at the right time?</li><li>Can the billing software take something off of your plate?</li></ol>
-    <h4 id="is-the-a-r-noticed-by-the-right-people-at-the-right-time">Is the A/R noticed by the right people at the right time?</h4>
+    <h4 id="is-the-ar-noticed-by-the-right-people-at-the-right-time">Is the A/R noticed by the right people at the right time?</h4>
     <p>If your billing tool and accounting software don’t talk to each other, your monthly financials won’t reflect the <a href="https://baremetrics.com/blog/what-are-accounts-receivable">Accounts Receivable</a>. This means that when you review your monthly performance you only see the revenue you should be making, but you have no idea whether the cash actually came in.</p>
     <p>Without visibility to your A/R, it would take a while from your company leadership to notice if there’s a looming cash crunch. If you bill exclusively through credit cards or automatically cut off your non-paying customers’ access, this is less of an issue.</p>
     <h4 id="integrations-to-the-rescue">Integrations to the rescue</h4>
@@ -63,13 +63,13 @@
     <p>Luckily, a good SaaS billing platform can utilize unique virtual bank accounts for each one of your customers. In other words, if a customer sends you money, you’ll know immediately who paid, how much, and what was it for. This is all in one go, without your accountant having to lift a finger. In fact, this is an area where you should avoid working with an accountant, given that an automatic process is faster, cheaper and more accurate.</p>
     <h4 id="bonus-integrations-with-the-rest-of-your-software-stack">Bonus: Integrations with the rest of your software stack</h4>
     <p>If your sales team enters deal details in Salesforce already, you may want to avoid having your billing person to re-do this on the billing platform. Calculating sales tax (or VAT) automatically becomes increasingly important as you expand, for which you want to make sure your billing &amp; tax solutions talk to each other.</p>
-    <h3 id="3-mrr-metrics">3. MRR Metrics</h3>
+    <h3 id="mrr-metrics">3. MRR Metrics</h3>
     <p>After making sure your billing platform can handle your accounting &amp; reporting requirements, you should find out what else you need to do with the data.</p>
     <p>From SaaS forecasting and reporting perspective, getting visibility to your <a href="https://baremetrics.com/academy/saas-calculate-mrr">Monthly Recurring Revenue</a> (MRR) is crucial. That said, it’s not enough you can see the metrics, but you need to ensure you can access them through integrations or exports.</p>
     <h4 id="visibility-into-monthly-recurring-revenue">Visibility into Monthly Recurring Revenue</h4>
     <p>You’ll want to break out your MRR into its components to better understand what’s happening under the hood. In other words, you need to be able to see your new customers, expansion, contraction and churn both in terms of MRR and customer count. This breakdown enables you to better answer questions like: Did we miss our monthly target because we signed up fewer new customers than expected? Or was it because the churn was higher than anticipated?</p>
     <p>Virtually all SaaS billing platforms provide enough metrics for you to work with - with the exception of Stripe that needs you to rely on third-party services to calculate your numbers.</p>
-    <h4 id="metric-exports-integrations">Metric Exports &amp; Integrations</h4>
+    <h4 id="metric-exports--integrations">Metric Exports &amp; Integrations</h4>
     <p>It’s not enough you can see these MRR metrics, but you also need to access them for external analysis such as forecasting your revenue.</p>
     <p>Off-the-shelf, Stripe Billing is the weaker choice on this front. While their dashboard displays <a href="https://support.stripe.com/questions/common-events-that-affect-monthly-recurring-revenue-mrr-totals">a few solid MRR metrics</a> (and even includes a cohort analysis), there’s absolutely no way to export this data or retrieve it through their API.</p>
     <p>The good news is that there are many third-party integrations such as <a href="https://baremetrics.com/">Baremetrics</a> and ChartMogul that calculate your MRR breakdown and other metrics. We’ve also seen customers use the Stripe API or Stripe Sigma to calculate the metrics by themselves. This is a good option if you rely on additional custom logic such as metered billing, and you feel that 3rd party tools don’t accurately capture all the intricacies of your recurring revenue.</p>

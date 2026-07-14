@@ -23,11 +23,11 @@
     <p>この記事では、LTVとは何か、LTVをどのように計算するのか、またLTVをどのようにビジネスの発展に生かせるのかまでを掘り下げます。</p>
     <p>SaaSやサブスクリプションビジネスを行う企業として追跡する必要のあのメトリクスの中でも、LTV（ライフタイム・バリュー）は最も謎に包まれた指標かもしれません。計算するのは難しく、一度計算してしまうと、それが良いものなのか悪いものなのか分からなくなってしまいます。</p>
     <p>この記事を読めば、LTVを理解することができ、あなたの会社でその指標をより良く使うためのインサイトを提供することができるようになるでしょう。</p>
-    <h2 id="ltv">LTV（ライフタイムバリュー）とは何か？</h2>
+    <h2 id="ltvライフタイムバリューとは何か">LTV（ライフタイムバリュー）とは何か？</h2>
     <p>LTVはLifetime Valueの略で日本語では、生涯価値と言われます。Customer Lifetime Valueといわれることもあり、その際はCLTVと訳し、顧客生涯価値と呼ばれます。</p>
     <p>LTVは、顧客が関係全体を通じて貴社の製品やサービスに費やすと予測される金額のことです。この指標は、取引ベースの思考から、リピートビジネスの長期的な価値に焦点を当てることに役立ちます。</p>
     <p>あなたのサービスに￥10,000/月を請求し、顧客が12ヶ月間あなたのサービスを利用するとします。その時のその顧客のLTVは￥10,000 × 12 = ￥12,000となります。</p>
-    <h2 id="ltv-2">顧客のLTVの計算方法</h2>
+    <h2 id="顧客のltvの計算方法">顧客のLTVの計算方法</h2>
     <p>上記の例は、あなたが一人の顧客のためにLTVを計算する方法です。しかし、これは複数の顧客がいることを想定していないため、明らかにビジネスを運営する上では現実的ではありません。LTVを計算するために、新たに2つのメトリックを考慮する必要があります。</p>
     <p>1. <a href="https://baremetricsjp.kinsta.cloud/jp/blog/academy-churn">解約率 （Churn Rate)</a></p>
     <p>これは、ある一定期間にサブスクリプションを解除したり、支払いを停止した利用者の数です。</p>
@@ -36,7 +36,7 @@
     <p>１ユーザーあたりの平均収入（Annual Revenue Per User)は、すべてののアカウントの平均収益です。これは、MRRを総ユーザー数で割れば計算できます</p>
     <blockquote><p>Ex) 100のアカウントが存在し、そのうちの50は年間￥5,000を支払い、他の50が年間￥10,000を支払った場合、あなたのARPUは年間￥7,500になります。</p></blockquote>
     <p>では、LTVの計算方法を見てみましょう。</p>
-    <h2 id="ltv-3">顧客のLTVの計算式</h2>
+    <h2 id="顧客のltvの計算式">顧客のLTVの計算式</h2>
     <blockquote><p>計算方法１: LTV ＝ ARPU × 顧客寿命</p></blockquote>
     <p>この他にも、解約を使用して寿命の値を計算することもできます（次の方が、より容易に入手できる可能性が高い数字です）。</p>
     <blockquote><p>計算方法２： LTV = ARPU / ユーザー解約率</p></blockquote>
@@ -45,12 +45,12 @@
     <p><img src="https://baremetrics.com/hs-fs/hubfs/Imported_Blog_Media/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2021-04-12-13_59_33-Jul-17-2023-02-03-16-3529-PM.png?width=205&amp;height=222&amp;name=%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2021-04-12-13_59_33-Jul-17-2023-02-03-16-3529-PM.png" alt="" loading="lazy" decoding="async"></p>
     <p>ビジネス指標の分析を始めてみる</p>
     <p>MRRやLTVなどを自動で追跡し、ビジネスの成長につなげましょう！！</p>
-    <h2 id="section">解約変数</h2>
+    <h2 id="解約変数">解約変数</h2>
     <p>多くの場合、解約を考慮するとLTVの計算はとても厄介なものになります。例えば、特定のグループ（ある特定の期間に加入したユーザーのグループ）について考えると、そのグループの開始日の最初の月の直後にグループの中の多くが「解約」することがよくあります。</p>
     <p>このように、各月に解約のばらつきがあると、計算が難しくなります。このようなばらつきを調整するため、もともとのの売上に割引率（解約変数）を掛け合わせることがあり。割引率とは、将来発生する可能性のあるキャッシュフローの損失を「割り引く」ことを意味します）。</p>
     <p>少しわかりづらいかもしれないので、以下の例を参照してみてください。以下の例では、少し保守的な見積もりを見つけるのに.75の割引率を使用して、LTVを実際に起こりうそうな現実的な数字に近づけます。</p>
     <blockquote><p>((ARPU x Profit Per User) / Churn rate ) x 0.75例: ￥12,000 x 0.75 = ￥9,000</p></blockquote>
-    <h2 id="section-2">サンプルサイズ</h2>
+    <h2 id="サンプルサイズ">サンプルサイズ</h2>
     <p><a href="https://makitani.net/shimauma/sample-size#:~:text=%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B5%E3%82%A4%E3%82%BA%EF%BC%88sample%20size%EF%BC%89%E3%81%A8,%E3%81%AE%E3%80%8Cn%E3%80%8D%E3%81%A7%E8%A1%A8%E3%81%99%E3%80%82">サンプルサイズ</a>もとても重要です。ビジネスにおいては科学的な根拠を元に意思決定をされるべきであり、数字をしっかり判断できなければ失敗に終わる可能性もあります。</p>
     <p>そのため、ユーザー数が少なかったり、メトリック計算でユーザー数を数えすぎていたりすると、データが科学的に有効でなくなる可能性があります。</p>
     <p>どれくらいのサンプルサイズを準備するべきかの科学的ガイドラインは以下の通りです。</p>
@@ -62,7 +62,7 @@
     <h2 id="tomotaka-endo">Tomotaka Endo</h2>
     <p>Tomo Endo is a dynamic professional with a rare blend of achievements in technology, community leadership, and sports. As the Co-Founder of Nihonium.io since August 2023 and Community Lead at Xenon Partners since September 2019, Tomo has been pivotal in driving innovation and fostering community engagement within the tech industry in Tokyo, Japan. His role in facilitating growth and providing actionable insights at Baremetrics, coupled with his contribution to MetricFire's technical monitoring community, underscores his proficiency in leveraging technology to nurture professional communities. Beyond his tech-centric endeavors, Tomo has excelled as a professional athlete in squash, achieving the no.1 ranking in Japan and a global ranking of 79th by August 2020.</p>
     <div class="toc">
-      <div><div>Table of Contents</div><div><ul><li><a href="#ltv">LTV（ライフタイムバリュー）とは何か？</a></li><li><a href="#ltv-2">顧客のLTVの計算方法</a></li><li><a href="#ltv-3">顧客のLTVの計算式</a></li><li><a href="#section">解約変数</a></li><li><a href="#section-2">サンプルサイズ</a></li><li><a href="#tomotaka-endo">Tomotaka Endo</a></li></ul></div></div>
+      <div><div>Table of Contents</div><div><ul><li><a href="#ltvライフタイムバリューとは何か">LTV（ライフタイムバリュー）とは何か？</a></li><li><a href="#顧客のltvの計算方法">顧客のLTVの計算方法</a></li><li><a href="#顧客のltvの計算式">顧客のLTVの計算式</a></li><li><a href="#解約変数">解約変数</a></li><li><a href="#サンプルサイズ">サンプルサイズ</a></li><li><a href="#tomotaka-endo">Tomotaka Endo</a></li></ul></div></div>
     </div>
   </div>
   <div>

@@ -32,28 +32,28 @@
     <p>For a detailed breakdown of how the broader churn category breaks down, see our <a href="https://baremetrics.com/blog/reduce-churn">reduce churn guide</a>.</p>
     <h2 id="how-big-is-involuntary-churn-really">How big is involuntary churn really?</h2>
     <p>Two numbers anchor the size of the problem.</p>
-    <h3 id="1-20-40-of-total-churn-is-involuntary">1. 20-40% of total churn is involuntary</h3>
+    <h3 id="20-40-of-total-churn-is-involuntary">1. 20-40% of total churn is involuntary</h3>
     <p>Research from Paddle puts the involuntary share of total churn at 20-40% for typical subscription businesses. That's the share of churn that has nothing to do with product satisfaction, pricing, or competitive pressure. It's pure admin loss.</p>
     <p>For most retention teams, this is a startling reframe. Companies spend disproportionate time on the voluntary churn lever (better products, better pricing, win-back offers) — when 20-40% of the problem is sitting in a billing report nobody's looking at.</p>
-    <h3 id="2-9-of-mrr-is-at-risk">2. ~9% of MRR is at risk</h3>
+    <h3 id="9-of-mrr-is-at-risk">2. ~9% of MRR is at risk</h3>
     <p>Baremetrics data across hundreds of subscription businesses shows the average company loses ~9% of monthly recurring revenue to failed payments. For a $100K MRR business, that's $9,000 a month walking out the door — every month — without any customer deciding to leave.</p>
     <p>The 9% is the upper bound of what's recoverable. With a good dunning system, most of that 9% comes back. Without one, all of it is gone.</p>
     <h3 id="what-good-looks-like-in-2026">What "good" looks like in 2026</h3>
     <p>Across the 148 Baremetrics customers using Recover in December 2024:</p>
     <ul><li>Median customer earned 410% ROI on their Baremetrics subscription in a single month</li><li>82% of customers saw Recover pay for itself within month one</li><li>44% saw 5×+ ROI in a single month</li><li>20% saw 10×+ ROI in a single month</li></ul>
     <p>These aren't ceiling outcomes — they're typical outcomes. The customers in the 18% who didn't see immediate ROI are usually new accounts (less than 30 days of data) or businesses where Recover's exclusion logic was filtering most of their failed payments. For the typical subscription business, the move from no dunning to working dunning is the single highest-ROI retention investment available.</p>
-    <h2 id="why-payments-fail-and-which-failures-are-recoverable">Why payments fail — and which failures are recoverable</h2>
+    <h2 id="why-payments-fail--and-which-failures-are-recoverable">Why payments fail — and which failures are recoverable</h2>
     <p>Understanding the root causes of payment failures determines which recovery strategy will work. Roughly four common cases:</p>
-    <h3 id="1-expired-or-reissued-card">1. Expired or reissued card</h3>
+    <h3 id="expired-or-reissued-card">1. Expired or reissued card</h3>
     <p>The most common cause. The customer's card hits its expiry date, gets cancelled and reissued by their bank (often after fraud detection), or is replaced by an updated chip card. The customer typically doesn't realise the card has changed until something they pay for stops working.</p>
     <p>Recoverable? Almost always — but requires customer action (they need to update the card). Card-updater services (offered by Stripe and other processors) handle a meaningful share of these automatically. The rest need a dunning email.</p>
-    <h3 id="2-insufficient-funds-or-soft-decline">2. Insufficient funds or soft decline</h3>
+    <h3 id="insufficient-funds-or-soft-decline">2. Insufficient funds or soft decline</h3>
     <p>Short-term cash-flow issue, daily-spending-limit trigger, or fraud check by the issuer. These often resolve themselves within hours or days.</p>
     <p>Recoverable? Usually invisibly via smart retries — no customer action required. Smart retry logic times the retry for moments when the issuing bank is most likely to approve the charge (post-payday, off-peak hours, etc.).</p>
-    <h3 id="3-hard-decline-card-cancelled-lost-or-stolen">3. Hard decline — card cancelled, lost, or stolen</h3>
+    <h3 id="hard-decline--card-cancelled-lost-or-stolen">3. Hard decline — card cancelled, lost, or stolen</h3>
     <p>The issuing bank refused the charge categorically. The card is no longer valid.</p>
     <p>Recoverable? Only if the customer takes action to add a new payment method. Dunning emails (or SMS) with a one-click update link are the only path.</p>
-    <h3 id="4-geographic-or-fraud-mismatch">4. Geographic or fraud mismatch</h3>
+    <h3 id="geographic-or-fraud-mismatch">4. Geographic or fraud mismatch</h3>
     <p>The card was issued in a country your processor flags, or the charge pattern triggered a fraud-detection rule. The bank is blocking the charge, not your processor.</p>
     <p>Recoverable? Sometimes, but requires the customer to call their bank to authorise the charge. Email content matters here — directing the customer to contact their bank, not just "update your card," is what works.</p>
     <h3 id="soft-declines-vs-hard-declines">Soft declines vs hard declines</h3>
@@ -61,38 +61,38 @@
     <p>If your dunning system retries hard declines (which it shouldn't), you're wasting attempts. If it doesn't retry soft declines (which it should), you're recovering less than possible. Smart retry logic — built into modern dunning tools like Recover — handles the distinction automatically.</p>
     <h2 id="the-5-mechanisms-for-reducing-involuntary-churn">The 5 mechanisms for reducing involuntary churn</h2>
     <p>Every reduction in involuntary churn comes from one of these five levers. Most subscription businesses are using one or two; the highest-recovering teams are running all five.</p>
-    <h3 id="1-pre-dunning-warn-customers-before-the-card-actually-fails">1. Pre-dunning: warn customers before the card actually fails</h3>
+    <h3 id="pre-dunning-warn-customers-before-the-card-actually-fails">1. Pre-dunning: warn customers before the card actually fails</h3>
     <p>The cheapest payment failure to recover is the one that never happened. Pre-dunning is the practice of emailing customers 30 days (or 30 + 7 days) before a known card expiry, prompting them to update billing details before any charge fails.</p>
     <p>Pre-dunning email open rates routinely beat post-failure dunning open rates because:</p>
     <ul><li>The customer isn't yet in a "something went wrong" mental state</li><li>The framing is helpful ("heads-up, your card expires next month"), not corrective</li><li>The action required is simple and low-stakes</li></ul>
     <p>Baremetrics Recover supports pre-dunning emails 30 days and 7 days before known expiry. We've seen these emails average a 73% open rate and 11% click-through rate — multiples higher than post-failure dunning.</p>
-    <h3 id="2-annual-renewal-reminders">2. Annual renewal reminders</h3>
+    <h3 id="annual-renewal-reminders">2. Annual renewal reminders</h3>
     <p>A separate flavour of pre-dunning, specifically for annual subscriptions. Send a renewal reminder 14-30 days before the next annual charge, with a "your card on file is **  ** 4242, update if needed" prompt.</p>
     <p>Some companies avoid this on the theory that it might give annual customers a chance to cancel. The reality is opposite: customers who get a surprise $1,200 annual charge with no warning are far more likely to dispute, churn, or chargeback than customers who see the charge coming and have a chance to update their details. Annual renewal reminders are a net retention positive.</p>
-    <h3 id="3-multi-channel-notifications-when-payments-fail">3. Multi-channel notifications when payments fail</h3>
+    <h3 id="multi-channel-notifications-when-payments-fail">3. Multi-channel notifications when payments fail</h3>
     <p>Email alone reaches some customers. SMS, in-app banners, and (for the right businesses) paywalls reach others. The combination meaningfully outperforms any single channel.</p>
     <p>For Recover users, the multi-channel stack looks like:</p>
     <ul><li>Email sequence (7 emails over 27 days — see the cadence breakdown in our dunning emails guide)</li><li>SMS as a first-class channel alongside email — particularly effective from day 7 onwards when email engagement drops</li><li>In-app banner for active product users (often the highest-converting placement)</li><li>Paywall at the appropriate delinquency threshold (typically day 13-15, just before account suspension)</li></ul>
     <p>Personalised, multi-channel notifications have been shown to reduce involuntary churn by up to 34% compared to single-channel email-only flows.</p>
-    <h3 id="4-smart-retry-logic-on-failed-charges">4. Smart retry logic on failed charges</h3>
+    <h3 id="smart-retry-logic-on-failed-charges">4. Smart retry logic on failed charges</h3>
     <p>When a payment fails, retry timing matters as much as retry frequency. A naive retry (every 3 days, every 5 days) misses most of the moments when a charge would succeed. Smart retry logic uses machine learning to time retries for windows where success is statistically most likely.</p>
     <p>Smart retries often recover failed payments without the customer ever knowing there was a problem — the charge that failed at 2pm Friday succeeds at 9am Monday after the customer's payday clears. This is called "invisible recovery" and it's the highest-leverage retry pattern available.</p>
     <p>For Stripe-native businesses, Stripe Smart Retries handles a meaningful portion of this automatically. For deeper recovery and customer-facing communications layered on top, dedicated dunning tools like Recover extend what Smart Retries doesn't catch.</p>
-    <h3 id="5-customer-segment-exclusion-the-newest-and-least-known-lever">5. Customer-segment exclusion (the newest and least-known lever)</h3>
+    <h3 id="customer-segment-exclusion-the-newest-and-least-known-lever">5. Customer-segment exclusion (the newest and least-known lever)</h3>
     <p>This is the lever most teams haven't yet adopted. Some customers genuinely shouldn't be in your automated dunning flow:</p>
     <ul><li>VIP accounts (personal CSM relationship)</li><li>Enterprise contracts (manual billing, invoiced annually)</li><li>Internal employee accounts</li><li>Customers in active hardship negotiations</li><li>Customers paused in a planned grace period</li></ul>
     <p>Sending automated dunning to any of these is the wrong intervention. As of April 2026, Recover supports excluding customer segments from the dunning flow entirely — including mid-sequence exits if a customer becomes excluded after a sequence starts.</p>
     <p>Not dunning the wrong customer is as much a part of effective involuntary-churn reduction as dunning the right one.</p>
     <h2 id="how-to-measure-your-involuntary-churn">How to measure your involuntary churn</h2>
     <p>Three metrics matter:</p>
-    <h3 id="1-involuntary-churn-rate">1. Involuntary churn rate</h3>
+    <h3 id="involuntary-churn-rate">1. Involuntary churn rate</h3>
     <p>(Subscribers lost to failed payments in period) / (Subscribers at start of period)</p>
     <p>This tells you the size of the problem. Benchmarks vary widely by industry — DTC subscription boxes typically run higher (8-15%) because of physical card issues for mailing; B2B SaaS typically runs lower (2-5%). What matters more than the absolute number is the trend over time.</p>
-    <h3 id="2-attempted-recovery-rate">2. Attempted recovery rate</h3>
+    <h3 id="attempted-recovery-rate">2. Attempted recovery rate</h3>
     <p>(Failed payments recovered) / (Failed payments attempted)</p>
     <p>This is the methodologically honest measure of dunning performance. The naive version — recovered ÷ all failed charges — contaminates the denominator with failures the system never attempted to recover (excluded customers, charges that resolved themselves before dunning fired, etc.).</p>
     <p>Baremetrics introduced attempted recovery rate as standard in June 2025. For a deeper explanation of why this matters, see our <a href="https://baremetrics.com/blog/improve-dunning-recovery-rate">dunning recovery rate guide</a>.</p>
-    <h3 id="3-mrr-at-risk">3. MRR at risk</h3>
+    <h3 id="mrr-at-risk">3. MRR at risk</h3>
     <p>(Recurring revenue tied to currently delinquent payments)</p>
     <p>The dollar size of recovery still available. Use this for prioritisation — high-value customers in the delinquent pool should get manual outreach before low-value ones.</p>
     <h2 id="real-customer-outcomes">Real customer outcomes</h2>
@@ -107,15 +107,15 @@
     <ul><li>Single-email dunning. A "your payment failed, click here" email sent once and never followed up recovers a fraction of what a properly sequenced flow does.</li><li>Threatening or all-caps subject lines. "FAILED PAYMENT" or "FINAL NOTICE" patterns lower open rates and trigger spam filters. Dunning is CX, not collections — see our dunning emails guide for the patterns that actually work.</li><li>Hard-cancelling customers at day 7-10. Too aggressive. Most customers who fix their billing issue do so between day 7 and day 30. Cancelling early throws away recoverable revenue and creates a bigger reactivation friction if the customer comes back.</li><li>Identical messaging across failure reasons. Customers whose cards expired need different copy from customers with insufficient funds, who need different copy from customers with geographic fraud holds. Personalisation by failure reason measurably lifts recovery.</li><li>Doing nothing because "the processor handles it." Stripe Smart Retries (and equivalents) handle the invisible retry layer well. They do not handle customer-facing communication well. For most subscription businesses, the gap between "what Stripe ships by default" and "what's actually recoverable" is large.</li></ul>
     <h2 id="faq">FAQ</h2>
     <p>Involuntary churn is the loss of subscribers caused by failed payments — expired cards, insufficient funds, declined transactions — rather than active customer cancellation. Research from Paddle puts involuntary churn at 20–40% of total churn for subscription businesses, and Baremetrics data shows it costs the average subscription business 9% of monthly recurring revenue. Unlike voluntary churn, it's almost entirely preventable with the right dunning system.</p>
-    <h3 id="what-s-the-difference-between-voluntary-and-involuntary-churn">What's the difference between voluntary and involuntary churn?</h3>
+    <h3 id="whats-the-difference-between-voluntary-and-involuntary-churn">What's the difference between voluntary and involuntary churn?</h3>
     <p>Voluntary churn happens when a customer actively decides to cancel — usually due to dissatisfaction with your product, price, or service. Involuntary churn happens when a customer's payment fails and isn't recovered, ending their subscription without their conscious decision. The two need completely different solutions: voluntary churn requires product/CX improvements; involuntary churn requires dunning automation.</p>
     <h3 id="how-do-i-reduce-involuntary-churn">How do I reduce involuntary churn?</h3>
     <p>Involuntary churn is reduced through prevention plus recovery. Prevention includes card-updater integrations and pre-expiry email warnings (~30 days before card expiry). Recovery includes smart retries, multi-channel dunning communications (email + SMS + in-app), and customer-segment exclusion. Done well, this combination can reduce involuntary churn by 30–50% relative to no system at all.</p>
     <h3 id="what-causes-most-failed-subscription-payments">What causes most failed subscription payments?</h3>
     <p>Most failed payments fall into three categories: expired or cancelled cards (the most common, often following bank reissues), insufficient funds or temporary declines (typically resolve within hours or days via smart retries), and incorrect card details or geographic mismatches (typing errors, address mismatches, country restrictions). Cards reported lost or stolen are a fourth category but a smaller share.</p>
-    <h3 id="what-s-a-soft-decline-vs-a-hard-decline">What's a "soft decline" vs a "hard decline"?</h3>
+    <h3 id="whats-a-soft-decline-vs-a-hard-decline">What's a "soft decline" vs a "hard decline"?</h3>
     <p>A soft decline is a temporary payment failure — insufficient funds, processing error, temporary fraud check — that may succeed if retried later. A hard decline is a categorical refusal by the issuing bank — expired card, lost/stolen, cancelled account, geographic restriction — that won't succeed no matter how many times you retry. Smart retry logic should only retry soft declines; hard declines need customer action.</p>
-    <h3 id="what-s-a-good-involuntary-churn-rate">What's a good involuntary churn rate?</h3>
+    <h3 id="whats-a-good-involuntary-churn-rate">What's a good involuntary churn rate?</h3>
     <p>Involuntary churn rates vary widely by industry. DTC subscription boxes typically run higher (8-15%) because of mailing-related card issues; B2B SaaS typically runs lower (2-5%). The trend matters more than the absolute number. A working dunning system should reduce your involuntary churn rate by 30-50% within 3-6 months of deployment.</p>
     <h3 id="how-much-of-total-churn-is-involuntary">How much of total churn is involuntary?</h3>
     <p>Research from Paddle suggests involuntary churn accounts for 20-40% of total churn in subscription businesses. The exact share depends on your billing model (annual vs monthly), customer base (consumer vs B2B), and whether you already have any dunning system in place. Most retention strategies under-invest in the involuntary side of this — which is why it's typically the highest-ROI lever available.</p>
@@ -130,7 +130,7 @@
     <h3 id="dominique-jackson">Dominique Jackson</h3>
     <p>Former Content Marketer at Baremetrics</p>
     <div class="toc">
-      <div><div>Table of Contents</div><div><ul><li><a href="#what-is-involuntary-churn">What is involuntary churn?</a></li><li><a href="#how-big-is-involuntary-churn-really">How big is involuntary churn really?</a></li><li><a href="#why-payments-fail-and-which-failures-are-recoverable">Why payments fail — and which failures are recoverable</a></li><li><a href="#the-5-mechanisms-for-reducing-involuntary-churn">The 5 mechanisms for reducing involuntary churn</a></li><li><a href="#how-to-measure-your-involuntary-churn">How to measure your involuntary churn</a></li><li><a href="#real-customer-outcomes">Real customer outcomes</a></li><li><a href="#what-does-not-reduce-involuntary-churn">What does NOT reduce involuntary churn</a></li><li><a href="#faq">FAQ</a></li><li><a href="#get-proactive-about-involuntary-churn">Get proactive about involuntary churn</a></li></ul></div></div>
+      <div><div>Table of Contents</div><div><ul><li><a href="#what-is-involuntary-churn">What is involuntary churn?</a></li><li><a href="#how-big-is-involuntary-churn-really">How big is involuntary churn really?</a></li><li><a href="#why-payments-fail--and-which-failures-are-recoverable">Why payments fail — and which failures are recoverable</a></li><li><a href="#the-5-mechanisms-for-reducing-involuntary-churn">The 5 mechanisms for reducing involuntary churn</a></li><li><a href="#how-to-measure-your-involuntary-churn">How to measure your involuntary churn</a></li><li><a href="#real-customer-outcomes">Real customer outcomes</a></li><li><a href="#what-does-not-reduce-involuntary-churn">What does NOT reduce involuntary churn</a></li><li><a href="#faq">FAQ</a></li><li><a href="#get-proactive-about-involuntary-churn">Get proactive about involuntary churn</a></li></ul></div></div>
     </div>
   </div>
   <div>

@@ -43,14 +43,14 @@
     <p>With this loop in place, you are not just tracking churn; you are actively creating more reactivations.</p>
     <h2 id="how-payment-gateways-handle-subscription-reactivations">How Payment Gateways Handle Subscription Reactivations</h2>
     <p>Every billing platform has its own rules around how canceled subscriptions can,  or can’t,  be reactivated. Most tools won't let a fully canceled subscription simply “restart”; instead, a new subscription is required. Here’s how three popular platforms handle it:</p>
-    <h3 id="1-how-to-reactivate-with-stripe">1. How to reactivate with Stripe</h3>
+    <h3 id="how-to-reactivate-with-stripe">1. How to reactivate with Stripe</h3>
     <p>If a subscription is canceled with cancel_at_period_end set to true if the current billing period has not yet ended, you can reverse the cancellation by setting that flag back to false. →<a href="https://docs.stripe.com/billing/subscriptions/cancel#cancel-at-the-end-of-the-current-billing-cycle">View Stripe’s documentation</a></p>
     <p>Once a subscription is fully canceled or the billing period has passed, the only option is to create a new subscription. → <a href="https://stackoverflow.com/questions/75988438/in-stripe-best-practice-for-re-activating-a-canceled-subscription">See more on Stack Overflow</a></p>
-    <h3 id="2-how-to-reactivate-with-chargebee">2. How to reactivate with Chargebee</h3>
+    <h3 id="how-to-reactivate-with-chargebee">2. How to reactivate with Chargebee</h3>
     <p>Reactivation can be done through the web dashboard, via their APIs, or through a self-serve portal. → <a href="https://www.chargebee.com/docs/billing/2.0/subscriptions/reactivation">See Chargebee’s documentation</a></p>
     <p>You can reactivate within the current billing cycle to keep the original billing dates, or you can start a fresh cycle with a new invoice. Chargebee also lets you specify a past date using the reactivate_from parameter to preserve original timing. <a href="https://www.chargebee.com/docs/billing/2.0/kb/billing/how-can-i-reactivate-a-subscription-using-the-apis">→ Read their API guide</a></p>
     <p>If you are interested in Chargebee, you should read our recent <a href="https://baremetrics.com/blog/chargebee-reviews">review</a>.</p>
-    <h3 id="3-how-to-reactivate-with-chargify">3. How to reactivate with Chargify</h3>
+    <h3 id="how-to-reactivate-with-chargify">3. How to reactivate with Chargify</h3>
     <p>Reactivation can be done through the UI or API. When you reactivate, you will see details such as the next billing date, any outstanding balances, and applied credits or coupons.→ <a href="https://maxio-chargify.zendesk.com/hc/en-us/articles/5404559291021-Reactivating-and-Resuming">See their help article</a></p>
     <p>If the subscription is reactivated within the same billing period, it may be possible to resume rather than fully restart the cycle, which preserves the original billing dates.</p>
     <h2 id="how-to-win-customers-back">How to Win Customers Back</h2>
@@ -70,7 +70,7 @@
     <h2 id="start-tracking-and-improving-your-reactivations-today">Start Tracking and Improving Your Reactivations Today</h2>
     <p>Your churned customers are one of your best growth opportunities. By understanding why they left, preventing avoidable churn, and running data-driven winback campaigns, you can turn lost revenue into renewed growth.</p>
     <p><a href="https://app.baremetrics.com/users/sign_up">Start your Baremetrics free trial</a>  and begin tracking reactivations, cancellations, and winbacks in one place.</p>
-    <h2 id="faq-s">FAQ's</h2>
+    <h2 id="faqs">FAQ's</h2>
     <ul><li>What does it mean to reactivate a subscription?
               Reactivating a subscription means a customer who previously canceled comes back and starts a new paid subscription. In most payment platforms, fully canceled subscriptions cannot simply be resumed, so a new subscription is created instead, and thus the customer is reactivated.</li><li>What is Reactivation MRR?
               Reactivation MRR is the monthly recurring revenue generated from customers who were previously churned but returned during a given month. It shows the direct revenue impact of your winback efforts.</li><li>Why focus on reactivation instead of just new customer acquisition?
@@ -83,7 +83,7 @@
     <h3 id="timothy-ware">Timothy Ware</h3>
     <p>Tim is a natural entrepreneur. He brings his love of all things business to his writing. When he isn’t helping others in the SaaS world bring their ideas to the market, you can find him relaxing on his patio with one of his newest board games. You can find Tim on LinkedIn.</p>
     <div class="toc">
-      <div><div>Table of Contents</div><div><ul><li><a href="#before-you-focus-on-reactivation-think-retention">Before You Focus on Reactivation, Think Retention</a></li><li><a href="#what-is-reactivation-mrr">What is Reactivation MRR?</a></li><li><a href="#tracking-cancellations-and-reactivations-with-baremetrics">Tracking Cancellations and Reactivations with Baremetrics</a></li><li><a href="#how-payment-gateways-handle-subscription-reactivations">How Payment Gateways Handle Subscription Reactivations</a></li><li><a href="#how-to-win-customers-back">How to Win Customers Back</a></li><li><a href="#start-tracking-and-improving-your-reactivations-today">Start Tracking and Improving Your Reactivations Today</a></li><li><a href="#faq-s">FAQ's</a></li></ul></div></div>
+      <div><div>Table of Contents</div><div><ul><li><a href="#before-you-focus-on-reactivation-think-retention">Before You Focus on Reactivation, Think Retention</a></li><li><a href="#what-is-reactivation-mrr">What is Reactivation MRR?</a></li><li><a href="#tracking-cancellations-and-reactivations-with-baremetrics">Tracking Cancellations and Reactivations with Baremetrics</a></li><li><a href="#how-payment-gateways-handle-subscription-reactivations">How Payment Gateways Handle Subscription Reactivations</a></li><li><a href="#how-to-win-customers-back">How to Win Customers Back</a></li><li><a href="#start-tracking-and-improving-your-reactivations-today">Start Tracking and Improving Your Reactivations Today</a></li><li><a href="#faqs">FAQ's</a></li></ul></div></div>
     </div>
   </div>
   <div>

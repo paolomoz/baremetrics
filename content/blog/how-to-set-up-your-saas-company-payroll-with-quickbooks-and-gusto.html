@@ -22,18 +22,18 @@
     </div>
     <p>This article walks you through how to use Gusto’s integration with Quickbooks to split your payroll into categories according to SaaS best practices. An automatic sync will save you money, reduce the room for error, and speed up the monthly closing of your books. If you are using both tools already, the set up is quick and easy.</p>
     <p>Note: This post is a part of a series on organizing SaaS Chart of Accounts. The goal of the series is to provide practical advice to SaaS CEOs and Founders on how to organize and automate their financial backend.After reading each article, you should be able to add your own comments and forward it to your Accountant or Director of Ops for implementation.</p>
-    <h2 id="1-set-up-departments">1. Set Up Departments</h2>
+    <h2 id="set-up-departments">1. Set Up Departments</h2>
     <p>First, make sure you have your <a href="https://support.gusto.com/team-management/hr-tools/departments/1066807381/Organize-your-team-by-departments.htm">Departments set up in Gusto</a> and everyone in your team has been assigned to a Department.</p>
     <p>This post assumes you are following SaaS best practices in categorizing your books – and thus payroll – to Cost of Revenue, Research &amp; Development, Sales &amp; Marketing and General &amp; Admin, as described in the Part 1 of this series. As a result, your General &amp; Admin payroll should look something like this in Quickbooks:</p>
     <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db83c9d77460ec90e1_image-1.png" alt="" loading="lazy" decoding="async"></p>
     <p>If your books look different, implement the Part 1 of the series first before continuing further.</p>
-    <h2 id="2-connect-quickbooks">2. Connect Quickbooks</h2>
+    <h2 id="connect-quickbooks">2. Connect Quickbooks</h2>
     <p>After completing the Quickbooks Online (QBO) connection, you’re prompted to map your default Gusto accounts to the ones in your accounting. Personally, I prefer mapping only the bank account and set everything else to Uncategorized Expense. This will ensure that if a department-level mapping fails (to be set up in Step 5), you’ll notice it quickly as your uncategorized expenses will shoot up.</p>
     <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db83c9d7974bec90e2_image-1024x303.png" alt="" loading="lazy" decoding="async"></p>
-    <h2 id="3-enable-department-sync">3. Enable Department Sync</h2>
+    <h2 id="enable-department-sync">3. Enable Department Sync</h2>
     <p>Next, while staying in the Quickbooks Online Integration page, enable the Department Account Mappings from the sidebar on the right. Optionally, you’re able to change the entry date of the expense in Quickbooks. In my experience, End of Pay Period seems to be the most common choice.</p>
     <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dbd41c9bb194ca8cb1_image.png" alt="" loading="lazy" decoding="async"></p>
-    <h2 id="4-department-account-mappings-basic">4. Department Account Mappings – Basic</h2>
+    <h2 id="department-account-mappings--basic">4. Department Account Mappings – Basic</h2>
     <p>Now, we can begin to map the departments. You should see something like this at the bottom of the Integrations page:</p>
     <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db5f1762478e39a19f_image-1-1024x131.png" alt="" loading="lazy" decoding="async"></p>
     <p>Click Setup and you’re going to see an option of setting the Basic Mappings. I recommend doing this step first as it’s going to make it a lot faster to go through the Advanced Mappings.</p>
@@ -42,7 +42,7 @@
     <p>One quirk worth noting is that Gusto does not pull in the formatting of your Quickbooks accounts, so you can’t use the indentation to see whether you are linking the right account. Gusto does pull in the QBO syntax however, which just means that each parent-child account relationship is marked with a colon. For example, General &amp; Administrative: Payroll – G&amp;A: Salaries – G&amp;A represents a Salaries – G&amp;A account, which also happens to be a child or the Payroll – G&amp;A and a grandchild of the General &amp; Administrative accounts.</p>
     <p>Since I would not recommend doing reimbursements through Gusto (use Abacus or Expensify instead), you can map Reimbursements to go to Uncategorized Expense account in Quickbooks. This way you can always clear out the uncategorized account if you happen to do an one-off Gusto reimbursement.</p>
     <p>Hit Save for the changes to take effect.</p>
-    <h2 id="5-department-account-mappings-advanced">5. Department Account Mappings – Advanced</h2>
+    <h2 id="department-account-mappings--advanced">5. Department Account Mappings – Advanced</h2>
     <p>After completing the Basic mapping, you should see the same Department with 3-5 accounts mapped. Select Edit, and navigate to the Advanced mapping tab.</p>
     <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8db5f1762771f39a1a0_image-2-1024x136.png" alt="" loading="lazy" decoding="async"></p>
     <p>Now you have about 30-50 options to select from, depending on how many benefits you offer. Luckily, most of the mappings go to the same account, such as the first four of Regular Salaries, Vacation Pay, Sick Pay and Overtime all mapping to the default Wages account in Quickbooks.</p>
@@ -60,7 +60,7 @@
     <p>All there’s left to do in Gusto is to map each Benefits Liability account to Quickbooks:</p>
     <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dc83c9d7ad90ec90e4_image-6.png" alt="" loading="lazy" decoding="async"></p>
     <p>Finally, repeat this process to the other departments of Cost of Revenue, Research &amp; Development, Sales, and Marketing. The sync will be faster as you have your benefit clearing accounts created already, and all you need to do is a bunch of syncing. Keep in mind that for Sales payroll, you’ll probably want to map Commissions to its’ own individual account in Quickbooks – not the regular salaries.</p>
-    <h2 id="6-monthly-closing">6. Monthly Closing</h2>
+    <h2 id="monthly-closing">6. Monthly Closing</h2>
     <p>Although everything is syncing already, let’s take a look how things look in Quickbooks for the month-end close. Once you run your next payroll, you should see something like this in the Banking section of your Quickbooks Online:</p>
     <p><img src="https://uploads-ssl.webflow.com/5dd6dc905e7d447c053bccbb/5de3d8dc5f176210a539a1a2_image-7-1024x228.png" alt="" loading="lazy" decoding="async"></p>
     <p>Gusto debited the company bank account for $96,698.30 for the net salaries, $32,269.85 for the taxes, and $900.00 for employee donation matching. Now, without the sync these would be tedious to allocate to each department, but luckily the newly created sync will do it automatically. In short, Gusto creates three journal entries that will tell Quickbooks how these transactions should be categorized.</p>
@@ -77,7 +77,7 @@
     <h3 id="swapnil-jain">Swapnil Jain</h3>
     <p>Swapnil is a seasoned Chartered Accountant with a decade of experience across both budding startups and large international companies. He has always been at the heart of financial strategy, bringing a touch of personal commitment and passion.</p>
     <div class="toc">
-      <div><div>Table of Contents</div><div><ul><li><a href="#1-set-up-departments">1. Set Up Departments</a></li><li><a href="#2-connect-quickbooks">2. Connect Quickbooks</a></li><li><a href="#3-enable-department-sync">3. Enable Department Sync</a></li><li><a href="#4-department-account-mappings-basic">4. Department Account Mappings – Basic</a></li><li><a href="#5-department-account-mappings-advanced">5. Department Account Mappings – Advanced</a></li><li><a href="#6-monthly-closing">6. Monthly Closing</a></li><li><a href="#takeaway">Takeaway</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>
+      <div><div>Table of Contents</div><div><ul><li><a href="#set-up-departments">1. Set Up Departments</a></li><li><a href="#connect-quickbooks">2. Connect Quickbooks</a></li><li><a href="#enable-department-sync">3. Enable Department Sync</a></li><li><a href="#department-account-mappings--basic">4. Department Account Mappings – Basic</a></li><li><a href="#department-account-mappings--advanced">5. Department Account Mappings – Advanced</a></li><li><a href="#monthly-closing">6. Monthly Closing</a></li><li><a href="#takeaway">Takeaway</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>
     </div>
   </div>
   <div>

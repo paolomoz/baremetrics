@@ -29,18 +29,18 @@
     <p>API stands for Application Programming Interface. Simply put, APIs allow two applications to communicate with each other and access specific data. Developers use APIs when building and integrating their products with others.</p>
     <p>For example, the ability to log into apps using your Facebook credentials is possible because of the Facebook API. The app you’re trying to log into will use the Facebook API to authenticate your account and provide the identification information while mitigating <a href="https://www.g2.com/articles/man-in-the-middle-attack">security risks</a>.</p>
     <p>The Baremetrics API works similarly. By connecting our API to your other applications, you’re authorizing Baremetrics to automatically receive certain information.</p>
-    <h3 id="1-connect-non-supported-providers">1. Connect non-supported providers</h3>
+    <h3 id="connect-non-supported-providers">1. Connect non-supported providers</h3>
     <p>To import data into Baremetrics and start seeing your metrics, you’ll need to connect a payment provider.</p>
     <p>Baremetrics currently offers integrations with Stripe, Braintree, Recurly, App Store Connect, Google Play, Shopify, and Chargebee.. If you are using one of those providers, you can <a href="https://app.baremetrics.com/users/sign_up">sign up for Baremetrics and connect them right now</a>!</p>
     <p>The Baremetrics API is a great solution for people who:</p>
     <ul><li>Use a non-supported payment provider (anything other than the providers listed above)</li><li>Need to connect a non-supported provider in addition to a supported provider</li><li>Want to normalize billing data from various payment provider(s)</li></ul>
     <p>Here’s our <a href="https://developers.baremetrics.com/reference#introduction">step-by-step guide</a> for how to use the Baremetrics API for all tasks related to subscribers, plans, charges, refunds, segments, attributes, and more!</p>
-    <h3 id="2-request-baremetrics-data">2. Request Baremetrics data</h3>
+    <h3 id="request-baremetrics-data">2. Request Baremetrics data</h3>
     <p>You can request both metrics and customer data to use outside the Baremetrics app. In this case, requesting essentially means the same thing as exporting.</p>
     <p>Using the API, you can request any of your <a href="https://baremetrics.com/blog/what-metrics-does-baremetrics-monitor">metrics</a> from a specific date or time period. For example, MRR from 8/1/2021 to 8/31/2021.</p>
     <p>These requests can be scheduled to happen automatically, which means less time needed to create reports.</p>
     <p>Best of all, this data can include data from different payment providers and is already normalized. This means your data is formatted in the same way for external reports, spreadsheets, or whatever you may need it for!</p>
-    <h3 id="3-use-cancellation-insights">3. Use Cancellation Insights</h3>
+    <h3 id="use-cancellation-insights">3. Use Cancellation Insights</h3>
     <p><a href="https://baremetrics.com/features/cancellation-insights">Cancellation Insights</a> is a powerful Baremetrics add-on feature. It automates the collection of cancellation data to help you better understand the reasons why customers leave.</p>
     <p>Cancellation Insights works in 4 steps.</p>
     <p>Step 1: Customer initiates the cancellation</p>
@@ -52,26 +52,26 @@
     <p>The API support is ideal for folks who wish to capture this information while using their existing cancellation flow.</p>
     <p>The next four points will cover how the API brings in external information that enriches your customer data.</p>
     <p>With rich customer data, you can create more detailed customer segments. More segments means more knowledge and insight into your sales and marketing funnels.</p>
-    <h3 id="4-visualize-crm-data-in-your-baremetrics-dashboards">4. Visualize CRM data in your Baremetrics Dashboards</h3>
+    <h3 id="visualize-crm-data-in-your-baremetrics-dashboards">4. Visualize CRM data in your Baremetrics Dashboards</h3>
     <p><a href="https://nethunt.com/blog/what-is-a-crm/">Customer Relationship Management tools</a> are incredibly powerful. They help organize every step of the sales and marketing funnel, and keep detailed customer information in one place.</p>
     <p>Using the Baremetrics API, you can import customer information from CRMs into Baremetrics as attributes. More attributes means more possibilities to segment your customer base into specific groups.</p>
     <p>For example, if your CRM is tracking which salespeople work with each customer, you could import the names of your sales representatives into Baremetrics and then see which sales person is facilitating the most revenue.</p>
     <p>Here’s another example. Let’s say your team uses Pipedrive and labels SaaS companies in your sales funnel as “SaaS.” Using the Baremetrics API, you could import this label as an attribute into Baremetrics.</p>
     <p>Then, you can see how much money you make off of SaaS companies vs. ecommerce vs. any other label you choose.</p>
     <p>Doing this allows you to create customer segments and make instant comparisons in terms of MRR, LTV, or any of the 26+ metrics we track automatically.</p>
-    <h3 id="5-track-utm-data">5. Track UTM data</h3>
+    <h3 id="track-utm-data">5. Track UTM data</h3>
     <p>UTMs, or Urchin Tracking Modules, are code snippets attached to the end of URLs.</p>
     <p>Marketers use UTMs to:</p>
     <ul><li>Track where leads come from</li><li>Identify top-performing content</li><li>Evaluate the efficacy of different campaigns</li></ul>
     <p>Using the Baremetrics API, you can create a custom attribute within the Baremetrics app, then import UTM information into the custom attribute of your customer’s profile.</p>
     <p>Then, you can segment customers by UTM to see from which channels you are getting your biggest and smallest customers from.</p>
     <p>Here’s what this looks like when it’s all done. This search filter is gathering customers who started a <a href="https://baremetrics.com/blog">free trial</a> from our blog homepage.</p>
-    <h3 id="6-track-and-compare-customer-activity-or-specific-behaviors">6. Track and compare customer activity or specific behaviors</h3>
+    <h3 id="track-and-compare-customer-activity-or-specific-behaviors">6. Track and compare customer activity or specific behaviors</h3>
     <p>Some apps monitor customer activity within their app in the form of web sessions. Others will also monitor specific behaviors such as button clicks, or number of files uploaded.</p>
     <p>If there is some behaviour in your app, and it’s possible to define and tag that behavior, then you could import the data as an attribute in Baremetrics using the API.</p>
     <p>You could do inquiries into your data such as “MRR from customers who have uploaded more than three files to their account”.</p>
     <p>You could also investigate the overlap between customer activity and LTV.  For example, what is the LTV of a customer who uses the product everyday vs. a customer who has only used the product once.</p>
-    <h3 id="7-import-stripe-metadata">7. Import Stripe metadata</h3>
+    <h3 id="import-stripe-metadata">7. Import Stripe metadata</h3>
     <p>Stripe users can import <a href="https://stripe.com/docs/api/metadata">Stripe metadata</a> to augment Baremetrics data.</p>
     <p>There are three ways to bring the metadata in, one of which uses the API.</p>
     <p>1. Using our <a href="https://help.baremetrics.com/en/articles/5379838-customer-augmentation">Customer Augmentation</a> tool</p>

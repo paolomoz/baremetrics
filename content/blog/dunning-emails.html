@@ -35,14 +35,14 @@
     <p>That framing — dunning as customer experience, not as billing — is the single most predictive factor for recovery rate. Every choice we make below about subject lines, body copy, CTAs, and cadence flows from it.</p>
     <h2 id="the-5-components-of-an-effective-dunning-email">The 5 components of an effective dunning email</h2>
     <p>A dunning email has more moving parts than it looks. To convert, all five need to work.</p>
-    <h3 id="1-subject-line">1. Subject line</h3>
+    <h3 id="subject-line">1. Subject line</h3>
     <p>The subject has one job: get opened. On the typical phone screen, your customer sees ~35 characters. You need to signal the problem and the solution simultaneously.</p>
     <p>Patterns that work:</p>
     <ul><li>"Quick fix needed for your [Product] subscription" — neutral, solution-oriented</li><li>"Your card expired — here's a one-click update" — direct, framed as a favour</li><li>"Action needed: payment didn't go through" — clear, urgent without threat</li><li>"Looks like your card needs an update" — warm, casual</li><li>"[Product] couldn't charge your card today" — informative, low pressure</li><li>"Save 30 seconds: update your billing details" — benefit-led</li></ul>
     <p>Patterns to avoid:</p>
     <ul><li>❌ "FAILED PAYMENT" (all caps, alarming)</li><li>❌ "OVERDUE" / "FINAL NOTICE" / "URGENT" (collections-tone)</li><li>❌ "Your account is at risk" (vague, scary)</li><li>❌ "Payment problem" with no context (no path forward)</li></ul>
     <p>If your subject line could be sent by a debt collector, rewrite it.</p>
-    <h3 id="2-email-body">2. Email body</h3>
+    <h3 id="email-body">2. Email body</h3>
     <p>Three sentences is often enough.</p>
     <p>The 3-sentence template:</p>
     <ol><li>What happened. "Your subscription payment didn't go through this month — looks like the card we have on file has expired."</li><li>What to do. "You can update it in about 30 seconds using this link: [Update billing]."</li><li>What happens next. "We'll automatically retry the charge once your new details are in. No further action needed."</li></ol>
@@ -52,15 +52,15 @@
     <p>A variation, tone-matched to a subscription community/DTC:</p>
     <blockquote><p>Hi [First name], Just a quick note — your monthly [Product] payment didn't go through. Almost always it's an expired card or a small banking issue, easy to fix. Here's the one-click update: [Update billing] If you've got any questions about your subscription, just reply to this email and we'll help. — [Founder / CX team name]</p></blockquote>
     <p>Notice what's NOT in either: marketing language, urgency manipulation, threats about service interruption, multiple CTAs, footer noise, promotional links.</p>
-    <h3 id="3-call-to-action">3. Call to action</h3>
+    <h3 id="call-to-action">3. Call to action</h3>
     <p>The CTA is the entire reason the email exists. Make it impossible to miss and impossible to misuse.</p>
     <p>Rules:</p>
     <ul><li>One button, not three. Multiple CTAs split attention and lower conversion.</li><li>The button should land directly on the billing-update form. No login wall, no account-portal navigation, no extra clicks.</li><li>Action-led button copy. "Update billing" beats "Click here". "Update card details" beats "Manage subscription".</li><li>Repeat the link below the button as plain text. Some email clients strip styled buttons; some readers prefer text links. Belt and braces.</li><li>The hosted update page should be mobile-first. Half of dunning email opens happen on phones.</li></ul>
     <p>If you use <a href="https://baremetrics.com/features/recover">Recover</a>, the hosted payment-update URL handles this — customers land directly on a one-click form, no portal navigation. If you're rolling your own, audit the path from inbox to updated card and count the clicks. More than two means you're losing customers at the friction.</p>
-    <h3 id="4-send-time">4. Send time</h3>
+    <h3 id="send-time">4. Send time</h3>
     <p>When you send matters almost as much as what you send.</p>
     <ul><li>First email: within 24 hours of failure. Same-day emails outperform later ones by a wide margin — the customer's card is probably still on their desk, and the issue is fresh.</li><li>Tuesday–Thursday, 9–11am local time for the customer's primary timezone. Avoid Monday mornings (inbox flood) and Friday afternoons (already checked out).</li><li>Avoid weekends for early-cadence emails. Recovery rate dips on Saturday/Sunday sends. Save weekends for later-cadence reminders where urgency builds.</li></ul>
-    <h3 id="5-visual-identity">5. Visual identity</h3>
+    <h3 id="visual-identity">5. Visual identity</h3>
     <p>Branded dunning emails outperform plain-text ones for trust and engagement, even though plain-text feels more "personal." Counter-intuitive but real: customers want to know the email is genuinely from the company they're paying.</p>
     <ul><li>Your logo at the top</li><li>Your brand colours on the CTA button</li><li>Your sender identity (e.g., "Sam from [Product]" — a named CX person, not "billing@" or "noreply@")</li><li>A clear unsubscribe footer that doesn't unsubscribe them from billing emails (those are transactional and should always send)</li></ul>
     <p>Recover lets you control all of this without writing code — branding, sender identity, colors, and template. If your current dunning system is rendering plain "your payment failed" emails branded as Stripe/Braintree/etc., you're missing recovery on every send.</p>
@@ -101,12 +101,12 @@
     <p>This is the most common cause and the easiest to fix. The customer needs a 30-second update.</p>
     <blockquote><p>Subject: Your [Product] card update Looks like the card we have on file for [Product] has expired. Update takes 30 seconds: [Update billing]. We'll retry the charge automatically once your new details are saved.</p></blockquote>
     <p>Lead with the cause, lead with the fix. No drama needed.</p>
-    <h3 id="insufficient-funds-soft-decline">Insufficient funds / soft decline</h3>
+    <h3 id="insufficient-funds--soft-decline">Insufficient funds / soft decline</h3>
     <p>This is often a temporary cash-flow issue — payday hasn't hit, or the bank is reviewing the charge. Often resolves itself within 24–48 hours via smart retries before any customer action is needed.</p>
     <p>For the email that does fire:</p>
     <blockquote><p>Subject: We'll try again soon Hi [First name], we couldn't charge your card today — looks like a temporary issue. We'll automatically try again in a couple of days. If you'd like to update the card on file or use a different one, you can do that here: [Update billing].</p></blockquote>
     <p>Empathy + retry transparency + optional self-service. Don't make this feel like a problem the customer urgently caused.</p>
-    <h3 id="geographic-fraud-authorisation-failure">Geographic / fraud / authorisation failure</h3>
+    <h3 id="geographic--fraud--authorisation-failure">Geographic / fraud / authorisation failure</h3>
     <p>Card was declined by the issuer (bank), not by your processor. The customer needs to contact their bank.</p>
     <blockquote><p>Subject: Your bank declined this charge Hi [First name], your bank's authorising the charge to [Product] was declined — this typically happens when the bank flags an international or unusual transaction. The easiest fix is a quick call to the number on the back of your card to clear the charge, then we'll retry automatically. Alternatively, you can update to a different payment method: [Update billing].</p></blockquote>
     <p>Specific about the cause + practical about the fix + alternative for customers who can't or won't call their bank.</p>
@@ -128,7 +128,7 @@
     <p>Recover provides all of these out of the box. Whatever tool you use, slice recovery rate by step and by failure reason — averages hide the actionable signal.</p>
     <h2 id="what-tool-to-use">What tool to use</h2>
     <p>Two options for any subscription business:</p>
-    <h3 id="option-1-your-payment-processor-s-built-in-dunning">Option 1: Your payment processor's built-in dunning</h3>
+    <h3 id="option-1-your-payment-processors-built-in-dunning">Option 1: Your payment processor's built-in dunning</h3>
     <p>Stripe, Braintree, Recurly, and Chargebee all ship basic dunning capabilities — typically 3–5 emails, limited customisation, no SMS, no segment-based exclusion. Free if you're already using the processor. The right choice if you're early-stage and need something running today.</p>
     <p>Limitations: limited customisation, billing-system-toned defaults, no segment exclusion, no FAQ-by-failure-reason templates.</p>
     <h3 id="option-2-a-dedicated-dunning-layer-like-recover">Option 2: A dedicated dunning layer like Recover</h3>
@@ -141,7 +141,7 @@
     <p>Within 24 hours of the failed payment. The first email is the highest-converting one in the sequence — the issue is fresh in the customer's mind, the card is probably still nearby, and the cause (often an expired card) is easy to fix. Delaying the first email by even a day measurably lowers recovery rate.</p>
     <h3 id="should-dunning-emails-be-plain-text-or-branded">Should dunning emails be plain text or branded?</h3>
     <p>Branded. Counter-intuitive but true: customers want to see your logo, your brand colours, and a named sender — it confirms the email is genuinely from a company they're paying. Plain-text emails feel more "personal" to senders but actually lower trust on the receiving end. Branded HTML emails recover better.</p>
-    <h3 id="what-s-the-most-important-email-in-a-dunning-sequence">What's the most important email in a dunning sequence?</h3>
+    <h3 id="whats-the-most-important-email-in-a-dunning-sequence">What's the most important email in a dunning sequence?</h3>
     <p>The day-13 email — the one that lands just before most subscription businesses lock customers out at day 15. It's the customer's final practical chance to update their billing before involuntary churn becomes irreversible. Many dunning sequences skip this step entirely; adding it back is one of the most reliable ways to lift recovery rate.</p>
     <h3 id="how-do-you-write-a-subject-line-for-a-dunning-email">How do you write a subject line for a dunning email?</h3>
     <p>Signal both the problem and the solution in 35 characters or fewer (mobile preview length). Patterns that work: "Quick fix needed for your [Product] subscription", "Your card expired — here's a one-click update", "Action needed: payment didn't go through". Avoid all-caps urgency ("FAILED PAYMENT", "OVERDUE") which lowers open rates and triggers spam filters.</p>

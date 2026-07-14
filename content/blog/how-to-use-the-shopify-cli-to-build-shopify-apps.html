@@ -38,16 +38,16 @@
     <p>Let’s take a look at Shopify CLI in action!</p>
     <h2 id="how-to-use-shopify-cli">How to use Shopify CLI</h2>
     <p>Shopify CLI for apps is a highly intuitive tool. Shopify and GitHub also provide detailed tutorials for every step of the way.</p>
-    <h3 id="1-installation">1. Installation</h3>
+    <h3 id="installation">1. Installation</h3>
     <p>Shopify CLI can be installed on several different operating systems. The easiest way to do this is through your computer’s command line. <a href="https://shopify.dev/apps/tools/cli/installation">Here</a> is a full list of software requirements.</p>
-    <h3 id="2-creating-a-project">2. Creating a project</h3>
+    <h3 id="creating-a-project">2. Creating a project</h3>
     <p>When you go to create an app in Shopify CLI, you will be prompted to input some key information about yourself, such as your organization, development store, and the type of app you want to make (here, you have the option to build one with a node.js backend and React frontend or use Ruby on Rails). Shopify will then create your app on the <a href="https://baremetrics.com/blog/shopify-partner-dashboard-for-app-developers-what-business-metrics-you-can-get-for-your-shopify-app">Shopify Partner Dashboard</a>.</p>
     <p>Take a look at this model from the Shopify website:</p>
     <p>Next, Shopify CLI will run a tunnel for you with “shopify serve”. Your app is now accessible to the Internet via a “https” port, which is an authentication requirement for Shopify. This will then tunnel your app using ngrok, as well as run your server for local development.</p>
-    <h3 id="3-app-population-for-testing">3. App population for testing</h3>
+    <h3 id="app-population-for-testing">3. App population for testing</h3>
     <p>So, how do you know if it’s working?</p>
     <p>Shopify CLI has a test function built in: you can populate your app exclusively for testing purposes. If you run the command ‘’shopify populate’’, you can choose to populate your app with products, customers, and draft orders.</p>
-    <h3 id="4-deployment">4. Deployment</h3>
+    <h3 id="deployment">4. Deployment</h3>
     <p>As the name suggests, the “shopify deploy” command deploys your app to external platforms. Currently, Heroku is the only available external platform, but more are in development (and by the time you’re reading this, might already be available!)</p>
     <h2 id="how-shopify-built-the-shopify-cli-for-apps">How Shopify built the Shopify CLI for apps</h2>
     <p>Shopify has built many tools to help its partners create apps for the Shopify App Store. That’s just one reason we recently argued that developing apps for Shopify is better than WooCommerce.</p>
