@@ -1,0 +1,52 @@
+{
+  "total": 11,
+  "limit": 11,
+  "offset": 0,
+  "data": [
+    {
+      "Source": "/academy/glossary/cost-per-click",
+      "Destination": "/academy/glossary-cost-per-click"
+    },
+    {
+      "Source": "/blog/fixed-vs.-variable-expenses-breaking-it-down-simply",
+      "Destination": "/blog/fixed-vs-variable-expenses-breaking-it-down-simply"
+    },
+    {
+      "Source": "/blog/how-to-categorize-expenses-in-a-saas-startup-v2.0",
+      "Destination": "/blog/how-to-categorize-expenses-in-a-saas-startup-v2-0"
+    },
+    {
+      "Source": "/en/jp/blog",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/en/jp/blog/revenue-churn",
+      "Destination": "/jp/blog/revenue-churn"
+    },
+    {
+      "Source": "/help/kb-404",
+      "Destination": "/help/help-kb-404"
+    },
+    {
+      "Source": "/help/kb-search-results",
+      "Destination": "/help/help-kb-search-results"
+    },
+    {
+      "Source": "/ja",
+      "Destination": "/ja/about"
+    },
+    {
+      "Source": "/ja-jp/sample-test-page-by-hubspot-migration-team",
+      "Destination": "/"
+    },
+    {
+      "Source": "/ja/sample-test-page-by-hubspot-migration-team",
+      "Destination": "/"
+    },
+    {
+      "Source": "/sample-test-page-by-hubspot-migration-team",
+      "Destination": "/"
+    }
+  ],
+  ":type": "sheet"
+}
