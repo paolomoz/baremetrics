@@ -63,7 +63,7 @@ const redactSecret = (s) => (s || '').replace(/sk_(test|live)_[A-Za-z0-9]{8,}/g,
 /* expiring Google-Docs/Drive image URLs the delivery pipeline can't fetch →
    render as about:error and fail the verify gate. Drop them (the capture pulls
    them back on regen, so this must live in the generator). */
-const isExpiringImg = (s) => /googleusercontent\.com|lh\d+[.-]google/i.test(s || '');
+const isExpiringImg = (s) => /googleusercontent\.com|lh\d+[.-]google|web\.archive\.org/i.test(s || '');
 const esc = (s) => redactSecret(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const ws = (s) => (s || '').replace(/\s+/g, ' ').trim();
 
@@ -107,7 +107,11 @@ function seoTitle(raw) {
 }
 
 /* baremetrics-relative, fragment-stripped href for cta↔body matching */
-const normHref = (h) => (h || '')
+/* unwrap Wayback-archived hrefs (captured body links pointing at
+   web.archive.org/web/<ts>[im_]/<original>) back to the original URL — the
+   archive wrappers are broken links (they redirect through archive.org or 404). */
+const unwrapArchive = (h) => (h || '').replace(/^https?:\/\/web\.archive\.org\/web\/\d+(?:im_)?\//i, '');
+const normHref = (h) => unwrapArchive(h || '')
   .replace(/^https?:\/\/(www\.)?baremetrics\.com/i, '')
   .replace(/#.*$/, '')
   .replace(/\/+$/, '');
@@ -153,7 +157,7 @@ function paragraphHtml(item, ctaMap) {
     .sort((a, b) => b.length - a.length)[0];
   if (!hit) return `<p>${esc(txt)}</p>`;
   const i = txt.indexOf(hit);
-  return `<p>${esc(txt.slice(0, i))}<a href="${esc(item.href)}">${esc(hit)}</a>${esc(txt.slice(i + hit.length))}</p>`;
+  return `<p>${esc(txt.slice(0, i))}<a href="${esc(unwrapArchive(item.href))}">${esc(hit)}</a>${esc(txt.slice(i + hit.length))}</p>`;
 }
 
 function listHtml(item, tag) {
