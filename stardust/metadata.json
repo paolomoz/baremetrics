@@ -1,0 +1,41 @@
+{
+  "total": 8,
+  "limit": 8,
+  "offset": 0,
+  "data": [
+    {
+      "URL": "/**",
+      "og:type": "website",
+      "og:image:alt": "Baremetrics"
+    },
+    {
+      "URL": "/blog/**",
+      "og:type": "article"
+    },
+    {
+      "URL": "/academy/**",
+      "og:type": "article"
+    },
+    {
+      "URL": "/founder-chats/**",
+      "og:type": "article"
+    },
+    {
+      "URL": "/jp/blog/**",
+      "og:type": "article"
+    },
+    {
+      "URL": "/jp/academy/**",
+      "og:type": "article"
+    },
+    {
+      "URL": "/ja/blog/**",
+      "og:type": "article"
+    },
+    {
+      "URL": "/ja/academy/**",
+      "og:type": "article"
+    }
+  ],
+  ":type": "sheet"
+}
