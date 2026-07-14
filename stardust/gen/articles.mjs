@@ -60,6 +60,10 @@ const NL = { title: 'Subscribe for Updates', label: 'Email address', button: 'Su
    blocks it, and it must never carry a real sk_live_). Durable so regen can't
    reintroduce it. */
 const redactSecret = (s) => (s || '').replace(/sk_(test|live)_[A-Za-z0-9]{8,}/g, 'sk_$1_EXAMPLE_KEY');
+/* expiring Google-Docs/Drive image URLs the delivery pipeline can't fetch →
+   render as about:error and fail the verify gate. Drop them (the capture pulls
+   them back on regen, so this must live in the generator). */
+const isExpiringImg = (s) => /googleusercontent\.com|lh\d+[.-]google/i.test(s || '');
 const esc = (s) => redactSecret(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const ws = (s) => (s || '').replace(/\s+/g, ' ').trim();
 
@@ -181,7 +185,7 @@ function parseOrdered(oc) {
       if (it.t === 'p' && out.backlink && ws(it.x) === ws(out.backlink.x)) continue;
       if (/^h[1-6]$/.test(it.t) && isTocH(it.x)) { if (oc[i + 1] && oc[i + 1].t === 'ul') i += 1; continue; }
       if (/^h[1-6]$/.test(it.t) && isMoreH(it.x)) { if (oc[i + 1] && oc[i + 1].t === 'ul') i += 1; continue; }
-      if (it.t === 'img' && !out.hero) { out.hero = it; continue; }
+      if (it.t === 'img' && !out.hero && !isExpiringImg(it.src)) { out.hero = it; continue; }
       bodyStarted = true;
       out.body.push(it);
       continue;
@@ -229,7 +233,7 @@ function renderBody(bodyItems, ctaMap, titleText) {
     if (it.t === 'ul') { html.push(`    ${listHtml(it, 'ul')}`); return; }
     if (it.t === 'ol') { html.push(`    ${listHtml(it, 'ol')}`); return; }
     if (it.t === 'quote') { html.push(`    <blockquote><p>${esc(ws(it.x))}</p></blockquote>`); return; }
-    if (it.t === 'img') { html.push(`    <p>${imgTag(it.src, it.alt, false)}</p>`); return; }
+    if (it.t === 'img') { if (!isExpiringImg(it.src)) html.push(`    <p>${imgTag(it.src, it.alt, false)}</p>`); return; }
   });
   return { html, toc };
 }
@@ -318,7 +322,7 @@ export function buildArticle(j, { section = 'blog', defaultBacklink, titleFallba
       byline = strings[idx]; idx += 1;
       const m = byline.match(/^by\s+(.+?)\s+on\b/i); if (m) authorName = m[1].trim();
     }
-    if (j.og?.image) hero = { src: j.og.image, alt: '' };
+    if (j.og?.image && !isExpiringImg(j.og.image)) hero = { src: j.og.image, alt: '' };
     bodyHtml = strings.slice(idx)
       .filter((s) => !headingText.has(s))
       .map((s) => `    <p>${esc(s)}</p>`);
