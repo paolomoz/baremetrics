@@ -63,7 +63,7 @@ function experts(d) {
     let cats = core;
     if (desc && core.endsWith(desc)) cats = core.slice(0, core.length - desc.length).trim();
     const m = imgs.get(normKey(name));
-    return { name, cats, desc, href: cta.href || '#', img: m };
+    return { name, cats, desc, href: cta.href || '', img: m };
   });
 }
 
@@ -72,7 +72,10 @@ function expertRow(e) {
     ? `<img src="${esc(e.img.src)}" alt="${esc(e.img.alt || '')}"${e.img.w ? ` width="${e.img.w}"` : ''}${e.img.h ? ` height="${e.img.h}"` : ''} loading="lazy">`
     : esc(e.name);
   const main = `<h3>${esc(e.name)}</h3><p>${esc(e.cats)}</p><p>${esc(e.desc)}</p>`;
-  return row([logoCell, main, `<a href="${esc(e.href)}">Click to learn more</a>`]);
+  /* drop the "learn more" link when the source has no real href (the JA experts
+     directory doesn't link out) — a dead href="#" is worse than no link */
+  const linkCell = e.href && e.href !== '#' ? `<a href="${esc(e.href)}">Click to learn more</a>` : '';
+  return row([logoCell, main, linkCell]);
 }
 
 function railCell(currentLabel, count, locale) {
