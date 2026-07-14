@@ -112,7 +112,7 @@ function isChrome(m, heroText) {
 
 /* -------------------------------------------------------- heading walk */
 const isFaq = (t) => /frequently asked questions|^faq\b/i.test(t);
-const isExplore = (t) => /keep exploring/i.test(t);
+const isExplore = (t) => /keep exploring|機能を探究|機能を探|他の機能/i.test(t); // EN + JA ("explore features" / "other features") — localized captures use two JA phrasings
 const isHowItWorks = (t) => /how it works/i.test(t);
 const isPricing = (t) => /\$\s?\d/.test(t) && /(add-?on|\/?\s?month|per month)/i.test(t);
 const isShortEyebrow = (t) => t.length <= 22 && !/[.!?]$/.test(t);
