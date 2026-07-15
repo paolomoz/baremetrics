@@ -10,7 +10,7 @@
   </div>
   <div>
     <div class="article-head article">
-      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><a href="/blog">← Customers</a></div><div><a href="/subscribe">Subscribe for Updates</a></div></div>
       <div><div><h1>Do Churn-Based LTV Calculations Mislead Us?</h1></div></div>
       <div><div><p>By David Noonan on August 05, 2021 Last updated on April 23, 2026</p></div></div>
       <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/ltv-noonan.png" alt="" fetchpriority="high" decoding="async"></div></div>
@@ -23,8 +23,8 @@
     <p>Key takeaways:</p>
     <ul><li>LTV is a commonly prioritized metric for SaaS businesses, but accurately tracking and analyzing it is difficult</li><li>Simple LTV can provide detailed insight into customer value in multiple different scenarios, though you may need to consider a potential margin of error</li><li>Combining statistical data and historical performances with your LTV data can provide subscription businesses with more detailed and accurate insights</li></ul>
     <p>Lifetime Value (LTV) is one of the most important metrics we follow in SaaS. It tells us the value our customers bring to our business.</p>
-    <p>Typically, LTV is estimated using a <a href="https://baremetrics.com/academy/saas-calculating-ltv">“simple” LTV calculation</a>. But is it really effective?</p>
-    <p>In a <a href="https://baremetrics.com/blog/price-optimization-in-saas-what-does-churn-tell-us">previous post</a>, we explored pitfalls in using churn metrics. We found that churn calculations misleads us in some circumstances, such as when there are many short-term customers, which may make it difficult to accurately identify users at risk for churn and requires careful assessment of customer vs revenue churn..</p>
+    <p>Typically, LTV is estimated using a <a href="/academy/saas-calculating-ltv">“simple” LTV calculation</a>. But is it really effective?</p>
+    <p>In a <a href="/blog/price-optimization-in-saas-what-does-churn-tell-us">previous post</a>, we explored pitfalls in using churn metrics. We found that churn calculations misleads us in some circumstances, such as when there are many short-term customers, which may make it difficult to accurately identify users at risk for churn and requires careful assessment of customer vs revenue churn..</p>
     <p>Our most popular metric for LTV is a “churn”-based metric, where churn is in the denominator when calculating it. So, what does that say about our LTV calculations? Are they wrong sometimes?</p>
     <p>In this post, we’re going to test the “simple” LTV metric.</p>
     <ul><li>When is it accurate?</li><li>Where does it mislead us?</li><li>How close does it get us to the actual LTV?</li></ul>
@@ -51,14 +51,14 @@
     <p>While not perfect, simple LTV calculations in the above scenario seem usable, only about 20% off.</p>
     <p>But how does the “simple” LTV calculation fare in a more typical Baremetrics user’s customer base, where customers subscribe for an average of a few years?</p>
     <h2 id="scenario-2-ltv-in-a-stagnant-business-with-long-term-subscribers">Scenario 2: LTV in a Stagnant Business with Long-Term Subscribers</h2>
-    <p>What if we tried the simulation with a different customer base? Would we still get underestimates? Let’s try a new simulation with fewer short-term subscribers. Would our LTV estimate be any better once <a href="https://baremetrics.com/blog/reduce-churn">churn is reduced</a>? (Keep in mind: Churn is inevitable, even though many brands strive for negative churn.)</p>
+    <p>What if we tried the simulation with a different customer base? Would we still get underestimates? Let’s try a new simulation with fewer short-term subscribers. Would our LTV estimate be any better once <a href="/blog/reduce-churn">churn is reduced</a>? (Keep in mind: Churn is inevitable, even though many brands strive for negative churn.)</p>
     <p>The graph below represents a different simulation. The parameters are the same as before, except for a different distribution of subscribers. This population closely resembles an actual Baremetrics customer.</p>
     <p>In this simulation, there are fewer short-term subscribers, and the average subscription lifetime is 3.7 years. If the average subscription lasts for 3.7 years, then the actual LTV is $904.</p>
     <p>This is calculated by spending 3.7 years x 12 months x $20 monthly.</p>
     <p>Can “simple” LTV get close to that $904 number?</p>
     <p>In the above chart, the yellow line represents the simple LTV calculation calculated each month as the simulation progresses. Notice that we get dramatic overestimates at the beginning. Why is this? It’s because we have more longer-term subscribers. Very few customers are dropping out in the early months of this process. As a result, our estimate for LTV is much too high because our estimates expect the subscriptions to last forever with such a low drop-out rate.</p>
     <p>The customer population stabilizes after 3.7 years, however. After 3.7 years, we get estimates close to the actual LTV (blue line). What’s more, it appears to be a much more accurate estimate than in our previous scenario. It’s off by only a few percentage points!</p>
-    <p>So, as a verdict, “simple” LTV is not so bad when customers stay long-term, and nothing fundamentally changes in the business! Especially considering the issues we discussed <a href="https://baremetrics.com/blog/price-optimization-in-saas-what-does-churn-tell-us">in our previous post about churn</a>.</p>
+    <p>So, as a verdict, “simple” LTV is not so bad when customers stay long-term, and nothing fundamentally changes in the business! Especially considering the issues we discussed <a href="/blog/price-optimization-in-saas-what-does-churn-tell-us">in our previous post about churn</a>.</p>
     <p>So, can we find a scenario where “simple” LTV fails? Maybe “simple” LTV fails when the customer population rapidly changes. Perhaps we see the same problem here because our simple LTV estimate wildly overestimates the lifetime value for the first two years.</p>
     <h2 id="scenario-3-ltv-in-a-growing-business">Scenario 3: LTV in a Growing Business</h2>
     <p>Let’s try another simulation to explore this issue further. Let’s keep everything the same as the scenario we did above, but with one key.</p>
@@ -93,8 +93,8 @@
     <p>Our improved estimate is closer to the real LTV value in the early months. As the data rolls in, however, the two statistical estimates converge, eventually becoming indistinguishable.</p>
     <h2 id="using-baremetrics-to-accurately-track-key-performance-metrics">Using Baremetrics to Accurately Track Key Performance Metrics</h2>
     <p>Hopefully, we have shown that it is possible to find better LTV metrics than churn-based ones. Churn-based LTV estimates can be highly inaccurate, especially when there is little data. We can replace it with these better metrics. Further, we can also fine-tune them, so they are better suited for our field in SaaS.</p>
-    <p>Baremetrics provides accurate, up-to-date data for 26 performance and financial metrics that are critical for SaaS businesses, including <a href="https://baremetrics.com/blog/gross-churn-vs-net-churn">gross vs net churn</a>, monthly recurring revenue, and of course LTV. If you want to reduce SaaS churn— or even analyze churn to better understand why customers aren’t retaining—, Baremetrics can help.</p>
-    <p>We also have advanced customer segmentation features, <a href="https://baremetrics.com/features/cancellation-insights">Cancellation Insights</a> to provide insight into customer cancellation, and Recover to prevent involuntary churn with dunning management.</p>
+    <p>Baremetrics provides accurate, up-to-date data for 26 performance and financial metrics that are critical for SaaS businesses, including <a href="/blog/gross-churn-vs-net-churn">gross vs net churn</a>, monthly recurring revenue, and of course LTV. If you want to reduce SaaS churn— or even analyze churn to better understand why customers aren’t retaining—, Baremetrics can help.</p>
+    <p>We also have advanced customer segmentation features, <a href="/features/cancellation-insights">Cancellation Insights</a> to provide insight into customer cancellation, and Recover to prevent involuntary churn with dunning management.</p>
     <p>Tired of wasting time on spreadsheets? Get a <a href="https://app.baremetrics.com/users/sign_up">free trial of Baremetrics</a> today!</p>
     <p><img src="https://baremetrics.com/hubfs/David.jpg" alt="" loading="lazy" decoding="async"></p>
     <h3 id="david-noonan">David Noonan</h3>

@@ -10,7 +10,7 @@
   </div>
   <div>
     <div class="article-head article">
-      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><a href="/blog">← Customers</a></div><div><a href="/subscribe">Subscribe for Updates</a></div></div>
       <div><div><h1>Price Optimization in SaaS: Why You Should Experiment &amp; What Data to Use</h1></div></div>
       <div><div><p>By David Noonan on May 24, 2021 Last updated on April 28, 2026</p></div></div>
       <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Untitled-design-1-2-1.png" alt="" fetchpriority="high" decoding="async"></div></div>
@@ -25,16 +25,16 @@
     <p>Many would balk at the notion. If you have a dashboard and data, why can’t you use that information for price optimization experiments?</p>
     <p>The short answer is that if we use old data for price optimization, any insights we find are probably noise.</p>
     <p>To get a reliable signal for our price optimization, we need to collect data in a structured way. If we plan our data collection carefully, our  experiment avoids wasting resources on inconclusive results.</p>
-    <p>This article (part three of our <a href="https://baremetrics.com/blog/price-optimization-in-saas-an-introduction">Price Optimization series</a>) will explain in detail why experiments are key for finding the best price, and what data you to run experiments correctly.</p>
+    <p>This article (part three of our <a href="/blog/price-optimization-in-saas-an-introduction">Price Optimization series</a>) will explain in detail why experiments are key for finding the best price, and what data you to run experiments correctly.</p>
     <h2 id="price-optimization-in-saas-why-you-shouldnt-use-old-data">Price Optimization in SaaS: Why You Shouldn’t Use Old Data</h2>
     <p>Pricing a SaaS product is hard, especially when your company is first starting out.</p>
     <p>The good news is that after some initial sales, you can start collecting data to run experiments and collect actionable data.</p>
-    <p>Let’s look at an example. Below is an <a href="https://baremetrics.com/academy/saas-calculate-mrr">MRR</a> plot from a real Baremetrics customer in its first two years:</p>
+    <p>Let’s look at an example. Below is an <a href="/academy/saas-calculate-mrr">MRR</a> plot from a real Baremetrics customer in its first two years:</p>
     <p>We can use this data to gather insights on a relationship between our price and sign-up rates. Spoiler alert: something is going to go wrong!</p>
     <p>This business owner launches at a low price, $25/month, then raises the price twice: first to $39/month, then finally to $45/month.</p>
     <p>Maybe the strategy this business owner followed was to increase the price until something bad happens.</p>
     <p>Whatever the strategy, for it to help optimize our revenue, we need a KPI by which to judge which price is better. For our purposes, to find the best price we will look at what happened to sign-up rates when we raised the price.</p>
-    <p><a href="https://baremetrics.com/">Baremetrics</a> offers powerful reporting tools that make it easy to track important metrics and KPIs. Get your free trial here.</p>
+    <p><a href="/">Baremetrics</a> offers powerful reporting tools that make it easy to track important metrics and KPIs. Get your free trial here.</p>
     <h3 id="comparing-sign-up-rates">Comparing Sign-Up Rates</h3>
     <p>How do we compare the sign-up rates between these price points? We can assume if we raise the price, there will be fewer signups, but by how much?</p>
     <p>Let’s try plugging the data into a simple statistical model to estimate monthly signup rates. For the curious, this is a <a href="https://en.wikipedia.org/wiki/Poisson_regression">Poisson model</a> which we will discuss more in future posts.</p>
@@ -44,7 +44,7 @@
     <ul><li>The model is confident that the signups at $25/month (blue) are higher than the others.”</li><li>What’s more, there is overlap between the purple and green, which is the model’s way of telling us it isn’t sure that the sign-ups are actually different between those prices.</li></ul>
     <h3 id="which-price-gives-the-most-revenue">Which Price Gives the Most Revenue?</h3>
     <p>Now that we’ve compared sign-up rates, we can explore what this implies for revenue.</p>
-    <p>To get revenue estimates, we multiply the sign-up rates by the expected lifetime of a customer. In this dataset, that’s 49.8 months (to see more of how we got this number, check out our previous article about <a href="https://baremetrics.com/blog/price-optimization-in-saas-customer-retention">customer retention</a>!)</p>
+    <p>To get revenue estimates, we multiply the sign-up rates by the expected lifetime of a customer. In this dataset, that’s 49.8 months (to see more of how we got this number, check out our previous article about <a href="/blog/price-optimization-in-saas-customer-retention">customer retention</a>!)</p>
     <p>Then we multiply this by the price:</p>
     <p>Expected Revenue = Signup Rate Expected Lifetime Price</p>
     <p>This equation gives us an estimate for the total revenue we expect to earn for each month for each price point.</p>

@@ -83,7 +83,8 @@ async function load(slug) {
 const writeOut = (rel, html) => {
   const p = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, html);
+  /* root-relative internal links (marketing-site absolute → /path) */
+  fs.writeFileSync(p, (html || '').replace(/href="https:\/\/(?:www\.)?baremetrics\.com(\/[^"]*)?"/g, (_m, x) => `href="${x || '/'}"`));
 };
 
 /* ── shared extractors (run in page) ─────────────────────────────────── */

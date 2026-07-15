@@ -10,7 +10,7 @@
   </div>
   <div>
     <div class="article-head article">
-      <div><div><a href="https://baremetrics.com/jp/blog">← ブログ</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><a href="/jp/blog">← ブログ</a></div><div><a href="/subscribe">Subscribe for Updates</a></div></div>
       <div><div><h1>StripeサブスクのエクスパンションMRRの監視 - Baremetrics Japan</h1></div></div>
     </div>
   </div>
@@ -20,8 +20,8 @@
     </div>
     <p>Tomotaka Endo 2021 9 27</p>
     <p><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/rectangle_large_type_2_7e0fc73a23fa88823717629b8978307d.png" alt="" loading="lazy" decoding="async"></p>
-    <p>間違いなく、SaaSまたはサブスクリプションベースのビジネスの最も美しい側面は、それらに伴う<a href="https://baremetrics.com/jp/blog/academy-recurring-vs-non-recurring-revenue">経常収益</a>です。事業主または創設者は、毎月の経常収益（MRR）がもたらす予測可能性により、銀行にどれだけの現金があるかについて心配する必要がはるかに少なくなります。</p>
-    <p>次に、アップグレードされたサブスクリプションの助けを借りて収益を拡大（<a href="https://baremetrics.com/jp/blog/expansion-mrr">エクスパンション</a>）する機会が訪れます。サブスクリプションのアップグレードまたはダウングレードは、非常に簡単です。アップグレードがうまくいく状況では、顧客は欲しいものをより多く手に入れ、収益は右上がりになります。</p>
+    <p>間違いなく、SaaSまたはサブスクリプションベースのビジネスの最も美しい側面は、それらに伴う<a href="/jp/blog/academy-recurring-vs-non-recurring-revenue">経常収益</a>です。事業主または創設者は、毎月の経常収益（MRR）がもたらす予測可能性により、銀行にどれだけの現金があるかについて心配する必要がはるかに少なくなります。</p>
+    <p>次に、アップグレードされたサブスクリプションの助けを借りて収益を拡大（<a href="/jp/blog/expansion-mrr">エクスパンション</a>）する機会が訪れます。サブスクリプションのアップグレードまたはダウングレードは、非常に簡単です。アップグレードがうまくいく状況では、顧客は欲しいものをより多く手に入れ、収益は右上がりになります。</p>
     <p>拡張を検討し、顧客にアップグレードを提供する場合、次の2つのことを考慮する必要があります。</p>
     <ol><li>プランごとに製品の提供と価格設定を決定するための最良の方法は何か？</li><li>Stripeのように、私たちが使用している支払いシステムに合わせてこれをどのように行うことができるのか？</li></ol>
     <p>この記事では、まさにそのことについて説明します。<a href="https://stripe.com/jp">Stripe</a>で顧客のアップグレードの拡張（エクスパンション）を最適に監視するにはどうすればよいのでしょうか。</p>
@@ -29,7 +29,7 @@
     <p>アップグレードは、既存のサブスクリプションプランへの変更にすぎません。</p>
     <p>料金プランと機能が適切に構成されているとします。 その場合、これらの変更は定期的に発生するものです。これにより、会社はパターンを識別し、それらが繰り返しと呼ばれるかどうかを判断して、MRR値を追加できます。 サブスクリプションをアップグレードする2つの方法は、価格を変更するか、サブスク数量を変更することになります。</p>
     <p>1.価格の変更</p>
-    <p><a href="https://baremetrics.com/jp/blog/saas-business-model">SaaS会社</a>が現在提供しているサブスクリプションプランでは、顧客が選択できるプランが複数ある場合がほとんどです。 SaaSサブスクリプションプランには、さまざまな増分価格の平均9つのプランがあります。アップグレードされたサブスクリプションを有効にするために価格を変更するには、以下の例を検討してください。</p>
+    <p><a href="/jp/blog/saas-business-model">SaaS会社</a>が現在提供しているサブスクリプションプランでは、顧客が選択できるプランが複数ある場合がほとんどです。 SaaSサブスクリプションプランには、さまざまな増分価格の平均9つのプランがあります。アップグレードされたサブスクリプションを有効にするために価格を変更するには、以下の例を検討してください。</p>
     <p>顧客Xは、Webサイトまたはマーケットプレイスで月次基本プランにサインアップします。基本プランの費用は16ドルです。最初の1か月後、顧客Xは、製品の機能が増えたり、請求期間が延長されたりするため、25ドルの別のプランを選択します。</p>
     <p>Stripeでは、一連のAPIコードが、顧客Xが取得したIDを使用して、あるサブスクリプションプランから別のサブスクリプションプランへの切り替えを開始します。切り替えが2つの月次サブスクリプションの間である場合、請求日は同じままです。ただし、月額サブスクリプションから年額サブスクリプションにアップグレードすると、請求日は自動的にアップグレードが完了した日に変更されます。</p>
     <p>2.サブスクの数量の変更</p>
@@ -45,17 +45,17 @@
     <p>顧客Xが、他のいくつかの残りの特典を保持しながら、現在支払っているサブスクリプションプランに特定の機能は必要ないと判断したとします。 この状況でサブスクリプションをダウングレードするには、そのサブスクリプションプランで利用可能な数量を変更するだけです。</p>
     <p>これで、Stripeでサブスクリプションを手動でアップグレードおよびダウングレードする方法がわかりました。 次に進み、SaaSのプランと機能を最適に管理する方法について説明しましょう。</p>
     <h2 id="saasのプランと機能を管理するにはどうすればよいですか">SaaSのプランと機能を管理するにはどうすればよいですか？</h2>
-    <p>多くの確立されたSaaS企業は、見逃せない<a href="https://baremetrics.com/jp/blog/saas-pricing-models-part2">初期段階</a>のスタートアップに足を踏み入れています。 周りにいる企業は、どの価格プラン機能が各パッケージで最も効果的に機能するかをよく理解しています。</p>
+    <p>多くの確立されたSaaS企業は、見逃せない<a href="/jp/blog/saas-pricing-models-part2">初期段階</a>のスタートアップに足を踏み入れています。 周りにいる企業は、どの価格プラン機能が各パッケージで最も効果的に機能するかをよく理解しています。</p>
     <p>しかし、どうやってそこにたどり着いたのでしょうか。 答えはすべて試行錯誤の繰り返しです。</p>
-    <p>わずか数年しか経っていないSaaS企業の場合、サブスクリプションプランの<a href="https://baremetrics.com/jp/blog/what-is-value-based-pricing">最適な戦略</a>を見つけるには、勤勉、注意、および実験が必要です。 これがあなたの場合、早い段階で覚えておくべきことがいくつかあります。</p>
+    <p>わずか数年しか経っていないSaaS企業の場合、サブスクリプションプランの<a href="/jp/blog/what-is-value-based-pricing">最適な戦略</a>を見つけるには、勤勉、注意、および実験が必要です。 これがあなたの場合、早い段階で覚えておくべきことがいくつかあります。</p>
     <p>1.アップグレードを考慮した段階的なプラン：</p>
     <p>各パッケージに入れるユニット、数量、または機能を決定するときは、顧客にアップグレードを促す最適な位置を検討してください。この戦略は試行錯誤されており、ほとんどどこでも見つけることができます。</p>
     <p>価格が3つのサブスクリプションプランから始めたとしましょう。 3つのうちの1つが、MRRを最高の状態に保つことを理解することはあなたのプラスになる可能性があります。一部のSaaS企業では、中間のサブスクリプションプランが「1つ」であると位置付けられていることがよくあります。</p>
     <p>「1つの」優先サブスクリプションプランには、基本プランにはない機能が含まれている必要がありますが、顧客は製品を最大限に活用したい場合に使用できます。</p>
     <p>この優先プランと比較すると、高度な（または場合によっては「エンタープライズ」）プランにはすべて同じ機能が含まれている可能性がありますが、顧客がなくても製品を楽しむことができる特典が多く含まれています。高度なパッケージでのこれらの追加は、通常、優先プランへの関心を左右するほどの効果はありません（顧客のニーズがエンタープライズプランとより一致している場合を除く）。</p>
     <p>2.サブスクリプション管理ソフトウェアを統合</p>
-    <p>サブスクリプションの支払いを追跡し、<a href="https://baremetrics.com/jp/academy/churn">解約を減らす</a>ことに加えて、サブスクリプション管理ソフトウェアはさらにいくつかの特典を提供できます。 たとえば、Baremetricsは、会社が軌道に乗るのに役立つ財務指標を提供します。</p>
-    <p>また、業界内のSaaS企業に関する情報を取得したい場合は、Baremetrics <a href="https://baremetrics.com/jp/benchmarks">Open Benchmarks</a>を使用して、SaaSビジネスが運営するプランの平均数などに関する洞察を得ることができます。</p>
+    <p>サブスクリプションの支払いを追跡し、<a href="/jp/academy/churn">解約を減らす</a>ことに加えて、サブスクリプション管理ソフトウェアはさらにいくつかの特典を提供できます。 たとえば、Baremetricsは、会社が軌道に乗るのに役立つ財務指標を提供します。</p>
+    <p>また、業界内のSaaS企業に関する情報を取得したい場合は、Baremetrics <a href="/jp/benchmarks">Open Benchmarks</a>を使用して、SaaSビジネスが運営するプランの平均数などに関する洞察を得ることができます。</p>
     <p>この種の情報は、サブスクリプションプランを位置付けようとするとき、および競合他社よりも優れている場合に、ゲームチェンジャーになる可能性があります。</p>
     <p>3.効率的なオンライン支払いシステムを選択</p>
     <p>請求の失敗や支払いの拒否など、意図したアップグレードを損なうものはありません。</p>
@@ -63,10 +63,10 @@
     <h2 id="アップグレードされたサブスクリプションによるmrrの増加の監視">アップグレードされたサブスクリプションによるMRRの増加の監視</h2>
     <p>サブスクリプションのアップグレードまたはダウングレード時に会社のMRRを追跡することは不可欠です。 あなたはまだGoogleスプレッドシートでこれらの計算を手動で行っている1人かもしれません。 代わりに、アクセスしやすいダッシュボードに必要なすべての収益指標を表示するツールを使用する必要があります。そうです、それがBaremetricsです。</p>
     <p>BaremetricsによるMRRの増加の監視</p>
-    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>は、ビジネス、特にMRR、ARR、LTV、総顧客などに関する26のメトリックを提供するビジネスメトリックツールです。 そこから、Stripeなどの支払いゲートウェイと直接統合して、顧客に関する情報が中央の非常に明確なダッシュボードに自動的にパイプされるようにすることができます。</p>
+    <p><a href="/jp/">Baremetrics</a>は、ビジネス、特にMRR、ARR、LTV、総顧客などに関する26のメトリックを提供するビジネスメトリックツールです。 そこから、Stripeなどの支払いゲートウェイと直接統合して、顧客に関する情報が中央の非常に明確なダッシュボードに自動的にパイプされるようにすることができます。</p>
     <p>さらに、次のような指標に関しては、Stripe Analyticsをより明確に確認することができます。</p>
     <ul><li>アクティブサブスクリプション数</li><li>アップグレードされたサブスクリプション</li><li>ダウングレードされたサブスクリプション</li><li>アップグレード/ダウングレードされたサブスクリプションによるMRRのセグメント化</li><li>サブスクリプションの変更によるMRRの変更を特定して計算</li></ul>
-    <p><a href="https://baremetrics.com/jp/">Baremetrics</a>の無料トライアルにサインアップして、サブスクリプションの収益を正確かつ簡単に監視することができるようになります。ぜひ、お試しください。</p>
+    <p><a href="/jp/">Baremetrics</a>の無料トライアルにサインアップして、サブスクリプションの収益を正確かつ簡単に監視することができるようになります。ぜひ、お試しください。</p>
     <p><img src="https://baremetrics.com/hubfs/Baremetrics_July2023/images/d7772e62c7a5f8f5f5bbdb21dc39d1d1.jpeg" alt="" loading="lazy" decoding="async"></p>
     <h3 id="tomotaka-endo">Tomotaka Endo</h3>
     <p>Tomo Endo is a dynamic professional with a rare blend of achievements in technology, community leadership, and sports. As the Co-Founder of Nihonium.io since August 2023 and Community Lead at Xenon Partners since September 2019, Tomo has been pivotal in driving innovation and fostering community engagement within the tech industry in Tokyo, Japan. His role in facilitating growth and providing actionable insights at Baremetrics, coupled with his contribution to MetricFire's technical monitoring community, underscores his proficiency in leveraging technology to nurture professional communities. Beyond his tech-centric endeavors, Tomo has excelled as a professional athlete in squash, achieving the no.1 ranking in Japan and a global ranking of 79th by August 2020.</p>

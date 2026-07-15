@@ -53,10 +53,14 @@ ${sections.join('\n')}
 </body>
 `;
 
+/* root-relative internal links — see lib.mjs relInternal; kept in sync here */
+export const relInternal = (html) => (html || '')
+  .replace(/href="https:\/\/(?:www\.)?baremetrics\.com(\/[^"]*)?"/g, (_m, p) => `href="${p || '/'}"`);
+
 export const writeOut = (rel, html) => {
   const p = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, html);
+  fs.writeFileSync(p, relInternal(html));
   return p;
 };
 

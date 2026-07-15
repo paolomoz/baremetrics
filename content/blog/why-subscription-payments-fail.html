@@ -10,7 +10,7 @@
   </div>
   <div>
     <div class="article-head article">
-      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><a href="/blog">← Customers</a></div><div><a href="/subscribe">Subscribe for Updates</a></div></div>
       <div><div><h1>Why Are Subscription Payments Failing? The 4 Causes and How to Fix Each</h1></div></div>
       <div><div><p>By Luke Marshall on June 03, 2026 Last updated on June 03, 2026</p></div></div>
     </div>
@@ -48,9 +48,9 @@
     <h2 id="soft-declines-vs-hard-declines-the-framework-that-matters">Soft declines vs hard declines: the framework that matters</h2>
     <p>The single most important framework for thinking about failed payments is the soft-vs-hard decline distinction. It changes the entire recovery approach:</p>
     <p>Most failed-payment recovery systems treat soft and hard declines the same way. That's the single biggest source of wasted recovery effort. The right system reads the processor's decline-reason code, classifies the failure, and routes to the matching recovery path.</p>
-    <p>If you're using <a href="https://baremetrics.com/features/recover">Baremetrics Recover</a>, the decline-classification happens automatically — soft declines go to the retry layer, hard declines route to the customer email sequence with content tailored to the failure reason. For more on how this routing works in practice, see our complete dunning management guide.</p>
+    <p>If you're using <a href="/features/recover">Baremetrics Recover</a>, the decline-classification happens automatically — soft declines go to the retry layer, hard declines route to the customer email sequence with content tailored to the failure reason. For more on how this routing works in practice, see our complete dunning management guide.</p>
     <h2 id="what-happens-after-a-payment-fails">What happens after a payment fails</h2>
-    <p>If your subscription billing system does nothing after a payment fails, the customer will most likely churn — not because they decided to leave, but because nobody told them in a way that registered. This is involuntary churn, and it accounts for <a href="https://baremetrics.com/blog/involuntary-churn">20-40% of total churn</a> in subscription businesses according to Paddle research.</p>
+    <p>If your subscription billing system does nothing after a payment fails, the customer will most likely churn — not because they decided to leave, but because nobody told them in a way that registered. This is involuntary churn, and it accounts for <a href="/blog/involuntary-churn">20-40% of total churn</a> in subscription businesses according to Paddle research.</p>
     <p>A working response system does four things, in this order:</p>
     <h3 id="step-1-classify-the-failure">Step 1: Classify the failure</h3>
     <p>Read the decline code from the payment processor response. Determine whether it's a soft decline, hard decline, or geographic/fraud hold. Route to the matching recovery path.</p>
@@ -59,7 +59,7 @@
     <h3 id="step-3-send-a-dunning-email-sequence-for-failures-that-retry-cant-fix">Step 3: Send a dunning email sequence (for failures that retry can't fix)</h3>
     <p>For hard declines, geographic holds, and soft declines where retries exhausted, send a multi-step email sequence. The Baremetrics Recover default is a 7-email cadence over 27 days, with the most strategically important email landing at day 13 — just before most subscription businesses lock customers out at day 15.</p>
     <p>Each email should match the failure reason. "Your card expired" emails for expired cards. "Your bank declined this charge" emails for geographic holds. Generic "your payment failed" emails for everything underperform meaningfully.</p>
-    <p>For full email-side detail (subject patterns, body templates, optimal cadence, SMS amplification), see our <a href="https://baremetrics.com/blog/dunning-emails">dunning emails guide</a>.</p>
+    <p>For full email-side detail (subject patterns, body templates, optimal cadence, SMS amplification), see our <a href="/blog/dunning-emails">dunning emails guide</a>.</p>
     <h3 id="step-4-escalate-before-hard-cancelling">Step 4: Escalate before hard-cancelling</h3>
     <p>After the email sequence, before any hard cancellation, transition the subscription to a "paused" state rather than terminating it. Pausing preserves customer data and the reactivation path; cancellation throws them out.</p>
     <p>For high-value accounts, a CSM or account manager should reach out personally between days 5-10 of delinquency. Automated emails alone aren't enough for accounts above ~$50K ARR.</p>
@@ -80,7 +80,7 @@
     <h3 id="should-i-retry-a-failed-payment-automatically">Should I retry a failed payment automatically?</h3>
     <p>For soft declines, yes — modern payment processors retry these automatically at machine-learning-optimised timing, and this recovers a meaningful share of failures invisibly. For hard declines (expired, cancelled, lost cards), no — retrying won't help and can trigger fraud flags on the customer's account. The right dunning system classifies the decline type and routes to the matching path: smart retries for soft declines, immediate customer communication for hard declines.</p>
     <h3 id="what-should-a-payment-failed-email-say">What should a "payment failed" email say?</h3>
-    <p>It should be short (three sentences is often enough), neutral in tone (not collections-toned), specific about the cause, and contain a one-click update link. The pattern: (1) what happened — "Your card on file has expired" — (2) what to do — "Update it here in 30 seconds" — (3) what happens next — "We'll automatically retry the charge once your new details are saved." Avoid all-caps urgency ("FAILED PAYMENT", "FINAL NOTICE") which lowers open rates and triggers spam filters. For deeper email templates and patterns, see our <a href="https://baremetrics.com/blog/dunning-emails">dunning emails guide</a>.</p>
+    <p>It should be short (three sentences is often enough), neutral in tone (not collections-toned), specific about the cause, and contain a one-click update link. The pattern: (1) what happened — "Your card on file has expired" — (2) what to do — "Update it here in 30 seconds" — (3) what happens next — "We'll automatically retry the charge once your new details are saved." Avoid all-caps urgency ("FAILED PAYMENT", "FINAL NOTICE") which lowers open rates and triggers spam filters. For deeper email templates and patterns, see our <a href="/blog/dunning-emails">dunning emails guide</a>.</p>
     <h3 id="how-many-emails-should-i-send-when-a-subscription-payment-fails">How many emails should I send when a subscription payment fails?</h3>
     <p>A standard sequence is 6-7 emails over 27-30 days, weighted toward the first two weeks after a failed payment. Baremetrics Recover ships a 7-email default cadence with the most important email landing at 13 days delinquent — just before most subscription businesses lock customers out at day 15. Single-email dunning recovers a fraction of what a properly sequenced flow does.</p>
     <h3 id="when-should-i-just-cancel-a-subscriber-whose-payment-failed">When should I just cancel a subscriber whose payment failed?</h3>
@@ -89,7 +89,7 @@
     <p>Understanding why subscription payments fail is half the problem. Building the system that recovers them is the other half:</p>
     <ul><li>The complete guide to dunning management — what dunning is, the 3-phase process (Prevention / Recovery / Escalation), and the system to build around it</li><li>Why your dunning recovery rate isn't what you think it is — the attempted-vs-naive recovery rate methodology</li><li>Dunning email templates and cadence — practical templates for each step of the 7-email sequence</li><li>The State of Subscription Payment Recovery: $1.24M recovered in a single month — what a sample of 119 typical US B2B SaaS companies using Recover reclaimed in May 2026, at a median 12.7% attempted recovery rate</li></ul>
     <p>For most subscription businesses, the 9% of MRR lost to failed payments is the largest single recovery opportunity available — and it's the only retention lever that doesn't require product changes or organisational restructuring.</p>
-    <p><a href="https://baremetrics.com/features/recover">Start a free trial of Baremetrics Recover →</a></p>
+    <p><a href="/features/recover">Start a free trial of Baremetrics Recover →</a></p>
     <p><img src="https://baremetrics.com/hubfs/Luke.jpg" alt="" loading="lazy" decoding="async"></p>
     <h3 id="luke-marshall">Luke Marshall</h3>
     <p>Luke Marshall is the CEO of Baremetrics. His expertise spans strategic advisory roles at firms like Xenon Partners and DreamFactory Software and he has established himself as a thought leader in the SaaS Metrics space. His career is marked by a commitment to driving growth and operational excellence.</p>

@@ -366,7 +366,10 @@ if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
 
     const outPath = path.join(ROOT, 'content', sect, `${outSlug}.html`);
     fs.mkdirSync(path.dirname(outPath), { recursive: true });
-    fs.writeFileSync(outPath, html);
+    /* root-relative internal links (marketing-site absolute → /path); other
+       subdomains + text URLs untouched */
+    const relHtml = html.replace(/href="https:\/\/(?:www\.)?baremetrics\.com(\/[^"]*)?"/g, (_m, p) => `href="${p || '/'}"`);
+    fs.writeFileSync(outPath, relHtml);
     stats[sect] += 1;
   }
 

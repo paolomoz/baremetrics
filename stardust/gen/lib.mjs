@@ -34,10 +34,17 @@ export function readJson(slug) {
   return JSON.parse(fs.readFileSync(path.join(PAGES, `${slug}.json`), 'utf8'));
 }
 
+/* internal links must be root-relative: rewrite marketing-site absolute hrefs
+   (https://[www.]baremetrics.com/X → /X); other subdomains (app./demo./help.…)
+   and text URLs are left absolute. Applied on write so no generator can emit
+   an absolute internal href. */
+export const relInternal = (html) => (html || '')
+  .replace(/href="https:\/\/(?:www\.)?baremetrics\.com(\/[^"]*)?"/g, (_m, p) => `href="${p || '/'}"`);
+
 export function write(rel, html) {
   const dest = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.writeFileSync(dest, html);
+  fs.writeFileSync(dest, relInternal(html));
   console.log('  wrote', path.relative(REPO, dest));
 }
 

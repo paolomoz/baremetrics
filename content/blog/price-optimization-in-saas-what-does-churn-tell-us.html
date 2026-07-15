@@ -10,7 +10,7 @@
   </div>
   <div>
     <div class="article-head article">
-      <div><div><a href="https://baremetrics.com/blog">← Customers</a></div><div><a href="https://baremetrics.com/subscribe">Subscribe for Updates</a></div></div>
+      <div><div><a href="/blog">← Customers</a></div><div><a href="/subscribe">Subscribe for Updates</a></div></div>
       <div><div><h1>Price Optimization in SaaS: What Does Churn Tell Us?</h1></div></div>
       <div><div><p>By David Noonan on June 28, 2021 Last updated on April 23, 2026</p></div></div>
       <div><div><img src="https://baremetrics.com/hubfs/Imported_Blog_Media/Untitled-design-3-1-1.png" alt="" fetchpriority="high" decoding="async"></div></div>
@@ -20,16 +20,16 @@
     <div class="section-metadata">
       <div><div>style</div><div>article-body</div></div>
     </div>
-    <p><a href="https://baremetrics.com/academy/churn">Churn</a> is everywhere in the SaaS world. It’s so popular it makes us believe it’s an essential metric to follow. Maybe it is the most important metric.</p>
+    <p><a href="/academy/churn">Churn</a> is everywhere in the SaaS world. It’s so popular it makes us believe it’s an essential metric to follow. Maybe it is the most important metric.</p>
     <p>But not everyone is on board with churn. We were inspired by an <a href="https://catchjs.com/Blog/Churn">article</a> written for catch.js about the topic. They demonstrate through simulation experiments that churn, under certain circumstances, will show the opposite of what it should. They argue that churn is useless.</p>
-    <p>We thought we would similarly look at churn. In this article (part four of our <a href="https://baremetrics.com/blog/price-optimization-in-saas-an-introduction">Price Optimization series</a>), we will test the churn metric out on simulations to demonstrate when it gives us misleading results.</p>
+    <p>We thought we would similarly look at churn. In this article (part four of our <a href="/blog/price-optimization-in-saas-an-introduction">Price Optimization series</a>), we will test the churn metric out on simulations to demonstrate when it gives us misleading results.</p>
     <p>To begin, let’s start with a situation similar to the one in the article mentioned above. The article uses a <a href="https://en.wikipedia.org/wiki/Lomax_distribution">Lomax distribution</a> to model how long a subscription lasts because it most closely resembles their own customers.</p>
     <p>They have lots of customers who try their service for a short time, like a few months. They also get a few who stay for much longer. We’ll simulate our subscriptions with the Weibull distribution, with parameters that make it similar to their Lomax model.</p>
     <h2 id="all-the-data-your-startup-needs">All the data your startup needs</h2>
     <p>Get deep insights into your company’s MRR, churn and other vital metrics for your SaaS business.</p>
-    <p>While many of our <a href="https://baremetrics.com/">Baremetrics</a> customers share a customer base like theirs, some do not. We will also test churn on other kinds of customer bases, modeled from the experiences of our Baremetrics customers.</p>
+    <p>While many of our <a href="/">Baremetrics</a> customers share a customer base like theirs, some do not. We will also test churn on other kinds of customer bases, modeled from the experiences of our Baremetrics customers.</p>
     <p>Will churn mislead us in those cases too?</p>
-    <p>Let’s review churn. Here is a formula for <a href="https://baremetrics.com/blog/customer-churn">customer churn</a> for each period:</p>
+    <p>Let’s review churn. Here is a formula for <a href="/blog/customer-churn">customer churn</a> for each period:</p>
     <p>Churn = customers lost / customers at the beginning</p>
     <p>The formula above gives the fraction of customers lost in each time period. If we lose a lot of customers, the fraction increases. If we gain a lot of customers, the fraction decreases, ideally going to zero. Low churn is good, and high churn is bad.</p>
     <p>It seems simple enough, but if we look closer, we’ll run into problems. Churn doesn’t behave the way we expect.</p>
@@ -58,7 +58,7 @@
     <p>Above is a histogram showing the frequency of various subscription lengths of customers.  Notice it is huge on the left. It means that most of the customers subscribe for a short time. These customers are more likely to unsubscribe at any given time.</p>
     <p>But on the other hand, there are a smaller number of customers who subscribe for a long time. Those longer subscribers are less likely to unsubscribe, and they stay for a long time.</p>
     <p>When we shut off sign-ups, mostly the longer subscribers are left. And since they are less likely to leave our business, they are less likely to raise our churn metric. Therefore churn appears to go down while our company is failing. It’s the opposite of what we want.</p>
-    <p>While this may be alarming, this scenario may not apply to all <a href="https://baremetrics.com/">Baremetrics</a> customers. What if we tried this scenario in a different kind of business, with more loyal subscribers?</p>
+    <p>While this may be alarming, this scenario may not apply to all <a href="/">Baremetrics</a> customers. What if we tried this scenario in a different kind of business, with more loyal subscribers?</p>
     <h2 id="is-churn-bad-in-all-circumstances">Is churn bad in all circumstances?</h2>
     <p>You may notice that the histogram of subscription lengths above does not reflect your own business. It’s an extreme distribution, where the bulk of customers subscribe for a short time. What if your business has fewer short-term customers?</p>
     <p>Suppose your business attracts customers through sales teams. Your typical customers don’t subscribe for just a month. They subscribe for longer. What does churn look like in that situation when we shut off sign-ups?</p>
@@ -75,7 +75,7 @@
     <p>Perhaps it would be better to focus on these processes separately. It is entirely possible to build metrics for sign-ups, drop-outs, and subscription lengths separately.</p>
     <p>In future posts, we will build these metrics and test them out. We will show how they behave compared to churn. Will the new metrics out-perform churn for customer retention, lifetime value, and revenue calculations? Stay tuned to find out!</p>
     <p>Thanks for reading! If you have any questions, feel free to send them to to david@baremetrics.com.</p>
-    <p>Join 900+ SaaS and subscription companies using Baremetrics for smarter data insights, automated dunning, customer engagement, and more. <a href="https://baremetrics.com/pricing">Start a free trial today!</a></p>
+    <p>Join 900+ SaaS and subscription companies using Baremetrics for smarter data insights, automated dunning, customer engagement, and more. <a href="/pricing">Start a free trial today!</a></p>
     <p><img src="https://baremetrics.com/hubfs/David.jpg" alt="" loading="lazy" decoding="async"></p>
     <h3 id="david-noonan">David Noonan</h3>
     <p>David is a data professional in the Bay Area with a background in molecular biology. When he's not exploring Bayesian inference and statistical modeling for price optimization, David is in the kitchen, using way too much garlic.</p>
