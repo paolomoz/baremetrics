@@ -24,7 +24,7 @@
  * visual / metrics-top-image) is 52-342KB, so none can ship as SVG. Instead
  * (hybrid restore):
  *   - the 4 dashboard/illustration SVGs (metrics-top-image, integrations,
- *     reports, visual) are RASTERIZED to lean PNGs at /img/features-metrics/
+ *     reports, visual) are RASTERIZED to lean PNGs at /features/metrics-media/
  *     (by stardust/scripts/rasterize-features-metrics.mjs) and window-chromed;
  *   - the 2 stat-card SVGs (benchmark, trial-insights) are NOT rasterized —
  *     their figures (read off the rendered cards; the glyphs are outlined to
@@ -57,24 +57,35 @@ function keepImg(m) {
 /* The 4 dashboard/illustration SVGs exceed the 40KB SVG ceiling, so they are
    rasterized to PNG (no size limit) by stardust/scripts/rasterize-features-metrics.mjs
    in the baremetrics project and committed to this repo at
-   /img/features-metrics/<name>.png (code-sync serves that path). Map the
+   /features/metrics-media/<name>.png (code-sync serves that path). Map the
    source SVG basename → its local PNG + intrinsic display size (½ the 2×
    render). The two STAT SVGs (benchmark, trial-insights) are NOT here — their
    figures are authored as native tabular-figure stat cards instead. */
+/* The 4 illustration SVGs are oversized (>40KB, EDS rejects) so they're
+   rasterized to lean JPEGs (stardust/scripts/png2jpg.mjs) and INLINED as data:
+   URIs. Data URIs are the only in-content image form the EDS pipeline leaves
+   untouched — a local/same-origin src (repo /img or content-bus media_HASH)
+   gets run through createOptimizedPicture, which can't resolve a
+   non-authoring-flow media and emits about:error. Total inlined ≈130KB. */
+import { readFileSync as _rf } from 'node:fs';
+import { fileURLToPath as _f2p } from 'node:url';
+import { dirname as _dn, join as _pj } from 'node:path';
+const _IMG = _pj(_dn(_f2p(import.meta.url)), '../../img/features-metrics');
+const dataUri = (file) => `data:image/jpeg;base64,${_rf(_pj(_IMG, file)).toString('base64')}`;
 const RASTER = {
-  'metrics-top-image.svg': { src: '/img/features-metrics/metrics-hero.png', w: 760, h: 570 },
-  'integrations.svg': { src: '/img/features-metrics/metrics-integrations.png', w: 760, h: 656 },
-  'reports.svg': { src: '/img/features-metrics/metrics-reports.png', w: 760, h: 969 },
-  'visual.svg': { src: '/img/features-metrics/metrics-support.png', w: 760, h: 656 },
+  'metrics-top-image.svg': { file: 'metrics-hero.jpg', w: 760, h: 570 },
+  'integrations.svg': { file: 'metrics-integrations.jpg', w: 760, h: 656 },
+  'reports.svg': { file: 'metrics-reports.jpg', w: 760, h: 969 },
+  'visual.svg': { file: 'metrics-support.jpg', w: 760, h: 656 },
 };
 
-/* map a captured SVG media object to its rasterized PNG descriptor, or null */
+/* map a captured SVG media object to its inlined-JPEG descriptor, or null */
 function rasterFor(m) {
   if (!m || !m.src) return null;
   const base = decodeURIComponent(m.src.split('/').pop());
   const r = RASTER[base];
   if (!r) return null;
-  return { src: r.src, alt: m.alt || '', w: r.w, h: r.h };
+  return { src: dataUri(r.file), alt: m.alt || '', w: r.w, h: r.h };
 }
 
 function imgTag(m) {
