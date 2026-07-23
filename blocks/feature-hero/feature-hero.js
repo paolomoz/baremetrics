@@ -186,6 +186,18 @@ export default async function decorate(block) {
       copy.append(ctas);
     }
 
+    /* when a large exhibit image is supplied (metrics feature hero), the
+       window-chromed dashboard shot takes the aside slot and the short note
+       becomes a quiet hero note; otherwise render the captured stat-sheet. */
+    if (model.exhibitImg) {
+      const [noteText] = model.shorts;
+      if (noteText) copy.append(el('p', 'hero-note meta-label', noteText));
+      const media = el('aside', 'hero-media');
+      media.append(win(model.exhibitImg));
+      row.append(media);
+      return;
+    }
+
     const [chipText, ...labels] = model.shorts;
     const aside = el('aside', 'sheet stat-sheet');
     aside.setAttribute('aria-label', 'Recovered payment record — the captured Recover stat card');

@@ -110,6 +110,16 @@
   margin-top: var(--spacing-lg);
 }
 
+/* metrics hero — window-chromed dashboard exhibit + quiet note (in the aside
+   slot the stat-sheet would otherwise occupy) */
+.feature-hero .hero-media .win { display: block; }
+
+.feature-hero .hero-note {
+  display: block;
+  margin-top: var(--spacing-md);
+  color: var(--color-slate);
+}
+
 /* stat sheet — the captured world-map card, rebuilt as ledger evidence */
 .feature-hero .stat-sheet {
   justify-self: center;
