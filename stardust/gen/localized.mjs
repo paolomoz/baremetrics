@@ -44,7 +44,7 @@ import { buildExpertsCat } from './experts-cat.mjs';
 import { buildIntegration } from './integrations.mjs';
 import { buildAcademyIndex, buildFounderChatsIndex } from './indexes.mjs';
 import {
-  esc, norm, clampTitle, row, block, section, metadata, page, imgTag,
+  esc, norm, clampTitle, row, block, section, metadata, page, imgTag, relInternal,
 } from './_shared.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -80,7 +80,10 @@ function parseUrl(capUrl) {
 function writeOut(rel, html) {
   const dest = path.join(CONTENT, rel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.writeFileSync(dest, html);
+  /* relInternal: root-relative internal links (marketing-site absolute → /path),
+     mirroring articles.mjs + _shared/lib writers — the durable relativization
+     the committed localized pages carry. */
+  fs.writeFileSync(dest, relInternal(html));
   return dest;
 }
 

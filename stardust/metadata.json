@@ -1,6 +1,6 @@
 {
-  "total": 8,
-  "limit": 8,
+  "total": 9,
+  "limit": 9,
   "offset": 0,
   "data": [
     {
@@ -35,6 +35,10 @@
     {
       "URL": "/ja/academy/**",
       "og:type": "article"
+    },
+    {
+      "URL": "/features/metrics",
+      "og:image": "/default-meta-image.png"
     }
   ],
   ":type": "sheet"

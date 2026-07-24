@@ -193,6 +193,35 @@ main .section > .default-content {
   padding: 0 var(--spacing-lg);
 }
 
+/* === long-content guards (prevent mobile horizontal overflow) ===
+   Authored prose can contain long unbreakable strings — bare URLs,
+   underscore_formula_tokens, em-dash runs, pasted embed/shortcode markup.
+   Let text break to the container width and let wide code/tables scroll
+   within their own box instead of widening the viewport. */
+p,
+li,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figcaption,
+blockquote,
+td,
+th {
+  overflow-wrap: break-word;
+}
+
+main .section > .default-content pre,
+main .section > .default-content table,
+main .section > .default-content code {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 /* === header reservation (#81) — static fragment injects after first paint === */
 header {
   min-height: 73px;
@@ -242,28 +271,38 @@ a.btn-secondary:hover {
   color: var(--color-action);
 }
 
-/* on-dark surfaces (#41): scope to section.dark AND on-ink block classes */
+/* on-dark surfaces (#41): scope to section.dark AND on-ink block classes.
+   .band.accent (deepened periwinkle #4055e8 ground) shares the on-dark
+   treatment so on-accent button text/border clear AA (white 5.70:1). */
 main .section.dark a.btn-primary,
-main .band.ink a.btn-primary {
+main .band.ink a.btn-primary,
+main .band.accent a.btn-primary {
   background: oklch(100% 0 0);
   color: var(--color-fg);
   border-color: oklch(100% 0 0);
 }
 
 main .section.dark a.btn-secondary,
-main .band.ink a.btn-secondary {
+main .band.ink a.btn-secondary,
+main .band.accent a.btn-secondary {
   color: oklch(100% 0 0);
   border-color: oklch(100% 0 0 / 60%);
 }
 
+/* on the accent ground, use a solid white border so the secondary button
+   outline itself clears 4.5:1 (5.70:1), not just the 3:1 non-text minimum. */
+main .band.accent a.btn-secondary { border-color: oklch(100% 0 0); }
+
 main .section.dark a.btn-secondary:hover,
-main .band.ink a.btn-secondary:hover {
+main .band.ink a.btn-secondary:hover,
+main .band.accent a.btn-secondary:hover {
   border-color: oklch(100% 0 0);
   background: oklch(100% 0 0 / 8%);
 }
 
 main .section.dark :focus-visible,
-main .band.ink :focus-visible { outline-color: oklch(100% 0 0); }
+main .band.ink :focus-visible,
+main .band.accent :focus-visible { outline-color: oklch(100% 0 0); }
 
 .btn-group {
   display: inline-flex;

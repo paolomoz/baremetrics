@@ -193,6 +193,10 @@ export default async function decorate(block) {
   wc.setAttribute('loop', '');
   wc.setAttribute('autoplay', '');
   wc.className = 'lottie-animation';
+  /* a11y (axe aria-prohibited-attr): a bare custom element carries an implicit
+     generic role that forbids aria-label; declaring role="img" gives it a role
+     for which the accessible name is permitted on the animated dashboard visual. */
+  wc.setAttribute('role', 'img');
   wc.setAttribute('aria-label', 'Animated Baremetrics dashboard preview');
   win.append(wc);
   right.append(win);

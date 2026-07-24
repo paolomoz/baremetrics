@@ -31,7 +31,25 @@
 
 .band.ink { background: var(--color-fg); }
 
-.band.accent { background: var(--color-accent); }
+/* accent ground — the deepened periwinkle --color-action (#4055e8), NOT the
+   non-text --color-accent (#6078ff). white-on-action is 5.70:1 (AA body/large),
+   vs periwinkle's 3.73:1 which fails AA for body copy + on-accent button text.
+   Keeps the periwinkle brand feel while clearing WCAG AA (DESIGN § Color). */
+.band.accent { background: var(--color-action); }
+
+/* on-accent text — crisp white clears AA (5.70:1) on the action ground.
+   band-lede/eyebrow/note default to --color-slate, so re-color them here. */
+.band.accent .band-copy,
+.band.accent .band-copy h2,
+.band.accent .band-author-copy h2,
+.band.accent .band-author-copy h3,
+.band.accent .band-lede,
+.band.accent .band-eyebrow,
+.band.accent .band-note,
+.band.accent .meta-label,
+.band.accent .band-coda p,
+.band.accent .band-copy p,
+.band.accent .band-pull { color: oklch(100% 0 0deg); }
 
 /* centered statement (cta / form / stats defaults) */
 .band.cta .band-copy,

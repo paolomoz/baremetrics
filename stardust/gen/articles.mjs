@@ -147,7 +147,28 @@ const imgTag = (src, alt, hero) => `<img src="${esc(src)}" alt="${esc(alt || '')
    not the anchor substring; ctas carry {label, href} where label IS the
    anchor text. Find the cta label (for this href) that is a substring of the
    paragraph and wrap just that run in an <a>. */
-function paragraphHtml(item, ctaMap) {
+/* Resolve an in-page anchor fragment (the text after '#') against the set of
+   heading ids the pipeline actually emits for THIS page. HubSpot legacy pages
+   carry jump-links (#t-1628150020221, #chap1, #more-articles, percent-encoded
+   CJK …) whose target id no longer exists after migration.
+   - `:~:text=` scroll-to-text fragments are valid browser directives → keep.
+   - exact id match → keep.
+   - percent-decoded and/or re-slugged forms that match a real heading id →
+     rewrite to the canonical id.
+   - otherwise the anchor is dead → caller UNWRAPs it (drops the <a>, keeps text)
+     so no dead in-page anchor is ever left in the output. */
+function resolveAnchor(fragRaw, pageIds) {
+  if (/:~:text=/i.test(fragRaw)) return { keep: true, id: fragRaw };
+  if (pageIds.has(fragRaw)) return { keep: true, id: fragRaw };
+  let decoded = fragRaw;
+  try { decoded = decodeURIComponent(fragRaw); } catch { /* malformed %-escape → keep raw */ }
+  if (pageIds.has(decoded)) return { keep: true, id: decoded };
+  const slug = baseSlug(decoded);
+  if (pageIds.has(slug)) return { keep: true, id: slug };
+  return { keep: false };
+}
+
+function paragraphHtml(item, ctaMap, pageIds) {
   const txt = item.x || '';
   if (!item.href) return `<p>${esc(txt)}</p>`;
   const key = normHref(item.href);
@@ -156,8 +177,16 @@ function paragraphHtml(item, ctaMap) {
     .filter((l) => l && txt.includes(l))
     .sort((a, b) => b.length - a.length)[0];
   if (!hit) return `<p>${esc(txt)}</p>`;
+  let finalHref = unwrapArchive(item.href);
+  /* in-page anchor (bare "#frag") — resolve against this page's heading ids;
+     unwrap the link entirely when the fragment is dead. */
+  if (finalHref.startsWith('#')) {
+    const res = resolveAnchor(finalHref.slice(1), pageIds || new Set());
+    if (!res.keep) return `<p>${esc(txt)}</p>`;
+    finalHref = `#${res.id}`;
+  }
   const i = txt.indexOf(hit);
-  return `<p>${esc(txt.slice(0, i))}<a href="${esc(unwrapArchive(item.href))}">${esc(hit)}</a>${esc(txt.slice(i + hit.length))}</p>`;
+  return `<p>${esc(txt.slice(0, i))}<a href="${esc(finalHref)}">${esc(hit)}</a>${esc(txt.slice(i + hit.length))}</p>`;
 }
 
 function listHtml(item, tag) {
@@ -214,26 +243,39 @@ function renderBody(bodyItems, ctaMap, titleText) {
      "…-1". Matching that keeps the TOC href correct. */
   const nextId = makeSlugger();
   if (ws(titleText)) nextId(titleText);
-  const html = [];
-  const toc = [];
+  /* PRE-PASS: assign heading ids/levels in document order (identical algorithm
+     and slugger sequence as before) so paragraph inline anchors can be resolved
+     against the FULL set of this page's heading ids — including headings that
+     appear later than the referencing paragraph. */
+  const headingMeta = new Map();
+  const pageIds = new Set();
   let prevOrig = 1;
   let prevAssigned = 1;
   bodyItems.forEach((it) => {
+    if (!/^h[1-6]$/.test(it.t)) return;
+    const L = Number(it.t.slice(1));
+    let assigned;
+    if (prevAssigned === 1) assigned = 2;
+    else if (L > prevOrig) assigned = Math.min(prevAssigned + 1, 6);
+    else if (L === prevOrig) assigned = prevAssigned;
+    else assigned = Math.max(2, prevAssigned - (prevOrig - L));
+    prevOrig = L;
+    prevAssigned = assigned;
+    const id = nextId(it.x);
+    headingMeta.set(it, { id, assigned, L });
+    pageIds.add(id);
+  });
+
+  const html = [];
+  const toc = [];
+  bodyItems.forEach((it) => {
     if (/^h[1-6]$/.test(it.t)) {
-      const L = Number(it.t.slice(1));
-      let assigned;
-      if (prevAssigned === 1) assigned = 2;
-      else if (L > prevOrig) assigned = Math.min(prevAssigned + 1, 6);
-      else if (L === prevOrig) assigned = prevAssigned;
-      else assigned = Math.max(2, prevAssigned - (prevOrig - L));
-      prevOrig = L;
-      prevAssigned = assigned;
-      const id = nextId(it.x);
+      const { id, assigned, L } = headingMeta.get(it);
       html.push(`    <h${assigned} id="${id}">${esc(ws(it.x))}</h${assigned}>`);
       if (L === minOrig && ws(it.x)) toc.push({ text: ws(it.x), id });
       return;
     }
-    if (it.t === 'p') { html.push(`    ${paragraphHtml(it, ctaMap)}`); return; }
+    if (it.t === 'p') { html.push(`    ${paragraphHtml(it, ctaMap, pageIds)}`); return; }
     if (it.t === 'ul') { html.push(`    ${listHtml(it, 'ul')}`); return; }
     if (it.t === 'ol') { html.push(`    ${listHtml(it, 'ol')}`); return; }
     if (it.t === 'quote') { html.push(`    <blockquote><p>${esc(ws(it.x))}</p></blockquote>`); return; }

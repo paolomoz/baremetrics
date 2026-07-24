@@ -1,0 +1,22 @@
+/* error — non-prod block-failure notice (The Ledger).
+   scripts/utils/error.js injects `<div class="has-error"><p class="title">`
+   around a block that threw during decorate, and loads this stylesheet.
+   Only ever shown outside prod, so it is deliberately plain and loud.
+   Tokens come from styles/styles.css, which always loads first. */
+
+.has-error {
+  border: 1px dashed var(--color-x);
+  border-radius: var(--radius);
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  background: var(--color-mist);
+}
+
+.has-error .title {
+  margin: 0 0 var(--spacing-xs);
+  font-weight: 700;
+  color: var(--color-x);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: var(--body-sm);
+}

@@ -61,6 +61,7 @@ const CASES = {
   'steps|steps entries': row('<p>Entry 01</p><h3>Augmentation</h3><p>Body.</p>', '<a href="/a">See it</a>', IMG) + row('<p>Entry 02</p><h3>Segmentation</h3><p>Body.</p>', '<a href="/b">See it</a>', IMG),
   'checklist|checklist': row(IMG, '<p>A bold claim.</p><ul><li>Too few emails</li><li>Not clear</li></ul>') + row(IMG, '<p>Another claim.</p><ul><li>Waste of time</li></ul>'),
   'toc|toc': row('Table of Contents', '<ul><li><a href="#a">One</a></li><li><a href="#b">Two</a></li></ul>') + row('More Articles', '<ul><li><a href="/x">X</a></li><li><strong><a href="/y">Y (current)</a></strong></li></ul>'),
+  'youtube|youtube': '<a href="https://www.youtube.com/watch?v=BC3LVswlU8E&si=abc">Watch the overview</a>',
 };
 
 const browser = await chromium.launch();

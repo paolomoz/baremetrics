@@ -1,6 +1,6 @@
 {
-  "total": 11,
-  "limit": 11,
+  "total": 155,
+  "limit": 155,
   "offset": 0,
   "data": [
     {
@@ -46,6 +46,582 @@
     {
       "Source": "/sample-test-page-by-hubspot-migration-team",
       "Destination": "/"
+    },
+    {
+      "Source": "/academy/annual-run-rate-arr",
+      "Destination": "/academy/annual-run-rate"
+    },
+    {
+      "Source": "/academy/content-marketing-2",
+      "Destination": "/academy/content-marketing"
+    },
+    {
+      "Source": "/academy/minimum-viable-product-mvp-2",
+      "Destination": "/academy/minimum-viable-product-mvp"
+    },
+    {
+      "Source": "/blog/6-questions-first-time-saas-founders-should-be-asking-themselves%EF%BF%BC",
+      "Destination": "/blog/6-questions-first-time-saas-founders-should-be-asking-themselves"
+    },
+    {
+      "Source": "/blog/7-tips-on-improving-employee-retention-as-a-remote-work-saas-businessinspired-by-founder-chats-justin-cooke-from-empire-flippers%ef%bf%bc",
+      "Destination": "/blog/7-tips-on-improving-employee-retention-as-a-remote-work-saas-businessinspired-by-founder-chats-justin-cooke-from-empire-flippers"
+    },
+    {
+      "Source": "/blog/getting-out-of-the-startup-rat-race-66a5a0ca3055",
+      "Destination": "/blog/getting-out-of-the-startup-rat-race"
+    },
+    {
+      "Source": "/blog/how-we-went-from-weeks-of-cash-left-in-the-bank-to-profitable-in-8-months-cfad6f2d6523",
+      "Destination": "/blog/how-we-went-from-weeks-of-cash-left-in-the-bank-to-profitable-in-8-months"
+    },
+    {
+      "Source": "/blog/testimonials-and-case-studies-how-to-use-customer-satisfaction-as-your-greatest-marketing-asset%ef%bf%bc",
+      "Destination": "/blog/testimonials-and-case-studies-how-to-use-customer-satisfaction-as-your-greatest-marketing-asset"
+    },
+    {
+      "Source": "/blog/6-b2b-payment-processing-tools-for-2021",
+      "Destination": "/blog/6-b2b-payment-processing-tools"
+    },
+    {
+      "Source": "/blog/baremetrics-vs-chartmogul-which-is-right-for-your-business-in-2022",
+      "Destination": "/blog/baremetrics-vs-chartmogul-which-is-right-for-your-business"
+    },
+    {
+      "Source": "/blog/bootstrapped-vs-vc-lessons-learned-and-youre-being-silly-4a74f9a0b441",
+      "Destination": "/blog/bootstrapped-vs-vc-lessons-learned-youre-silly"
+    },
+    {
+      "Source": "/blog/is-your-company-really-only-doing-45-000-per-month",
+      "Destination": "/blog/is-your-company-really-only-doing-45000-per-month"
+    },
+    {
+      "Source": "/blog/the-best-customer-segmentation-tools-in-2021",
+      "Destination": "/blog/the-best-customer-segmentation-tools"
+    },
+    {
+      "Source": "/blog/the-best-financial-modeling-software-for-saas-in-2021",
+      "Destination": "/blog/the-best-financial-modeling-software-for-saas"
+    },
+    {
+      "Source": "/blog/top-10-financial-forecast-software-options-for-2021",
+      "Destination": "/blog/top-10-financial-forecast-software-options"
+    },
+    {
+      "Source": "/benchmarks",
+      "Destination": "/open-benchmarks"
+    },
+    {
+      "Source": "/features/forecasting-old",
+      "Destination": "/features/forecasting"
+    },
+    {
+      "Source": "/trial-insights",
+      "Destination": "/features/trial-insights"
+    },
+    {
+      "Source": "/slack",
+      "Destination": "/features/slack-tools"
+    },
+    {
+      "Source": "/customers/readme",
+      "Destination": "/customers"
+    },
+    {
+      "Source": "/meetings/allison-barkley",
+      "Destination": "/book-a-demo"
+    },
+    {
+      "Source": "/meetings/baremetrics/book-a-demo",
+      "Destination": "/book-a-demo"
+    },
+    {
+      "Source": "/meetings/bms/custompricing",
+      "Destination": "/book-a-demo"
+    },
+    {
+      "Source": "/meetings/bms/financial-planning",
+      "Destination": "/book-a-demo"
+    },
+    {
+      "Source": "/comparisons/analysis/net-revenue-churn-analysis-with-braintree",
+      "Destination": "/braintree"
+    },
+    {
+      "Source": "/comparisons/analysis/net-revenue-analysis-with-amazon-pay",
+      "Destination": "/"
+    },
+    {
+      "Source": "/comparisons/analysis/net-revenue-analysis-with-authorize-net",
+      "Destination": "/"
+    },
+    {
+      "Source": "/comparisons/investor-reporting",
+      "Destination": "/"
+    },
+    {
+      "Source": "/dunning",
+      "Destination": "/features/recover"
+    },
+    {
+      "Source": "/jobs",
+      "Destination": "/about"
+    },
+    {
+      "Source": "/open",
+      "Destination": "/open-startups"
+    },
+    {
+      "Source": "/paddle-0",
+      "Destination": "/"
+    },
+    {
+      "Source": "/paypal",
+      "Destination": "/"
+    },
+    {
+      "Source": "/plan-insights",
+      "Destination": "/"
+    },
+    {
+      "Source": "/features",
+      "Destination": "/"
+    },
+    {
+      "Source": "/features/messaging",
+      "Destination": "/"
+    },
+    {
+      "Source": "/calculator",
+      "Destination": "/ltv-calc"
+    },
+    {
+      "Source": "/metrics-101",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/mrr",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/starting-a-business",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/jp/academy",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/jp/academy/churn",
+      "Destination": "/academy/churn"
+    },
+    {
+      "Source": "/jp/academy/handle-competition-in-business",
+      "Destination": "/academy/handle-competition-in-business"
+    },
+    {
+      "Source": "/jp/academy/saas-business-model",
+      "Destination": "/academy/saas-business-model"
+    },
+    {
+      "Source": "/jp/benchmarks",
+      "Destination": "/open-benchmarks"
+    },
+    {
+      "Source": "/jp/customers",
+      "Destination": "/customers"
+    },
+    {
+      "Source": "/jp/open-startups",
+      "Destination": "/open-startups"
+    },
+    {
+      "Source": "/jp/stripe",
+      "Destination": "/stripe"
+    },
+    {
+      "Source": "/jp/features/api",
+      "Destination": "/features/api"
+    },
+    {
+      "Source": "/jp/features/augmentation",
+      "Destination": "/features/augmentation"
+    },
+    {
+      "Source": "/jp/features/benchmarks",
+      "Destination": "/features/benchmarks"
+    },
+    {
+      "Source": "/jp/features/cancellation-insights",
+      "Destination": "/features/cancellation-insights"
+    },
+    {
+      "Source": "/jp/features/control-center",
+      "Destination": "/features/control-center"
+    },
+    {
+      "Source": "/jp/features/email-reports",
+      "Destination": "/features/email-reports"
+    },
+    {
+      "Source": "/jp/features/forecasting",
+      "Destination": "/features/forecasting"
+    },
+    {
+      "Source": "/jp/features/people-insights",
+      "Destination": "/features/people-insights"
+    },
+    {
+      "Source": "/jp/features/recover",
+      "Destination": "/features/recover"
+    },
+    {
+      "Source": "/jp/features/segmentation",
+      "Destination": "/features/segmentation"
+    },
+    {
+      "Source": "/jp/features/smart-dashboards",
+      "Destination": "/features/smart-dashboards"
+    },
+    {
+      "Source": "/jp/features/trial-insights",
+      "Destination": "/features/trial-insights"
+    },
+    {
+      "Source": "/jp",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/academy/cash-flow",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/convertkit-how-to-go-from-freelance-to-founder-of-a-10m-company",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/deferred-revenue",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/goals",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/grow-mrr",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/growth-rate",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/how-to-handle-support-at-your-startup",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/marketing-automation",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/unlimited-vacation-time",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/tag/glossary",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/tag/marketing-success",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/tag/metrics-101",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/tag/running-a-business",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/tag/starting-a-business",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/academy/tag/startup-tips",
+      "Destination": "/academy"
+    },
+    {
+      "Source": "/blog/3-signs-your-saas-is-ready-to-go-to-market",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/4-powerful-tools-for-customer-experience-research",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/build-vs-buy-how-to-blow-100-000-saving-money-a743e4c62848",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/changing-metrics",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/churn-management-strategies-for-saas-companies",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/cohort-retention-analysis-to-reduce-customer-churn",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/community-marketing-build-community-in-your-customers-areas-of-interest",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/financial-model-template-the-benefits-of-using-one",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/growth-analytics-for-saas-and-subscription-businesses",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-and-why-we-spent-400k-on-aws-in-4-months",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-cancel-timeshare-built-a-growing-business-by-being-the-good-guys",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-connex-uses-baremetrics-to-reduce-support-tickets-and-recover-failed-payments",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-dollar-flight-club-achieved-a-76-percent-trial-to-paid-conversion-rate",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-to-build-a-sustainable-remote-team-culture-using-video",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-to-get-users-to-use-your-product",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-to-improve-revenue-growth",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-to-increase-ltv-for-e-commerce-businesses",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-to-make-a-hiring-plan-that-stands-up-financially",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-to-reduce-churn-for-startups",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/how-understanding-addiction-can-inspire-better-product-building",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/inside-baremetrics-february-2014",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/inside-baremetrics-june-2014",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/monitor-your-revenue-performance-with-baremetrics",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/monitoring-mrr-expansion-from-upgraded-subscriptions-in-stripe",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/net-revenue-churn",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/new-feature-mrr-growth-chart",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/pma-growth-story",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/predict-churn",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/reduce-saas-churn",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/saas-forecasting",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/startup-competition",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/startups-keep-it-classy-5bba13285cc6",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/the-17-emails-we-send-to-engage-customers-reduce-churn-increase-revenue-806cd2eaa11c",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/the-baremetrics-content-library",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/the-perfect-saas-landing-page",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/the-startup-echo-chamber-is-making-you-deaf",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/the-startup-guide-to-growing-your-business-with-intercom-ce66d2b2b33f",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/top-10-tools-for-shopify-app-developers-2021",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/true-tales-of-startup-scaling-153c3ee3664e",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/what-is-annual-recurring-revenue-arr",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/what-is-price-leadership",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/blog/what-is-unit-economics-in-saas",
+      "Destination": "/blog"
+    },
+    {
+      "Source": "/jp/blog/%e3%83%81%e3%83%a3%e3%83%bc%e3%83%b3%e3%81%af%e4%bd%95%e3%82%92%e7%89%a9%e8%aa%9e%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%e3%81%8b%ef%bc%9f",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/%e8%a7%a3%e7%b4%84%e7%8e%87",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/7-tips-on-improving-employee-retention-as-a-remote-work-saas-businessinspired-by-founder-chats-justin-cooke-from-empire-flippers%ef%bf%bc",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/academy-average-revenue-per-user-arpu",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/academy-tcv-total-contract-value",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/arr-%e7%b5%8c%e5%b8%b8%e5%8f%8e%e7%9b%8a",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/churn-analysis-2",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/customer-segmentation-examples-how-to-do-customer-segmentation-with-baremetrics",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/ltv%e3%81%a8%e3%81%af-part1",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/ltv%e3%81%a8cac%e3%81%a8%e8%a7%a3%e7%b4%84",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/mrr%e3%81%a8%e3%81%afpart1",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/mrr%e3%81%a8%e3%81%afpart4",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/saas-pricing-models3",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/saas-pricing-models4",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/blog/top-10-tools-for-shopify-app-developers-2021",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/%e3%82%a8%e3%82%af%e3%82%b9%e3%83%91%e3%83%b3%e3%82%b7%e3%83%a7%e3%83%b3mrr",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/%e3%83%81%e3%83%a3%e3%83%bc%e3%83%b3%e3%82%92%e6%b8%9b%e3%82%89%e3%81%99%e6%96%b9%e6%b3%95%ef%bc%96%e9%81%b8",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/%e3%83%81%e3%83%a3%e3%83%bc%e3%83%b3mrr",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/%e3%83%97%e3%83%a9%e3%82%a4%e3%82%b7%e3%83%b3%e3%82%b0%e6%88%a6%e7%95%a5",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/%e6%88%90%e9%95%b7%e7%8e%87",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/%e9%a1%a7%e5%ae%a2%e7%8d%b2%e5%be%97",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/%e9%a1%a7%e5%ae%a2%e7%b6%ad%e6%8c%81%e7%8e%87",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/cac%e5%9b%9e%e5%8f%8e%e6%9c%9f%e9%96%93%e3%81%a8%e3%81%af%ef%bc%9f",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/ltv-part3",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/mrr-part1",
+      "Destination": "/jp/blog"
+    },
+    {
+      "Source": "/jp/japan-blog/saas%e3%83%93%e3%82%b8%e3%83%8d%e3%82%b9",
+      "Destination": "/jp/blog"
     }
   ],
   ":type": "sheet"
